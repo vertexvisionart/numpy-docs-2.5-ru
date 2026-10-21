@@ -109,3 +109,25 @@ code.literal,
 code.literal .pre {
     font-variant-ligatures: none;
 }
+
+/* Independent publisher branding, including notices without JavaScript. */
+a.navbar-brand img { display: none !important; }
+a.navbar-brand::after { content: "vertexvisionart"; font-size: 1.15rem; font-weight: 700; }
+.ru-publisher-brand { font-size: 1.15rem; font-weight: 700; }
+.bd-article-container::before, .ru-publisher-notice {
+  display: block; padding: .85rem 1rem; margin: 1rem 0;
+  border: 1px solid var(--pst-color-border);
+  border-left: 4px solid var(--pst-color-primary); border-radius: .25rem;
+  font-size: .9rem; line-height: 1.5;
+  color: var(--pst-color-text-base); background: var(--pst-color-background);
+}
+.bd-article-container::before {
+  content: "Неофициальный русский перевод. Независимый проект vertexvisionart. Сайт не связан с NumPy или NumFOCUS и не имеет их официального одобрения.";
+}
+.bd-footer::after, .ru-publisher-trademark {
+  display: block; padding: .5rem 1rem; margin: 0; font-size: .8rem; text-align: center;
+}
+.bd-footer::after { content: "NumPy is a trademark of NumFOCUS."; }
+.ru-publisher-ready a.navbar-brand::after,
+.ru-publisher-ready .bd-article-container::before,
+.ru-publisher-ready .bd-footer::after { display: none; content: none; }

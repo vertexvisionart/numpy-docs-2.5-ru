@@ -1,6 +1,6 @@
 # NumPy 2.5 — документация на русском
 
-[![Читать документацию](https://img.shields.io/badge/документация-на_русском-013243?logo=numpy)](https://vertexvisionart.github.io/numpy-docs-2.5-ru/)
+[![Читать документацию](https://img.shields.io/badge/документация-на_русском-013243)](https://vertexvisionart.github.io/numpy-docs-2.5-ru/)
 [![GitHub stars](https://img.shields.io/github/stars/vertexvisionart/numpy-docs-2.5-ru?style=flat)](https://github.com/vertexvisionart/numpy-docs-2.5-ru/stargazers)
 [![License: BSD-3-Clause](https://img.shields.io/badge/license-BSD--3--Clause-blue)](LICENSE)
 
@@ -48,6 +48,10 @@ python -m http.server 8000 --bind 127.0.0.1
 
 ## Лицензия
 
-Сохранены лицензия и уведомления NumPy: [BSD 3-Clause](LICENSE). Товарные знаки и исходные материалы принадлежат их правообладателям.
+Сохранены лицензия и уведомления NumPy: [BSD 3-Clause](LICENSE). Сторонние компоненты сайта распространяются на условиях собственных лицензий; их уведомления сохранены рядом с файлами.
+
+Это независимый проект vertexvisionart, не связанный с NumPy или NumFOCUS и не имеющий их официального одобрения. Название NumPy используется для обозначения переводимой документации. NumPy is a trademark of NumFOCUS.
+
+Правила использования товарных знаков: [NumFOCUS Trademark Guidelines](https://numfocus.org/trademark-guidelines).
 
 В этом репозитории находится готовый сайт. Модели перевода, локальное окружение и рабочая база сюда не включены.
