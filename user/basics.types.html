@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'user/basics.types';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="basics.broadcasting.html" rel="next" title="Трансляция массивов"/>
+<link href="basics.io.genfromtxt.html" rel="prev" title="Импорт данных с помощью genfromtxt"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="basics.html">Основы NumPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.creation.html">Создание массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.indexing.html">Индексация массивов <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarrays</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.io.html">Ввод и вывод данных в NumPy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.broadcasting.html">Трансляция массивов (broadcasting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.copies.html">Копии и представления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.strings.html">Работа с массивами строк и байтов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.rec.html">Структурированные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.ufuncs.html">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>): основы</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-info.html">Использование C API NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../f2py/index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="basics.html">Основы NumPy</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Типы данных</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="data-types">
+<span id="basics-types"></span><h1>Типы данных<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="../reference/arrays.dtypes.html#arrays-dtypes"><span class="std std-ref">Объекты типов данных</span></a></p>
+</div>
+<section id="array-types-and-conversions-between-types">
+<h2>Типы массивов и преобразования между типами <a class="headerlink" href="#array-types-and-conversions-between-types" title="Link to this heading">#</a></h2>
+<p>NumPy поддерживает гораздо больше числовых типов, чем Python. В этом разделе перечислены доступные типы и показано, как изменить тип данных массива.</p>
+<p>Числовые типы NumPy описываются объектами <a class="reference internal" href="../reference/generated/numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.dtype</span></code></a>, каждый из которых имеет собственные характеристики. После импорта NumPy командой <code class="docutils literal notranslate"><span class="pre">import</span>
+<span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> можно создавать массивы заданного типа, указывая скалярные типы из API верхнего уровня, например <a class="reference internal" href="../reference/arrays.scalars.html#numpy.bool" title="numpy.bool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.bool</span></code></a>, <a class="reference internal" href="../reference/arrays.scalars.html#numpy.float32" title="numpy.float32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float32</span></code></a> и другие.</p>
+<p>Эти скалярные типы можно передавать аргументу dtype, который принимают многие функции и методы NumPy. Например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
+<span class="go">array([0, 1, 2], dtype=uint8)</span>
+</pre></div>
+</div>
+<p>Типы массивов также можно задавать символьными кодами, например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'f'</span><span class="p">)</span>
+<span class="go">array([1.,  2.,  3.], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'d'</span><span class="p">)</span>
+<span class="go">array([1.,  2.,  3.], dtype=float64)</span>
+</pre></div>
+</div>
+<p>Подробнее о задании и создании объектов типов данных, включая параметры вроде порядка байтов, см. <a class="reference internal" href="../reference/arrays.dtypes.html#arrays-dtypes-constructing"><span class="std std-ref">Задание и создание типов данных</span></a>.</p>
+<p>Чтобы узнать тип данных массива, посмотрите его атрибут dtype:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">dtype('uint8')</span>
+</pre></div>
+</div>
+<p>Объект dtype также содержит характеристики типа: число битов, порядок байтов и другие сведения. Через него можно проверять свойства типа, например является ли он целочисленным:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">dtype('int64')</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">)</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Для преобразования типа данных массива используйте метод .astype(). Например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>                 
+<span class="go">array([0.,  1.,  2.])</span>
+</pre></div>
+</div>
+<p>В предыдущем примере встроенный тип float языка <em>Python</em> можно было указать как dtype вместо <a class="reference internal" href="../reference/arrays.scalars.html#numpy.float64" title="numpy.float64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float64</span></code></a>. NumPy интерпретирует <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> как <a class="reference internal" href="../reference/arrays.scalars.html#numpy.int_" title="numpy.int_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int_</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> — как <a class="reference internal" href="../reference/arrays.scalars.html#numpy.bool" title="numpy.bool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.bool</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a> — как <a class="reference internal" href="../reference/arrays.scalars.html#numpy.float64" title="numpy.float64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float64</span></code></a>, а <a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a> — как <a class="reference internal" href="../reference/arrays.scalars.html#numpy.complex128" title="numpy.complex128"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.complex128</span></code></a>. У остальных типов данных прямых аналогов среди встроенных типов Python нет.</p>
+<p>Иногда преобразование вызывает переполнение: например, при преобразовании значения 300 типа <a class="reference internal" href="../reference/arrays.scalars.html#numpy.int64" title="numpy.int64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int64</span></code></a> в <a class="reference internal" href="../reference/arrays.scalars.html#numpy.int8" title="numpy.int8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int8</span></code></a>. NumPy следует правилам приведения типов C, поэтому переполнение даёт 44 <code class="docutils literal notranslate"><span class="pre">(300</span> <span class="pre">-</span> <span class="pre">256)</span></code>. Чтобы вместо переполнения получить ошибку, задайте <code class="docutils literal notranslate"><span class="pre">same_value</span></code> для аргумента <code class="docutils literal notranslate"><span class="pre">casting</span></code> (см. также <a class="reference internal" href="#overflow-errors"><span class="std std-ref">«Ошибки переполнения»</span></a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">casting</span><span class="o">=</span><span class="s2">"same_value"</span><span class="p">)</span>   
+<span class="go">array([0.,  1.,  2.])</span>
+</pre></div>
+</div>
+<section id="numerical-data-types">
+<h3>Числовые типы данных<a class="headerlink" href="#numerical-data-types" title="Link to this heading">#</a></h3>
+<p>Существует пять основных категорий числовых типов: логические значения (<code class="docutils literal notranslate"><span class="pre">bool</span></code>), целые числа (<code class="docutils literal notranslate"><span class="pre">int</span></code>), беззнаковые целые числа (<code class="docutils literal notranslate"><span class="pre">uint</span></code>), числа с плавающей точкой (<code class="docutils literal notranslate"><span class="pre">float</span></code>) и комплексные числа (<code class="docutils literal notranslate"><span class="pre">complex</span></code>). Название категории в сочетании с разрядностью определяет конкретный тип. Разрядность — число бит, необходимых для хранения одного значения в памяти. Например, <a class="reference internal" href="../reference/arrays.scalars.html#numpy.float64" title="numpy.float64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float64</span></code></a> — 64-битный тип с плавающей точкой. Разрядность некоторых типов, таких как <a class="reference internal" href="../reference/arrays.scalars.html#numpy.int_" title="numpy.int_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int_</span></code></a> и <a class="reference internal" href="../reference/arrays.scalars.html#numpy.intp" title="numpy.intp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.intp</span></code></a>, зависит от платформы (например, от того, является ли архитектура процессора 32- или 64-битной). Это следует учитывать при взаимодействии с низкоуровневым кодом, например на C или Fortran, который обращается непосредственно к памяти.</p>
+</section>
+<section id="data-types-for-strings-and-bytes">
+<h3>Типы данных для строк и байтов<a class="headerlink" href="#data-types-for-strings-and-bytes" title="Link to this heading">#</a></h3>
+<p>Помимо чисел, NumPy поддерживает строки Unicode с типом <a class="reference internal" href="../reference/arrays.scalars.html#numpy.str_" title="numpy.str_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.str_</span></code></a> и символьным кодом <code class="docutils literal notranslate"><span class="pre">U</span></code>, байтовые строки с типом <a class="reference internal" href="../reference/arrays.scalars.html#numpy.bytes_" title="numpy.bytes_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.bytes_</span></code></a> и кодом <code class="docutils literal notranslate"><span class="pre">S</span></code>, а также произвольные последовательности байтов с типом <a class="reference internal" href="../reference/arrays.scalars.html#numpy.void" title="numpy.void"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.void</span></code></a> и кодом <code class="docutils literal notranslate"><span class="pre">V</span></code>. Примечание переводчика: оригинал называет байтовые строки «завершаемыми нулём». На практике данные фиксированной ширины дополняются нулевыми байтами, только если есть свободное место; для элемента, занимающего всю ширину, отдельный завершающий нуль не требуется.</p>
+<p>Все перечисленные выше типы имеют <em>фиксированную ширину</em>. Она задаёт максимальный размер одного элемента в байтах или кодовых точках Unicode. Поэтому для хранения строк или байтовых последовательностей нужно заранее знать или вычислить длину самого длинного элемента.</p>
+<p>Например, мы можем создать массив, хранящий слова <code class="docutils literal notranslate"><span class="pre">"hello"</span></code> и <code class="docutils literal notranslate"><span class="pre">"world!"</span></code> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world!"</span><span class="p">])</span>
+<span class="go">array(['hello', 'world!'], dtype='&lt;U6')</span>
+</pre></div>
+</div>
+<p>Здесь автоматически выбран тип строки Unicode длиной не более 6 кодовых точек: этого достаточно для обоих элементов без обрезки. Если явно задать меньшую или большую ширину типа, строка соответственно обрезается либо дополняется нулями в буфере до заданной ширины:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world!"</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"U5"</span><span class="p">)</span>
+<span class="go">array(['hello', 'world'], dtype='&lt;U5')</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world!"</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"U7"</span><span class="p">)</span>
+<span class="go">array(['hello', 'world!'], dtype='&lt;U7')</span>
+</pre></div>
+</div>
+<p>Дополнение нулевыми байтами видно яснее, если использовать байтовый тип и вывести сами байты буфера массива:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"S7"</span><span class="p">)</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+<span class="go">b'hello\x00\x00world\x00\x00'</span>
+</pre></div>
+</div>
+<p>Каждый элемент дополняется двумя нулевыми байтами. Однако NumPy не может отличить намеренно сохранённые конечные нулевые байты от нулевых байтов заполнения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s2">"hello</span><span class="se">\0\0</span><span class="s2">"</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"world"</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"S7"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">b"hello"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Если нужно сохранять и точно восстанавливать завершающие нулевые байты, используйте неструктурированный тип данных void:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"V7"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([b'\x68\x65\x6C\x6C\x6F\x00\x00', b'\x77\x6F\x72\x6C\x64\x00\x00'],</span>
+<span class="go">      dtype='|V7')</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">void</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Более сложные типы, не перечисленные выше, рассматриваются в разделе <a class="reference internal" href="basics.rec.html#structured-arrays"><span class="std std-ref">Структурированные массивы</span></a>.</p>
+</section>
+</section>
+<section id="relationship-between-numpy-data-types-and-c-data-types">
+<span id="canonical-python-and-c-types"></span><h2>Соответствие типов NumPy и типов C<a class="headerlink" href="#relationship-between-numpy-data-types-and-c-data-types" title="Link to this heading">#</a></h2>
+<p>NumPy предоставляет имена типов как с явной разрядностью, так и на основе имён типов C. Поскольку определения типов C зависят от платформы, для предотвращения платформенных различий в программах NumPy следует предпочитать типы с явно заданной разрядностью.</p>
+<p>Для удобства взаимодействия с C, где естественно использовать зависящие от платформы типы, NumPy предоставляет соответствующие псевдонимы типов. В конце некоторых имён стоит подчёркивание, например <a class="reference internal" href="../reference/arrays.scalars.html#numpy.bool_" title="numpy.bool_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.bool_</span></code></a>, чтобы отличать их от встроенных типов Python.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Каноническое имя в API Python</p></th>
+<th class="head"><p>Имя в API Python, соответствующее типу C</p></th>
+<th class="head"><p>Фактический тип C</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.bool" title="numpy.bool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.bool</span></code></a> или <a class="reference internal" href="../reference/arrays.scalars.html#numpy.bool_" title="numpy.bool_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.bool_</span></code></a></p></td>
+<td><p>N/A</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>, определённый в <code class="docutils literal notranslate"><span class="pre">stdbool.h</span></code></p></td>
+<td><p>Логическое значение (True или False), хранящееся в одном байте.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.int8" title="numpy.int8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int8</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.byte" title="numpy.byte"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.byte</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">signed</span> <span class="pre">char</span></code></p></td>
+<td><p>Определённый платформой 8-битный целочисленный тип.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.uint8" title="numpy.uint8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint8</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.ubyte" title="numpy.ubyte"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ubyte</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span></code></p></td>
+<td><p>Определяемый платформой 8-разрядный беззнаковый целочисленный тип.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.int16" title="numpy.int16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int16</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.short" title="numpy.short"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.short</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">short</span></code></p></td>
+<td><p>Определённый платформой 16-битный целочисленный тип.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.uint16" title="numpy.uint16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint16</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.ushort" title="numpy.ushort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ushort</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">short</span></code></p></td>
+<td><p>Определяемый платформой 16-битный беззнаковый целочисленный тип.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.int32" title="numpy.int32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.intc" title="numpy.intc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.intc</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>Определяемый платформой 32-битный целочисленный тип.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.uint32" title="numpy.uint32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint32</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.uintc" title="numpy.uintc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uintc</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code></p></td>
+<td><p>Определенный платформой целочисленный тип с 32 битами без знака.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.intp" title="numpy.intp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.intp</span></code></a></p></td>
+<td><p>N/A</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ssize_t</span></code>/<code class="docutils literal notranslate"><span class="pre">Py_ssize_t</span></code></p></td>
+<td><p>Зависящий от платформы целочисленный тип размера <code class="docutils literal notranslate"><span class="pre">size_t</span></code>; используется, например, для размеров объектов.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.uintp" title="numpy.uintp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uintp</span></code></a></p></td>
+<td><p>N/A</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">size_t</span></code></p></td>
+<td><p>Зависящий от платформы целочисленный тип, способный хранить максимальный размер выделяемой памяти.</p></td>
+</tr>
+<tr class="row-odd"><td><p>N/A</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'p'</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">intptr_t</span></code></p></td>
+<td><p>Гарантированно вмещает указатели. Задаётся только символьным кодом (Python и C).</p></td>
+</tr>
+<tr class="row-even"><td><p>N/A</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'P'</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code></p></td>
+<td><p>Беззнаковый тип, гарантированно вмещающий значение указателя. Доступен по символьному коду в Python и C.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.int32" title="numpy.int32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code></a> или <a class="reference internal" href="../reference/arrays.scalars.html#numpy.int64" title="numpy.int64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int64</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.long" title="numpy.long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.long</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">long</span></code></p></td>
+<td><p>Целочисленный тип, определяемый платформой, длиной не менее 32 бит.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.uint32" title="numpy.uint32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint32</span></code></a> или <a class="reference internal" href="../reference/arrays.scalars.html#numpy.uint64" title="numpy.uint64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint64</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.ulong" title="numpy.ulong"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ulong</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span></code></p></td>
+<td><p>Зависящий от платформы беззнаковый целочисленный тип размером не менее 32 бит.</p></td>
+</tr>
+<tr class="row-odd"><td><p>N/A</p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.longlong" title="numpy.longlong"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.longlong</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">long</span></code></p></td>
+<td><p>Зависящий от платформы целочисленный тип размером не менее 64 бит.</p></td>
+</tr>
+<tr class="row-even"><td><p>N/A</p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.ulonglong" title="numpy.ulonglong"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ulonglong</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code></p></td>
+<td><p>Определенный платформой целочисленный тип с по меньшей мере 64 битами без знака.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.float16" title="numpy.float16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float16</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.half" title="numpy.half"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.half</span></code></a></p></td>
+<td><p>N/A</p></td>
+<td><p>Число с плавающей запятой половинной точности: знаковый бит, 5-битная экспонента, 10-битная мантисса.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.float32" title="numpy.float32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float32</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.single" title="numpy.single"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.single</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Определяемый платформой тип с плавающей точкой одинарной точности: обычно бит знака, 8 бит показателя степени и 23 бита мантиссы.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.float64" title="numpy.float64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float64</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.double" title="numpy.double"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.double</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">double</span></code></p></td>
+<td><p>Зависящий от платформы вещественный тип двойной точности: обычно 1 бит знака, 11 битов порядка и 52 бита дробной части мантиссы.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.float96</span></code> или <a class="reference internal" href="../reference/arrays.scalars.html#numpy.float128" title="numpy.float128"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float128</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.longdouble" title="numpy.longdouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.longdouble</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code></p></td>
+<td><p>Зависящий от платформы вещественный тип расширенной точности.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.complex64" title="numpy.complex64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.complex64</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.csingle" title="numpy.csingle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.csingle</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">complex</span></code></p></td>
+<td><p>Комплексное число из двух вещественных чисел одинарной точности: действительной и мнимой частей.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.complex128" title="numpy.complex128"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.complex128</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.cdouble" title="numpy.cdouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.cdouble</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">double</span> <span class="pre">complex</span></code></p></td>
+<td><p>Комплексное число из двух вещественных чисел двойной точности: действительной и мнимой частей.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numpy.complex192</span></code> или <a class="reference internal" href="../reference/arrays.scalars.html#numpy.complex256" title="numpy.complex256"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.complex256</span></code></a></p></td>
+<td><p><a class="reference internal" href="../reference/arrays.scalars.html#numpy.clongdouble" title="numpy.clongdouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.clongdouble</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span> <span class="pre">complex</span></code></p></td>
+<td><p>Комплексное число из двух вещественных чисел расширенной точности: действительной и мнимой частей.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Поскольку определения многих типов зависят от платформы, также предусмотрены псевдонимы фиксированного размера. См. <a class="reference internal" href="../reference/arrays.scalars.html#sized-aliases"><span class="std std-ref">«Псевдонимы с заданным размером»</span></a>.</p>
+</section>
+<section id="array-scalars">
+<h2>Скаляры массивов<a class="headerlink" href="#array-scalars" title="Link to this heading">#</a></h2>
+<p>NumPy обычно возвращает элементы массивов как скаляры массива — скалярные значения с соответствующим dtype. Они отличаются от скаляров Python, но в большинстве случаев взаимозаменяемы с ними. Основное исключение относится к версиям Python до 2.x: в них целочисленные скаляры массива нельзя использовать как индексы списков и кортежей. Возможны и другие исключения: например, когда код использует особые атрибуты скаляра или явно проверяет, является ли значение скаляром Python. Обычно такие проблемы легко устранить явным преобразованием скаляра массива в скаляр Python с помощью соответствующего конструктора типа Python (например, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>).</p>
+<p>Главное преимущество скаляров NumPy — сохранение типа данных массива. В Python может не быть соответствующего встроенного скалярного типа, например <code class="docutils literal notranslate"><span class="pre">int16</span></code>. Поэтому тип значения сохраняет свои характеристики независимо от того, находится значение внутри массива или извлечено из него. У скаляров NumPy также есть многие методы массивов.</p>
+</section>
+<section id="overflow-errors">
+<span id="id1"></span><h2>Ошибки переполнения<a class="headerlink" href="#overflow-errors" title="Link to this heading">#</a></h2>
+<p>Из-за фиксированного размера числовых типов NumPy возможно переполнение: значение может не помещаться в диапазон выбранного типа. Например, <a class="reference internal" href="../reference/generated/numpy.power.html#numpy.power" title="numpy.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.power</span></code></a> правильно вычисляет <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">**</span> <span class="pre">9</span></code> для 64-битных целых чисел, но при 32-битном типе даёт неверное значение -1486618624.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="go">1000000000000000000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="go">np.int32(-1486618624)</span>
+</pre></div>
+</div>
+<p>При переполнении целочисленные типы NumPy и Python ведут себя по-разному. Это может удивить тех, кто ожидает от целых NumPy поведения встроенного <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> Python. Размер <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> в Python не фиксирован: при необходимости он увеличивается, чтобы вместить целое число, поэтому обычного переполнения фиксированной разрядности не возникает.</p>
+<p>NumPy предоставляет <a class="reference internal" href="../reference/generated/numpy.iinfo.html#numpy.iinfo" title="numpy.iinfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.iinfo</span></code></a> и <a class="reference internal" href="../reference/generated/numpy.finfo.html#numpy.finfo" title="numpy.finfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.finfo</span></code></a> для проверки минимальных или максимальных значений целых чисел NumPy и значений с плавающей запятой соответственно.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># Bounds of the default integer on this system.</span>
+<span class="go">iinfo(min=-9223372036854775808, max=9223372036854775807, dtype=int64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span> <span class="c1"># Bounds of a 32-bit integer</span>
+<span class="go">iinfo(min=-2147483648, max=2147483647, dtype=int32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="c1"># Bounds of a 64-bit integer</span>
+<span class="go">iinfo(min=-9223372036854775808, max=9223372036854775807, dtype=int64)</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Границы целочисленного типа по умолчанию в этой системе.</li><li>Границы 32-битного целого числа</li><li>Границы 64-битного целого числа</li></ul></details></div>
+</div>
+<p>Если диапазона 64-битных целых чисел недостаточно, можно вычислять результат в типе с плавающей точкой. Такие типы имеют более широкий диапазон значений, но не обеспечивают точное представление всех целых чисел.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="c1"># Incorrect even with 64-bit int</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="go">1e+200</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Неверно даже для 64-битного int</li></ul></details></div>
+</div>
+</section>
+<section id="floating-point-precision">
+<h2>Точность чисел с плавающей запятой<a class="headerlink" href="#floating-point-precision" title="Link to this heading">#</a></h2>
+<p>Многие функции NumPy, особенно в <a class="reference internal" href="../reference/routines.linalg.html#module-numpy.linalg" title="numpy.linalg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.linalg</span></code></a>, используют арифметику с плавающей точкой. Из-за способа представления десятичных чисел в компьютере при вычислениях возможны небольшие погрешности. Например, при выполнении обычных арифметических операций:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.3</span> <span class="o">-</span> <span class="mf">0.2</span> <span class="o">-</span> <span class="mf">0.1</span>  <span class="c1"># This does not equal 0 due to floating-point precision</span>
+<span class="go">-2.7755575615628914e-17</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Не равно 0 из-за ограниченной точности вычислений с плавающей точкой</li></ul></details></div>
+</div>
+<p>В таких случаях рекомендуется сравнивать значения с помощью функций вроде <em class="xref py py-obj">np.isclose</em> вместо проверки на точное равенство:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="mf">0.3</span> <span class="o">-</span> <span class="mf">0.2</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">)</span>  <span class="c1"># Check for closeness to 0</span>
+<span class="go">True</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Проверяем близость к 0</li></ul></details></div>
+</div>
+<p>В этом примере <em class="xref py py-obj">np.isclose</em> учитывает небольшие погрешности вычислений с плавающей точкой, применяя допуск при сравнении. Значения, различающиеся в пределах этого допуска, считаются близкими. Примечание переводчика: упомянутый в оригинале относительный допуск — лишь часть проверки numpy.isclose; по умолчанию также используется абсолютный допуск.</p>
+<p>О точности вычислений см. <a class="reference external" href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">«Арифметика с плавающей точкой»</a>.</p>
+</section>
+<section id="extended-precision">
+<h2>Расширенная точность<a class="headerlink" href="#extended-precision" title="Link to this heading">#</a></h2>
+<p>Тип float Python обычно использует 64-битные числа с плавающей точкой, почти эквивалентные <a class="reference internal" href="../reference/arrays.scalars.html#numpy.float64" title="numpy.float64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float64</span></code></a>. Иногда нужна большая точность. Доступность такой арифметики в NumPy зависит от оборудования и среды сборки. Например, процессоры x86 поддерживают 80-битный расширенный формат. Многие компиляторы C предоставляют его как <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code>, но MSVC, обычно используемый для сборок Windows, делает <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> идентичным <code class="docutils literal notranslate"><span class="pre">double</span></code> — 64-битному типу. NumPy предоставляет тип компилятора <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> под именем <a class="reference internal" href="../reference/arrays.scalars.html#numpy.longdouble" title="numpy.longdouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.longdouble</span></code></a> и его комплексный аналог <code class="docutils literal notranslate"><span class="pre">np.clongdouble</span></code>. Характеристики типа в вашей сборке можно узнать через <code class="docutils literal notranslate"><span class="pre">np.finfo(np.longdouble)</span></code>.</p>
+<p>Среди встроенных вещественных типов NumPy нет типа с большей точностью, чем C <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code>. В оригинале далее утверждается, что 128-битный формат IEEE четверной точности, соответствующий <code class="docutils literal notranslate"><span class="pre">REAL*16</span></code> в Fortran, недоступен. Примечание переводчика: это утверждение зависит от платформы и в общем виде устарело. На некоторых платформах longdouble использует IEEE binary128; на типичной x86-сборке — 80-битный расширенный формат, а в сборке MSVC — 64-битный. Наличие имени float128 само по себе не гарантирует четверную точность; проверяйте numpy.finfo(numpy.longdouble).</p>
+<p>Для эффективного выравнивания в памяти <a class="reference internal" href="../reference/arrays.scalars.html#numpy.longdouble" title="numpy.longdouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.longdouble</span></code></a> обычно дополняется нулевыми битами до 96 или 128 бит. Оптимальный вариант зависит от оборудования и среды разработки: в 32-битных системах обычно используется 96 бит, а в 64-битных — 128 бит. Для <code class="docutils literal notranslate"><span class="pre">np.longdouble</span></code> выбирается системный вариант по умолчанию; <code class="docutils literal notranslate"><span class="pre">np.float96</span></code> и <code class="docutils literal notranslate"><span class="pre">np.float128</span></code> позволяют явно выбрать размер с дополнением. Несмотря на названия, <code class="docutils literal notranslate"><span class="pre">np.float96</span></code> и <code class="docutils literal notranslate"><span class="pre">np.float128</span></code> обеспечивают лишь ту же точность, что и <code class="docutils literal notranslate"><span class="pre">np.longdouble</span></code>: 80-битное представление на большинстве машин x86 и 64-битное в стандартных сборках Windows.</p>
+<p>Даже если <a class="reference internal" href="../reference/arrays.scalars.html#numpy.longdouble" title="numpy.longdouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.longdouble</span></code></a> имеет большую точность, чем встроенный <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a> Python, дополнительную точность легко потерять: многие операции Python преобразуют значение через <code class="docutils literal notranslate"><span class="pre">float</span></code>. Например, оператор форматирования <code class="docutils literal notranslate"><span class="pre">%</span></code> требует преобразования аргументов во встроенные типы Python. Поэтому расширенная точность теряется, даже если запросить много знаков после запятой. Для проверки кода полезно использовать значение <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">np.finfo(np.longdouble).eps</span></code>.</p>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="basics.io.genfromtxt.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Импорт данных с помощью <code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></p>
+</div>
+</a>
+<a class="right-next" href="basics.broadcasting.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Трансляция массивов</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-types-and-conversions-between-types">Типы массивов и преобразования между типами </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-data-types">Числовые типы данных</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types-for-strings-and-bytes">Типы данных для строк и байтов</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-numpy-data-types-and-c-data-types">Соответствие типов NumPy и типов C</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-scalars">Скаляры массивов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-errors">Ошибки переполнения</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-precision">Точность чисел с плавающей запятой</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-precision">Расширенная точность</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

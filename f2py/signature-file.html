@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'f2py/signature-file';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="python-usage.html" rel="next" title="Использование F2PY-связей в Python"/>
+<link href="f2py-reference.html" rel="prev" title="Справочное руководство F2PY"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.html">Основы NumPy</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/c-info.html">Использование C API NumPy</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Руководство пользователя и справочник F2PY</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="f2py-user.html">Руководство пользователя F2PY</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="f2py-reference.html">Справочное руководство F2PY</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Файл сигнатур</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python-usage.html">Использование привязок F2PY в Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buildtools/index.html">F2PY и системы сборки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/use_cases.html">Расширенные сценарии использования F2PY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/boilerplating.html">Сокращение шаблонного кода и использование шаблонов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="f2py-testing.html">Набор тестов F2PY</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="windows/index.html"> F2PY и Windows </a></li>
+<li class="toctree-l2"><a class="reference internal" href="buildtools/distutils-to-meson.html">1 Переход на <code class="docutils literal notranslate"><span class="pre">meson</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../user/index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="f2py-reference.html">Справочное руководство F2PY</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Файл сигнатур</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="signature-file">
+<h1>Файл сигнатур<a class="headerlink" href="#signature-file" title="Link to this heading">#</a></h1>
+<p>Файл определения интерфейса .pyf позволяет точно настроить взаимодействие Python и Fortran. Синтаксис файлов сигнатур (файлов <code class="docutils literal notranslate"><span class="pre">.pyf</span></code>) основан на спецификации языка Fortran 90/95. Поддерживаются почти все стандартные конструкции Fortran в свободном и фиксированном формате; напомним, что Fortran 77 — подмножество Fortran 90/95. F2PY добавляет расширения к спецификации Fortran 90/95, которые помогают проектировать более естественный для Python интерфейс с Fortran.</p>
+<p>Файлы сигнатур могут содержать произвольный код Fortran, поэтому любой код Fortran 90/95 можно рассматривать как файл сигнатур. F2PY без предупреждения игнорирует конструкции, не относящиеся к созданию интерфейса. Это также означает, что F2PY не обнаруживает синтаксические ошибки: они выявляются лишь при сборке библиотеки.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В настоящее время F2PY может не справляться с некоторыми корректными конструкциями Fortran. В таком случае поищите возможные обходные решения или обсуждаемые подходы в <a class="reference external" href="https://github.com/numpy/numpy/issues">системе отслеживания задач NumPy на GitHub</a>.</p>
+</div>
+<p>Содержимое файлов сигнатур в целом чувствительно к регистру. При анализе кода Fortran для создания файла сигнатур F2PY автоматически переводит символы в нижний регистр, кроме многострочных блоков и случая с параметром <code class="docutils literal notranslate"><span class="pre">--no-lower</span></code>.</p>
+<p>Синтаксис файлов сигнатур приведён ниже.</p>
+<section id="signature-files-syntax">
+<h2>Синтаксис файлов сигнатур<a class="headerlink" href="#signature-files-syntax" title="Link to this heading">#</a></h2>
+<section id="python-module-block">
+<h3>Блок модуля Python<a class="headerlink" href="#python-module-block" title="Link to this heading">#</a></h3>
+<p>Файл сигнатур может содержать один (рекомендуется) или несколько блоков <code class="docutils literal notranslate"><span class="pre">python</span>
+<span class="pre">module</span></code>. Блок <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">module</span></code> описывает содержимое модуля расширения Python/C <code class="docutils literal notranslate"><span class="pre">&lt;modulename&gt;module.c</span></code>, генерируемого F2PY.</p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Исключение: если <code class="docutils literal notranslate"><span class="pre">&lt;modulename&gt;</span></code> содержит подстроку <code class="docutils literal notranslate"><span class="pre">__user__</span></code>, соответствующий блок <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">module</span></code> описывает сигнатуры функций обратного вызова (см. <a class="reference internal" href="python-usage.html#call-back-arguments"><span class="std std-ref">«Аргументы обратного вызова»</span></a>).</p>
+</div>
+<p>Блок <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">module</span></code> имеет следующую структуру:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">module</span> <span class="o">&lt;</span><span class="n">modulename</span><span class="o">&gt;</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">usercode</span> <span class="n">statement</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
+  <span class="p">[</span>
+  <span class="n">interface</span>
+    <span class="o">&lt;</span><span class="n">usercode</span> <span class="n">statement</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Fortran</span> <span class="n">block</span> <span class="n">data</span> <span class="n">signatures</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Fortran</span><span class="o">/</span><span class="n">C</span> <span class="n">routine</span> <span class="n">signatures</span><span class="o">&gt;</span>
+  <span class="n">end</span> <span class="p">[</span><span class="n">interface</span><span class="p">]</span>
+  <span class="p">]</span><span class="o">...</span>
+  <span class="p">[</span>
+  <span class="n">interface</span>
+    <span class="n">module</span> <span class="o">&lt;</span><span class="n">F90</span> <span class="n">modulename</span><span class="o">&gt;</span>
+      <span class="p">[</span><span class="o">&lt;</span><span class="n">F90</span> <span class="n">module</span> <span class="n">data</span> <span class="nb">type</span> <span class="n">declarations</span><span class="o">&gt;</span><span class="p">]</span>
+      <span class="p">[</span><span class="o">&lt;</span><span class="n">F90</span> <span class="n">module</span> <span class="n">routine</span> <span class="n">signatures</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="n">end</span> <span class="p">[</span><span class="n">module</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">F90</span> <span class="n">modulename</span><span class="o">&gt;</span><span class="p">]]</span>
+  <span class="n">end</span> <span class="p">[</span><span class="n">interface</span><span class="p">]</span>
+  <span class="p">]</span><span class="o">...</span>
+<span class="n">end</span> <span class="p">[</span><span class="n">python</span> <span class="n">module</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">modulename</span><span class="o">&gt;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Скобки <code class="docutils literal notranslate"><span class="pre">[]</span></code> обозначают необязательную часть, а точки <code class="docutils literal notranslate"><span class="pre">...</span></code> — одно или несколько повторений предыдущей части. Поэтому <code class="docutils literal notranslate"><span class="pre">[]...</span></code> означает ноль или более повторений.</p>
+</section>
+<section id="fortran-c-routine-signatures">
+<h3>Сигнатуры подпрограмм Fortran/C<a class="headerlink" href="#fortran-c-routine-signatures" title="Link to this heading">#</a></h3>
+<p>Сигнатура подпрограммы Fortran имеет следующую структуру:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">&lt;</span><span class="n">typespec</span><span class="o">&gt;</span><span class="p">]</span> <span class="n">function</span> <span class="o">|</span> <span class="n">subroutine</span> <span class="o">&lt;</span><span class="n">routine</span> <span class="n">name</span><span class="o">&gt;</span> \
+              <span class="p">[</span> <span class="p">(</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">)</span> <span class="p">]</span> <span class="p">[</span> <span class="n">result</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">entityname</span><span class="o">&gt;</span> <span class="p">)</span> <span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">argument</span><span class="o">/</span><span class="n">variable</span> <span class="nb">type</span> <span class="n">declarations</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">argument</span><span class="o">/</span><span class="n">variable</span> <span class="n">attribute</span> <span class="n">statements</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">use</span> <span class="n">statements</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">common</span> <span class="n">block</span> <span class="n">statements</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">other</span> <span class="n">statements</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">end</span> <span class="p">[</span> <span class="n">function</span> <span class="o">|</span> <span class="n">subroutine</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">routine</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>По сигнатуре процедуры Fortran F2PY создаёт функцию расширения Python/C со следующей сигнатурой:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="o">&lt;</span><span class="n">routine</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">required</span> <span class="n">arguments</span><span class="o">&gt;</span><span class="p">[,</span><span class="o">&lt;</span><span class="n">optional</span> <span class="n">arguments</span><span class="o">&gt;</span><span class="p">]):</span>
+     <span class="o">...</span>
+     <span class="k">return</span> <span class="o">&lt;</span><span class="k">return</span> <span class="n">variables</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Сигнатура блока данных Fortran имеет следующую структуру:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">block</span> <span class="n">data</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">block</span> <span class="n">data</span> <span class="n">name</span><span class="o">&gt;</span> <span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">variable</span> <span class="nb">type</span> <span class="n">declarations</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">variable</span> <span class="n">attribute</span> <span class="n">statements</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">use</span> <span class="n">statements</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">common</span> <span class="n">block</span> <span class="n">statements</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">&lt;</span><span class="n">include</span> <span class="n">statements</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">end</span> <span class="p">[</span> <span class="n">block</span> <span class="n">data</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">block</span> <span class="n">data</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="type-declarations">
+<span id="id1"></span><h3>Объявления типов<a class="headerlink" href="#type-declarations" title="Link to this heading">#</a></h3>
+<p>Часть <code class="docutils literal notranslate"><span class="pre">&lt;argument/variable</span> <span class="pre">type</span> <span class="pre">declaration&gt;</span></code> определяется следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">typespec</span><span class="o">&gt;</span> <span class="p">[</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">attrspec</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">::</span> <span class="p">]</span> <span class="o">&lt;</span><span class="n">entitydecl</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>где</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">typespec</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="n">byte</span> <span class="o">|</span> <span class="n">character</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">charselector</span><span class="o">&gt;</span><span class="p">]</span>
+           <span class="o">|</span> <span class="nb">complex</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">kindselector</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">|</span> <span class="n">real</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">kindselector</span><span class="o">&gt;</span><span class="p">]</span>
+           <span class="o">|</span> <span class="n">double</span> <span class="nb">complex</span> <span class="o">|</span> <span class="n">double</span> <span class="n">precision</span>
+           <span class="o">|</span> <span class="n">integer</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">kindselector</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">|</span> <span class="n">logical</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">kindselector</span><span class="o">&gt;</span><span class="p">]</span>
+
+<span class="o">&lt;</span><span class="n">charselector</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">*</span> <span class="o">&lt;</span><span class="n">charlen</span><span class="o">&gt;</span>
+               <span class="o">|</span> <span class="p">(</span> <span class="p">[</span><span class="nb">len</span><span class="o">=</span><span class="p">]</span> <span class="o">&lt;</span><span class="nb">len</span><span class="o">&gt;</span> <span class="p">[</span> <span class="p">,</span> <span class="p">[</span><span class="n">kind</span><span class="o">=</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">kind</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">)</span>
+               <span class="o">|</span> <span class="p">(</span> <span class="n">kind</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">kind</span><span class="o">&gt;</span> <span class="p">[</span> <span class="p">,</span> <span class="nb">len</span><span class="o">=</span> <span class="o">&lt;</span><span class="nb">len</span><span class="o">&gt;</span> <span class="p">]</span> <span class="p">)</span>
+<span class="o">&lt;</span><span class="n">kindselector</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">*</span> <span class="o">&lt;</span><span class="n">intlen</span><span class="o">&gt;</span> <span class="o">|</span> <span class="p">(</span> <span class="p">[</span><span class="n">kind</span><span class="o">=</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">kind</span><span class="o">&gt;</span> <span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">entitydecl</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="p">[</span> <span class="p">[</span> <span class="o">*</span> <span class="o">&lt;</span><span class="n">charlen</span><span class="o">&gt;</span> <span class="p">]</span> <span class="p">[</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">arrayspec</span><span class="o">&gt;</span> <span class="p">)</span> <span class="p">]</span>
+                      <span class="o">|</span> <span class="p">[</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">arrayspec</span><span class="o">&gt;</span> <span class="p">)</span> <span class="p">]</span> <span class="o">*</span> <span class="o">&lt;</span><span class="n">charlen</span><span class="o">&gt;</span> <span class="p">]</span>
+                     <span class="o">|</span> <span class="p">[</span> <span class="o">/</span> <span class="o">&lt;</span><span class="n">init_expr</span><span class="o">&gt;</span> <span class="o">/</span> <span class="o">|</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">init_expr</span><span class="o">&gt;</span> <span class="p">]</span> \
+                       <span class="p">[</span> <span class="p">,</span> <span class="o">&lt;</span><span class="n">entitydecl</span><span class="o">&gt;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>и</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;attrspec&gt;</span></code> — список <a class="reference internal" href="#attributes">атрибутов</a>, разделённых запятыми;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;arrayspec&gt;</span></code> — это разделённый запятой список границ измерений;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;init_expr&gt;</span></code> - это <a class="reference internal" href="#c-expressions"> <span class="std std-ref"> C выражение </span> </a>;</p></li>
+<li><p>Значение <code class="docutils literal notranslate"><span class="pre">&lt;intlen&gt;</span></code> может быть отрицательным целым числом в спецификации типа <code class="docutils literal notranslate"><span class="pre">integer</span></code>. В таком случае <code class="docutils literal notranslate"><span class="pre">integer*&lt;negintlen&gt;</span></code> обозначает беззнаковые целые числа C;</p></li>
+</ul>
+<p>Если у аргумента нет <code class="docutils literal notranslate"><span class="pre">&lt;argument</span> <span class="pre">type</span> <span class="pre">declaration&gt;</span></code>, его тип определяется по имени согласно правилам <code class="docutils literal notranslate"><span class="pre">implicit</span></code>.</p>
+</section>
+<section id="statements">
+<h3>Операторы<a class="headerlink" href="#statements" title="Link to this heading">#</a></h3>
+<section id="attribute-statements">
+<h4>Инструкции атрибутов<a class="headerlink" href="#attribute-statements" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;argument/variable</span> <span class="pre">attribute</span> <span class="pre">statement&gt;</span></code> аналогичен <code class="docutils literal notranslate"><span class="pre">&lt;argument/variable</span> <span class="pre">type</span> <span class="pre">declaration&gt;</span></code>, но без <code class="docutils literal notranslate"><span class="pre">&lt;typespec&gt;</span></code>.</p>
+<p>Оператор атрибута не может содержать другие атрибуты, а <code class="docutils literal notranslate"><span class="pre">&lt;entitydecl&gt;</span></code> может быть только списком имён. Подробнее о допустимых атрибутах F2PY см. <a class="reference internal" href="#f2py-attributes"><span class="std std-ref">Атрибуты</span></a>.</p>
+</section>
+<section id="use-statements">
+<h4>Инструкции USE<a class="headerlink" href="#use-statements" title="Link to this heading">#</a></h4>
+<ul>
+<li><p>Часть <code class="docutils literal notranslate"><span class="pre">&lt;use</span> <span class="pre">statement&gt;</span></code> определяется следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use</span> <span class="o">&lt;</span><span class="n">modulename</span><span class="o">&gt;</span> <span class="p">[</span> <span class="p">,</span> <span class="o">&lt;</span><span class="n">rename_list</span><span class="o">&gt;</span> <span class="o">|</span> <span class="p">,</span> <span class="n">ONLY</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">only_list</span><span class="o">&gt;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>где</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">rename_list</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">local_name</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">use_name</span><span class="o">&gt;</span> <span class="p">[</span> <span class="p">,</span> <span class="o">&lt;</span><span class="n">rename_list</span><span class="o">&gt;</span> <span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>В настоящее время F2PY использует операторы <code class="docutils literal notranslate"><span class="pre">use</span></code> только для связывания модулей обратного вызова и аргументов <code class="docutils literal notranslate"><span class="pre">external</span></code> — функций обратного вызова. См. <a class="reference internal" href="python-usage.html#call-back-arguments"><span class="std std-ref">«Аргументы обратного вызова»</span></a>.</p></li>
+</ul>
+</section>
+<section id="common-block-statements">
+<h4>Операторы блоков COMMON<a class="headerlink" href="#common-block-statements" title="Link to this heading">#</a></h4>
+<ul>
+<li><p>Часть <code class="docutils literal notranslate"><span class="pre">&lt;common</span> <span class="pre">block</span> <span class="pre">statement&gt;</span></code> определяется следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">common</span> <span class="o">/</span> <span class="o">&lt;</span><span class="n">common</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">/</span> <span class="o">&lt;</span><span class="n">shortentitydecl</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>где</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">shortentitydecl</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="p">[</span> <span class="p">(</span> <span class="o">&lt;</span><span class="n">arrayspec</span><span class="o">&gt;</span> <span class="p">)</span> <span class="p">]</span> <span class="p">[</span> <span class="p">,</span> <span class="o">&lt;</span><span class="n">shortentitydecl</span><span class="o">&gt;</span> <span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Если блок <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">module</span></code> содержит два или более блоков <code class="docutils literal notranslate"><span class="pre">common</span></code> с одинаковым именем, добавляются переменные из дополнительных объявлений. Типы переменных в <code class="docutils literal notranslate"><span class="pre">&lt;shortentitydecl&gt;</span></code> определяются с помощью <code class="docutils literal notranslate"><span class="pre">&lt;argument</span> <span class="pre">type</span> <span class="pre">declarations&gt;</span></code>. Обратите внимание, что соответствующий <code class="docutils literal notranslate"><span class="pre">&lt;argument</span> <span class="pre">type</span> <span class="pre">declarations&gt;</span></code> может содержать спецификации массива; тогда их не нужно указывать в <code class="docutils literal notranslate"><span class="pre">&lt;shortentitydecl&gt;</span></code>.</p></li>
+</ul>
+</section>
+<section id="other-statements">
+<h4>Другие инструкции<a class="headerlink" href="#other-statements" title="Link to this heading">#</a></h4>
+<ul>
+<li><p>Часть <code class="docutils literal notranslate"><span class="pre">&lt;other</span> <span class="pre">statement&gt;</span></code> относится к любым другим конструкциям языка Fortran, которые не описаны выше. F2PY игнорирует большинство из них, за исключением следующего:</p>
+<ul>
+<li><p>операторы <code class="docutils literal notranslate"><span class="pre">call</span></code> и вызовы функций, переданных в аргументах <code class="docutils literal notranslate"><span class="pre">external</span></code> (см. <a class="reference internal" href="#external"><span class="std std-ref">подробнее о внешних аргументах</span></a>);</p></li>
+<li><dl>
+<dt>Инструкции <code class="docutils literal notranslate"><span class="pre">include</span></code></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span> <span class="s1">'&lt;filename&gt;'</span>
+<span class="n">include</span> <span class="s2">"&lt;filename&gt;"</span>
+</pre></div>
+</div>
+<p>Если файла <code class="docutils literal notranslate"><span class="pre">&lt;filename&gt;</span></code> нет, инструкция <code class="docutils literal notranslate"><span class="pre">include</span></code> игнорируется. Иначе файл <code class="docutils literal notranslate"><span class="pre">&lt;filename&gt;</span></code> включается в файл сигнатур. Инструкции <code class="docutils literal notranslate"><span class="pre">include</span></code> можно использовать в любой части файла сигнатур, в том числе вне блоков сигнатур подпрограмм Fortran/C.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Инструкции <code class="docutils literal notranslate"><span class="pre">implicit</span></code></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">implicit</span> <span class="n">none</span>
+<span class="n">implicit</span> <span class="o">&lt;</span><span class="nb">list</span> <span class="n">of</span> <span class="n">implicit</span> <span class="n">maps</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>где</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">implicit</span> <span class="nb">map</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">typespec</span><span class="o">&gt;</span> <span class="p">(</span> <span class="o">&lt;</span><span class="nb">list</span> <span class="n">of</span> <span class="n">letters</span> <span class="ow">or</span> <span class="nb">range</span> <span class="n">of</span> <span class="n">letters</span><span class="o">&gt;</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Если переменная не определена с помощью <code class="docutils literal notranslate"><span class="pre">&lt;variable</span> <span class="pre">type</span> <span class="pre">declaration&gt;</span></code>, её тип определяется неявными правилами по первой букве имени. Правила по умолчанию таковы:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>implicit real (a-h,o-z,$_), integer (i-m)
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Инструкции <code class="docutils literal notranslate"><span class="pre">entry</span></code></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">entry</span> <span class="o">&lt;</span><span class="n">entry</span> <span class="n">name</span><span class="o">&gt;</span> <span class="p">[([</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">])]</span>
+</pre></div>
+</div>
+<p>F2PY создаёт обёртки для всех точек входа, используя сигнатуру блока подпрограммы.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Оператор <code class="docutils literal notranslate"><span class="pre">entry</span></code> описывает сигнатуру произвольной подпрограммы или функции, позволяя F2PY создавать несколько обёрток по одной сигнатуре блока процедуры. Есть ограничения: <code class="docutils literal notranslate"><span class="pre">fortranname</span></code> использовать нельзя; <code class="docutils literal notranslate"><span class="pre">callstatement</span></code> и <code class="docutils literal notranslate"><span class="pre">callprotoargument</span></code> можно использовать, только если они допустимы для всех процедур entry, и т. д.</p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="f2py-statements">
+<h4>Операторы F2PY<a class="headerlink" href="#f2py-statements" title="Link to this heading">#</a></h4>
+<p>Кроме того, F2PY вводит следующие операторы:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">threadsafe</span></code></dt><dd><p>Помещает вызов функции Fortran/C внутрь блока <code class="docutils literal notranslate"><span class="pre">Py_BEGIN_ALLOW_THREADS</span> <span class="pre">..</span> <span class="pre">Py_END_ALLOW_THREADS</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">callstatement</span> <span class="pre">&lt;C-expr|multi-line</span> <span class="pre">block&gt;</span></code></dt><dd><p>Заменяет созданную F2PY инструкцию вызова функции Fortran/C на <code class="docutils literal notranslate"><span class="pre">&lt;C-expr|multi-line</span> <span class="pre">block&gt;</span></code>. Функция Fortran/C, для которой создаётся обёртка, доступна как <code class="docutils literal notranslate"><span class="pre">(*f2py_func)</span></code>.</p>
+<p>Чтобы вызвать исключение, задайте <code class="docutils literal notranslate"><span class="pre">f2py_success</span> <span class="pre">=</span> <span class="pre">0</span></code> в <code class="docutils literal notranslate"><span class="pre">&lt;C-expr|multi-line</span>
+<span class="pre">block&gt;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">callprotoargument</span> <span class="pre">&lt;C-typespecs&gt;</span></code></dt><dd><p>При использовании оператора <code class="docutils literal notranslate"><span class="pre">callstatement</span></code> F2PY может не генерировать правильные прототипы для функций Fortran/C (поскольку <code class="docutils literal notranslate"><span class="pre">&lt;C-expr&gt;</span></code> может содержать вызовы функций, а F2PY не имеет возможности определить, какой прототип должен быть правильным).</p>
+<p>Этот оператор позволяет явно задать аргументы соответствующего прототипа:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extern</span> <span class="o">&lt;</span><span class="k">return</span> <span class="nb">type</span><span class="o">&gt;</span> <span class="n">FUNC_F</span><span class="p">(</span><span class="o">&lt;</span><span class="n">routine</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">ROUTINE</span> <span class="n">NAME</span><span class="o">&gt;</span><span class="p">)(</span><span class="o">&lt;</span><span class="n">callprotoargument</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fortranname</span> <span class="pre">[&lt;actual</span> <span class="pre">Fortran/C</span> <span class="pre">routine</span> <span class="pre">name&gt;]</span></code></dt><dd><p>F2PY позволяет использовать произвольный <code class="docutils literal notranslate"><span class="pre">&lt;routine</span> <span class="pre">name&gt;</span></code> для заданной функции Fortran/C. Затем это утверждение используется для <code class="docutils literal notranslate"><span class="pre">&lt;actual</span>
+<span class="pre">Fortran/C</span> <span class="pre">routine</span> <span class="pre">name&gt;</span></code>.</p>
+<p>Если оператор <code class="docutils literal notranslate"><span class="pre">fortranname</span></code> используется без <code class="docutils literal notranslate"><span class="pre">&lt;actual</span> <span class="pre">Fortran/C</span> <span class="pre">routine</span> <span class="pre">name&gt;</span></code>, создается фиктивная оболочка.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">usercode</span> <span class="pre">&lt;multi-line</span> <span class="pre">block&gt;</span></code></dt><dd><p>При использовании внутри блока <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">module</span></code> указанный код C вставляется в генерируемый исходный код C/API непосредственно перед определениями функций-обёрток.</p>
+<p>Здесь можно определить произвольные функции С, которые будут использоваться для инициализации необязательных аргументов.</p>
+<p>Например, если <code class="docutils literal notranslate"><span class="pre">usercode</span></code> используется дважды внутри блока <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">module</span></code>, то после определения внешних процедур вставляется второй многострочный блок.</p>
+<p>При использовании внутри <code class="docutils literal notranslate"><span class="pre">&lt;routine</span> <span class="pre">signature&gt;</span></code> данный код C будет вставлен в соответствующую функцию-оболочку сразу после объявления переменных, но перед любыми операторами C. Таким образом, продолжение <code class="docutils literal notranslate"><span class="pre">usercode</span></code> может содержать как объявления, так и операторы C.</p>
+<p>При использовании внутри первого блока <code class="docutils literal notranslate"><span class="pre">interface</span></code> указанный код C вставляется в конец функции инициализации модуля расширения. Так можно изменять словарь модуля расширения, например определять дополнительные переменные.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">pymethoddef</span> <span class="pre">&lt;multiline</span> <span class="pre">block&gt;</span></code></dt><dd><p>Многострочный блок, вставляемый в определение массива <code class="docutils literal notranslate"><span class="pre">PyMethodDef</span></code> с методами модуля. Он должен содержать разделённый запятыми список массивов C (подробности см. в документации Python <a class="reference external" href="https://docs.python.org/extending/index.html">«Расширение и встраивание»</a>). Инструкцию <code class="docutils literal notranslate"><span class="pre">pymethoddef</span></code> можно использовать только внутри блока <code class="docutils literal notranslate"><span class="pre">python</span>
+<span class="pre">module</span></code>.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="attributes">
+<span id="f2py-attributes"></span><h3>Атрибуты<a class="headerlink" href="#attributes" title="Link to this heading">#</a> </h3>
+<p>Следующие атрибуты могут быть использованы F2PY.</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">optional</span></code></dt><dd><p>Соответствующий аргумент переносится в конец списка <code class="docutils literal notranslate"><span class="pre">&lt;optional</span> <span class="pre">arguments&gt;</span></code>. Значение по умолчанию для необязательного аргумента можно задать через <code class="docutils literal notranslate"><span class="pre">&lt;init_expr&gt;</span></code> (см. <code class="docutils literal notranslate"><span class="pre">entitydecl</span></code> и его <a class="reference internal" href="#type-declarations"><span class="std std-ref">определение</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<ul class="simple">
+<li><p>Значение по умолчанию должно быть дано в качестве действительного выражения C.</p></li>
+<li><p>Всякий раз, когда используется <code class="docutils literal notranslate"><span class="pre">&lt;init_expr&gt;</span></code>, атрибут <code class="docutils literal notranslate"><span class="pre">optional</span></code> устанавливается автоматически F2PY.</p></li>
+<li><p>У необязательного аргумента-массива размеры всех измерений должны быть определены.</p></li>
+</ul>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">required</span></code></dt><dd><p>Аргумент с этим атрибутом считается обязательным. Это поведение по умолчанию. <code class="docutils literal notranslate"><span class="pre">required</span></code> следует указывать только для отключения автоматического назначения <code class="docutils literal notranslate"><span class="pre">optional</span></code> при использовании <code class="docutils literal notranslate"><span class="pre">&lt;init_expr&gt;</span></code>.</p>
+<p>Если в качестве требуемого аргумента используется объект Python <code class="docutils literal notranslate"><span class="pre">None</span></code>, то аргумент рассматривается как необязательный. То есть в случае аргументов массива выделяется память. Если задан <code class="docutils literal notranslate"><span class="pre">&lt;init_expr&gt;</span></code>, то проводится соответствующая инициализация.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">dimension(&lt;arrayspec&gt;)</span></code></dt><dd><p>Соответствующая переменная рассматривается как массив с размерами, приведенными в <code class="docutils literal notranslate"><span class="pre">&lt;arrayspec&gt;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">intent(&lt;intentspec&gt;)</span></code></dt><dd><p>Задаёт назначение (intent) соответствующего аргумента. <code class="docutils literal notranslate"><span class="pre">&lt;intentspec&gt;</span></code> — список следующих ключей через запятую:</p>
+<ul>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">in</span></code></dt><dd><p>Соответствующий аргумент считается доступным только для ввода. Это означает, что значение аргумента передается функции Fortran/C и ожидается, что функция не изменит значение этого аргумента.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">inout</span></code></dt><dd><p>Соответствующий аргумент помечается как входной/выходной либо выходной с изменением <em>на месте</em>. Аргументы <code class="docutils literal notranslate"><span class="pre">intent(inout)</span></code> могут быть только массивами NumPy, <a class="reference internal" href="../glossary.html#term-contiguous"><span class="xref std std-term">непрерывно расположенными в памяти</span></a> в порядке Fortran или C и имеющими подходящие тип и размер. Непрерывность в порядке C соответствует обычному понятию непрерывности в NumPy и применяется только при указании <code class="docutils literal notranslate"><span class="pre">intent(c)</span></code>. По умолчанию F2PY предполагает непрерывное расположение в порядке Fortran.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Использовать <code class="docutils literal notranslate"><span class="pre">intent(inout)</span></code> обычно не рекомендуется: это может приводить к неожиданным результатам. Например, скалярные аргументы с <code class="docutils literal notranslate"><span class="pre">intent(inout)</span></code> считаются объектами массивов, чтобы изменения <em>на месте</em> имели эффект. Вместо этого используйте <code class="docutils literal notranslate"><span class="pre">intent(in,out)</span></code>.</p>
+</div>
+<p>См. также атрибут <code class="docutils literal notranslate"><span class="pre">intent(inplace)</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">inplace</span></code></dt><dd><p>Соответствующий аргумент считается входным/выходным либо выходным аргументом с изменением <em>на месте</em>. Аргументы <code class="docutils literal notranslate"><span class="pre">intent(inplace)</span></code> должны быть массивами NumPy подходящего размера. Если размер не подходит или массив не расположен непрерывно в памяти, подпрограмме передаётся исправленная копия с флагом <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_WRITEBACKIFCOPY" title="NPY_ARRAY_WRITEBACKIFCOPY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_WRITEBACKIFCOPY</span></code></a>, чтобы при выходе результат был скопирован обратно в исходный массив.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Поскольку возможно создание копий, <code class="docutils literal notranslate"><span class="pre">intent(inplace)</span></code> может работать медленнее, чем ожидается. Этот вариант предпочтительнее <code class="docutils literal notranslate"><span class="pre">inout</span></code>, но уступает <code class="docutils literal notranslate"><span class="pre">in,out</span></code>.</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">out</span></code></dt><dd><p>Соответствующим аргументом считается возвращаемая переменная. Он прилагается к списку <code class="docutils literal notranslate"><span class="pre">&lt;returned</span> <span class="pre">variables&gt;</span></code>. Использование <code class="docutils literal notranslate"><span class="pre">intent(out)</span></code> устанавливает <code class="docutils literal notranslate"><span class="pre">intent(hide)</span></code> автоматически, если не указаны также <code class="docutils literal notranslate"><span class="pre">intent(in)</span></code> или <code class="docutils literal notranslate"><span class="pre">intent(inout)</span></code>.</p>
+<p>По умолчанию возвращаемые многомерные массивы непрерывно расположены в памяти в порядке Fortran. При атрибуте <code class="docutils literal notranslate"><span class="pre">intent(c)</span></code> используется непрерывное расположение в порядке C.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">hide</span></code></dt><dd><p>Соответствующий аргумент удаляется из списка обязательных или необязательных аргументов. Обычно <code class="docutils literal notranslate"><span class="pre">intent(hide)</span></code> используется вместе с <code class="docutils literal notranslate"><span class="pre">intent(out)</span></code> или когда <code class="docutils literal notranslate"><span class="pre">&lt;init_expr&gt;</span></code> полностью определяет значение аргумента, как в следующем примере:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">integer</span> <span class="n">intent</span><span class="p">(</span><span class="n">hide</span><span class="p">),</span><span class="n">depend</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">::</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">real</span> <span class="n">intent</span><span class="p">(</span><span class="ow">in</span><span class="p">),</span><span class="n">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">::</span> <span class="n">a</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">c</span></code></dt><dd><p>Аргумент обрабатывается как скаляр или массив C. Скаляр передаётся функции C по значению; напомним, что скалярные аргументы Fortran фактически передаются как указатели C. Для массивов предполагается, что обёртка интерпретирует многомерные массивы как непрерывно расположенные в памяти в порядке C.</p>
+<p>Для одномерных массивов не нужно использовать <code class="docutils literal notranslate"><span class="pre">intent(c)</span></code> независимо от того, написана ли оборачиваемая функция на Fortran или C. Для одномерных массивов условия непрерывного расположения в памяти в порядке Fortran и C совпадают.</p>
+<p>Если <code class="docutils literal notranslate"><span class="pre">intent(c)</span></code> используется как инструкция без списка объявлений сущностей, F2PY добавляет атрибут <code class="docutils literal notranslate"><span class="pre">intent(c)</span></code> ко всем аргументам.</p>
+<p>Кроме того, при обертывании функций C необходимо использовать атрибут <code class="docutils literal notranslate"><span class="pre">intent(c)</span></code> для <code class="docutils literal notranslate"><span class="pre">&lt;routine</span> <span class="pre">name&gt;</span></code>, чтобы отключить макросы <code class="docutils literal notranslate"><span class="pre">F_FUNC(..,..)</span></code>, характерные для Fortran.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">cache</span></code></dt><dd><p>Соответствующий аргумент считается неинициализированной рабочей памятью. Проверки непрерывности в порядке Fortran или C не выполняются. <code class="docutils literal notranslate"><span class="pre">intent(cache)</span></code> имеет смысл только для аргументов-массивов, в том числе вместе с атрибутами <code class="docutils literal notranslate"><span class="pre">intent(hide)</span></code> или <code class="docutils literal notranslate"><span class="pre">optional</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">copy</span></code></dt><dd><p>Гарантирует сохранение исходного содержимого аргумента <code class="docutils literal notranslate"><span class="pre">intent(in)</span></code>. Обычно используется с атрибутом <code class="docutils literal notranslate"><span class="pre">intent(in,out)</span></code>. F2PY создает дополнительный аргумент <code class="docutils literal notranslate"><span class="pre">overwrite_&lt;argument</span> <span class="pre">name&gt;</span></code> со значением по умолчанию <code class="docutils literal notranslate"><span class="pre">0</span></code> .</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">overwrite</span></code></dt><dd><p>Это указывает на то, что исходное содержимое аргумента <code class="docutils literal notranslate"><span class="pre">intent(in)</span></code> может быть изменено функцией Fortran/C. F2PY создает дополнительный аргумент <code class="docutils literal notranslate"><span class="pre">overwrite_&lt;argument</span> <span class="pre">name&gt;</span></code> со значением по умолчанию <code class="docutils literal notranslate"><span class="pre">1</span></code> .</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">out=&lt;new</span> <span class="pre">name&gt;</span></code></dt><dd><p>Заменяет возвращенное имя на <code class="docutils literal notranslate"><span class="pre">&lt;new</span> <span class="pre">name&gt;</span></code> в строке <code class="docutils literal notranslate"><span class="pre">__doc__</span></code> функции обертки.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">callback</span></code></dt><dd><p>Создаёт внешнюю функцию для вызова функций Python из Fortran. <code class="docutils literal notranslate"><span class="pre">intent(callback)</span></code> нужно указать перед соответствующим оператором <code class="docutils literal notranslate"><span class="pre">external</span></code>. Если аргумент отсутствует в списке аргументов, он добавляется в обёртку Python, но только путём инициализации внешней функции.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Используйте <code class="docutils literal notranslate"><span class="pre">intent(callback)</span></code>, если код Fortran/C предполагает, что пользователь реализовал функцию с заданным прототипом и скомпоновал её с исполняемым файлом. Не используйте <code class="docutils literal notranslate"><span class="pre">intent(callback)</span></code>, если функция указана в списке аргументов подпрограммы Fortran.</p>
+</div>
+<p>Если заданы атрибуты <code class="docutils literal notranslate"><span class="pre">intent(hide)</span></code> или <code class="docutils literal notranslate"><span class="pre">optional</span></code> и функция-обёртка вызывается без аргумента обратного вызова в списке аргументов, функция обратного вызова ищется в пространстве имён модуля расширения, созданного F2PY. Пользователь может задать её как атрибут этого модуля.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">aux</span></code></dt><dd><p>Определяет вспомогательную переменную C в функции-обёртке, сгенерированной F2PY. Полезно для сохранения значений параметров, чтобы использовать их в выражениях инициализации других переменных.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p><code class="docutils literal notranslate"><span class="pre">intent(aux)</span></code> неявно включает <code class="docutils literal notranslate"><span class="pre">intent(c)</span></code>.</p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Применяются следующие правила:</p>
+<ul class="simple">
+<li><p>Если ни один из <code class="docutils literal notranslate"><span class="pre">intent(in</span> <span class="pre">|</span> <span class="pre">inout</span> <span class="pre">|</span> <span class="pre">out</span> <span class="pre">|</span> <span class="pre">hide)</span></code> не указан, предполагается <code class="docutils literal notranslate"><span class="pre">intent(in)</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">intent(in,inout)</span></code> — это <code class="docutils literal notranslate"><span class="pre">intent(in)</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intent(in,hide)</span></code> или <code class="docutils literal notranslate"><span class="pre">intent(inout,hide)</span></code> — это <code class="docutils literal notranslate"><span class="pre">intent(hide)</span></code> ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intent(out)</span></code> - это <code class="docutils literal notranslate"><span class="pre">intent(out,hide)</span></code>, если не указаны <code class="docutils literal notranslate"><span class="pre">intent(in)</span></code> или <code class="docutils literal notranslate"><span class="pre">intent(inout)</span></code>.</p></li>
+</ul>
+</li>
+<li><p>При использовании <code class="docutils literal notranslate"><span class="pre">intent(copy)</span></code> или <code class="docutils literal notranslate"><span class="pre">intent(overwrite)</span></code> вводится дополнительный необязательный аргумент <code class="docutils literal notranslate"><span class="pre">overwrite_&lt;argument</span> <span class="pre">name&gt;</span></code> со значением по умолчанию 0 или 1 соответственно.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">intent(inout,inplace)</span></code> — это <code class="docutils literal notranslate"><span class="pre">intent(inplace)</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intent(in,inplace)</span></code> — это <code class="docutils literal notranslate"><span class="pre">intent(inplace)</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intent(hide)</span></code> отключает <code class="docutils literal notranslate"><span class="pre">optional</span></code> и <code class="docutils literal notranslate"><span class="pre">required</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">check([&lt;C-booleanexpr&gt;])</span></code></dt><dd><p>Выполняет проверку согласованности аргументов, оценивая <code class="docutils literal notranslate"><span class="pre">&lt;C-booleanexpr&gt;</span></code>; если <code class="docutils literal notranslate"><span class="pre">&lt;C-booleanexpr&gt;</span></code> возвращает 0, возникает исключение.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если <code class="docutils literal notranslate"><span class="pre">check(..)</span></code> не используется, F2PY автоматически создаёт несколько стандартных проверок (например, для аргумента-массива проверяются правильность формы и размера). Используйте <code class="docutils literal notranslate"><span class="pre">check()</span></code>, чтобы отключить проверки, создаваемые F2PY.</p>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">depend([&lt;names&gt;])</span></code></dt><dd><p>Это означает, что соответствующий аргумент зависит от значений переменных в списке <code class="docutils literal notranslate"><span class="pre">&lt;names&gt;</span></code>. Например, <code class="docutils literal notranslate"><span class="pre">&lt;init_expr&gt;</span></code> может использовать значения других аргументов. Используя информацию, предоставляемую атрибутами <code class="docutils literal notranslate"><span class="pre">depend(..)</span></code>, F2PY гарантирует, что аргументы инициализируются в правильном порядке. Если атрибут <code class="docutils literal notranslate"><span class="pre">depend(..)</span></code> не используется, F2PY автоматически определяет отношения зависимости. Используйте <code class="docutils literal notranslate"><span class="pre">depend()</span></code>, чтобы отключить отношения зависимости, генерируемые F2PY.</p>
+<p>Изменяя зависимости, первоначально созданные F2PY, следите, чтобы не нарушить зависимости других связанных переменных. Также остерегайтесь циклических зависимостей. F2PY обнаруживает их при создании обёрток и сообщает об этом.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">allocatable</span></code></dt><dd><p>Соответствующая переменная — массив Fortran 90 с атрибутом allocatable, объявленный как данные модуля Fortran 90.</p>
+</dd>
+</dl>
+<dl id="external">
+<dt><code class="docutils literal notranslate"><span class="pre">external</span></code></dt><dd><p>Соответствующий аргумент — функция пользователя. Сигнатура этой функции обратного вызова может быть определена</p>
+<ul class="simple">
+<li><p>в модульном блоке <code class="docutils literal notranslate"><span class="pre">__user__</span></code>,</p></li>
+<li><p>или посредством демонстрационного вызова (либо настоящего, если файл сигнатур является полноценным кодом Fortran) в блоке <code class="docutils literal notranslate"><span class="pre">&lt;other</span> <span class="pre">statements&gt;</span></code>.</p></li>
+</ul>
+<p>Например, из следующего кода F2PY генерирует:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">external </span><span class="n">cb_sub</span><span class="p">,</span><span class="w"> </span><span class="n">cb_fun</span>
+<span class="kt">integer </span><span class="n">n</span>
+<span class="kt">real </span><span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="n">r</span>
+<span class="k">call </span><span class="n">cb_sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cb_fun</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>следующие сигнатуры обратного вызова:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">cb_sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real </span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span>
+<span class="w">    </span><span class="kt">integer </span><span class="k">optional</span><span class="p">,</span><span class="n">check</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">&gt;=</span><span class="n">n</span><span class="p">),</span><span class="n">depend</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">end subroutine </span><span class="n">cb_sub</span>
+<span class="k">function </span><span class="n">cb_fun</span><span class="p">(</span><span class="n">e_4_e</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">e_4_e</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span>
+<span class="k">end function </span><span class="n">cb_fun</span>
+</pre></div>
+</div>
+<p>Соответствующие функции Python, предоставляемые пользователем:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cb_sub</span><span class="p">(</span><span class="n">a</span><span class="p">,[</span><span class="n">n</span><span class="p">]):</span>
+    <span class="o">...</span>
+    <span class="k">return</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cb_fun</span><span class="p">(</span><span class="n">e_4_e</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p>См. также атрибут <code class="docutils literal notranslate"><span class="pre">intent(callback)</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">parameter</span></code></dt><dd><p>Это указывает на то, что соответствующая переменная является параметром и должна иметь фиксированное значение. F2PY заменяет все встречающиеся параметры соответствующими значениями.</p>
+</dd>
+</dl>
+</section>
+<section id="extensions">
+<h3>Расширения <a class="headerlink" href="#extensions" title="Link to this heading">#</a></h3>
+<section id="f2py-directives">
+<h4>F2PY директивы <a class="headerlink" href="#f2py-directives" title="Link to this heading">#</a></h4>
+<p>Директивы F2PY позволяют использовать конструкции файлов сигнатур прямо в исходном коде Fortran 77/90. Благодаря этому промежуточный файл сигнатур почти всегда можно не создавать, применяя F2PY непосредственно к исходному коду Fortran.</p>
+<p>Директивы F2PY имеют следующую форму:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">comment</span> <span class="n">char</span><span class="o">&gt;</span><span class="n">f2py</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>где допустимые символы комментариев для кода Fortran в фиксированном и свободном формате — <code class="docutils literal notranslate"><span class="pre">cC*!#</span></code> и <code class="docutils literal notranslate"><span class="pre">!</span></code> соответственно. Всё после <code class="docutils literal notranslate"><span class="pre">&lt;comment</span> <span class="pre">char&gt;f2py</span></code> компилятор игнорирует, а F2PY читает как обычную строку кода Fortran, не являющуюся комментарием:</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Когда F2PY находит строку с директивой F2PY, директива сначала заменяется 5 пробелами, а затем строка перечитывается.</p>
+</div>
+<p>Для кодов Фортрана фиксированного формата <code class="docutils literal notranslate"><span class="pre">&lt;comment</span> <span class="pre">char&gt;</span></code>, конечно, должен находиться в первом столбце файла. Для кодов Fortran свободного формата директивы F2PY могут появляться в любом месте файла.</p>
+</section>
+<section id="c-expressions">
+<span id="id3"></span><h4>C-выражения <a class="headerlink" href="#c-expressions" title="Link to this heading">#</a></h4>
+<p>Выражения C используются в следующих частях файлов сигнатур:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;init_expr&gt;</span></code> для инициализации переменных;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;C-booleanexpr&gt;</span></code> атрибута <code class="docutils literal notranslate"><span class="pre">check</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;arrayspec&gt;</span></code> атрибута <code class="docutils literal notranslate"><span class="pre">dimension</span></code>;</p></li>
+<li><p>оператор <code class="docutils literal notranslate"><span class="pre">callstatement</span></code>; здесь также можно использовать многострочный блок C.</p></li>
+</ul>
+<p>Выражение C может содержать:</p>
+<ul>
+<li><p>стандартные конструкции C;</p></li>
+<li><p>функции из <code class="docutils literal notranslate"><span class="pre">math.h</span></code> и <code class="docutils literal notranslate"><span class="pre">Python.h</span></code>;</p></li>
+<li><p>переменные из списка аргументов, предположительно инициализированные ранее в соответствии с заданными отношениями зависимости;</p></li>
+<li><p>Следующие макросы CPP:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">f2py_rank(&lt;name&gt;)</span></code></dt><dd><p>Возвращает ранг массива <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">f2py_shape(&lt;name&gt;,</span> <span class="pre">&lt;n&gt;)</span></code></dt><dd><p>Возвращает <code class="docutils literal notranslate"><span class="pre">&lt;n&gt;</span></code>-е измерение массива <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">f2py_len(&lt;name&gt;)</span></code></dt><dd><p>Возвращает длину массива <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">f2py_size(&lt;name&gt;)</span></code></dt><dd><p>Возвращает размер массива <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">f2py_itemsize(&lt;name&gt;)</span></code></dt><dd><p>Возвращает размер элемента (itemsize) массива <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">f2py_slen(&lt;name&gt;)</span></code></dt><dd><p>Возвращает длину строки <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Для инициализации массива <code class="docutils literal notranslate"><span class="pre">&lt;array</span> <span class="pre">name&gt;</span></code> F2PY генерирует цикл по всем индексам и измерениям, который выполняет следующий псевдооператор:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">array</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">_i</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="o">...</span><span class="p">)</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">init_expr</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>где <code class="docutils literal notranslate"><span class="pre">_i[&lt;i&gt;]</span></code> обозначает индекс вдоль измерения <code class="docutils literal notranslate"><span class="pre">&lt;i&gt;</span></code>, принимающий значения от <code class="docutils literal notranslate"><span class="pre">0</span></code> до <code class="docutils literal notranslate"><span class="pre">shape(&lt;array</span> <span class="pre">name&gt;,&lt;i&gt;)-1</span></code>.</p>
+<p>Например, функция <code class="docutils literal notranslate"><span class="pre">myrange(n)</span></code>, сгенерированная по следующей сигнатуре</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>subroutine myrange(a,n)
+  fortranname        ! myrange is a dummy wrapper
+  integer intent(in) :: n
+  real*8 intent(c,out),dimension(n),depend(n) :: a = _i[0]
+end subroutine myrange
+</pre></div>
+</div>
+<p>Это эквивалентно <code class="docutils literal notranslate"><span class="pre">numpy.arange(n,dtype=float)</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>При разборе кода Fortran F2PY может переводить в нижний регистр и выражения C; см. параметр <code class="docutils literal notranslate"><span class="pre">--[no]-lower</span></code>.</p>
+</div>
+</section>
+<section id="multi-line-blocks">
+<h4>Многострочные блоки<a class="headerlink" href="#multi-line-blocks" title="Link to this heading">#</a></h4>
+<p>Многострочный блок начинается с <code class="docutils literal notranslate"><span class="pre">'''</span></code> (трёх одинарных кавычек) и заканчивается <code class="docutils literal notranslate"><span class="pre">'''</span></code> на <em>строго</em> последующей строке. Такие блоки допустимы только в файлах .pyf. Содержимое может быть произвольным, кроме <code class="docutils literal notranslate"><span class="pre">'''</span></code>, и не подвергается преобразованиям, например переводу в нижний регистр.</p>
+<p>Сейчас многострочные блоки можно использовать в следующих конструкциях:</p>
+<ul class="simple">
+<li><p>как выражение C оператора <code class="docutils literal notranslate"><span class="pre">callstatement</span></code>;</p></li>
+<li><p>как спецификацию типов C для инструкции <code class="docutils literal notranslate"><span class="pre">callprotoargument</span></code>;</p></li>
+<li><p>как блок кода C оператора <code class="docutils literal notranslate"><span class="pre">usercode</span></code>;</p></li>
+<li><p>в виде списка C-массивов <code class="docutils literal notranslate"><span class="pre">pymethoddef</span></code>-заявления;</p></li>
+</ul>
+<ul class="simple">
+<li><p>как строку документации.</p></li>
+</ul>
+</section>
+</section>
+<section id="extended-char-selector">
+<h3>Расширенный char-selector<a class="headerlink" href="#extended-char-selector" title="Link to this heading">#</a></h3>
+<p>F2PY расширяет спецификацию char-selector, которую можно использовать в файле сигнатур или директиве F2PY, следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">extended</span><span class="o">-</span><span class="n">charselector</span><span class="o">&gt;</span> <span class="o">:=</span> <span class="o">&lt;</span><span class="n">charselector</span><span class="o">&gt;</span>
+                        <span class="o">|</span> <span class="p">(</span><span class="n">f2py_len</span><span class="o">=</span> <span class="o">&lt;</span><span class="nb">len</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Описание использования см. в разделе <a class="reference internal" href="advanced/use_cases.html#character-strings"><span class="std std-ref">«Строки символов»</span></a>.</p>
+</section>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="f2py-reference.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Справочное руководство F2PY</p>
+</div>
+</a>
+<a class="right-next" href="python-usage.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Использование F2PY-связей в Python</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signature-files-syntax">Синтаксис файлов сигнатур</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-module-block">Блок модуля Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fortran-c-routine-signatures">Сигнатуры подпрограмм Fortran/C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-declarations">Объявления типов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statements">Операторы</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#attribute-statements">Инструкции атрибутов</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-statements">Инструкции USE</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#common-block-statements">Операторы блоков COMMON</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-statements">Другие инструкции</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#f2py-statements">Операторы F2PY</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Атрибуты </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">Расширения </a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#f2py-directives">F2PY директивы </a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-expressions">C-выражения </a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-line-blocks">Многострочные блоки</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-char-selector">Расширенный char-selector</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

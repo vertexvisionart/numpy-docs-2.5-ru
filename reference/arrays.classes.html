@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script async="async" src="../_static/scipy-mathjax/MathJax.js?config=scipy-mathjax"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'reference/arrays.classes';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="generated/numpy.matrix.T.html" rel="next" title="numpy.matrix.T"/>
+<link href="arrays.nditer.html" rel="prev" title="Итерация по массивам"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="module_structure.html">Структура модулей NumPy</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="arrays.html">Объекты массивов</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="arrays.ndarray.html">N-мерный массив (<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.scalars.html">Скаляры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.dtypes.html">Объекты типов данных (<code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.promotion.html">Повышение типов данных в NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.nditer.html">Итерация по массивам</a></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Стандартные подклассы массивов</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.matrix.T.html">numpy.matrix.T</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.matrix.H.html">numpy.matrix.H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.matrix.I.html">numpy.matrix.I</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.matrix.A.html">numpy.matrix.A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.matrix.html">numpy.matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.asmatrix.html">numpy.asmatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.bmat.html">numpy.bmat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.memmap.html">numpy.memmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.memmap.flush.html">numpy.memmap.flush</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.char.chararray.html">numpy.char.chararray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.char.array.html">numpy.char.array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.recarray.html">numpy.recarray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.record.html">numpy.record</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.lib.user_array.container.html">numpy.lib.user_array.container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.ndarray.flat.html">numpy.ndarray.flat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.ndenumerate.html">numpy.ndenumerate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.broadcast.html">numpy.broadcast</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="maskedarray.html"> Маскированные массивы </a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.interface.html">Протокол интерфейса массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.datetime.html">Даты, время и временные интервалы</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ufuncs.html">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="routines.html">Функции и объекты по темам</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="typing.html">Аннотации типов (<code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.typing</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-api/index.html"> NumPy C-API </a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="array_api.html">Совместимость со стандартом Array API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simd/index.html">Оптимизации CPU/SIMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_safety.html">Потокобезопасность</a></li>
+<li class="toctree-l1"><a class="reference internal" href="global_state.html">Глобальные параметры конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Безопасность NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Рекомендации по тестированию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distutils_status_migration.html">Состояние <code class="docutils literal notranslate"><span class="pre">numpy.distutils</span></code> и рекомендации по переходу</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swig.html"> NumPy и SWIG </a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Справочник NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="arrays.html">Объекты массивов</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Стандартные подклассы массивов</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="standard-array-subclasses">
+<span id="arrays-classes"></span><h1>Стандартные подклассы массивов<a class="headerlink" href="#standard-array-subclasses" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Создать подкласс <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> можно. Однако если ваша цель — массив с <em>изменённым</em> поведением, как массивы Dask для распределённых вычислений или массивы CuPy для вычислений на GPU, наследование не рекомендуется. Вместо него используйте <a class="reference internal" href="../user/basics.dispatch.html#basics-dispatch"><span class="std std-ref">механизм диспетчеризации</span></a> NumPy.</p>
+</div>
+<p>При желании от <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> можно наследовать в Python или C, поэтому этот класс может стать основой многих полезных классов. Выбрать между наследованием от массива и использованием массива как внутреннего компонента нового класса часто непросто; иногда всё решают личные предпочтения. NumPy предоставляет средства, упрощающие взаимодействие нового объекта с другими массивами, поэтому в итоге выбор может оказаться не столь существенным. Чтобы облегчить решение, спросите себя: можно ли представить нужный объект одним массивом или для его внутреннего устройства действительно требуется два массива или больше?</p>
+<p><a class="reference internal" href="generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><code class="xref py py-func docutils literal notranslate"><span class="pre">asarray</span></code></a> всегда возвращает объект базового класса ndarray. Если ваша подпрограмма умеет работать с любым подклассом ndarray, можно использовать <a class="reference internal" href="generated/numpy.asanyarray.html#numpy.asanyarray" title="numpy.asanyarray"><code class="xref py py-func docutils literal notranslate"><span class="pre">asanyarray</span></code></a>, чтобы сохранять подклассы при передаче через неё. В принципе подкласс способен переопределить любое свойство массива; при максимально строгих требованиях это делает <a class="reference internal" href="generated/numpy.asanyarray.html#numpy.asanyarray" title="numpy.asanyarray"><code class="xref py py-func docutils literal notranslate"><span class="pre">asanyarray</span></code></a> редко применимой. Однако большинство подклассов не меняют некоторые свойства, например буферный интерфейс или атрибуты массива. Важный пример возможной несовместимости: матрицы переопределяют оператор «*» как матричное, а не поэлементное умножение.</p>
+<section id="special-attributes-and-methods">
+<span id="id1"></span><h2>Специальные атрибуты и методы <a class="headerlink" href="#special-attributes-and-methods" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="../user/basics.subclassing.html#basics-subclassing"><span class="std std-ref">Создание подклассов ndarray</span></a></p>
+</div>
+<p>NumPy предоставляет несколько методов-перехватчиков, которые классы могут настраивать:</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.class.__array_ufunc__">
+<span class="sig-prename descclassname"><span class="pre">class.</span></span><span class="sig-name descname"><span class="pre">__array_ufunc__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ufunc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.class.__array_ufunc__" title="Link to this definition">#</a></dt>
+<dd><p>Любой класс, независимо от того, является ли он подклассом ndarray, может определить этот метод или задать для него None, чтобы переопределить поведение универсальных функций NumPy. Это работает примерно так же, как <code class="docutils literal notranslate"><span class="pre">__mul__</span></code> и другие методы бинарных операций в Python.</p>
+<ul class="simple">
+<li><p><em>ufunc</em> — объект вызванной универсальной функции.</p></li>
+<li><p><em>method</em> — строка, указывающая вызванный метод универсальной функции. В оригинале перечислены <code class="docutils literal notranslate"><span class="pre">"__call__"</span></code>, <code class="docutils literal notranslate"><span class="pre">"reduce"</span></code>, <code class="docutils literal notranslate"><span class="pre">"reduceat"</span></code>, <code class="docutils literal notranslate"><span class="pre">"accumulate"</span></code>, <code class="docutils literal notranslate"><span class="pre">"outer"</span></code>, <code class="docutils literal notranslate"><span class="pre">"inner"</span></code>. Примечание переводчика: последний элемент списка ошибочен; у универсальных функций есть метод "at", а не "inner". Именно строка "at" передаётся в __array_ufunc__ при вызове ufunc.at.</p></li>
+<li><p><em>inputs</em> — кортеж входных аргументов <code class="docutils literal notranslate"><span class="pre">ufunc</span></code>.</p></li>
+<li><p><em>kwargs</em> — словарь необязательных входных аргументов ufunc. Аргументы <code class="docutils literal notranslate"><span class="pre">out</span></code>, если они заданы, передаются как <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> в <em>kwargs</em> независимо от того, заданы они позиционно или по имени. Подробнее см. обсуждение в разделе <a class="reference internal" href="ufuncs.html#ufuncs"><span class="std std-ref">Универсальные функции (ufunc)</span></a>.</p></li>
+</ul>
+<p>Метод должен возвращать результат операции либо <a class="reference external" href="https://docs.python.org/3/library/constants.html#NotImplemented" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotImplemented</span></code></a>, если запрошенная операция не реализована.</p>
+<p>Если у одного из входных или выходных аргументов либо у аргумента <code class="docutils literal notranslate"><span class="pre">where</span></code> есть метод <a class="reference internal" href="#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a>, он выполняется <em>вместо</em> универсальной функции. Если <a class="reference internal" href="#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a> реализован у нескольких аргументов, методы вызываются в следующем порядке: подклассы перед суперклассами, входные аргументы перед выходными, выходные перед <code class="docutils literal notranslate"><span class="pre">where</span></code>, а в остальных случаях — слева направо. Результат определяет первый метод, вернувший значение, отличное от <a class="reference external" href="https://docs.python.org/3/library/constants.html#NotImplemented" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotImplemented</span></code></a>. Если все вызовы <a class="reference internal" href="#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a> возвращают <a class="reference external" href="https://docs.python.org/3/library/constants.html#NotImplemented" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotImplemented</span></code></a>, возбуждается <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Мы планируем заново реализовать функции NumPy как обобщённые универсальные функции; тогда их можно будет переопределять методом <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>. Главный кандидат — <a class="reference internal" href="generated/numpy.matmul.html#numpy.matmul" title="numpy.matmul"><code class="xref py py-func docutils literal notranslate"><span class="pre">matmul</span></code></a>: сейчас это не универсальная функция, но её сравнительно легко переписать как одну или несколько обобщённых универсальных функций. То же возможно для <a class="reference internal" href="generated/numpy.median.html#numpy.median" title="numpy.median"><code class="xref py py-func docutils literal notranslate"><span class="pre">median</span></code></a>, <a class="reference internal" href="generated/numpy.amin.html#numpy.amin" title="numpy.amin"><code class="xref py py-func docutils literal notranslate"><span class="pre">amin</span></code></a> и <a class="reference internal" href="generated/numpy.argsort.html#numpy.argsort" title="numpy.argsort"><code class="xref py py-func docutils literal notranslate"><span class="pre">argsort</span></code></a>.</p>
+</div>
+<p>Как и для некоторых других специальных методов Python, например <code class="docutils literal notranslate"><span class="pre">__hash__</span></code> и <code class="docutils literal notranslate"><span class="pre">__iter__</span></code>, можно указать, что ваш класс <em>не</em> поддерживает универсальные функции: для этого задайте <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span> <span class="pre">=</span> <span class="pre">None</span></code>. Универсальные функции всегда вызывают <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> при обращении к объекту, у которого задан <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span> <span class="pre">=</span> <span class="pre">None</span></code>.</p>
+<p>Наличие <a class="reference internal" href="#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a> также влияет на обработку классом <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> бинарных операций, например <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">+</span> <span class="pre">obj</span></code> и <code class="docutils literal notranslate"><span class="pre">arr</span>
+<span class="pre">&lt;</span> <span class="pre">obj</span></code>, когда <code class="docutils literal notranslate"><span class="pre">arr</span></code> имеет тип <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>, а <code class="docutils literal notranslate"><span class="pre">obj</span></code> — экземпляр пользовательского класса. Возможны два случая. Если <code class="docutils literal notranslate"><span class="pre">obj.__array_ufunc__</span></code> существует и не равно None, <code class="docutils literal notranslate"><span class="pre">ndarray.__add__</span></code> и аналогичные методы передают выполнение механизму универсальных функций. Таким образом, <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">+</span> <span class="pre">obj</span></code> преобразуется в <code class="docutils literal notranslate"><span class="pre">np.add(arr,</span> <span class="pre">obj)</span></code>, после чего <a class="reference internal" href="generated/numpy.add.html#numpy.add" title="numpy.add"><code class="xref py py-func docutils literal notranslate"><span class="pre">add</span></code></a> вызывает <code class="docutils literal notranslate"><span class="pre">obj.__array_ufunc__</span></code>. Это полезно при создании объектов, ведущих себя как массивы.</p>
+<p>Особый случай возникает, если <code class="docutils literal notranslate"><span class="pre">obj.__array_ufunc__</span></code> задано как None: специальные методы, например <code class="docutils literal notranslate"><span class="pre">ndarray.__add__</span></code>, обнаруживают это и <em>безусловно</em> вызывают <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>. Это полезно для создания объектов, которые взаимодействуют с массивами через бинарные операции, но сами массивами не являются. Например, в системе единиц измерения объект <code class="docutils literal notranslate"><span class="pre">m</span></code> может представлять единицу «метры», а синтаксис <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">*</span> <span class="pre">m</span></code> — обозначать массив с этой единицей измерения. При этом другое взаимодействие с массивами, в том числе через универсальные функции, может быть нежелательно. Для такого поведения можно установить <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span> <span class="pre">=</span> <span class="pre">None</span></code> и определить методы <code class="docutils literal notranslate"><span class="pre">__mul__</span></code> и <code class="docutils literal notranslate"><span class="pre">__rmul__</span></code>. (Следовательно, реализация <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>, всегда возвращающая <a class="reference external" href="https://docs.python.org/3/library/constants.html#NotImplemented" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotImplemented</span></code></a>, не полностью эквивалентна установке <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span> <span class="pre">=</span> <span class="pre">None</span></code>: в первом случае <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">+</span> <span class="pre">obj</span></code> вызывает <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>, а во втором можно определить метод <code class="docutils literal notranslate"><span class="pre">__radd__</span></code>, чтобы избежать этого.)</p>
+<p>Это не относится к операторам с изменением на месте: для них <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> никогда не возвращает <a class="reference external" href="https://docs.python.org/3/library/constants.html#NotImplemented" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotImplemented</span></code></a>. Поэтому <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">+=</span> <span class="pre">obj</span></code> всегда приводит к <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>. Для массивов операцию на месте в общем случае нельзя заменить обычной отражённой операцией. Например, по умолчанию <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">+=</span> <span class="pre">obj</span></code> превратилось бы в <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">=</span>
+<span class="pre">arr</span> <span class="pre">+</span> <span class="pre">obj</span></code>: объект <code class="docutils literal notranslate"><span class="pre">arr</span></code> был бы заменён, вопреки ожиданиям от операции над массивом на месте.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если вы определяете <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>:</p>
+<ul class="simple">
+<li><p>Если ваш класс не является подклассом <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>, рекомендуем определить в нём специальные методы, например <code class="docutils literal notranslate"><span class="pre">__add__</span></code> и <code class="docutils literal notranslate"><span class="pre">__lt__</span></code>, которые делегируют вычисления ufunc, как это делает ndarray. Проще всего для этого наследоваться от <a class="reference internal" href="generated/numpy.lib.mixins.NDArrayOperatorsMixin.html#numpy.lib.mixins.NDArrayOperatorsMixin" title="numpy.lib.mixins.NDArrayOperatorsMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">NDArrayOperatorsMixin</span></code></a>.</p></li>
+<li><p>При создании подкласса <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> рекомендуем сосредоточить всю логику переопределения в <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code> и не переопределять дополнительно специальные методы. Тогда иерархия классов определяется в одном месте, а не отдельно механизмом универсальных функций и правилами бинарных операций, отдающими предпочтение специальным методам подклассов. Другой способ обеспечить единую иерархию — задать <a class="reference internal" href="#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a> равным None — был бы неожиданным и запутывающим, поскольку подкласс вообще перестал бы работать с универсальными функциями.</p></li>
+<li><p><a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> определяет собственный метод <a class="reference internal" href="#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a>: он вычисляет ufunc, если ни один аргумент не переопределяет её поведение, а в противном случае возвращает <a class="reference external" href="https://docs.python.org/3/library/constants.html#NotImplemented" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotImplemented</span></code></a>. Это может быть полезно для подклассов, в которых <a class="reference internal" href="#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a> преобразует экземпляры своего класса в <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>: затем их можно передать суперклассу через <code class="docutils literal notranslate"><span class="pre">super().__array_ufunc__(*inputs,</span> <span class="pre">**kwargs)</span></code> и вернуть результаты, при необходимости преобразовав их обратно. Такой подход позволяет строить иерархии подклассов, расширяющих поведение. Подробнее см. <a class="reference internal" href="../user/basics.subclassing.html#basics-subclassing"><span class="std std-ref">Создание подклассов ndarray</span></a>.</p></li>
+</ul>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.class.__array_function__">
+<span class="sig-prename descclassname"><span class="pre">class.</span></span><span class="sig-name descname"><span class="pre">__array_function__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.class.__array_function__" title="Link to this definition">#</a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">func</span></code> — это произвольный вызываемый объект, предоставляемый общедоступным API NumPy, который вызывается в форме <code class="docutils literal notranslate"><span class="pre">func(*args,</span> <span class="pre">**kwargs)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">types</span></code> представляет собой набор <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Collection" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Collection</span></code></a> уникальных типов аргументов из исходного вызова функции NumPy, реализующих <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code>.</p></li>
+<li><p>Кортеж <code class="docutils literal notranslate"><span class="pre">args</span></code> и словарь <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> передаются напрямую из исходного вызова.</p></li>
+</ul>
+<p>Для удобства разработчиков <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> параметр <code class="docutils literal notranslate"><span class="pre">types</span></code> содержит все типы аргументов, имеющие атрибут <code class="docutils literal notranslate"><span class="pre">'__array_function__'</span></code>. Это позволяет быстро определить, когда следует передать управление реализации <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> другого аргумента. Реализации не должны полагаться на порядок обхода <code class="docutils literal notranslate"><span class="pre">types</span></code>.</p>
+<p>Большинство реализаций <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> начинаются с двух проверок:</p>
+<ol class="arabic simple">
+<li><p>Знаем ли мы, как переопределять данную функцию?</p></li>
+<li><p>Все ли аргументы такого типа, с которыми мы умеем обращаться?</p></li>
+</ol>
+<p>Если эти условия соблюдены, <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> должен вернуть результат от вызова его реализации для <code class="docutils literal notranslate"><span class="pre">func(*args,</span> <span class="pre">**kwargs)</span></code>. В противном случае он должен вернуть сторожевое значение <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code>, указывая, что функция не реализована этими типами.</p>
+<p>Не существует общих требований к возвратному значению от <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code>, хотя большинство разумных реализаций, вероятно, должны возвращать массив (ы) с тем же типом, что и один из аргументов функции.</p>
+<p>Также может быть удобно определить собственные декораторы (<code class="docutils literal notranslate"><span class="pre">implements</span></code> ниже) для регистрации реализаций <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HANDLED_FUNCTIONS</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyArray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array_function__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">func</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">HANDLED_FUNCTIONS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="c1"># Note: this allows subclasses that don't override</span>
+        <span class="c1"># __array_function__ to handle MyArray objects</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">MyArray</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">types</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">return</span> <span class="n">HANDLED_FUNCTIONS</span><span class="p">[</span><span class="n">func</span><span class="p">](</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">implements</span><span class="p">(</span><span class="n">numpy_function</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Register an __array_function__ implementation for MyArray objects."""</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="n">HANDLED_FUNCTIONS</span><span class="p">[</span><span class="n">numpy_function</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="k">return</span> <span class="n">func</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+
+<span class="nd">@implements</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">concatenate</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="o">...</span>  <span class="c1"># implementation of concatenate for MyArray objects</span>
+
+<span class="nd">@implements</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">broadcast_to</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+    <span class="o">...</span>  <span class="c1"># implementation of broadcast_to for MyArray objects</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Примечание: это позволяет подклассам, не переопределяющим</li><li>__array_function__, обрабатывать объекты MyArray</li><li>Реализация concatenate для объектов MyArray</li><li>Реализация broadcast_to для объектов MyArray</li></ul></details></div>
+</div>
+<p>Реализации <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> не обязаны принимать <em>все</em> необязательные аргументы соответствующей функции NumPy: например, приведённая выше <code class="docutils literal notranslate"><span class="pre">broadcast_to</span></code> опускает не относящийся к ней аргумент <code class="docutils literal notranslate"><span class="pre">subok</span></code>. Необязательные аргументы передаются в <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code>, только если пользователь явно указал их при вызове функции NumPy.</p>
+<p>Как и в случае со встроенными специальными методами, такими как <code class="docutils literal notranslate"><span class="pre">__add__</span></code> , правильно написанные методы <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> всегда должны возвращать <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code> при встрече с неизвестным типом. В противном случае будет невозможно правильно переопределить функции NumPy от другого объекта, если операция также включает один из ваших объектов.</p>
+<p>Правила диспетчеризации с помощью <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> в основном совпадают с правилами для <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>. В частности:</p>
+<ul class="simple">
+<li><p>NumPy собирает реализации <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> у всех указанных входных объектов и вызывает их по порядку: сначала реализации подклассов, затем суперклассов; в остальных случаях — слева направо. В некоторых пограничных случаях с подклассами этот порядок немного отличается от <a class="reference external" href="https://bugs.python.org/issue30140">текущего поведения</a> Python.</p></li>
+<li><p>Реализации <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> указывают на то, что они могут обрабатывать операцию, возвращая любое значение, отличное от <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code>.</p></li>
+<li><p>Если все методы <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> возвращают <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code>, NumPy возбуждает исключение <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p></li>
+</ul>
+<p>Если методы <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> не существуют, NumPy по умолчанию вызовет собственную реализацию, предназначенную для использования в массивах NumPy. Этот случай возникает, например, когда все аргументы типа массива являются числами или списками Python. (Массивы NumPy имеют метод <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code>, приведенный ниже, но он всегда возвращает <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code>, если какой-либо аргумент, кроме подкласса массива NumPy, реализует <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code>.)</p>
+<p>Одно отличие от текущего поведения <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>: NumPy вызывает <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> только у <em>первого</em> аргумента каждого уникального типа. Это соответствует <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__ror__">правилу Python для вызова отражённых методов</a> и обеспечивает приемлемую скорость проверки перегрузок даже при большом числе аргументов с перегруженным поведением.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.class.__array_finalize__">
+<span class="sig-prename descclassname"><span class="pre">class.</span></span><span class="sig-name descname"><span class="pre">__array_finalize__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.class.__array_finalize__" title="Link to this definition">#</a></dt>
+<dd><p>Этот метод вызывается всякий раз, когда система внутри себя создаёт новый массив из <em>obj</em>, где <em>obj</em> — подкласс (подтип) <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>. Метод позволяет изменить атрибуты <em>self</em> после создания объекта, например обеспечить двумерность матрицы, или обновить метаданные из «родительского» объекта. Подклассы наследуют реализацию этого метода по умолчанию, которая ничего не делает.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.class.__array_wrap__">
+<span class="sig-prename descclassname"><span class="pre">class.</span></span><span class="sig-name descname"><span class="pre">__array_wrap__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_scalar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.class.__array_wrap__" title="Link to this definition">#</a></dt>
+<dd><p>После выполнения каждой <a class="reference internal" href="../user/basics.ufuncs.html#ufuncs-output-type"><span class="std std-ref">универсальной функции</span></a> этот метод вызывается у входного объекта с наивысшим приоритетом массива либо у выходного объекта, если он задан. Методу передаётся вычисленный универсальной функцией массив, а пользователю возвращается результат метода. Подклассы наследуют стандартную реализацию, преобразующую массив в новый экземпляр класса объекта. Подкласс может использовать этот метод для преобразования выходного массива в свой экземпляр и обновления метаданных перед возвратом пользователю.</p>
+<p>NumPy также может вызывать эту функцию без контекста из операций, не являющихся универсальными функциями, для сохранения информации о подклассе.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Изменено в версии 2.0: </span>теперь <code class="docutils literal notranslate"><span class="pre">return_scalar</span></code> передаётся как <code class="docutils literal notranslate"><span class="pre">False</span></code>, обычно, либо как <code class="docutils literal notranslate"><span class="pre">True</span></code>, если NumPy вернул бы скаляр. Подклассы могут игнорировать это значение либо возвращать <code class="docutils literal notranslate"><span class="pre">array[()]</span></code>, чтобы вести себя ближе к NumPy.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В перспективе планируется объявить этот метод устаревшим в пользу <a class="reference internal" href="#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a> для универсальных функций (и <a class="reference internal" href="#numpy.class.__array_function__" title="numpy.class.__array_function__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_function__</span></code></a> для некоторых других функций, например <a class="reference internal" href="generated/numpy.squeeze.html#numpy.squeeze" title="numpy.squeeze"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.squeeze</span></code></a>).</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.class.__array_priority__">
+<span class="sig-prename descclassname"><span class="pre">class.</span></span><span class="sig-name descname"><span class="pre">__array_priority__</span></span><a class="headerlink" href="#numpy.class.__array_priority__" title="Link to this definition">#</a></dt>
+<dd><p>Значение этого атрибута используется для определения того, какой тип объекта вернуть в ситуациях, когда существует более одной возможности для типа Python возвращаемого объекта.Подклассы наследуют значение по умолчанию 0,0 для этого атрибута.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Для универсальных функций в будущем предполагается объявить этот метод устаревшим в пользу <a class="reference internal" href="#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a>.</p>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.class.__array__">
+<span class="sig-prename descclassname"><span class="pre">class.</span></span><span class="sig-name descname"><span class="pre">__array__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.class.__array__" title="Link to this definition">#</a></dt>
+<dd><p>Если этот метод определён у объекта, он должен возвращать <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> NumPy. Функции преобразования в массив, например <code class="docutils literal notranslate"><span class="pre">np.array()</span></code>, вызывают его, когда получают объект с таким интерфейсом.</p>
+<p>Сторонние реализации <code class="docutils literal notranslate"><span class="pre">__array__</span></code> должны принимать аргументы <code class="docutils literal notranslate"><span class="pre">dtype</span></code> и <code class="docutils literal notranslate"><span class="pre">copy</span></code>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Устарело с версии NumPy: </span>2.0. Отсутствие поддержки <code class="docutils literal notranslate"><span class="pre">copy</span></code> и <code class="docutils literal notranslate"><span class="pre">dtype</span></code> объявлено устаревшим в NumPy 2. При добавлении нужно обеспечить корректное поведение <code class="docutils literal notranslate"><span class="pre">copy</span></code>.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> — это запрошенный тип данных возвращаемого массива, который передается NumPy позиционно (только по запросу пользователя). Допустимо игнорировать <code class="docutils literal notranslate"><span class="pre">dtype</span></code>, поскольку NumPy проверит результат и при необходимости приведет к <code class="docutils literal notranslate"><span class="pre">dtype</span></code>. Если более эффективно привести данные к запрошенному dtype, не полагаясь на NumPy, вам следует обработать их в своей библиотеке.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copy</span></code> — логический именованный аргумент. При <code class="docutils literal notranslate"><span class="pre">copy=True</span></code> вы <em>обязаны</em> вернуть копию: представление существующих данных приведёт к неверной работе пользовательского кода. При <code class="docutils literal notranslate"><span class="pre">copy=False</span></code> пользователь запрещает копирование, и вы <em>обязаны</em> вызвать ошибку, если нельзя вернуть представление существующих данных без копии. Допустимо всегда вызывать ошибку при <code class="docutils literal notranslate"><span class="pre">copy=False</span></code>. Значение <code class="docutils literal notranslate"><span class="pre">copy=None</span></code> по умолчанию, когда аргумент не передан, допускает как представление, так и копию, но по возможности предпочтительно представление.</p></li>
+</ul>
+<p>Иерархия протоколов описана в разделе <a class="reference internal" href="../user/basics.interoperability.html#basics-interoperability"><span class="std std-ref">Взаимодействие с NumPy</span></a>; <code class="docutils literal notranslate"><span class="pre">__array__</span></code> — самый старый и наименее предпочтительный из них.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если экземпляр класса с методом <a class="reference internal" href="#numpy.class.__array__" title="numpy.class.__array__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array__</span></code></a> (будь то подкласс ndarray или другой класс) используется как выходной объект <a class="reference internal" href="../user/basics.ufuncs.html#ufuncs-output-type"><span class="std std-ref">ufunc</span></a>, результаты <em>не</em> записываются в объект, возвращаемый <a class="reference internal" href="#numpy.class.__array__" title="numpy.class.__array__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__array__</span></code></a>. Такое использование вызывает <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
+</div>
+<p> <strong> Пример </strong> </p>
+<p>Используйте <code class="docutils literal notranslate"><span class="pre">__array__</span></code>, чтобы создать диагональный массив заданного размера с заданным значением:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">DiagonalArray</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">_N</span> <span class="o">=</span> <span class="n">N</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">_i</span> <span class="o">=</span> <span class="n">value</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(N=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_N</span><span class="si">}</span><span class="s2">, value=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_i</span><span class="si">}</span><span class="s2">)"</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">__array__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">if</span> <span class="n">copy</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="gp">... </span>                <span class="s2">"`copy=False` isn't supported. A copy is always created."</span>
+<span class="gp">... </span>            <span class="p">)</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Экземпляр нашего собственного массива можно создать следующим образом:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">DiagonalArray</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span>
+<span class="go">DiagonalArray(N=5, value=1)</span>
+</pre></div>
+</div>
+<p>Можно преобразовать объект в массив NumPy с помощью <a class="reference internal" href="generated/numpy.array.html#numpy.array" title="numpy.array"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.array</span></code></a> или <a class="reference internal" href="generated/numpy.asarray.html#numpy.asarray" title="numpy.asarray"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.asarray</span></code></a>: они вызовут его метод <code class="docutils literal notranslate"><span class="pre">__array__</span></code>, чтобы получить обычный <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="go">array([[1., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 1., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 1., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 1., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 1.]])</span>
+</pre></div>
+</div>
+<p>Использование <code class="docutils literal notranslate"><span class="pre">dtype</span></code> должно вернуть соответствующий ndarray или вызвать ошибку:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="go">array([[1., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 1., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 1., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 1., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 1.]], dtype=float32)</span>
+</pre></div>
+</div>
+<p>При вызове функции NumPy для <code class="docutils literal notranslate"><span class="pre">arr</span></code> снова используется интерфейс <code class="docutils literal notranslate"><span class="pre">__array__</span></code>, чтобы преобразовать объект в массив и применить функцию обычным способом.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([[2., 0., 0., 0., 0.],</span>
+<span class="go">       [0., 2., 0., 0., 0.],</span>
+<span class="go">       [0., 0., 2., 0., 0.],</span>
+<span class="go">       [0., 0., 0., 2., 0.],</span>
+<span class="go">       [0., 0., 0., 0., 2.]])</span>
+</pre></div>
+</div>
+<p>Обратите внимание, что тип возврата является стандартным <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">&lt;class 'numpy.ndarray'&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="matrix-objects">
+<span id="id2"></span><h2>Объекты матрицы <a class="headerlink" href="#matrix-objects" title="Link to this heading">#</a></h2>
+<div class="admonition note" id="index-0">
+<p class="admonition-title">Примечание</p>
+<p>Настоятельно рекомендуется <em>не</em> использовать подкласс matrix. Как показано ниже, он сильно затрудняет написание функций, одинаково работающих с матрицами и обычными массивами. Сейчас этот подкласс используется главным образом для взаимодействия с <code class="docutils literal notranslate"><span class="pre">scipy.sparse</span></code>. Мы надеемся предложить для этого альтернативу и в конечном счёте удалить подкласс <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
+</div>
+<p>Объекты <a class="reference internal" href="generated/numpy.matrix.html#numpy.matrix" title="numpy.matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">matrix</span></code></a> наследуются от ndarray и поэтому имеют те же атрибуты и методы. Однако у объектов матриц есть шесть важных отличий, которые могут привести к неожиданным результатам, если ожидать от матриц поведения обычных массивов:</p>
+<ol class="arabic">
+<li><p>Объекты матриц можно создавать с помощью строковой записи в стиле Matlab: пробелы разделяют столбцы, а точки с запятой («;») — строки.</p></li>
+<li><p>Объекты matrix всегда двумерны. Это существенно влияет на поведение: m.ravel() тоже двумерен, с размером 1 по первой оси, а выбор элементов возвращает двумерные объекты. Поэтому поведение matrix как последовательности принципиально отличается от обычных массивов.</p></li>
+<li><p>Объекты matrix переопределяют умножение: оно становится матричным. <strong>Учитывайте это при написании функций, которые могут принимать матрицы. В частности, asanyarray(m) возвращает matrix, если m — объект matrix.</strong></p></li>
+<li><p>Объекты матриц переопределяют возведение в степень так, что возводится в степень сама матрица. Поэтому здесь действует то же предупреждение об использовании возведения в степень внутри функции, получающей объект массива через asanyarray(…).</p></li>
+<li><p>По умолчанию __array_priority__ матричных объектов составляет 10,0, и поэтому смешанные операции с ndarray всегда производят матрицы.</p></li>
+<li><p>У матриц есть специальные атрибуты, облегчающие вычисления. Это</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.matrix.T.html#numpy.matrix.T" title="numpy.matrix.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix.T</span></code></a></p></td>
+<td><p>Возвращает транспонированную матрицу.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.matrix.H.html#numpy.matrix.H" title="numpy.matrix.H"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix.H</span></code></a></p></td>
+<td><p>Возвращает сопряжённую транспонированную матрицу <em class="xref py py-obj">self</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.matrix.I.html#numpy.matrix.I" title="numpy.matrix.I"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix.I</span></code></a></p></td>
+<td><p>Возвращает мультипликативно обратную матрицу для обратимой <em class="xref py py-obj">self</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.matrix.A.html#numpy.matrix.A" title="numpy.matrix.A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix.A</span></code></a></p></td>
+<td><p>Возвращает <em class="xref py py-obj">self</em> как объект <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Объекты matrix переопределяют операторы умножения «*» и возведения в степень «**»: они выполняют соответственно матричное умножение и возведение матрицы в степень. Если ваша подпрограмма принимает экземпляры подклассов и вы не преобразуете их в массивы базового класса, используйте универсальные функции multiply и power, чтобы для любых входных данных выполнялась нужная операция.</p>
+</div>
+<p>Класс matrix — подкласс ndarray, написанный на Python; его можно использовать как пример создания собственного подкласса ndarray. Матрицы можно создавать из других матриц, строк и любых объектов, преобразуемых в <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>. В NumPy имя «mat» — псевдоним «matrix».</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.matrix.html#numpy.matrix" title="numpy.matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix</span></code></a>(data[, dtype, copy])</p></td>
+<td><p>Возвращает матрицу из массивоподобного объекта или строки данных.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.asmatrix.html#numpy.asmatrix" title="numpy.asmatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asmatrix</span></code></a>(data[, dtype])</p></td>
+<td><p>Интерпретирует входные данные как матрицу.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.bmat.html#numpy.bmat" title="numpy.bmat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bmat</span></code></a>(obj[, ldict, gdict])</p></td>
+<td><p>Создаёт объект матрицы из строки, вложенной последовательности или массива.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Пример 1: создание матрицы из строки</p>
+<div class="try_examples_outer_container docutils container" id="e13f7686-6e0c-4bc2-a9ba-6697e771d7b2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e13f7686-6e0c-4bc2-a9ba-6697e771d7b2','2a2aff21-21f3-4f20-b527-5b890fadc4d9','3e6667a3-8078-4aa8-b224-f4cf0d6dabb5','../lite/tree/../notebooks/index.html?path=e1f152ef_9a82_4a8b_9b29_04fd1fc6cf9f.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="s1">'1 2 3; 4 5 3'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">((</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="go">  [[ 0.29239766 -0.13450292]</span>
+<span class="go">  [-0.13450292  0.08187135]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="3e6667a3-8078-4aa8-b224-f4cf0d6dabb5"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e13f7686-6e0c-4bc2-a9ba-6697e771d7b2','3e6667a3-8078-4aa8-b224-f4cf0d6dabb5')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('e13f7686-6e0c-4bc2-a9ba-6697e771d7b2','3e6667a3-8078-4aa8-b224-f4cf0d6dabb5')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="2a2aff21-21f3-4f20-b527-5b890fadc4d9"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script><p>Пример 2: Создание матрицы из вложенной последовательности</p>
+<div class="try_examples_outer_container docutils container" id="df242f1d-0697-487f-a1a4-ec4dd7eaf1d8">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('df242f1d-0697-487f-a1a4-ec4dd7eaf1d8','ed19b8e7-1cfa-4d9a-b917-12d6a3a9cbc2','cb56b8a2-1cee-4446-8241-c755111dd955','../lite/tree/../notebooks/index.html?path=c1132507_d8ba_4dcc_979a_0dcd10a8025c.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="n">j</span><span class="p">]])</span>
+<span class="go">matrix([[  1.+0.j,   5.+0.j,  10.+0.j],</span>
+<span class="go">        [  1.+0.j,   3.+0.j,   0.+4.j]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="cb56b8a2-1cee-4446-8241-c755111dd955"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('df242f1d-0697-487f-a1a4-ec4dd7eaf1d8','cb56b8a2-1cee-4446-8241-c755111dd955')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('df242f1d-0697-487f-a1a4-ec4dd7eaf1d8','cb56b8a2-1cee-4446-8241-c755111dd955')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="ed19b8e7-1cfa-4d9a-b917-12d6a3a9cbc2"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script><p>Пример 3: Создание матрицы из массива</p>
+<div class="try_examples_outer_container docutils container" id="4c7a3af3-095b-4c24-9a71-332e0c63abd3">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4c7a3af3-095b-4c24-9a71-332e0c63abd3','894dcec5-4358-44b7-8c32-18af7d16b2ff','e7879139-1212-4153-8216-7fc016da796a','../lite/tree/../notebooks/index.html?path=e60d4f7f_8937_4f30_937b_0d560d051b69.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+<span class="go">matrix([[4.17022005e-01, 3.02332573e-01, 1.86260211e-01],</span>
+<span class="go">        [7.20324493e-01, 1.46755891e-01, 3.45560727e-01],</span>
+<span class="go">        [1.14374817e-04, 9.23385948e-02, 3.96767474e-01]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="e7879139-1212-4153-8216-7fc016da796a"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4c7a3af3-095b-4c24-9a71-332e0c63abd3','e7879139-1212-4153-8216-7fc016da796a')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('4c7a3af3-095b-4c24-9a71-332e0c63abd3','e7879139-1212-4153-8216-7fc016da796a')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="894dcec5-4358-44b7-8c32-18af7d16b2ff"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></section>
+<section id="memory-mapped-file-arrays">
+<h2>Массивы на основе файлов, отображённых в память<a class="headerlink" href="#memory-mapped-file-arrays" title="Link to this heading">#</a></h2>
+<p id="index-1">Отображение файла в память удобно для чтения и изменения небольших частей большого файла с регулярной структурой без загрузки всего файла в память. Простой подкласс ndarray использует такой файл как буфер данных массива. Для маленьких файлов затраты на полное чтение обычно несущественны, но для больших отображение в память позволяет значительно сэкономить ресурсы.</p>
+<p>У массивов, отображающих файлы в память, есть дополнительный метод, помимо унаследованных от ndarray: <a class="reference internal" href="generated/numpy.memmap.flush.html#numpy.memmap.flush" title="numpy.memmap.flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">.flush()</span></code></a>. Пользователь должен вызывать его вручную, чтобы гарантировать запись изменений массива на диск.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.memmap.html#numpy.memmap" title="numpy.memmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">memmap</span></code></a>(filename[, dtype, mode, offset, ...])</p></td>
+<td><p>Создаёт отображение в память массива из <em>двоичного</em> файла на диске.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.memmap.flush.html#numpy.memmap.flush" title="numpy.memmap.flush"><code class="xref py py-obj docutils literal notranslate"><span class="pre">memmap.flush</span></code></a>()</p></td>
+<td><p>Записывает все изменения массива в файл на диске.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Пример:</p>
+<div class="try_examples_outer_container docutils container" id="a70ddf2c-4857-4804-9d0b-bbb39b43fb22">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('a70ddf2c-4857-4804-9d0b-bbb39b43fb22','be4b88e6-47ba-49ae-927c-9aada7ba195e','c368bb5b-9bc8-4bca-b592-a0d7f3e5c165','../lite/tree/../notebooks/index.html?path=b71f8281_3457_43d2_9fb4_3f6bf1d80881.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">(</span><span class="s1">'newfile.dat'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'w+'</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="mf">30.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">a</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="s1">'newfile.dat'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span>
+<span class="go">10.0 30.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">(</span><span class="s1">'newfile.dat'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span>
+<span class="go">10.0 30.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="c368bb5b-9bc8-4bca-b592-a0d7f3e5c165"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('a70ddf2c-4857-4804-9d0b-bbb39b43fb22','c368bb5b-9bc8-4bca-b592-a0d7f3e5c165')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('a70ddf2c-4857-4804-9d0b-bbb39b43fb22','c368bb5b-9bc8-4bca-b592-a0d7f3e5c165')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="be4b88e6-47ba-49ae-927c-9aada7ba195e"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></section>
+<section id="character-arrays-numpy-char">
+<h2>Массивы символов (<a class="reference internal" href="routines.char.html#module-numpy.char" title="numpy.char"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.char</span></code></a>)<a class="headerlink" href="#character-arrays-numpy-char" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="routines.array-creation.html#routines-array-creation-char"> <span class="std std-ref"> Создание массивов символов (numpy.char) </span> </a></p>
+</div>
+<div class="admonition note" id="index-2">
+<p class="admonition-title">Примечание</p>
+<p>Класс <a class="reference internal" href="generated/numpy.char.chararray.html#numpy.char.chararray" title="numpy.char.chararray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chararray</span></code></a> существует для обратной совместимости с Numarray и не рекомендуется для нового кода. Начиная с NumPy 1.4 для массивов строк рекомендуется использовать массивы с <a class="reference internal" href="generated/numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a>, равным <a class="reference internal" href="arrays.scalars.html#numpy.object_" title="numpy.object_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">object_</span></code></a>, <a class="reference internal" href="arrays.scalars.html#numpy.bytes_" title="numpy.bytes_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes_</span></code></a> или <a class="reference internal" href="arrays.scalars.html#numpy.str_" title="numpy.str_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str_</span></code></a>, а для быстрых векторизованных строковых операций — отдельные функции модуля <a class="reference internal" href="routines.char.html#module-numpy.char" title="numpy.char"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.char</span></code></a>.</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Устарело с версии 2.5: </span><code class="docutils literal notranslate"><span class="pre">numpy.char.chararray</span></code> объявлен устаревшим. Вместо него используйте <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> со строковым или байтовым типом данных.</p>
+</div>
+<p>Это расширенные массивы типа <a class="reference internal" href="arrays.scalars.html#numpy.str_" title="numpy.str_"><code class="xref py py-class docutils literal notranslate"><span class="pre">str_</span></code></a> или <a class="reference internal" href="arrays.scalars.html#numpy.bytes_" title="numpy.bytes_"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes_</span></code></a>. Они наследуются от <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>, но специально определяют операции <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code> и <code class="docutils literal notranslate"><span class="pre">%</span></code> как поэлементные с поддержкой трансляции массивов. Эти операции недоступны для обычного <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> со строковым типом данных. Кроме того, <a class="reference internal" href="generated/numpy.char.chararray.html#numpy.char.chararray" title="numpy.char.chararray"><code class="xref py py-class docutils literal notranslate"><span class="pre">chararray</span></code></a> предоставляет все стандартные методы <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> и <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a>, применяя их поэлементно. Возможно, самый простой способ создать chararray — использовать <a class="reference internal" href="generated/numpy.ndarray.view.html#numpy.ndarray.view" title="numpy.ndarray.view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">self.view(chararray)</span></code></a>, где <em>self</em> — ndarray с типом данных str или unicode. Также chararray можно создать конструктором <a class="reference internal" href="generated/numpy.char.chararray.html#numpy.char.chararray" title="numpy.char.chararray"><code class="xref py py-meth docutils literal notranslate"><span class="pre">chararray</span></code></a> или функцией <a class="reference internal" href="generated/numpy.char.array.html#numpy.char.array" title="numpy.char.array"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.char.array</span></code></a>:</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.char.chararray.html#numpy.char.chararray" title="numpy.char.chararray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">char.chararray</span></code></a>(shape[, itemsize, unicode, ...])</p></td>
+<td><p>Предоставляет удобное представление массивов строковых значений и значений Unicode.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.char.array.html#numpy.char.array" title="numpy.char.array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">char.array</span></code></a>(obj[, itemsize, copy, unicode, order])</p></td>
+<td><p>Создайте <a class="reference internal" href="generated/numpy.char.chararray.html#numpy.char.chararray" title="numpy.char.chararray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chararray</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ещё одно отличие от обычного ndarray с типом str: chararray наследует поведение Numarray, игнорируя пробельные символы в конце элемента при его получении и сравнении.</p>
+</section>
+<section id="record-arrays">
+<span id="arrays-classes-rec"></span><h2>Массивы записей<a class="headerlink" href="#record-arrays" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="routines.array-creation.html#routines-array-creation-rec"><span class="std std-ref">Создание массивов записей</span></a>, <a class="reference internal" href="routines.dtype.html#routines-dtype"><span class="std std-ref">Функции работы с типами данных</span></a>, <a class="reference internal" href="arrays.dtypes.html#arrays-dtypes"><span class="std std-ref">Объекты типов данных (dtype)</span></a>.</p>
+</div>
+<p>NumPy предоставляет класс <a class="reference internal" href="generated/numpy.recarray.html#numpy.recarray" title="numpy.recarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">recarray</span></code></a> для доступа к полям структурированного массива как к атрибутам и соответствующий скалярный тип <a class="reference internal" href="generated/numpy.record.html#numpy.record" title="numpy.record"><code class="xref py py-class docutils literal notranslate"><span class="pre">record</span></code></a>.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.recarray.html#numpy.recarray" title="numpy.recarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recarray</span></code></a>(shape[, dtype, buf, offset, ...])</p></td>
+<td><p>Постройте ndarray, который позволяет получить доступ к полю с помощью атрибутов.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.record.html#numpy.record" title="numpy.record"><code class="xref py py-obj docutils literal notranslate"><span class="pre">record</span></code></a>(length_or_data, /[, dtype])</p></td>
+<td><p>Скалярный тип данных, позволяющий обращаться к полям как к атрибутам.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>pandas DataFrame предоставляет больше возможностей, чем массив записей. По возможности используйте его.</p>
+</div>
+</section>
+<section id="masked-arrays-numpy-ma">
+<h2>Массивы с маской (<a class="reference internal" href="maskedarray.generic.html#module-numpy.ma" title="numpy.ma"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.ma</span></code></a>)<a class="headerlink" href="#masked-arrays-numpy-ma" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="maskedarray.html#maskedarray"> <span class="std std-ref"> Маскированные массивы </span> </a></p>
+</div>
+</section>
+<section id="standard-container-class">
+<h2>Стандартный контейнерный класс <a class="headerlink" href="#standard-container-class" title="Link to this heading">#</a></h2>
+<p>Для обратной совместимости и как стандартный класс-контейнер UserArray из Numeric перенесён в NumPy под именем <a class="reference internal" href="generated/numpy.lib.user_array.container.html#numpy.lib.user_array.container" title="numpy.lib.user_array.container"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.lib.user_array.container</span></code></a>. Это класс Python, у которого атрибут self.array содержит ndarray. Множественное наследование, вероятно, проще реализовать с numpy.lib.user_array.container, чем с самим ndarray, поэтому контейнер включён по умолчанию. Здесь его существование лишь упоминается: по возможности рекомендуется использовать ndarray напрямую.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.lib.user_array.container.html#numpy.lib.user_array.container" title="numpy.lib.user_array.container"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.lib.user_array.container</span></code></a>(data[, ...])</p></td>
+<td><p>Стандартный класс-контейнер для удобного множественного наследования.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="array-iterators">
+<span id="index-3"></span><h2>Итераторы массивов<a class="headerlink" href="#array-iterators" title="Link to this heading">#</a></h2>
+<p id="index-4">Итераторы — мощный инструмент обработки массивов. По сути, они реализуют обобщённый цикл for. Если <em>myiter</em> — объект-итератор, то код Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">myiter</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="n">some</span> <span class="n">code</span> <span class="n">involving</span> <span class="n">val</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>повторно вызывает <code class="docutils literal notranslate"><span class="pre">val</span> <span class="pre">=</span> <span class="pre">next(myiter)</span></code>, пока итератор не возбудит <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#StopIteration" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StopIteration</span></code></a>. Есть несколько полезных способов обхода массива: обычная итерация, обход всех элементов как одномерной последовательности и перечисление с <span class="math notranslate nohighlight">\(N\)</span>-мерными индексами.</p>
+<section id="default-iteration">
+<h3>Итерация по умолчанию<a class="headerlink" href="#default-iteration" title="Link to this heading">#</a></h3>
+<p>Итератор по умолчанию для ndarray соответствует стандартному итератору Python для последовательностей. Когда сам массив используется для обхода, поведение эквивалентно следующему:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Этот стандартный итератор выбирает из массива подмассив с числом измерений <span class="math notranslate nohighlight">\(N-1\)</span>. Это удобно для построения рекурсивных алгоритмов. Для обхода всего массива требуется <span class="math notranslate nohighlight">\(N\)</span> вложенных циклов for.</p>
+<div class="try_examples_outer_container docutils container" id="c27cc78d-2fda-4d6b-82f2-0df1a8a2692f">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('c27cc78d-2fda-4d6b-82f2-0df1a8a2692f','a7982fe5-1e73-4905-b941-16d01995cd50','bc2bdba4-6e6d-484f-8ebd-4babb8171eee','../lite/tree/../notebooks/index.html?path=1c11c004_2864_4588_9f14_93054f324460.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'item:'</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+<span class="go">item: [[10 11 12 13]</span>
+<span class="go">[14 15 16 17]]</span>
+<span class="go">item: [[18 19 20 21]</span>
+<span class="go">[22 23 24 25]]</span>
+<span class="go">item: [[26 27 28 29]</span>
+<span class="go">[30 31 32 33]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="bc2bdba4-6e6d-484f-8ebd-4babb8171eee"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('c27cc78d-2fda-4d6b-82f2-0df1a8a2692f','bc2bdba4-6e6d-484f-8ebd-4babb8171eee')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('c27cc78d-2fda-4d6b-82f2-0df1a8a2692f','bc2bdba4-6e6d-484f-8ebd-4babb8171eee')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="a7982fe5-1e73-4905-b941-16d01995cd50"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></section>
+<section id="flat-iteration">
+<h3>Линейный обход<a class="headerlink" href="#flat-iteration" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.ndarray.flat.html#numpy.ndarray.flat" title="numpy.ndarray.flat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.flat</span></code></a></p></td>
+<td><p>1-D итератор над массивом.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Как отмечалось выше, атрибут flat объекта ndarray возвращает итератор для обхода всего массива в порядке C.</p>
+<div class="try_examples_outer_container docutils container" id="4a791860-26b1-4272-af3c-29c14de313c7">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4a791860-26b1-4272-af3c-29c14de313c7','70bfd16c-206d-4494-b50f-06165248957c','43c21cae-bb10-4e2f-9061-8e9dd31897ec','../lite/tree/../notebooks/index.html?path=9cb941df_a96e_47a7_b82c_0214e64ef901.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">flat</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+<span class="go">0 10</span>
+<span class="go">5 15</span>
+<span class="go">10 20</span>
+<span class="go">15 25</span>
+<span class="go">20 30</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="43c21cae-bb10-4e2f-9061-8e9dd31897ec"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4a791860-26b1-4272-af3c-29c14de313c7','43c21cae-bb10-4e2f-9061-8e9dd31897ec')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('4a791860-26b1-4272-af3c-29c14de313c7','43c21cae-bb10-4e2f-9061-8e9dd31897ec')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="70bfd16c-206d-4494-b50f-06165248957c"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script><p>Здесь встроенный итератор enumerate используется, чтобы получать и индекс итерации, и значение.</p>
+</section>
+<section id="n-dimensional-enumeration">
+<h3>N-мерное перечисление <a class="headerlink" href="#n-dimensional-enumeration" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.ndenumerate.html#numpy.ndenumerate" title="numpy.ndenumerate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndenumerate</span></code></a>(arr)</p></td>
+<td><p>Итератор многомерных индексов.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Иногда может быть полезно получить N-мерный индекс при итерации. Итератор ndenumerate может этого добиться.</p>
+<div class="try_examples_outer_container docutils container" id="3b80492f-5333-4ace-bc45-34c727693e81">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('3b80492f-5333-4ace-bc45-34c727693e81','16548836-ac34-4e56-a33c-dd8ff2075a45','5cc41b31-72d1-43ef-9202-5a8e0e0ae0b6','../lite/tree/../notebooks/index.html?path=5206d192_b853_40ff_9d52_6f9fce98c119.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">%</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="go">            print(i, val)</span>
+<span class="go">(0, 0, 0) 10</span>
+<span class="go">(1, 1, 3) 25</span>
+<span class="go">(2, 0, 3) 29</span>
+<span class="go">(2, 1, 2) 32</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="5cc41b31-72d1-43ef-9202-5a8e0e0ae0b6"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('3b80492f-5333-4ace-bc45-34c727693e81','5cc41b31-72d1-43ef-9202-5a8e0e0ae0b6')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('3b80492f-5333-4ace-bc45-34c727693e81','5cc41b31-72d1-43ef-9202-5a8e0e0ae0b6')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="16548836-ac34-4e56-a33c-dd8ff2075a45"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></section>
+<section id="iterator-for-broadcasting">
+<h3>Итератор для трансляции массивов<a class="headerlink" href="#iterator-for-broadcasting" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.broadcast.html#numpy.broadcast" title="numpy.broadcast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadcast</span></code></a>(*arrays)</p></td>
+<td><p>Создаёт объект, моделирующий трансляцию массивов (согласование форм).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Общий механизм трансляции массивов доступен и в Python через итератор <a class="reference internal" href="generated/numpy.broadcast.html#numpy.broadcast" title="numpy.broadcast"><code class="xref py py-class docutils literal notranslate"><span class="pre">broadcast</span></code></a>. Этот объект принимает <span class="math notranslate nohighlight">\(N\)</span> входных объектов и возвращает итератор, выдающий кортежи соответствующих элементов входных последовательностей в результате трансляции.</p>
+<div class="try_examples_outer_container docutils container" id="911bffc1-9629-4589-9681-daa696ea0e6b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('911bffc1-9629-4589-9681-daa696ea0e6b','a09a0f0a-89e7-43bc-9408-e7a4582dde41','10db1b0c-4816-426e-926e-b8a6fcb243a5','../lite/tree/../notebooks/index.html?path=a4274688_0468_4e90_b777_a8594f6fc459.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+<span class="go">(np.int64(1), np.int64(0))</span>
+<span class="go">(np.int64(0), np.int64(1))</span>
+<span class="go">(np.int64(2), np.int64(0))</span>
+<span class="go">(np.int64(3), np.int64(1))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="10db1b0c-4816-426e-926e-b8a6fcb243a5"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('911bffc1-9629-4589-9681-daa696ea0e6b','10db1b0c-4816-426e-926e-b8a6fcb243a5')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('911bffc1-9629-4589-9681-daa696ea0e6b','10db1b0c-4816-426e-926e-b8a6fcb243a5')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="a09a0f0a-89e7-43bc-9408-e7a4582dde41"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></section>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="arrays.nditer.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Итерация по массивам</p>
+</div>
+</a>
+<a class="right-next" href="generated/numpy.matrix.T.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">numpy.matrix.T</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-attributes-and-methods">Специальные атрибуты и методы </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.class.__array_ufunc__"><code class="docutils literal notranslate"><span class="pre">class.__array_ufunc__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.class.__array_function__"><code class="docutils literal notranslate"><span class="pre">class.__array_function__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.class.__array_finalize__"><code class="docutils literal notranslate"><span class="pre">class.__array_finalize__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.class.__array_wrap__"><code class="docutils literal notranslate"><span class="pre">class.__array_wrap__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.class.__array_priority__"><code class="docutils literal notranslate"><span class="pre">class.__array_priority__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.class.__array__"><code class="docutils literal notranslate"><span class="pre">class.__array__</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-objects">Объекты матрицы </a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-mapped-file-arrays">Массивы на основе файлов, отображённых в память</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#character-arrays-numpy-char">Массивы символов (<a class="reference internal" href="routines.char.html#module-numpy.char" title="numpy.char"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.char</span></code></a>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#record-arrays">Массивы записей</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-arrays-numpy-ma">Массивы с маской (<a class="reference internal" href="maskedarray.generic.html#module-numpy.ma" title="numpy.ma"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.ma</span></code></a>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-container-class">Стандартный контейнерный класс </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-iterators">Итераторы массивов</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-iteration">Итерация по умолчанию</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flat-iteration">Линейный обход</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-dimensional-enumeration">N-мерное перечисление </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterator-for-broadcasting">Итератор для трансляции массивов</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'release/1.8.0-notes';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="1.7.2-notes.html" rel="next" title="Примечания к выпуску NumPy 1.7.2"/>
+<link href="1.8.1-notes.html" rel="prev" title="Примечания к выпуску NumPy 1.8.1"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.html">Основы NumPy</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/c-info.html">Использование C API NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../f2py/index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../release.html">Примечания к выпуску</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2.5.0-notes.html">2.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4.6-notes.html">2.4.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4.5-notes.html">2.4.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4.4-notes.html">2.4.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4.3-notes.html">2.4.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4.2-notes.html">2.4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4.1-notes.html">2.4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.4.0-notes.html">2.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3.5-notes.html">2.3.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3.4-notes.html">2.3.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3.3-notes.html">2.3.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3.2-notes.html">2.3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3.1-notes.html">2.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3.0-notes.html">2.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2.6-notes.html">2.2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2.5-notes.html">2.2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2.4-notes.html">2.2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2.3-notes.html">2.2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2.2-notes.html">2.2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2.1-notes.html">2.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2.0-notes.html">2.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.1.3-notes.html">2.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.1.2-notes.html">2.1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.1.1-notes.html">2.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.1.0-notes.html">2.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.0.2-notes.html">2.0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.0.1-notes.html">2.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.0.0-notes.html">2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.26.4-notes.html">1.26.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.26.3-notes.html">1.26.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.26.2-notes.html">1.26.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.26.1-notes.html">1.26.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.26.0-notes.html">1.26.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.25.2-notes.html">1.25.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.25.1-notes.html">1.25.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.25.0-notes.html">1.25.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.24.4-notes.html">1.24.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.24.3-notes.html">1.24.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.24.2-notes.html">1.24.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.24.1-notes.html">1.24.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.24.0-notes.html">1.24.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.23.5-notes.html">1.23.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.23.4-notes.html">1.23.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.23.3-notes.html">1.23.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.23.2-notes.html">1.23.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.23.1-notes.html">1.23.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.23.0-notes.html">1.23.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.22.4-notes.html">1.22.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.22.3-notes.html">1.22.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.22.2-notes.html">1.22.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.22.1-notes.html">1.22.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.22.0-notes.html">1.22.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.21.6-notes.html">1.21.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.21.5-notes.html">1.21.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.21.4-notes.html">1.21.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.21.3-notes.html">1.21.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.21.2-notes.html">1.21.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.21.1-notes.html">1.21.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.21.0-notes.html">1.21.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.20.3-notes.html">1.20.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.20.2-notes.html">1.20.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.20.1-notes.html">1.20.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.20.0-notes.html">1.20.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.19.5-notes.html">1.19.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.19.4-notes.html">1.19.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.19.3-notes.html">1.19.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.19.2-notes.html">1.19.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.19.1-notes.html">1.19.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.19.0-notes.html">1.19.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.18.5-notes.html">1.18.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.18.4-notes.html">1.18.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.18.3-notes.html">1.18.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.18.2-notes.html">1.18.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.18.1-notes.html">1.18.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.18.0-notes.html">1.18.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.17.5-notes.html">1.17.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.17.4-notes.html">1.17.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.17.3-notes.html">1.17.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.17.2-notes.html">1.17.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.17.1-notes.html">1.17.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.17.0-notes.html">1.17.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.16.6-notes.html">1.16.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.16.5-notes.html">1.16.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.16.4-notes.html">1.16.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.16.3-notes.html">1.16.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.16.2-notes.html">1.16.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.16.1-notes.html">1.16.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.16.0-notes.html">1.16.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.15.4-notes.html">1.15.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.15.3-notes.html">1.15.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.15.2-notes.html">1.15.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.15.1-notes.html">1.15.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.15.0-notes.html">1.15.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.14.6-notes.html">1.14.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.14.5-notes.html">1.14.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.14.4-notes.html">1.14.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.14.3-notes.html">1.14.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.14.2-notes.html">1.14.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.14.1-notes.html">1.14.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.14.0-notes.html">1.14.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.13.3-notes.html">1.13.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.13.2-notes.html">1.13.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.13.1-notes.html">1.13.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.13.0-notes.html">1.13.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.12.1-notes.html">1.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.12.0-notes.html">1.12.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.11.3-notes.html">1.11.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.11.2-notes.html">1.11.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.11.1-notes.html">1.11.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.11.0-notes.html">1.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.10.4-notes.html">1.10.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.10.3-notes.html">1.10.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.10.2-notes.html">1.10.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.10.1-notes.html">1.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.10.0-notes.html">1.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.9.2-notes.html">1.9.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.9.1-notes.html">1.9.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.9.0-notes.html">1.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.8.2-notes.html">1.8.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.8.1-notes.html">1.8.1</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.7.2-notes.html">1.7.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.7.1-notes.html">1.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.7.0-notes.html">1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.6.2-notes.html">1.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.6.1-notes.html">1.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.6.0-notes.html">1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5.0-notes.html">1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4.0-notes.html">1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.3.0-notes.html">1.3.0</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../user/index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../release.html">Примечания к выпускам</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Примечания к выпуску NumPy 1.8.0</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article"><p class="admonition ru-history-note">Историческая справка: страница описывает NumPy 1.8.0. Слова «сейчас», «раньше» и «будет» относятся ко времени этого выпуска; описанное поведение может отличаться от NumPy 2.5.</p>
+<section id="numpy-1-8-0-release-notes">
+<h1>Примечания к выпуску NumPy 1.8.0<a class="headerlink" href="#numpy-1-8-0-release-notes" title="Link to this heading">#</a></h1>
+<p>Данный релиз поддерживает Python 2.6 -2.7 и 3.2 - 3.3.</p>
+<section id="highlights">
+<h2>Основные изменения<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Новое: Python 2 и Python 3 поддерживаются общей кодовой базой без 2to3.</p></li>
+<li><p>Новые обобщённые универсальные функции (gufuncs) для линейной алгебры, позволяющие выполнять операции над наборами матриц в массивах.</p></li>
+<li><p>Новая расширенная индексация на месте для универсальных функций с методом <code class="docutils literal notranslate"><span class="pre">.at</span></code>.</p></li>
+<li><p>Новая функция <code class="docutils literal notranslate"><span class="pre">partition</span></code> выполняет частичное упорядочение алгоритмом выбора для быстрого вычисления медианы.</p></li>
+<li><p>Новые функции <code class="docutils literal notranslate"><span class="pre">nanmean</span></code>, <code class="docutils literal notranslate"><span class="pre">nanvar</span></code> и <code class="docutils literal notranslate"><span class="pre">nanstd</span></code> пропускают NaN.</p></li>
+<li><p>Новые функции <code class="docutils literal notranslate"><span class="pre">full</span></code> и <code class="docutils literal notranslate"><span class="pre">full_like</span></code> для создания массивов, заполненных заданным значением.</p></li>
+<li><p>Новая функция <code class="docutils literal notranslate"><span class="pre">PyUFunc_RegisterLoopForDescr</span></code> улучшает поддержку пользовательских dtype в универсальных функциях.</p></li>
+<li><p>Многочисленные улучшения производительности во многих областях.</p></li>
+</ul>
+</section>
+<section id="dropped-support">
+<h2>Прекращённая поддержка<a class="headerlink" href="#dropped-support" title="Link to this heading">#</a></h2>
+<p>Поддержка Python версий 2.4 и 2.5 была прекращена.</p>
+<p>Поддержка SCons удалена.</p>
+</section>
+<section id="future-changes">
+<h2>Будущие изменения<a class="headerlink" href="#future-changes" title="Link to this heading">#</a></h2>
+<p>Тип Datetime64 остается экспериментальным в этом выпуске. В 1.9, вероятно, будут некоторые изменения, чтобы сделать его более пригодным для использования.</p>
+<p>Сейчас метод diagonal возвращает новый массив и выдаёт FutureWarning. В версии 1.9 он будет возвращать представление только для чтения.</p>
+<p>Выбор нескольких полей из массива структурированного типа сейчас возвращает новый массив и выдаёт FutureWarning. В версии 1.9 он будет возвращать представление только для чтения.</p>
+<p>Модули совместимости numpy/oldnumeric и numpy/numarray будут удалены в 1.9.</p>
+</section>
+<section id="compatibility-notes">
+<h2>Примечания о совместимости<a class="headerlink" href="#compatibility-notes" title="Link to this heading">#</a></h2>
+<p>Содержимое doc/sphinxext перенесено в отдельный репозиторий GitHub и подключено к NumPy как подмодуль. Инструкции по получению этих файлов приведены в doc/HOWTO_BUILD_DOCS.rst.</p>
+<p>Изменена хеш-функция скаляров numpy.void. Ранее указатель на данные хешировался как целое число. Теперь для объединения хешей элементов скаляра используется алгоритм хеширования кортежей, но лишь если скаляр доступен только для чтения.</p>
+<p>NumPy перешёл на раздельную компиляцию по умолчанию. В предыдущих выпусках она поддерживалась, но не была стандартным режимом. Результаты должны совпадать с прежней системой, однако при сложных сценариях, например статической компоновке NumPy или использовании необычного компилятора, возможны проблемы. Сообщите о них в трекере ошибок. Временное обходное решение — включить прежнюю систему сборки, экспортировав переменную оболочки NPY_SEPARATE_COMPILATION=0.</p>
+<p>Для итератора AdvancedNew параметр <code class="docutils literal notranslate"><span class="pre">oa_ndim</span></code> теперь должен быть равен -1, чтобы указать, что <code class="docutils literal notranslate"><span class="pre">op_axes</span></code> и <code class="docutils literal notranslate"><span class="pre">itershape</span></code> не переданы. Случай <code class="docutils literal notranslate"><span class="pre">oa_ndim</span> <span class="pre">==</span> <span class="pre">0</span></code> теперь обозначает нульмерный обход с <code class="docutils literal notranslate"><span class="pre">op_axes</span></code>, равным NULL; прежний способ использования объявлен устаревшим. Это не затрагивает функции <code class="docutils literal notranslate"><span class="pre">NpyIter_New</span></code> и <code class="docutils literal notranslate"><span class="pre">NpyIter_MultiNew</span></code>.</p>
+<p>Функции nanargmin и nanargmax теперь возвращают np.iinfo[‘intp’].min в качестве индекса для срезов, состоящих только из NaN. Раньше в случае массива они вызывали ValueError, а в скалярном случае возвращали NaN.</p>
+<section id="npy-relaxed-strides-checking">
+<h3>NPY_RELAXED_STRIDES_CHECKING<a class="headerlink" href="#npy-relaxed-strides-checking" title="Ссылка на заголовок">#</a></h3>
+<p>Добавлена переменная окружения времени компиляции <code class="docutils literal notranslate"><span class="pre">NPY_RELAXED_STRIDES_CHECKING</span></code>. При значении 1 NumPy считает больше массивов непрерывно расположенными в порядке C или Fortran. Например, вектор-столбец может удовлетворять обоим условиям одновременно. Новое определение точнее, позволяет выполнять код быстрее с меньшим числом лишних копий и упрощает внутреннюю реализацию NumPy. Однако оно может нарушить работу сторонних библиотек, делающих слишком строгие предположения о шагах таких массивов. (Известно также, что пока это нарушает работу кода Cython с memoryview; исправление будет сделано в Cython.) В БУДУЩЕМ ВЫПУСКЕ ЭТО СТАНЕТ ПОВЕДЕНИЕМ ПО УМОЛЧАНИЮ, ПОЭТОМУ ПРОВЕРЬТЕ СВОЙ КОД УЖЕ СЕЙЧАС С NUMPY, СОБРАННЫМ С:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NPY_RELAXED_STRIDES_CHECKING</span><span class="o">=</span><span class="mi">1</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Вы можете проверить, действует ли NPY_RELAXED_STRIDES_CHECKING, выполнив:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s2">"C"</span><span class="p">)</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span>
+</pre></div>
+</div>
+<p>Значение равно <code class="docutils literal notranslate"><span class="pre">True</span></code>, если включена ослабленная проверка шагов, и <code class="docutils literal notranslate"><span class="pre">False</span></code> в противном случае. Типичная выявленная проблема — код C, работающий с непрерывно расположенными в порядке C массивами и считающий, что itemsize равен последнему элементу <code class="docutils literal notranslate"><span class="pre">PyArray_STRIDES(arr)</span></code>. При ослабленной проверке шагов это неверно; в некоторых особых случаях это было неверно всегда. Вместо этого используйте <code class="docutils literal notranslate"><span class="pre">PyArray_ITEMSIZE(arr)</span></code>.</p>
+<p>Подробнее см. раздел «Внутреннее расположение ndarray в памяти» в документации.</p>
+</section>
+<section id="binary-operations-with-non-arrays-as-second-argument">
+<h3>Бинарные операции со вторым аргументом, не являющимся массивом<a class="headerlink" href="#binary-operations-with-non-arrays-as-second-argument" title="Link to this heading">#</a></h3>
+<p>Бинарные операции вида <code class="docutils literal notranslate"><span class="pre">&lt;array-or-subclass&gt;</span> <span class="pre">*</span> <span class="pre">&lt;non-array-subclass&gt;</span></code>, где <code class="docutils literal notranslate"><span class="pre">&lt;non-array-subclass&gt;</span></code> задаёт <code class="docutils literal notranslate"><span class="pre">__array_priority__</span></code> выше, чем у <code class="docutils literal notranslate"><span class="pre">&lt;array-or-subclass&gt;</span></code>, теперь безусловно возвращают <em>NotImplemented</em>, позволяя <code class="docutils literal notranslate"><span class="pre">&lt;non-array-subclass&gt;</span></code> обработать операцию. Ранее <em class="xref py py-obj">NotImplemented</em> возвращался, только если <code class="docutils literal notranslate"><span class="pre">&lt;non-array-subclass&gt;</span></code> действительно реализовывал обратную операцию, причём сначала предпринималась потенциально затратная попытка преобразовать <code class="docutils literal notranslate"><span class="pre">&lt;non-array-subclass&gt;</span></code> в массив. (<a class="reference external" href="https://github.com/numpy/numpy/issues/3375">ошибка</a>, <a class="reference external" href="https://github.com/numpy/numpy/pull/3501">pull request</a>)</p>
+</section>
+<section id="function-median-used-with-overwrite-input-only-partially-sorts-array">
+<h3>Функция <em class="xref py py-obj">median</em> с параметром <em class="xref py py-obj">overwrite_input</em> сортирует массив лишь частично<a class="headerlink" href="#function-median-used-with-overwrite-input-only-partially-sorts-array" title="Link to this heading">#</a></h3>
+<p>Если <em class="xref py py-obj">median</em> используется с опцией <em class="xref py py-obj">overwrite_input</em>, массив ввода теперь будет сортироваться только частично, а не полностью.</p>
+</section>
+<section id="fix-to-financial-npv">
+<h3>Исправление financial.npv<a class="headerlink" href="#fix-to-financial-npv" title="Link to this heading">#</a></h3>
+<p>В функции npv была ошибка: вопреки документации она суммировала значения по индексам от <code class="docutils literal notranslate"><span class="pre">1</span></code> до <code class="docutils literal notranslate"><span class="pre">M</span></code> вместо диапазона от <code class="docutils literal notranslate"><span class="pre">0</span></code> до <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">-</span> <span class="pre">1</span></code>. Исправление меняет возвращаемое значение. Функция mirr вызывала npv, но обходила эту проблему; её код также исправлен, при этом возвращаемое значение mirr не изменилось.</p>
+</section>
+<section id="runtime-warnings-when-comparing-nan-numbers">
+<h3>Предупреждения во время выполнения при сравнении значений NaN<a class="headerlink" href="#runtime-warnings-when-comparing-nan-numbers" title="Link to this heading">#</a></h3>
+<p>Сравнение чисел с плавающей точкой <code class="docutils literal notranslate"><span class="pre">NaN</span></code> теперь выдаёт предупреждение времени выполнения <code class="docutils literal notranslate"><span class="pre">invalid</span></code>. Если значение <code class="docutils literal notranslate"><span class="pre">NaN</span></code> ожидаемо, предупреждение можно игнорировать с помощью np.errstate. Например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">'ignore'</span><span class="p">):</span>
+    <span class="n">operation</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="new-features">
+<h2>Новые возможности <a class="headerlink" href="#new-features" title="Link to this heading">#</a></h2>
+<section id="support-for-linear-algebra-on-stacked-arrays">
+<h3>Поддержка линейной алгебры для пакетов массивов<a class="headerlink" href="#support-for-linear-algebra-on-stacked-arrays" title="Link to this heading">#</a></h3>
+<p>Для np.linalg теперь используется механизм обобщённых универсальных функций, позволяющий выполнять операции над наборами матриц и векторов. Например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[[ 1.,  1.],</span>
+<span class="go">        [ 0.,  1.]],</span>
+
+<span class="go">       [[ 1.,  1.],</span>
+<span class="go">        [ 0.,  1.]]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">array([[[ 1., -1.],</span>
+<span class="go">        [ 0.,  1.]],</span>
+
+<span class="go">       [[ 1., -1.],</span>
+<span class="go">        [ 0.,  1.]]])</span>
+</pre></div>
+</div>
+</section>
+<section id="in-place-fancy-indexing-for-ufuncs">
+<h3>Расширенная индексация с изменением на месте для универсальных функций<a class="headerlink" href="#in-place-fancy-indexing-for-ufuncs" title="Link to this heading">#</a></h3>
+<p>В объекты универсальных функций добавлен метод <code class="docutils literal notranslate"><span class="pre">at</span></code>, позволяющий выполнять операции на месте без буферизации при расширенной индексации. Например, следующий вызов увеличит первый и второй элементы массива по одному разу, а третий — дважды: <code class="docutils literal notranslate"><span class="pre">numpy.add.at(arr,</span> <span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">2],</span> <span class="pre">1)</span></code></p>
+<p>Многие ошибочно полагали, что именно так действует <code class="docutils literal notranslate"><span class="pre">arr[[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">2]]</span> <span class="pre">+=</span> <span class="pre">1</span></code>. Однако это не работает: увеличенное значение <code class="docutils literal notranslate"><span class="pre">arr[2]</span></code> просто дважды копируется в третью позицию <code class="docutils literal notranslate"><span class="pre">arr</span></code>, а не увеличивается дважды.</p>
+</section>
+<section id="new-functions-partition-and-argpartition">
+<h3>Новые функции <em class="xref py py-obj">partition</em> и <em class="xref py py-obj">argpartition</em> <a class="headerlink" href="#new-functions-partition-and-argpartition" title="Link to this heading">#</a></h3>
+<p>Новые функции для частичной сортировки массивов с помощью алгоритма выбора.</p>
+<p>Операция <code class="docutils literal notranslate"><span class="pre">partition</span></code> с индексом <code class="docutils literal notranslate"><span class="pre">k</span></code>, по формулировке оригинала, перемещает элемент порядка <code class="docutils literal notranslate"><span class="pre">k</span></code> «в начало массива». Примечание переводчика: элемент помещается на свою позицию k в отсортированном порядке, а не обязательно в начало; индексы считаются с нуля. Все элементы до <code class="docutils literal notranslate"><span class="pre">k</span></code> не больше значения на позиции <code class="docutils literal notranslate"><span class="pre">k</span></code>, а после <code class="docutils literal notranslate"><span class="pre">k</span></code> — не меньше значения на позиции <code class="docutils literal notranslate"><span class="pre">k</span></code>. Порядок внутри этих частей не определён. Можно передать последовательность индексов и итеративным разбиением сразу поместить все соответствующие элементы на отсортированные позиции. Это эффективно для порядковых статистик, например медианы и процентилей. Временная сложность <code class="docutils literal notranslate"><span class="pre">partition</span></code> линейна — <code class="docutils literal notranslate"><span class="pre">O(n)</span></code>, тогда как полная сортировка требует <code class="docutils literal notranslate"><span class="pre">O(n</span> <span class="pre">log(n))</span></code>.</p>
+</section>
+<section id="new-functions-nanmean-nanvar-and-nanstd">
+<h3>Новые функции <em class="xref py py-obj">nanmean</em>, <em class="xref py py-obj">nanvar</em> и <em class="xref py py-obj">nanstd</em><a class="headerlink" href="#new-functions-nanmean-nanvar-and-nanstd" title="Link to this heading">#</a></h3>
+<p>Добавлены новые статистические функции, игнорирующие nan. Их результаты совпадают с теми, которые получились бы при исключении значений nan из всех вычислений.</p>
+</section>
+<section id="new-functions-full-and-full-like">
+<h3>Новые функции <em class="xref py py-obj">full</em> и <em class="xref py py-obj">full_like</em> <a class="headerlink" href="#new-functions-full-and-full-like" title="Link to this heading">#</a></h3>
+<p>Новые удобные функции создания массивов, заполненных заданным значением; дополняют существующие функции <em class="xref py py-obj">zeros</em> и <em class="xref py py-obj">zeros_like</em>.</p>
+</section>
+<section id="io-compatibility-with-large-files">
+<h3>Совместимость ввода-вывода с большими файлами<a class="headerlink" href="#io-compatibility-with-large-files" title="Link to this heading">#</a></h3>
+<p>Большие файлы NPZ размером более 2 ГБ можно загружать на 64-разрядных системах.</p>
+</section>
+<section id="building-against-openblas">
+<h3>Сборка с OpenBLAS<a class="headerlink" href="#building-against-openblas" title="Link to this heading">#</a></h3>
+<p>Теперь NumPy можно собрать с OpenBLAS, изменив site.cfg.</p>
+</section>
+<section id="new-constant">
+<h3>Новая константа <a class="headerlink" href="#new-constant" title="Link to this heading">#</a></h3>
+<p>Постоянная Эйлера теперь доступна в NumPy как euler_gamma.</p>
+</section>
+<section id="new-modes-for-qr">
+<h3>Новые режимы для qr <a class="headerlink" href="#new-modes-for-qr" title="Link to this heading">#</a></h3>
+<p>В QR-разложение добавлены режимы «complete», «reduced» и «raw»; прежние режимы «full» и «economic» объявлены устаревшими. Режим «reduced» заменяет прежний «full» и, как и он, используется по умолчанию. Поэтому для сохранения обратной совместимости достаточно не указывать режим.</p>
+<p>Режим «complete» возвращает полноразмерное разложение, полезное для получения базиса ортогонального дополнения пространства образа. Режим «raw» возвращает массивы с отражениями Хаусхолдера и масштабными множителями, которые в будущем можно использовать для применения q без преобразования в матрицу. Режим «economic» просто объявлен устаревшим: он редко полезен и не эффективнее режима «raw».</p>
+</section>
+<section id="new-invert-argument-to-in1d">
+<h3>Новый аргумент <em class="xref py py-obj">invert</em> для <em class="xref py py-obj">in1d</em><a class="headerlink" href="#new-invert-argument-to-in1d" title="Link to this heading">#</a></h3>
+<p>Функция <em class="xref py py-obj">in1d</em> теперь принимает аргумент <em class="xref py py-obj">invert</em>; при значении <em class="xref py py-obj">True</em> возвращаемый массив инвертируется.</p>
+</section>
+<section id="advanced-indexing-using-np-newaxis">
+<h3>Расширенная индексация с <em class="xref py py-obj">np.newaxis</em><a class="headerlink" href="#advanced-indexing-using-np-newaxis" title="Link to this heading">#</a></h3>
+<p>Теперь <em class="xref py py-obj">np.newaxis</em>/<em class="xref py py-obj">None</em> можно использовать вместе с индексными массивами, а не только в простых индексах. Например, <code class="docutils literal notranslate"><span class="pre">array[np.newaxis,</span> <span class="pre">[0,</span> <span class="pre">1]]</span></code> теперь работает как ожидается: выбирает первые две строки и добавляет новую ось в начало массива.</p>
+</section>
+<section id="c-api">
+<h3>C API<a class="headerlink" href="#c-api" title="Link to this heading">#</a></h3>
+<p>Теперь можно регистрировать новые универсальные функции со встроенными входными типами и пользовательским выходным типом. Раньше NumPy не находил нужный вычислительный цикл при вызове такой функции из Python, поскольку сопоставление сигнатур не учитывало тип выходного операнда. Теперь цикл выбирается правильно, если пользователь передаёт выходной аргумент нужного типа.</p>
+</section>
+<section id="runtests-py">
+<h3>runtests.py<a class="headerlink" href="#runtests-py" title="Ссылка на заголовок">#</a></h3>
+<p>Был добавлен простой скрипт запуска тестов <code class="docutils literal notranslate"><span class="pre">runtests.py</span></code>. Он также собирает Numpy через <code class="docutils literal notranslate"><span class="pre">setup.py</span> <span class="pre">build</span></code> и может использоваться для легкого запуска тестов во время разработки.</p>
+</section>
+</section>
+<section id="improvements">
+<h2>Улучшения<a class="headerlink" href="#improvements" title="Link to this heading">#</a></h2>
+<section id="io-performance-improvements">
+<h3>Улучшения производительности ввода-вывода<a class="headerlink" href="#io-performance-improvements" title="Link to this heading">#</a></h3>
+<p>Чтение больших файлов ускорено благодаря обработке частями (см. также совместимость ввода-вывода).</p>
+</section>
+<section id="performance-improvements-to-pad">
+<h3>Улучшение производительности <em class="xref py py-obj">pad</em> <a class="headerlink" href="#performance-improvements-to-pad" title="Link to this heading">#</a></h3>
+<p>Функция <em class="xref py py-obj">pad</em> получила новую реализацию, существенно ускоряющую обработку всех входов, кроме <em class="xref py py-obj">mode=</em> с функцией в качестве значения (этот вариант сохранён для обратной совместимости). Масштабирование по числу измерений значительно улучшено при ранге &gt;= 4.</p>
+</section>
+<section id="performance-improvements-to-isnan-isinf-isfinite-and-byteswap">
+<h3>Улучшения производительности <em class="xref py py-obj">isnan</em>, <em class="xref py py-obj">isinf</em>, <em class="xref py py-obj">isfinite</em> и <em class="xref py py-obj">byteswap</em> <a class="headerlink" href="#performance-improvements-to-isnan-isinf-isfinite-and-byteswap" title="Link to this heading">#</a></h3>
+<p><em class="xref py py-obj">isnan</em>, <em class="xref py py-obj">isinf</em>, <em class="xref py py-obj">isfinite</em> и <em class="xref py py-obj">byteswap</em> улучшены: теперь они используют встроенные средства компилятора вместо затратных вызовов libc. В системах с GNU libc это ускоряет операции примерно вдвое.</p>
+</section>
+<section id="performance-improvements-via-sse2-vectorization">
+<h3>Повышение производительности благодаря векторизации SSE2<a class="headerlink" href="#performance-improvements-via-sse2-vectorization" title="Link to this heading">#</a></h3>
+<p>Несколько функций были оптимизированы для использования инструкций SIMD процессора SSE2.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Float32 и float64:</dt><dd><ul>
+<li><p>базовые арифметические операции (<em class="xref py py-obj">add</em>, <em class="xref py py-obj">subtract</em>, <em class="xref py py-obj">divide</em>, <em class="xref py py-obj">multiply</em>)</p></li>
+<li><p><em class="xref py py-obj">sqrt</em></p></li>
+<li><p><em class="xref py py-obj">minimum/maximum</em></p></li>
+<li><p><em class="xref py py-obj">absolute</em></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Bool:</dt><dd><ul>
+<li><p><em class="xref py py-obj">logical_or</em></p></li>
+<li><p><em class="xref py py-obj">logical_and</em></p></li>
+<li><p><em class="xref py py-obj">logical_not</em></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Это ускоряет операции до 4 раз для float32, до 2 раз для float64 и до 10 раз для bool в зависимости от расположения данных в кэшах CPU. Наибольший выигрыш дают операции на месте.</p>
+<p>Для использования улучшенных функций при компиляции нужно включить набор инструкций SSE2. На системах x86_64 он включён по умолчанию. На x86_32 с поддерживающим его процессором нужно добавить соответствующий флаг в переменную сборки CFLAGS: для gcc это -msse2.</p>
+</section>
+<section id="performance-improvements-to-median">
+<h3>Улучшение производительности <em class="xref py py-obj">median</em> <a class="headerlink" href="#performance-improvements-to-median" title="Link to this heading">#</a></h3>
+<p><em class="xref py py-obj">median</em> теперь реализован через <em class="xref py py-obj">partition</em> вместо <em class="xref py py-obj">sort</em>, что снижает временную сложность с O(n log(n)) до O(n). При использовании параметра <em class="xref py py-obj">overwrite_input</em> массив теперь сортируется лишь частично, а не полностью.</p>
+</section>
+<section id="overridable-operand-flags-in-ufunc-c-api">
+<h3>Переопределяемые флаги операндов в C API ufunc<a class="headerlink" href="#overridable-operand-flags-in-ufunc-c-api" title="Link to this heading">#</a></h3>
+<p>При создании ufunc по умолчанию флаги операндов ufunc могут быть переопределены с помощью нового атрибута op_flags объекта ufunc. Например, для установки флага операнда для первого ввода для чтения/записи:</p>
+<p>PyObject *ufunc = PyUFunc_FromFuncAndData(…); ufunc-&gt;op_flags[0] = NPY_ITER_READWRITE;</p>
+<p>Это позволяет ufunc выполнять операции на месте. Также глобальные флаги nditer можно переопределять новым атрибутом iter_flags объекта ufunc. Например, флаг reduce задаётся так:</p>
+<p>ufunc-&gt;iter_flags = NPY_ITER_REDUCE_OK;</p>
+</section>
+</section>
+<section id="changes">
+<h2>Изменения<a class="headerlink" href="#changes" title="Link to this heading">#</a> </h2>
+<section id="general">
+<h3>Общие сведения<a class="headerlink" href="#general" title="Link to this heading">#</a></h3>
+<p>Функция np.take теперь допускает нульмерные массивы в качестве индексов.</p>
+<p>Отдельный режим компиляции теперь включен по умолчанию.</p>
+<p>Несколько изменений в np.insert и np.delete:</p>
+<ul class="simple">
+<li><p>Раньше отрицательные индексы и индексы за концом массива просто игнорировались. Теперь они вызывают FutureWarning или DeprecationWarning. В будущем они будут обрабатываться как при обычной индексации: отрицательные индексы отсчитываются от конца, а выход за границы вызывает ошибку.</p></li>
+<li><p>Ранее логические индексы трактовались как целые числа, то есть всегда указывали на элемент с индексом 0 или 1. В будущем они будут трактоваться как маски. В этом выпуске при их использовании выдаётся FutureWarning о предстоящем изменении.</p></li>
+<li><p>В Numpy 1.7. np.insert уже позволил синтаксису <em class="xref py py-obj">np.insert(arr, 3, [1,2,3])</em> вставлять несколько элементов в одну позицию. В Numpy 1.8. это также возможно для <em class="xref py py-obj">np.insert(arr, [3], [1, 2, 3])</em> .</p></li>
+</ul>
+<p>Дополненные области из np.pad теперь правильно округляются, а не обрезаются.</p>
+</section>
+<section id="c-api-array-additions">
+<h3>Дополнения к C API массивов<a class="headerlink" href="#c-api-array-additions" title="Link to this heading">#</a></h3>
+<p>В C API массивов добавлены четыре функции.</p>
+<ul class="simple">
+<li><p>PyArray_Partition</p></li>
+<li><p>PyArray_ArgPartition</p></li>
+<li><p>PyArray_SelectkindConverter</p></li>
+<li><p>PyDataMem_NEW_ZEROED</p></li>
+</ul>
+</section>
+<section id="c-api-ufunc-additions">
+<h3>Дополнения C API универсальных функций<a class="headerlink" href="#c-api-ufunc-additions" title="Link to this heading">#</a></h3>
+<p>В C-API универсальных функций добавлена новая функция для регистрации внутреннего цикла пользовательских типов с помощью descr.</p>
+<ul class="simple">
+<li><p>PyUFunc_RegisterLoopForDescr</p></li>
+</ul>
+</section>
+<section id="c-api-developer-improvements">
+<h3>Улучшения C API для разработчиков<a class="headerlink" href="#c-api-developer-improvements" title="Link to this heading">#</a></h3>
+<p>Функция создания экземпляра <code class="docutils literal notranslate"><span class="pre">PyArray_Type</span></code>, <code class="docutils literal notranslate"><span class="pre">tp_new</span></code>, теперь использует <code class="docutils literal notranslate"><span class="pre">tp_basicsize</span></code>, чтобы определить объём выделяемой памяти. В предыдущих выпусках выделялось лишь <code class="docutils literal notranslate"><span class="pre">sizeof(PyArrayObject)</span></code> байт, из-за чего подтипам C API часто приходилось переопределять <code class="docutils literal notranslate"><span class="pre">tp_new</span></code>.</p>
+</section>
+</section>
+<section id="deprecations">
+<h2>Устаревающие возможности<a class="headerlink" href="#deprecations" title="Link to this heading">#</a></h2>
+<p>Режимы «full» и «economic» QR-разложения объявлены устаревшими.</p>
+<section id="id1">
+<h3>Общие сведения<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Использование нецелых значений как индексов и большинства целочисленных аргументов объявлено устаревшим. Раньше вещественные индексы и аргументы, например оси или формы, усекались до целых без предупреждения. Например, <em class="xref py py-obj">arr.reshape(3., -1)</em> и <em class="xref py py-obj">arr[0.]</em> вызовут предупреждение об устаревании в NumPy 1.8, а в будущей версии будут вызывать ошибку.</p>
+</section>
+</section>
+<section id="authors">
+<h2>Авторы<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>Этот выпуск содержит работы следующих людей, которые внесли по крайней мере один патч в этот выпуск.Имена находятся в алфавитном порядке по имени:</p>
+<ul class="simple">
+<li><p>87</p></li>
+<li><p>Adam Ginsburg +</p></li>
+<li><p>Adam Griffiths +</p></li>
+<li><p>Alexander Belopolsky +</p></li>
+<li><p>Alex Barth +</p></li>
+<li><p>Alex Ford +</p></li>
+<li><p>Andreas Hilboll +</p></li>
+<li><p>Andreas Kloeckner +</p></li>
+<li><p>Andreas Schwab +</p></li>
+<li><p>Andrew Horton +</p></li>
+<li><p>argriffing +</p></li>
+<li><p>Arink Verma +</p></li>
+<li><p>Bago Amirbekian +</p></li>
+<li><p>Bartosz Telenczuk +</p></li>
+<li><p>bebert218 +</p></li>
+<li><p>Benjamin Root +</p></li>
+<li><p>Bill Spotz +</p></li>
+<li><p>Bradley M. Froehle</p></li>
+<li><p>Carwyn Pelley +</p></li>
+<li><p>Charles Harris</p></li>
+<li><p>Chris</p></li>
+<li><p>Christian Brueffer +</p></li>
+<li><p>Christoph Dann +</p></li>
+<li><p>Christoph Gohlke</p></li>
+<li><p>Dan Hipschman +</p></li>
+<li><p>Daniel +</p></li>
+<li><p>Dan Miller +</p></li>
+<li><p>daveydave400 +</p></li>
+<li><p>David Cournapeau</p></li>
+<li><p>David Warde-Farley</p></li>
+<li><p>Denis Laxalde</p></li>
+<li><p>dmuellner +</p></li>
+<li><p>Edward Catmur +</p></li>
+<li><p>Egor Zindy +</p></li>
+<li><p>endolith</p></li>
+<li><p>Eric Firing</p></li>
+<li><p>Eric Fode</p></li>
+<li><p>Eric Moore +</p></li>
+<li><p>Eric Price +</p></li>
+<li><p>Fazlul Shahriar +</p></li>
+<li><p>Félix Hartmann +</p></li>
+<li><p>Fernando Perez</p></li>
+<li><p>Frank B +</p></li>
+<li><p>Frank Breitling +</p></li>
+<li><p>Frederic</p></li>
+<li><p>Gabriel</p></li>
+<li><p>GaelVaroquaux</p></li>
+<li><p>Guillaume Gay +</p></li>
+<li><p>Han Genuit</p></li>
+<li><p>HaroldMills +</p></li>
+<li><p>hklemm +</p></li>
+<li><p>jamestwebber +</p></li>
+<li><p>Jason Madden +</p></li>
+<li><p>Jay Bourque</p></li>
+<li><p>jeromekelleher +</p></li>
+<li><p>Jesús Gómez +</p></li>
+<li><p>jmozmoz +</p></li>
+<li><p>jnothman +</p></li>
+<li><p>Johannes Schönberger +</p></li>
+<li><p>John Benediktsson +</p></li>
+<li><p>John Salvatier +</p></li>
+<li><p>John Stechschulte +</p></li>
+<li><p>Jonathan Waltman +</p></li>
+<li><p>Joon Ro +</p></li>
+<li><p>Jos de Kloe +</p></li>
+<li><p>Joseph Martinot-Lagarde +</p></li>
+<li><p>Josh Warner (Mac) +</p></li>
+<li><p>Jostein Bø Fløystad +</p></li>
+<li><p>Juan Luis Cano Rodríguez +</p></li>
+<li><p>Julian Taylor +</p></li>
+<li><p>Julien Phalip +</p></li>
+<li><p>K.-Michael Aye +</p></li>
+<li><p>Kumar Appaiah +</p></li>
+<li><p>Lars Buitinck</p></li>
+<li><p>Leon Weber +</p></li>
+<li><p>Luis Pedro Coelho</p></li>
+<li><p>Marcin Juszkiewicz</p></li>
+<li><p>Mark Wiebe</p></li>
+<li><p>Marten van Kerkwijk +</p></li>
+<li><p>Martin Baeuml +</p></li>
+<li><p>Martin Spacek</p></li>
+<li><p>Martin Teichmann +</p></li>
+<li><p>Matt Davis +</p></li>
+<li><p>Matthew Brett</p></li>
+<li><p>Maximilian Albert +</p></li>
+<li><p>m-d-w +</p></li>
+<li><p>Michael Droettboom</p></li>
+<li><p>mwtoews +</p></li>
+<li><p>Nathaniel J. Smith</p></li>
+<li><p>Nicolas Scheffer +</p></li>
+<li><p>Nils Werner +</p></li>
+<li><p>ochoadavid +</p></li>
+<li><p>Ondřej Čertík</p></li>
+<li><p>ovillellas +</p></li>
+<li><p>Paul Ivanov</p></li>
+<li><p>Pauli Virtanen</p></li>
+<li><p>peterjc</p></li>
+<li><p>Ralf Gommers</p></li>
+<li><p>Raul Cota +</p></li>
+<li><p>Richard Hattersley +</p></li>
+<li><p>Robert Costa +</p></li>
+<li><p>Robert Kern</p></li>
+<li><p>Rob Ruana +</p></li>
+<li><p>Ronan Lamy</p></li>
+<li><p>Sandro Tosi</p></li>
+<li><p>Sascha Peilicke +</p></li>
+<li><p>Sebastian Berg</p></li>
+<li><p>Skipper Seabold</p></li>
+<li><p>Stefan van der Walt</p></li>
+<li><p>Steve +</p></li>
+<li><p>Takafumi Arakaki +</p></li>
+<li><p>Thomas Robitaille +</p></li>
+<li><p>Tomas Tomecek +</p></li>
+<li><p>Travis E. Oliphant</p></li>
+<li><p>Valentin Haenel</p></li>
+<li><p>Vladimir Rutsky +</p></li>
+<li><p>Warren Weckesser</p></li>
+<li><p>Yaroslav Halchenko</p></li>
+<li><p>Yury V. Zaytsev +</p></li>
+</ul>
+<p>В этом выпуске участвовали 119 человек. Знак «+» рядом с именем отмечает первый присланный патч.</p>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="1.8.1-notes.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Примечания к выпуску NumPy 1.8.1</p>
+</div>
+</a>
+<a class="right-next" href="1.7.2-notes.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Примечания к выпуску NumPy 1.7.2</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">Основные изменения</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropped-support">Прекращённая поддержка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-changes">Будущие изменения</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility-notes">Примечания о совместимости</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npy-relaxed-strides-checking">NPY_RELAXED_STRIDES_CHECKING</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-operations-with-non-arrays-as-second-argument">Бинарные операции со вторым аргументом, не являющимся массивом</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-median-used-with-overwrite-input-only-partially-sorts-array">Функция <em class="xref py py-obj">median</em> с параметром <em class="xref py py-obj">overwrite_input</em> сортирует массив лишь частично</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-to-financial-npv">Исправление financial.npv</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-warnings-when-comparing-nan-numbers">Предупреждения во время выполнения при сравнении значений NaN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">Новые возможности </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-for-linear-algebra-on-stacked-arrays">Поддержка линейной алгебры для пакетов массивов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-place-fancy-indexing-for-ufuncs">Расширенная индексация с изменением на месте для универсальных функций</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-functions-partition-and-argpartition">Новые функции <em class="xref py py-obj">partition</em> и <em class="xref py py-obj">argpartition</em> </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-functions-nanmean-nanvar-and-nanstd">Новые функции <em class="xref py py-obj">nanmean</em>, <em class="xref py py-obj">nanvar</em> и <em class="xref py py-obj">nanstd</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-functions-full-and-full-like">Новые функции <em class="xref py py-obj">full</em> и <em class="xref py py-obj">full_like</em> </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#io-compatibility-with-large-files">Совместимость ввода-вывода с большими файлами</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-against-openblas">Сборка с OpenBLAS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-constant">Новая константа </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-modes-for-qr">Новые режимы для qr </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-invert-argument-to-in1d">Новый аргумент <em class="xref py py-obj">invert</em> для <em class="xref py py-obj">in1d</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-indexing-using-np-newaxis">Расширенная индексация с <em class="xref py py-obj">np.newaxis</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-api">C API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtests-py">runtests.py</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvements">Улучшения</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#io-performance-improvements">Улучшения производительности ввода-вывода</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-improvements-to-pad">Улучшение производительности <em class="xref py py-obj">pad</em> </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-improvements-to-isnan-isinf-isfinite-and-byteswap">Улучшения производительности <em class="xref py py-obj">isnan</em>, <em class="xref py py-obj">isinf</em>, <em class="xref py py-obj">isfinite</em> и <em class="xref py py-obj">byteswap</em> </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-improvements-via-sse2-vectorization">Повышение производительности благодаря векторизации SSE2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-improvements-to-median">Улучшение производительности <em class="xref py py-obj">median</em> </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overridable-operand-flags-in-ufunc-c-api">Переопределяемые флаги операндов в C API ufunc</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changes">Изменения </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">Общие сведения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-api-array-additions">Дополнения к C API массивов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-api-ufunc-additions">Дополнения C API универсальных функций</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-api-developer-improvements">Улучшения C API для разработчиков</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecations">Устаревающие возможности</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Общие сведения</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Авторы</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

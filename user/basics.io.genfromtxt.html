@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'user/basics.io.genfromtxt';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="basics.types.html" rel="next" title="Типы данных"/>
+<link href="basics.io.html" rel="prev" title="Ввод-вывод с NumPy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="basics.html">Основы NumPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.creation.html">Создание массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.indexing.html">Индексация массивов <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarrays</span></code></a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="basics.io.html">Ввод-вывод с NumPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Импорт данных с помощью <code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.types.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.broadcasting.html">Трансляция массивов (broadcasting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.copies.html">Копии и представления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.strings.html">Работа с массивами строк и байтов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.rec.html">Структурированные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.ufuncs.html">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>): основы</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-info.html">Использование C API NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../f2py/index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="basics.html">Основы NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="basics.io.html">Ввод и вывод данных в NumPy</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis"> Импорт данных с помощью <code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code> </span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="importing-data-with-genfromtxt">
+<h1>Импорт данных с помощью <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a><a class="headerlink" href="#importing-data-with-genfromtxt" title="Link to this heading">#</a></h1>
+<p>NumPy предоставляет несколько функций создания массивов из табличных данных. Здесь рассматривается <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a>.</p>
+<p><a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a> выполняет два основных прохода. В первом каждая строка файла разбивается на последовательность строковых полей; во втором каждое поле преобразуется в подходящий тип данных. Это медленнее одного прохода, зато гибче. В частности, <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a> умеет обрабатывать пропущенные данные, в отличие от обычного использования более быстрых и простых функций вроде <a class="reference internal" href="../reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="numpy.loadtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">loadtxt</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В примерах используются следующие соглашения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
+</pre></div>
+</div>
+</div>
+<section id="defining-the-input">
+<h2>Задание входных данных<a class="headerlink" href="#defining-the-input" title="Link to this heading">#</a></h2>
+<p>Единственный обязательный аргумент <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a> — источник данных. Это может быть строка, список строк, генератор или открытый файловый объект с методом <code class="docutils literal notranslate"><span class="pre">read</span></code>, например файл либо объект <a class="reference external" href="https://docs.python.org/3/library/io.html#io.StringIO" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.StringIO</span></code></a>. Одиночная строка интерпретируется как имя локального или удалённого файла. В списке строк или генераторе каждая строка соответствует одной строке файла. Если передан URL удалённого файла, он автоматически загружается в текущий каталог и открывается.</p>
+<p>Поддерживаются текстовые и сжатые файлы. Функция распознаёт форматы <code class="docutils literal notranslate"><span class="pre">gzip</span></code> и <code class="docutils literal notranslate"><span class="pre">bz2</span></code> — <code class="docutils literal notranslate"><span class="pre">bzip2</span></code>. Формат определяется по расширению: окончание имени <code class="docutils literal notranslate"><span class="pre">'.gz'</span></code> означает <code class="docutils literal notranslate"><span class="pre">gzip</span></code>, а <code class="docutils literal notranslate"><span class="pre">'bz2'</span></code> — <code class="docutils literal notranslate"><span class="pre">bzip2</span></code>.</p>
+</section>
+<section id="splitting-the-lines-into-columns">
+<h2>Разбиение строк на столбцы<a class="headerlink" href="#splitting-the-lines-into-columns" title="Link to this heading">#</a></h2>
+<section id="the-delimiter-argument">
+<h3>Аргумент <code class="docutils literal notranslate"><span class="pre">delimiter</span></code><a class="headerlink" href="#the-delimiter-argument" title="Link to this heading">#</a></h3>
+<p>После открытия файла <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a> разбивает каждую непустую строку на строковые поля. Пустые строки и строки комментариев пропускаются. Именованный аргумент <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> задаёт способ разделения.</p>
+<p>Часто столбцы разделены одним символом. Например, в файлах CSV разделителем служит запятая <code class="docutils literal notranslate"><span class="pre">,</span></code> или точка с запятой <code class="docutils literal notranslate"><span class="pre">;</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"1, 2, 3</span><span class="se">\n</span><span class="s2">4, 5, 6"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">)</span>
+<span class="go">array([[1.,  2.,  3.],</span>
+<span class="go">       [4.,  5.,  6.]])</span>
+</pre></div>
+</div>
+<p>Другой распространённый разделитель — <code class="docutils literal notranslate"><span class="pre">"\t"</span></code>, символ табуляции. Разделитель не обязательно состоит из одного символа: допускается любая строка. По умолчанию <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a> использует <code class="docutils literal notranslate"><span class="pre">delimiter=None</span></code>: строка разбивается по пробельным символам, включая табуляцию, а их последовательности считаются одним разделителем.</p>
+<p>Альтернативно мы можем иметь дело с файлом фиксированной ширины, в котором столбцы определяются как заданное количество символов. В этом случае нам нужно установить <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> в одно целое число (если все столбцы имеют одинаковый размер) или в последовательность целых чисел (если столбцы могут иметь разные размеры):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"  1  2  3</span><span class="se">\n</span><span class="s2">  4  5 67</span><span class="se">\n</span><span class="s2">890123  4"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">array([[  1.,    2.,    3.],</span>
+<span class="go">       [  4.,    5.,   67.],</span>
+<span class="go">       [890.,  123.,    4.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"123456789</span><span class="se">\n</span><span class="s2">   4  7 9</span><span class="se">\n</span><span class="s2">   4567 9"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">array([[1234.,   567.,    89.],</span>
+<span class="go">       [   4.,     7.,     9.],</span>
+<span class="go">       [   4.,   567.,     9.]])</span>
+</pre></div>
+</div>
+</section>
+<section id="the-autostrip-argument">
+<h3>Аргумент <code class="docutils literal notranslate"><span class="pre">autostrip</span></code><a class="headerlink" href="#the-autostrip-argument" title="Link to this heading">#</a></h3>
+<p>По умолчанию при разбиении строки пробелы в начале и конце отдельных полей сохраняются. Для их удаления задайте необязательному аргументу <code class="docutils literal notranslate"><span class="pre">autostrip</span></code> значение <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"1, abc , 2</span><span class="se">\n</span><span class="s2"> 3, xxx, 4"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Without autostrip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"|U5"</span><span class="p">)</span>
+<span class="go">array([['1', ' abc ', ' 2'],</span>
+<span class="go">       ['3', ' xxx', ' 4']], dtype='&lt;U5')</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># With autostrip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"|U5"</span><span class="p">,</span> <span class="n">autostrip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">array([['1', 'abc', '2'],</span>
+<span class="go">       ['3', 'xxx', '4']], dtype='&lt;U5')</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Без autostrip</li><li>С autostrip</li></ul></details></div>
+</div>
+</section>
+<section id="the-comments-argument">
+<h3>Аргумент <code class="docutils literal notranslate"><span class="pre">comments</span></code><a class="headerlink" href="#the-comments-argument" title="Link to this heading">#</a></h3>
+<p>Необязательный аргумент <code class="docutils literal notranslate"><span class="pre">comments</span></code> задаёт строку символов, обозначающую начало комментария. По умолчанию <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a> использует <code class="docutils literal notranslate"><span class="pre">comments='#'</span></code>. Маркер комментария может находиться в любом месте строки. Все символы после маркера комментария игнорируются:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"""#</span>
+<span class="gp">... </span><span class="s2"># Skip me !</span>
+<span class="gp">... </span><span class="s2"># Skip me too !</span>
+<span class="gp">... </span><span class="s2">1, 2</span>
+<span class="gp">... </span><span class="s2">3, 4</span>
+<span class="gp">... </span><span class="s2">5, 6 #This is the third line of the data</span>
+<span class="gp">... </span><span class="s2">7, 8</span>
+<span class="gp">... </span><span class="s2"># And here comes the last line</span>
+<span class="gp">... </span><span class="s2">9, 0</span>
+<span class="gp">... </span><span class="s2">"""</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">comments</span><span class="o">=</span><span class="s2">"#"</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">)</span>
+<span class="go">array([[1., 2.],</span>
+<span class="go">       [3., 4.],</span>
+<span class="go">       [5., 6.],</span>
+<span class="go">       [7., 8.],</span>
+<span class="go">       [9., 0.]])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Есть одно важное исключение: при <code class="docutils literal notranslate"><span class="pre">names=True</span></code> первая строка комментария проверяется на наличие имён столбцов.</p>
+</div>
+</section>
+</section>
+<section id="skipping-lines-and-choosing-columns">
+<h2>Пропуск строк и выбор столбцов<a class="headerlink" href="#skipping-lines-and-choosing-columns" title="Link to this heading">#</a></h2>
+<section id="the-skip-header-and-skip-footer-arguments">
+<h3>Аргументы <code class="docutils literal notranslate"><span class="pre">skip_header</span></code> и <code class="docutils literal notranslate"><span class="pre">skip_footer</span></code><a class="headerlink" href="#the-skip-header-and-skip-footer-arguments" title="Link to this heading">#</a></h3>
+<p>Заголовок файла может мешать обработке данных. Тогда используйте необязательный аргумент <code class="docutils literal notranslate"><span class="pre">skip_header</span></code>: целое число строк, пропускаемых в начале файла до любых других действий. Аналогично можно пропустить последние <code class="docutils literal notranslate"><span class="pre">n</span></code> строк, передав аргументу <code class="docutils literal notranslate"><span class="pre">skip_footer</span></code> значение <code class="docutils literal notranslate"><span class="pre">n</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),)</span>
+<span class="go">array([0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">skip_header</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">skip_footer</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">array([3.,  4.])</span>
+</pre></div>
+</div>
+<p>По умолчанию <code class="docutils literal notranslate"><span class="pre">skip_header=0</span></code> и <code class="docutils literal notranslate"><span class="pre">skip_footer=0</span></code>: строки не пропускаются.</p>
+</section>
+<section id="the-usecols-argument">
+<h3>Аргумент <code class="docutils literal notranslate"><span class="pre">usecols</span></code><a class="headerlink" href="#the-usecols-argument" title="Link to this heading">#</a></h3>
+<p>Иногда нужны лишь некоторые столбцы данных. Выбрать столбцы для импорта можно с помощью аргумента <code class="docutils literal notranslate"><span class="pre">usecols</span></code>. Он принимает одно целое число или последовательность целых чисел — индексов нужных столбцов. По принятому соглашению первый столбец имеет индекс 0. Отрицательные индексы работают так же, как обычные отрицательные индексы в Python.</p>
+<p>Например, чтобы импортировать только первый и последний столбцы, можно использовать <code class="docutils literal notranslate"><span class="pre">usecols=(0,</span> <span class="pre">-1)</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"1 2 3</span><span class="se">\n</span><span class="s2">4 5 6"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">array([[1.,  3.],</span>
+<span class="go">       [4.,  6.]])</span>
+</pre></div>
+</div>
+<p>Если у столбцов есть имена, нужные столбцы можно выбрать, передав их имена аргументу <code class="docutils literal notranslate"><span class="pre">usecols</span></code> — последовательностью строк или одной строкой с запятыми:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"1 2 3</span><span class="se">\n</span><span class="s2">4 5 6"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">names</span><span class="o">=</span><span class="s2">"a, b, c"</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">))</span>
+<span class="go">array([(1., 3.), (4., 6.)], dtype=[('a', '&lt;f8'), ('c', '&lt;f8')])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">names</span><span class="o">=</span><span class="s2">"a, b, c"</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="s2">"a, c"</span><span class="p">))</span>
+<span class="go">    array([(1., 3.), (4., 6.)], dtype=[('a', '&lt;f8'), ('c', '&lt;f8')])</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="choosing-the-data-type">
+<h2>Выбор типа данных<a class="headerlink" href="#choosing-the-data-type" title="Link to this heading">#</a></h2>
+<p>Основной способ контролировать, как последовательности строк, которые мы прочитали из файла, преобразуются в другие типы, - это установить аргумент <code class="docutils literal notranslate"><span class="pre">dtype</span></code>. Приемлемыми значениями для этого аргумента являются:</p>
+<ul class="simple">
+<li><p>один тип, например <code class="docutils literal notranslate"><span class="pre">dtype=np.float64</span></code>. Результат будет двумерным массивом заданного dtype, если каждому столбцу не присвоено имя через аргумент <code class="docutils literal notranslate"><span class="pre">names</span></code> (см. ниже). Значение <code class="docutils literal notranslate"><span class="pre">dtype=np.float64</span></code> используется в <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a> по умолчанию.</p></li>
+<li><p>последовательность типов, например <code class="docutils literal notranslate"><span class="pre">dtype=(np.int_,</span> <span class="pre">np.float64,</span> <span class="pre">np.float64)</span></code>.</p></li>
+<li><p>строка с разделёнными запятыми спецификациями, например <code class="docutils literal notranslate"><span class="pre">dtype="i4,f8,|U3"</span></code>;</p></li>
+<li><p>словарь с двумя ключами <code class="docutils literal notranslate"><span class="pre">'names'</span></code> и <code class="docutils literal notranslate"><span class="pre">'formats'</span></code>;</p></li>
+<li><p>Последовательность кортежей <code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">type)</span></code>, таких как <code class="docutils literal notranslate"><span class="pre">dtype=[('A',</span> <span class="pre">np.int_),</span> <span class="pre">('B',</span> <span class="pre">np.float64)]</span></code>.</p></li>
+<li><p>существующий объект <a class="reference internal" href="../reference/generated/numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.dtype</span></code></a>;</p></li>
+<li><p>специальное значение <code class="docutils literal notranslate"><span class="pre">None</span></code>: типы столбцов определяются по самим данным; см. ниже.</p></li>
+</ul>
+<p>При использовании структурированного dtype результат обычно представляет собой одномерный массив записей: каждому описанному столбцу соответствует поле, а имена полей задаёт аргумент <code class="docutils literal notranslate"><span class="pre">names</span></code>. Примечание переводчика: утверждение оригинала «во всех случаях, кроме первого» слишком широко. Например, dtype=None при однородных столбцах или np.dtype(float) могут дать обычный двумерный массив. Кроме того, при единственной строке результат по умолчанию может быть нульмерным.</p>
+<p>При <code class="docutils literal notranslate"><span class="pre">dtype=None</span></code> тип каждого столбца определяется последовательными проверками его данных: можно ли преобразовать строку в логическое значение, то есть соответствует ли она <code class="docutils literal notranslate"><span class="pre">true</span></code> или <code class="docutils literal notranslate"><span class="pre">false</span></code> без учёта регистра; затем — в целое число, вещественное число, комплексное число и, наконец, строку.</p>
+<p>Опция <code class="docutils literal notranslate"><span class="pre">dtype=None</span></code> предусмотрена для удобства.Однако она значительно медленнее, чем настройка dtype в явном виде.</p>
+</section>
+<section id="setting-the-names">
+<h2>Задание имён<a class="headerlink" href="#setting-the-names" title="Link to this heading">#</a></h2>
+<section id="the-names-argument">
+<h3>Аргумент <code class="docutils literal notranslate"><span class="pre">names</span></code><a class="headerlink" href="#the-names-argument" title="Link to this heading">#</a></h3>
+<p>Естественный подход при работе с табличными данными — присвоение имени каждому столбцу. Первая возможность — использовать явный структурированный dtype, как упоминалось ранее:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"1 2 3</span><span class="se">\n</span><span class="s2"> 4 5 6"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="n">_</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="s2">"abc"</span><span class="p">])</span>
+<span class="go">array([(1, 2, 3), (4, 5, 6)],</span>
+<span class="go">      dtype=[('a', '&lt;i8'), ('b', '&lt;i8'), ('c', '&lt;i8')])</span>
+</pre></div>
+</div>
+<p>Другой, более простой способ — передать именованному параметру <code class="docutils literal notranslate"><span class="pre">names</span></code> последовательность строк или строку имён, разделённых запятыми:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"1 2 3</span><span class="se">\n</span><span class="s2"> 4 5 6"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">"A, B, C"</span><span class="p">)</span>
+<span class="go">array([(1., 2., 3.), (4., 5., 6.)],</span>
+<span class="go">      dtype=[('A', '&lt;f8'), ('B', '&lt;f8'), ('C', '&lt;f8')])</span>
+</pre></div>
+</div>
+<p>В приведённом выше примере мы использовали то, что по умолчанию <code class="docutils literal notranslate"><span class="pre">dtype=np.float64</span></code>. Задавая последовательность имён, мы принудительно задаём результату структурированный тип данных.</p>
+<p>Иногда имена столбцов нужно прочитать из самих данных. Для этого аргументу <code class="docutils literal notranslate"><span class="pre">names</span></code> задают значение <code class="docutils literal notranslate"><span class="pre">True</span></code>. Тогда имена берутся из первой строки после пропущенных <code class="docutils literal notranslate"><span class="pre">skip_header</span></code> строк, даже если она помечена как комментарий:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"So it goes</span><span class="se">\n</span><span class="s2">#a b c</span><span class="se">\n</span><span class="s2">1 2 3</span><span class="se">\n</span><span class="s2"> 4 5 6"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">skip_header</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">array([(1., 2., 3.), (4., 5., 6.)],</span>
+<span class="go">      dtype=[('a', '&lt;f8'), ('b', '&lt;f8'), ('c', '&lt;f8')])</span>
+</pre></div>
+</div>
+<p>Значение <code class="docutils literal notranslate"><span class="pre">names</span></code> по умолчанию - <code class="docutils literal notranslate"><span class="pre">None</span></code>. Если мы дадим какое-либо другое значение ключевому слову, новые имена перезапишут имена полей, которые мы могли определить с dtype:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"1 2 3</span><span class="se">\n</span><span class="s2"> 4 5 6"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ndtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">'a'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">),</span> <span class="p">(</span><span class="s1">'b'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="p">(</span><span class="s1">'c'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">ndtype</span><span class="p">)</span>
+<span class="go">array([(1, 2., 3), (4, 5., 6)],</span>
+<span class="go">      dtype=[('A', '&lt;i8'), ('B', '&lt;f8'), ('C', '&lt;i8')])</span>
+</pre></div>
+</div>
+</section>
+<section id="the-defaultfmt-argument">
+<h3>Аргумент <code class="docutils literal notranslate"><span class="pre">defaultfmt</span></code><a class="headerlink" href="#the-defaultfmt-argument" title="Link to this heading">#</a></h3>
+<p>Если <code class="docutils literal notranslate"><span class="pre">names=None</span></code>, но требуется структурированный dtype, имена формируются по стандартному шаблону NumPy <code class="docutils literal notranslate"><span class="pre">"f%i"</span></code>: получаются <code class="docutils literal notranslate"><span class="pre">f0</span></code>, <code class="docutils literal notranslate"><span class="pre">f1</span></code> и т. д.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"1 2 3</span><span class="se">\n</span><span class="s2"> 4 5 6"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">))</span>
+<span class="go">array([(1, 2., 3), (4, 5., 6)],</span>
+<span class="go">      dtype=[('f0', '&lt;i8'), ('f1', '&lt;f8'), ('f2', '&lt;i8')])</span>
+</pre></div>
+</div>
+<p>Аналогично, если заданных имён меньше, чем полей в dtype, недостающие имена создаются по этому шаблону:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"1 2 3</span><span class="se">\n</span><span class="s2"> 4 5 6"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">),</span> <span class="n">names</span><span class="o">=</span><span class="s2">"a"</span><span class="p">)</span>
+<span class="go">array([(1, 2., 3), (4, 5., 6)],</span>
+<span class="go">      dtype=[('a', '&lt;i8'), ('f0', '&lt;f8'), ('f1', '&lt;i8')])</span>
+</pre></div>
+</div>
+<p>Заменить шаблон по умолчанию можно аргументом <code class="docutils literal notranslate"><span class="pre">defaultfmt</span></code>, принимающим строку форматирования:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">"1 2 3</span><span class="se">\n</span><span class="s2"> 4 5 6"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">),</span> <span class="n">defaultfmt</span><span class="o">=</span><span class="s2">"var_</span><span class="si">%02i</span><span class="s2">"</span><span class="p">)</span>
+<span class="go">array([(1, 2., 3), (4, 5., 6)],</span>
+<span class="go">      dtype=[('var_00', '&lt;i8'), ('var_01', '&lt;f8'), ('var_02', '&lt;i8')])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Учтите, что <code class="docutils literal notranslate"><span class="pre">defaultfmt</span></code> используется только тогда, когда имена требуются, но некоторые из них не заданы.</p>
+</div>
+</section>
+<section id="validating-names">
+<h3>Проверка имен <a class="headerlink" href="#validating-names" title="Link to this heading">#</a></h3>
+<p>Массив со структурированным dtype можно представить как <a class="reference internal" href="../reference/generated/numpy.recarray.html#numpy.recarray" title="numpy.recarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">recarray</span></code></a>, чтобы обращаться к полям как к атрибутам. Поэтому в именах полей следует избегать пробелов и недопустимых символов, а также совпадений со стандартными атрибутами вроде <code class="docutils literal notranslate"><span class="pre">size</span></code> и <code class="docutils literal notranslate"><span class="pre">shape</span></code>: иначе при обращении возникнет неоднозначность. <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a> принимает три необязательных аргумента для более точного управления именами:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">deletechars</span></code></dt><dd><p>Строка, содержащая все символы, которые нужно удалять из имени. По умолчанию недопустимыми считаются символы <code class="docutils literal notranslate"><span class="pre">~!@#$%^&amp;*()-=+~\|]}[{';:</span>
+<span class="pre">/?.&gt;,&lt;</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">excludelist</span></code></dt><dd><p>Предоставляет список исключенных имен, например <code class="docutils literal notranslate"><span class="pre">return</span></code>, <code class="docutils literal notranslate"><span class="pre">file</span></code>, <code class="docutils literal notranslate"><span class="pre">print</span></code>… Если одно из входных имен является частью этого списка, к нему будет добавлен символ подчеркивания (<code class="docutils literal notranslate"><span class="pre">'_'</span></code>).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">case_sensitive</span></code></dt><dd><p>Должны ли имена учитывать регистр ( <code class="docutils literal notranslate"><span class="pre">case_sensitive=True</span></code> ), преобразовываться в верхний регистр ( <code class="docutils literal notranslate"><span class="pre">case_sensitive=False</span></code> или <code class="docutils literal notranslate"><span class="pre">case_sensitive='upper'</span></code> ) или в нижний регистр ( <code class="docutils literal notranslate"><span class="pre">case_sensitive='lower'</span></code> ).</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="tweaking-the-conversion">
+<h2>Настройка преобразования<a class="headerlink" href="#tweaking-the-conversion" title="Link to this heading">#</a></h2>
+<section id="the-converters-argument">
+<h3>Аргумент <code class="docutils literal notranslate"><span class="pre">converters</span></code><a class="headerlink" href="#the-converters-argument" title="Link to this heading">#</a></h3>
+<p>Обычно dtype достаточно, чтобы определить преобразование строковых полей. Однако иногда требуется дополнительная обработка: например, преобразовать дату формата <code class="docutils literal notranslate"><span class="pre">YYYY/MM/DD</span></code> в объект <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> или строку вроде <code class="docutils literal notranslate"><span class="pre">xx%</span></code> в вещественное число от 0 до 1. В таких случаях задайте функции преобразования через аргумент <code class="docutils literal notranslate"><span class="pre">converters</span></code>.</p>
+<p>Значение этого аргумента обычно представляет собой словарь: ключи — индексы или имена столбцов, значения — функции преобразования. Это могут быть обычные или лямбда-функции. Каждая должна принимать одну строку и возвращать один элемент нужного типа.</p>
+<p>В следующем примере второй столбец преобразуется из строки, представляющей процент, в float между 0 и 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convertfunc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"%"</span><span class="p">))</span><span class="o">/</span><span class="mf">100.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"1, 2.3%, 45.</span><span class="se">\n</span><span class="s2">6, 78.9%, 0"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"i"</span><span class="p">,</span> <span class="s2">"p"</span><span class="p">,</span> <span class="s2">"n"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># General case .....</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
+<span class="go">array([(1., nan, 45.), (6., nan, 0.)],</span>
+<span class="go">      dtype=[('i', '&lt;f8'), ('p', '&lt;f8'), ('n', '&lt;f8')])</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Общий случай…</li></ul></details></div>
+</div>
+<p>Нам нужно иметь в виду, что по умолчанию <code class="docutils literal notranslate"><span class="pre">dtype=np.float64</span></code> . Поэтому для второго столбца ожидается значение с плавающей запятой. Однако строки <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">2.3%'</span></code> и <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">78.9%'</span></code> не могут быть преобразованы в числа с плавающей запятой, и вместо них мы получаем <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>. Давайте теперь воспользуемся конвертером:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Converted case ...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
+<span class="gp">... </span>              <span class="n">converters</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="n">convertfunc</span><span class="p">})</span>
+<span class="go">array([(1., 0.023, 45.), (6., 0.789, 0.)],</span>
+<span class="go">      dtype=[('i', '&lt;f8'), ('p', '&lt;f8'), ('n', '&lt;f8')])</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>С преобразованием…</li></ul></details></div>
+</div>
+<p>Те же результаты можно получить, используя имя второго столбца ( <code class="docutils literal notranslate"><span class="pre">"p"</span></code> ) в качестве ключа вместо его индекса (1):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Using a name for the converter ...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
+<span class="gp">... </span>              <span class="n">converters</span><span class="o">=</span><span class="p">{</span><span class="s2">"p"</span><span class="p">:</span> <span class="n">convertfunc</span><span class="p">})</span>
+<span class="go">array([(1., 0.023, 45.), (6., 0.789, 0.)],</span>
+<span class="go">      dtype=[('i', '&lt;f8'), ('p', '&lt;f8'), ('n', '&lt;f8')])</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>С использованием имени для преобразователя…</li></ul></details></div>
+</div>
+<p>Преобразователи также позволяют задавать значения по умолчанию для пропусков. В следующем примере <code class="docutils literal notranslate"><span class="pre">convert</span></code> преобразует строку после удаления краевых пробелов в соответствующее число с плавающей запятой или в -999, если строка пуста. Пробелы нужно удалить явно: по умолчанию это не делается.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"1, , 3</span><span class="se">\n</span><span class="s2"> 4, 5, 6"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">convert</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="o">-</span><span class="mi">999</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span>
+<span class="gp">... </span>              <span class="n">converters</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="n">convert</span><span class="p">})</span>
+<span class="go">array([[   1., -999.,    3.],</span>
+<span class="go">       [   4.,    5.,    6.]])</span>
+</pre></div>
+</div>
+</section>
+<section id="using-missing-and-filling-values">
+<h3>Работа с пропущенными значениями и значениями заполнения<a class="headerlink" href="#using-missing-and-filling-values" title="Link to this heading">#</a></h3>
+<p>В импортируемом наборе данных некоторые значения могут отсутствовать. В предыдущем примере мы использовали преобразователь, превращающий пустую строку в число с плавающей точкой. Однако управлять пользовательскими преобразователями быстро становится неудобно.</p>
+<p>Функция <a class="reference internal" href="../reference/generated/numpy.genfromtxt.html#numpy.genfromtxt" title="numpy.genfromtxt"><code class="xref py py-func docutils literal notranslate"><span class="pre">genfromtxt</span></code></a> обеспечивает два других взаимодополняющих механизма: аргумент <code class="docutils literal notranslate"><span class="pre">missing_values</span></code> используется для распознавания отсутствующих данных, а второй аргумент, <code class="docutils literal notranslate"><span class="pre">filling_values</span></code>, используется для обработки этих отсутствующих данных.</p>
+</section>
+<section id="missing-values">
+<h3><code class="docutils literal notranslate"><span class="pre">missing_values</span></code><a class="headerlink" href="#missing-values" title="Ссылка на заголовок">#</a></h3>
+<p>По умолчанию пустая строка считается пропущенным значением. Для обозначения пропущенных или некорректных данных можно также использовать другие строки, например <code class="docutils literal notranslate"><span class="pre">"N/A"</span></code> или <code class="docutils literal notranslate"><span class="pre">"???"</span></code>. Аргумент <code class="docutils literal notranslate"><span class="pre">missing_values</span></code> принимает три вида значений:</p>
+<dl class="simple">
+<dt>строка или строка с элементами, разделёнными запятыми</dt><dd><p>Эта строка будет использоваться в качестве маркера отсутствия данных для всех столбцов.</p>
+</dd>
+<dt>последовательность строк;</dt><dd><p>В этом случае элементы по порядку соответствуют столбцам.</p>
+</dd>
+<dt>словарь</dt><dd><p>Значениями словаря являются строки или последовательность строк. Соответствующими ключами могут быть индексы столбцов (целые числа) или имена столбцов (строки). Кроме того, специальный ключ <code class="docutils literal notranslate"><span class="pre">None</span></code> можно использовать для определения значения по умолчанию, применимого ко всем столбцам.</p>
+</dd>
+</dl>
+</section>
+<section id="filling-values">
+<h3><code class="docutils literal notranslate"><span class="pre">filling_values</span></code><a class="headerlink" href="#filling-values" title="Ссылка на заголовок">#</a></h3>
+<p>После распознавания пропущенных данных нужно определить, чем заполнять соответствующие позиции. По умолчанию значение заполнения зависит от ожидаемого dtype согласно следующей таблице:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ожидаемый тип</p></th>
+<th class="head"><p>По умолчанию</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.nan</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">complex</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.nan+0j</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'???'</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Более точно управлять заполнением пропусков можно необязательным аргументом <code class="docutils literal notranslate"><span class="pre">filling_values</span></code>. Как и <code class="docutils literal notranslate"><span class="pre">missing_values</span></code>, он принимает несколько видов значений:</p>
+<dl class="simple">
+<dt>одно значение;</dt><dd><p>Оно используется по умолчанию для всех столбцов.</p>
+</dd>
+<dt>Последовательность значений</dt><dd><p>Каждая запись будет значением по умолчанию для соответствующего столбца.</p>
+</dd>
+<dt>словарь</dt><dd><p>Каждый ключ может быть индексом или именем столбца, а соответствующее значение должно быть одним объектом. Специальный ключ <code class="docutils literal notranslate"><span class="pre">None</span></code> позволяет задать значение по умолчанию для всех столбцов.</p>
+</dd>
+</dl>
+<p>В следующем примере пропуски обозначены строкой <code class="docutils literal notranslate"><span class="pre">"N/A"</span></code> в первом столбце и <code class="docutils literal notranslate"><span class="pre">"???"</span></code> в третьем. Пропуски в первом и втором столбцах нужно заменить на 0, а в последнем — на -999:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="s2">"N/A, 2, 3</span><span class="se">\n</span><span class="s2">4, ,???"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span>
+<span class="gp">... </span>              <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">,</span>
+<span class="gp">... </span>              <span class="n">names</span><span class="o">=</span><span class="s2">"a,b,c"</span><span class="p">,</span>
+<span class="gp">... </span>              <span class="n">missing_values</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s2">"N/A"</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span><span class="s2">" "</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s2">"???"</span><span class="p">},</span>
+<span class="gp">... </span>              <span class="n">filling_values</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">999</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="go">array([(0, 2, 3), (4, 0, -999)],</span>
+<span class="go">      dtype=[('a', '&lt;i8'), ('b', '&lt;i8'), ('c', '&lt;i8')])</span>
+</pre></div>
+</div>
+</section>
+<section id="usemask">
+<h3><code class="docutils literal notranslate"><span class="pre">usemask</span></code><a class="headerlink" href="#usemask" title="Ссылка на заголовок">#</a></h3>
+<p>Пропуски можно также отмечать логической маской: <code class="docutils literal notranslate"><span class="pre">True</span></code> там, где данные отсутствуют, и <code class="docutils literal notranslate"><span class="pre">False</span></code> в остальных позициях. Для этого задайте необязательному аргументу <code class="docutils literal notranslate"><span class="pre">usemask</span></code> значение <code class="docutils literal notranslate"><span class="pre">True</span></code> вместо принятого по умолчанию <code class="docutils literal notranslate"><span class="pre">False</span></code>. Тогда результатом будет <a class="reference internal" href="../reference/maskedarray.baseclass.html#numpy.ma.MaskedArray" title="numpy.ma.MaskedArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaskedArray</span></code></a>.</p>
+</section>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="basics.io.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Ввод-вывод с NumPy</p>
+</div>
+</a>
+<a class="right-next" href="basics.types.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Типы данных</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-input">Задание входных данных</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-the-lines-into-columns">Разбиение строк на столбцы</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-delimiter-argument">Аргумент <code class="docutils literal notranslate"><span class="pre">delimiter</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-autostrip-argument">Аргумент <code class="docutils literal notranslate"><span class="pre">autostrip</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-comments-argument">Аргумент <code class="docutils literal notranslate"><span class="pre">comments</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skipping-lines-and-choosing-columns">Пропуск строк и выбор столбцов</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-skip-header-and-skip-footer-arguments">Аргументы <code class="docutils literal notranslate"><span class="pre">skip_header</span></code> и <code class="docutils literal notranslate"><span class="pre">skip_footer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-usecols-argument">Аргумент <code class="docutils literal notranslate"><span class="pre">usecols</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-data-type">Выбор типа данных</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-names">Задание имён</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-names-argument">Аргумент <code class="docutils literal notranslate"><span class="pre">names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-defaultfmt-argument">Аргумент <code class="docutils literal notranslate"><span class="pre">defaultfmt</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-names">Проверка имен </a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tweaking-the-conversion">Настройка преобразования</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-converters-argument">Аргумент <code class="docutils literal notranslate"><span class="pre">converters</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-missing-and-filling-values">Работа с пропущенными значениями и значениями заполнения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values"><code class="docutils literal notranslate"><span class="pre">missing_values</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filling-values"><code class="docutils literal notranslate"><span class="pre">filling_values</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usemask"><code class="docutils literal notranslate"><span class="pre">usemask</span></code></a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script async="async" src="../_static/scipy-mathjax/MathJax.js?config=scipy-mathjax"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'user/basics.ufuncs';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="numpy-for-matlab-users.html" rel="next" title="NumPy для пользователей MATLAB"/>
+<link href="basics.rec.html" rel="prev" title="Структурированные массивы"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="basics.html">Основы NumPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.creation.html">Создание массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.indexing.html">Индексация массивов <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarrays</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.io.html">Ввод и вывод данных в NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.types.html">Типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.broadcasting.html">Трансляция массивов (broadcasting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.copies.html">Копии и представления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.strings.html">Работа с массивами строк и байтов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.rec.html">Структурированные массивы</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>): основы</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-info.html">Использование C API NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../f2py/index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="basics.html">Основы NumPy</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>): основы</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="universal-functions-ufunc-basics">
+<span id="ufuncs-basics"></span><h1>Универсальные функции (<a class="reference internal" href="../reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code></a>): основы<a class="headerlink" href="#universal-functions-ufunc-basics" title="Link to this heading">#</a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="../reference/ufuncs.html#ufuncs"><span class="std std-ref">Универсальные функции (ufunc)</span></a></p>
+</div>
+<p>Универсальная функция (сокращённо <a class="reference internal" href="../glossary.html#term-ufunc"><span class="xref std std-term">ufunc</span></a>) обрабатывает <a class="reference internal" href="../reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarrays</span></code></a> поэлементно и поддерживает <a class="reference internal" href="#ufuncs-broadcasting"><span class="std std-ref">трансляцию массивов</span></a>, <a class="reference internal" href="#ufuncs-casting"><span class="std std-ref">приведение типов</span></a> и другие стандартные возможности. Иначе говоря, ufunc — <a class="reference internal" href="../glossary.html#term-vectorization"><span class="xref std std-term">векторизованная</span></a> обёртка над функцией с фиксированным числом входов и выходов определённых типов.</p>
+<p>Существуют и <a class="reference internal" href="../reference/c-api/generalized-ufuncs.html#c-api-generalized-ufuncs"><span class="std std-ref">обобщённые универсальные функции</span></a>: вместо отдельных скаляров они обрабатывают векторы или массивы. Например, <a class="reference internal" href="../reference/generated/numpy.add.html#numpy.add" title="numpy.add"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.add</span></code></a> выполняет поэлементную операцию, а <a class="reference internal" href="../reference/generated/numpy.matmul.html#numpy.matmul" title="numpy.matmul"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.matmul</span></code></a> — обобщённая ufunc, работающая с векторами и матрицами:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[0, 1],</span>
+<span class="go">       [2, 3],</span>
+<span class="go">       [4, 5]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>  <span class="c1"># element-wise addition</span>
+<span class="go">array([[ 0,  2],</span>
+<span class="go">       [ 4,  6],</span>
+<span class="go">       [ 8, 10]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>  <span class="c1"># matrix multiplication (3x2) @ (2x3) -&gt; (3x3)</span>
+<span class="go">array([[ 1,  3,  5],</span>
+<span class="go">       [ 3, 13, 23],</span>
+<span class="go">       [ 5, 23, 41]])</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Поэлементное сложение</li><li>Матричное умножение (3x2) @ (2x3) -&gt; (3x3)</li></ul></details></div>
+</div>
+<p>Универсальные функции NumPy — экземпляры класса <a class="reference internal" href="../reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ufunc</span></code></a>. Многие встроенные функции реализованы скомпилированным кодом на C. Обычные ufunc обрабатывают скаляры. У обобщённых ufunc базовыми элементами служат подмассивы — векторы, матрицы и т. п., — а трансляция выполняется по остальным измерениям. Простейший пример — оператор сложения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">array([1, 3, 2, 6])</span>
+</pre></div>
+</div>
+<p>Собственные экземпляры <a class="reference internal" href="../reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ufunc</span></code></a> можно создавать с помощью функции-фабрики <a class="reference internal" href="../reference/generated/numpy.frompyfunc.html#numpy.frompyfunc" title="numpy.frompyfunc"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.frompyfunc</span></code></a>.</p>
+<section id="ufunc-methods">
+<h2>Методы универсальных функций<a class="headerlink" href="#ufunc-methods" title="Link to this heading">#</a></h2>
+<p>У всех ufunc есть пять методов: четыре, связанных со свёртками (<a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduce</span></code></a>, <a class="reference internal" href="../reference/generated/numpy.ufunc.accumulate.html#numpy.ufunc.accumulate" title="numpy.ufunc.accumulate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accumulate</span></code></a>, <a class="reference internal" href="../reference/generated/numpy.ufunc.reduceat.html#numpy.ufunc.reduceat" title="numpy.ufunc.reduceat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduceat</span></code></a>, <a class="reference internal" href="../reference/generated/numpy.ufunc.outer.html#numpy.ufunc.outer" title="numpy.ufunc.outer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">outer</span></code></a>), и один для операций на месте (<a class="reference internal" href="../reference/generated/numpy.ufunc.at.html#numpy.ufunc.at" title="numpy.ufunc.at"><code class="xref py py-meth docutils literal notranslate"><span class="pre">at</span></code></a>). Подробнее см. <a class="reference internal" href="../reference/ufuncs.html#ufuncs-methods"><span class="std std-ref">Методы</span></a>. Однако эти методы имеют смысл только для ufunc с двумя входными аргументами и одним выходом: так называемых «скалярных» ufunc, внутренний цикл которых работает с отдельными скалярными значениями. Вызов этих методов для других ufunc приводит к <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a>.</p>
+<p>Например, <a class="reference internal" href="../reference/generated/numpy.add.html#numpy.add" title="numpy.add"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.add</span></code></a> принимает два входных аргумента и возвращает один результат, поэтому её методы работают следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+<p>Но <a class="reference internal" href="../reference/generated/numpy.divmod.html#numpy.divmod" title="numpy.divmod"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.divmod</span></code></a> возвращает два результата — частное и остаток, поэтому вызов её методов приводит к ошибке:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">divmod</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="gr">ValueError</span>: <span class="n">reduce only supported for functions returning a single value</span>
+</pre></div>
+</div>
+<p>Все методы, подобные reduce, принимают именованные аргументы <em>axis</em>, <em>dtype</em> и <em>out</em>; массивы должны иметь хотя бы одно измерение. Аргумент <em>axis</em> задаёт ось, вдоль которой выполняется свёртка; отрицательные индексы отсчитываются с конца. Обычно это целое число. Для <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">numpy.ufunc.reduce</span></code></a> также можно передать кортеж значений <code class="docutils literal notranslate"><span class="pre">int</span></code>, чтобы выполнить свёртку по нескольким осям, или <code class="docutils literal notranslate"><span class="pre">None</span></code> — по всем осям. Например: Примечание переводчика: требование хотя бы одного измерения в оригинале сформулировано слишком широко: например, numpy.add.reduce в NumPy 2.5 также принимает нульмерный массив. Ограничения остальных методов следует проверять в их описаниях.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([[0, 1, 2],</span>
+<span class="go">      [3, 4, 5],</span>
+<span class="go">      [6, 7, 8]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">array([ 3, 12, 21])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">36</span>
+</pre></div>
+</div>
+<p>Именованный аргумент <em>dtype</em> помогает избежать распространённой проблемы при прямом использовании <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ufunc.reduce</span></code></a>: сумма элементов может не помещаться в тип данных исходного массива. Такое часто случается с массивами однобайтовых целых чисел. Аргумент <em>dtype</em> задаёт тип, в котором выполняется свёртка, а значит, и тип результата. Выбирайте тип с достаточным диапазоном значений и точностью. Обычно за этот выбор отвечаете вы. Исключение: для операций add и multiply без явно указанного <em>dtype</em> целочисленный или логический входной тип, размер которого меньше размера <a class="reference internal" href="../reference/arrays.scalars.html#numpy.int_" title="numpy.int_"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.int_</span></code></a>, автоматически повышается до <a class="reference internal" href="../reference/arrays.scalars.html#numpy.int_" title="numpy.int_"><code class="xref py py-class docutils literal notranslate"><span class="pre">int_</span></code></a> или <a class="reference internal" href="../reference/arrays.scalars.html#numpy.uint" title="numpy.uint"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.uint</span></code></a>. В предыдущем примере:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">dtype('int64')</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="go">array([ 0., 28., 80.])</span>
+</pre></div>
+</div>
+<p>Именованный параметр <em>out</em> позволяет передать выходной массив либо кортеж массивов для ufunc с несколькими выходами. При заданном <em>out</em> аргумент <em>dtype</em> используется только для внутренних вычислений. Рассмотрим <code class="docutils literal notranslate"><span class="pre">x</span></code> из предыдущего примера:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">array([0, 0, 0])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="go">array([ 0, 28, 80])</span>
+</pre></div>
+</div>
+<p>У ufunc есть и пятый метод, <a class="reference internal" href="../reference/generated/numpy.ufunc.at.html#numpy.ufunc.at" title="numpy.ufunc.at"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.ufunc.at</span></code></a>, позволяющий изменять массив на месте с помощью расширенной индексации. По осям с расширенной индексацией <a class="reference internal" href="#use-of-internal-buffers"><span class="std std-ref">буферизация</span></a> не используется. Поэтому один индекс можно указать несколько раз: каждая следующая операция над этим элементом использует результат предыдущей.</p>
+</section>
+<section id="output-type-determination">
+<span id="ufuncs-output-type"></span><h2>Определение типа результата<a class="headerlink" href="#output-type-determination" title="Link to this heading">#</a></h2>
+<p>Если входные аргументы универсальной функции (или её методов) имеют тип <a class="reference internal" href="../reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarrays</span></code></a>, результат будет иметь тот же тип. Исключение — нульмерный результат: он преобразуется в <em class="xref py py-obj">array scalar</em>. Этого можно избежать, передав <code class="docutils literal notranslate"><span class="pre">out=...</span></code> или <code class="docutils literal notranslate"><span class="pre">out=Ellipsis</span></code>.</p>
+<p>Если некоторые или все входные аргументы не являются <a class="reference internal" href="../reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarrays</span></code></a>, результат тоже может не быть <a class="reference internal" href="../reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>. Если входной объект определяет метод <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_ufunc__" title="numpy.class.__array_ufunc__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_ufunc__</span></code></a>, управление полностью передаётся этому методу: поведение ufunc <a class="reference internal" href="#ufuncs-overrides"><span class="std std-ref">переопределяется</span></a>.</p>
+<p>Если ни один входной объект не переопределяет ufunc, все выходные массивы передаются методу <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_wrap__" title="numpy.class.__array_wrap__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_wrap__</span></code></a> того входного объекта (за исключением <a class="reference internal" href="../reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarrays</span></code></a> и скаляров), который определяет этот метод <strong>и</strong> имеет наибольший <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_priority__" title="numpy.class.__array_priority__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_priority__</span></code></a> среди входов универсальной функции. Значение <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_priority__" title="numpy.class.__array_priority__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_priority__</span></code></a> для ndarray по умолчанию равно 0.0, а значение <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_priority__" title="numpy.class.__array_priority__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_priority__</span></code></a> для подтипа по умолчанию также равно 0.0. У матриц <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_priority__" title="numpy.class.__array_priority__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_priority__</span></code></a> равен 10.0.</p>
+<p>Все универсальные функции также принимают выходные аргументы — массивы или экземпляры их подклассов. При необходимости результат приводится к типу данных соответствующего выходного массива. Если у выходного массива есть метод <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_wrap__" title="numpy.class.__array_wrap__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_wrap__</span></code></a>, вызывается он, а не метод входных массивов.</p>
+</section>
+<section id="broadcasting">
+<span id="ufuncs-broadcasting"></span><h2>Трансляция массивов (broadcasting)<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="basics.broadcasting.html"><span class="doc">Основы трансляции массивов</span></a></p>
+</div>
+<p id="index-0">Каждая универсальная функция принимает массивы и возвращает массивы, поэлементно применяя основную функцию ко входным данным. Обычно элемент — скаляр, но для обобщённых универсальных функций это может быть вектор или подмассив с большим числом измерений. Стандартные <a class="reference internal" href="basics.broadcasting.html#general-broadcasting-rules"><span class="std std-ref">правила трансляции массивов (согласования форм)</span></a> позволяют обрабатывать входные массивы, формы которых не совпадают полностью.</p>
+<p>По этим правилам, если размер входного массива вдоль некоторого измерения равен 1, первый элемент вдоль этого измерения используется во всех вычислениях по нему. Иными словами, механизм обхода <a class="reference internal" href="../glossary.html#term-ufunc"><span class="xref std std-term">ufunc</span></a> не продвигается вдоль этого измерения: соответствующий <a class="reference internal" href="../reference/arrays.ndarray.html#memory-layout"><span class="std std-ref">шаг</span></a> равен 0.</p>
+</section>
+<section id="type-casting-rules">
+<span id="ufuncs-casting"></span><h2>Правила приведения типов<a class="headerlink" href="#type-casting-rules" title="Link to this heading">#</a></h2>
+<div class="admonition note" id="index-1">
+<p class="admonition-title">Примечание</p>
+<p>В NumPy 1.6.0 появился API повышения типов, предоставляющий доступ к механизму определения типа результата. Подробнее см. функции <a class="reference internal" href="../reference/generated/numpy.result_type.html#numpy.result_type" title="numpy.result_type"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.result_type</span></code></a>, <a class="reference internal" href="../reference/generated/numpy.promote_types.html#numpy.promote_types" title="numpy.promote_types"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.promote_types</span></code></a> и <a class="reference internal" href="../reference/generated/numpy.min_scalar_type.html#numpy.min_scalar_type" title="numpy.min_scalar_type"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.min_scalar_type</span></code></a>.</p>
+</div>
+<p>В основе каждой ufunc лежит одномерный цикл с заданными шагами по памяти, реализующий операцию для определённого сочетания типов. При создании ufunc ей передают статический список внутренних циклов и соответствующие сигнатуры типов. Механизм ufunc использует этот список для выбора подходящего цикла. Атрибут <a class="reference internal" href="../reference/generated/numpy.ufunc.types.html#numpy.ufunc.types" title="numpy.ufunc.types"><code class="xref py py-attr docutils literal notranslate"><span class="pre">.types</span></code></a> позволяет посмотреть поддерживаемые сочетания входных типов и тип результата для каждого из них; для краткости используются <a class="reference internal" href="../reference/arrays.scalars.html#arrays-scalars-character-codes"><span class="std std-ref">символьные коды типов</span></a>.</p>
+<p>Если у ufunc нет внутреннего цикла для переданных входных типов, один или несколько входов необходимо привести к другим типам. Если точное соответствие не найдено, алгоритм ищет сигнатуру, к которой можно безопасно привести все входы. Выбирается первый подходящий цикл из внутреннего списка; после необходимых преобразований типов выполняется этот цикл. Внутреннее копирование данных при работе ufunc, в том числе для приведения типов, ограничено размером внутреннего буфера, который пользователь может настроить.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Универсальные функции NumPy поддерживают сигнатуры со смешанными типами. Например, можно определить функцию, принимающую одновременно вещественные и целочисленные значения. Пример см. в <a class="reference internal" href="../reference/generated/numpy.ldexp.html#numpy.ldexp" title="numpy.ldexp"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.ldexp</span></code></a>.</p>
+</div>
+<p>В приведённом описании правила приведения типов сводятся к вопросу: можно ли безопасно преобразовать один тип данных в другой? В Python это можно проверить вызовом <a class="reference internal" href="../reference/generated/numpy.can_cast.html#numpy.can_cast" title="numpy.can_cast"><code class="xref py py-func docutils literal notranslate"><span class="pre">can_cast(fromtype,</span> <span class="pre">totype)</span></code></a>. Ниже показаны результаты для 24 встроенных типов на 64-разрядной системе автора. С помощью приведённого кода вы можете построить такую таблицу для своей системы.</p>
+<p class="rubric">Пример</p>
+<p>Фрагмент кода строит таблицу безопасных приведений типов для 64-разрядной системы. Результат зависит от системы, поэтому у вас таблица может отличаться.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mark</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s1">' -'</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">' Y'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">print_table</span><span class="p">(</span><span class="n">ntypes</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">'X '</span> <span class="o">+</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ntypes</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ntypes</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">ntypes</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="nb">print</span><span class="p">(</span><span class="n">mark</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">can_cast</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)],</span> <span class="n">end</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">print_table</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">typecodes</span><span class="p">[</span><span class="s1">'All'</span><span class="p">])</span>
+<span class="go">X ? b h i l q n p B H I L Q N P e f d g F D G S U V O M m</span>
+<span class="go">? Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y - Y</span>
+<span class="go">b - Y Y Y Y Y Y Y - - - - - - - Y Y Y Y Y Y Y Y Y Y Y - Y</span>
+<span class="go">h - - Y Y Y Y Y Y - - - - - - - - Y Y Y Y Y Y Y Y Y Y - Y</span>
+<span class="go">i - - - Y Y Y Y Y - - - - - - - - - Y Y - Y Y Y Y Y Y - Y</span>
+<span class="go">l - - - - Y Y Y Y - - - - - - - - - Y Y - Y Y Y Y Y Y - Y</span>
+<span class="go">q - - - - Y Y Y Y - - - - - - - - - Y Y - Y Y Y Y Y Y - Y</span>
+<span class="go">n - - - - Y Y Y Y - - - - - - - - - Y Y - Y Y Y Y Y Y - Y</span>
+<span class="go">p - - - - Y Y Y Y - - - - - - - - - Y Y - Y Y Y Y Y Y - Y</span>
+<span class="go">B - - Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y Y - Y</span>
+<span class="go">H - - - Y Y Y Y Y - Y Y Y Y Y Y - Y Y Y Y Y Y Y Y Y Y - Y</span>
+<span class="go">I - - - - Y Y Y Y - - Y Y Y Y Y - - Y Y - Y Y Y Y Y Y - Y</span>
+<span class="go">L - - - - - - - - - - - Y Y Y Y - - Y Y - Y Y Y Y Y Y - -</span>
+<span class="go">Q - - - - - - - - - - - Y Y Y Y - - Y Y - Y Y Y Y Y Y - -</span>
+<span class="go">N - - - - - - - - - - - Y Y Y Y - - Y Y - Y Y Y Y Y Y - -</span>
+<span class="go">P - - - - - - - - - - - Y Y Y Y - - Y Y - Y Y Y Y Y Y - -</span>
+<span class="go">e - - - - - - - - - - - - - - - Y Y Y Y Y Y Y Y Y Y Y - -</span>
+<span class="go">f - - - - - - - - - - - - - - - - Y Y Y Y Y Y Y Y Y Y - -</span>
+<span class="go">d - - - - - - - - - - - - - - - - - Y Y - Y Y Y Y Y Y - -</span>
+<span class="go">g - - - - - - - - - - - - - - - - - - Y - - Y Y Y Y Y - -</span>
+<span class="go">F - - - - - - - - - - - - - - - - - - - Y Y Y Y Y Y Y - -</span>
+<span class="go">D - - - - - - - - - - - - - - - - - - - - Y Y Y Y Y Y - -</span>
+<span class="go">G - - - - - - - - - - - - - - - - - - - - - Y Y Y Y Y - -</span>
+<span class="go">S - - - - - - - - - - - - - - - - - - - - - - Y Y Y Y - -</span>
+<span class="go">U - - - - - - - - - - - - - - - - - - - - - - - Y Y Y - -</span>
+<span class="go">V - - - - - - - - - - - - - - - - - - - - - - - - Y Y - -</span>
+<span class="go">O - - - - - - - - - - - - - - - - - - - - - - - - - Y - -</span>
+<span class="go">M - - - - - - - - - - - - - - - - - - - - - - - - Y Y Y -</span>
+<span class="go">m - - - - - - - - - - - - - - - - - - - - - - - - Y Y - Y</span>
+</pre></div>
+</div>
+<p>В оригинале отмечено, что типы S, U и V включены в таблицу для полноты, но универсальные функции якобы не могут с ними работать. Примечание переводчика: это устаревшее обобщение. В NumPy 2.5 некоторые ufunc поддерживают строковые типы S и U; например, numpy.equal сравнивает строки, а numpy.add соединяет их. Поддержка зависит от конкретной функции и типа. На 32-разрядной системе размеры целочисленных типов могут отличаться, поэтому таблица также может быть немного другой.</p>
+<p>При совместных операциях над массивом и скаляром Python правила повышения типов учитывают вид данных скаляра, но не точность его типа. Благодаря этому константа Python того же вида не повышает точность большого массива с меньшей точностью. Например, прибавление float Python к массиву float32 обычно сохраняет float32. Примечание переводчика: оригинал говорит о скалярах вообще. В NumPy 2.5 важно отличать скаляры Python от скаляров NumPy: точность последних учитывается, и прибавление numpy.float64 к массиву float32 даёт float64. Скаляры иного вида данных также могут менять тип результата.</p>
+</section>
+<section id="use-of-internal-buffers">
+<span id="id1"></span><h2>Использование внутренних буферов<a class="headerlink" href="#use-of-internal-buffers" title="Link to this heading">#</a></h2>
+<p id="index-2">Внутренние буферы используются для невыровненных данных, данных с неродным порядком байтов и преобразования между типами данных. Их размер настраивается отдельно для каждого потока. Для обработки всех входов и выходов универсальной функции может создаваться до <span class="math notranslate nohighlight">\(2 (n_{\mathrm{inputs}} + n_{\mathrm{outputs}})\)</span> буферов заданного размера. По умолчанию буфер содержит 10 000 элементов. Если нужна буферизация, но все входные массивы меньше буфера, массивы с неподходящим выравниванием, порядком байтов или типом копируются до вычисления. Поэтому изменение размера буфера может влиять на скорость разных вычислений универсальных функций. Простой интерфейс настройки предоставляет <a class="reference internal" href="../reference/generated/numpy.setbufsize.html#numpy.setbufsize" title="numpy.setbufsize"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.setbufsize</span></code></a>.</p>
+</section>
+<section id="error-handling">
+<h2>Обработка ошибок<a class="headerlink" href="#error-handling" title="Link to this heading">#</a></h2>
+<p id="index-3">Универсальные функции могут устанавливать аппаратные флаги состояния вычислений с плавающей точкой, например при делении на ноль. Если платформа поддерживает такие регистры, они регулярно проверяются во время вычислений. Обработка ошибок настраивается отдельно для каждого потока функциями <a class="reference internal" href="../reference/generated/numpy.seterr.html#numpy.seterr" title="numpy.seterr"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.seterr</span></code></a> и <a class="reference internal" href="../reference/generated/numpy.seterrcall.html#numpy.seterrcall" title="numpy.seterrcall"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.seterrcall</span></code></a>.</p>
+</section>
+<section id="overriding-ufunc-behavior">
+<span id="ufuncs-overrides"></span><h2>Переопределение поведения ufunc<a class="headerlink" href="#overriding-ufunc-behavior" title="Link to this heading">#</a></h2>
+<p>Классы, включая подклассы ndarray, могут переопределять поведение ufunc для своих экземпляров с помощью специальных методов. Подробнее см. <a class="reference internal" href="../reference/arrays.classes.html#arrays-classes"><span class="std std-ref">Стандартные подклассы массивов</span></a>.</p>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="basics.rec.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Структурированные массивы</p>
+</div>
+</a>
+<a class="right-next" href="numpy-for-matlab-users.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">NumPy для пользователей MATLAB</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ufunc-methods">Методы универсальных функций</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-type-determination">Определение типа результата</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Трансляция массивов (broadcasting)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-casting-rules">Правила приведения типов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-internal-buffers">Использование внутренних буферов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling">Обработка ошибок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-ufunc-behavior">Переопределение поведения ufunc</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,947 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'reference/swig.interface-file';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="swig.testing.html" rel="next" title="Тестирование отображений типов numpy.i"/>
+<link href="swig.html" rel="prev" title="NumPy и SWIG"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="module_structure.html">Структура модулей NumPy</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Объекты массивов</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ufuncs.html">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="routines.html">Функции и объекты по темам</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="typing.html">Аннотации типов (<code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.typing</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-api/index.html"> NumPy C-API </a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="array_api.html">Совместимость со стандартом Array API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simd/index.html">Оптимизации CPU/SIMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_safety.html">Потокобезопасность</a></li>
+<li class="toctree-l1"><a class="reference internal" href="global_state.html">Глобальные параметры конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Безопасность NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Рекомендации по тестированию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distutils_status_migration.html">Состояние <code class="docutils literal notranslate"><span class="pre">numpy.distutils</span></code> и рекомендации по переходу</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="swig.html">NumPy и SWIG</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">numpy.i: файл интерфейса SWIG для NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swig.testing.html">Тестирование преобразований типов (typemap) в numpy.i</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Справочник NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="swig.html"> NumPy и SWIG </a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">numpy.i: файл интерфейса SWIG для NumPy</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="numpy-i-a-swig-interface-file-for-numpy">
+<h1>numpy.i: файл интерфейса SWIG для NumPy <a class="headerlink" href="#numpy-i-a-swig-interface-file-for-numpy" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Введение<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Simple Wrapper and Interface Generator (<a class="reference external" href="https://www.swig.org">SWIG</a>) — мощный инструмент генерации кода обёрток для интерфейсов к различным скриптовым языкам. <a class="reference external" href="https://www.swig.org">SWIG</a> умеет разбирать заголовочные файлы и создавать интерфейс целевого языка по одним прототипам функций. Но <a class="reference external" href="https://www.swig.org">SWIG</a> не всесилен. Например, из прототипа он не может узнать:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">rms</span><span class="p">(</span><span class="n">double</span><span class="o">*</span> <span class="n">seq</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>что именно представляет собой <code class="docutils literal notranslate"><span class="pre">seq</span></code>. Это одно значение, которое нужно изменить на месте? Массив? Если массив, то какова его длина? Он предназначен только для ввода, только для вывода или для ввода и вывода? <a class="reference external" href="https://www.swig.org">SWIG</a> не может определить эти подробности и не пытается этого делать.</p>
+<p>Если <code class="docutils literal notranslate"><span class="pre">rms</span></code> разрабатывали мы, то, вероятно, эта функция принимает массив длины <code class="docutils literal notranslate"><span class="pre">n</span></code> из значений <code class="docutils literal notranslate"><span class="pre">double</span></code> с именем <code class="docutils literal notranslate"><span class="pre">seq</span></code> только для чтения и возвращает среднеквадратичное значение. Однако по умолчанию <a class="reference external" href="https://www.swig.org">SWIG</a> создаст обёртку, которая скомпилируется, но которой почти невозможно пользоваться из скриптового языка так, как предполагалось для функции C.</p>
+<p>В Python для работы с непрерывными (точнее, <em>имеющими шаги</em>) блоками однородных данных предпочтительно использовать NumPy, предоставляющий полноценный объектно-ориентированный доступ к многомерным массивам. Поэтому естественный интерфейс Python к функции <code class="docutils literal notranslate"><span class="pre">rms</span></code> выглядит так (включая строку документации):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rms</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    rms: return the root mean square of a sequence</span>
+<span class="sd">    rms(numpy.ndarray) -&gt; double</span>
+<span class="sd">    rms(list) -&gt; double</span>
+<span class="sd">    rms(tuple) -&gt; double</span>
+<span class="sd">    """</span>
+</pre></div>
+</div>
+<p>где <code class="docutils literal notranslate"><span class="pre">seq</span></code> — массив NumPy значений <code class="docutils literal notranslate"><span class="pre">double</span></code>, а его длина <code class="docutils literal notranslate"><span class="pre">n</span></code> извлекается из <code class="docutils literal notranslate"><span class="pre">seq</span></code> перед передачей в функцию C. Более того, NumPy умеет создавать массивы из произвольных последовательностей Python, поэтому <code class="docutils literal notranslate"><span class="pre">seq</span></code> может быть почти любой последовательностью, если каждый элемент преобразуется в <code class="docutils literal notranslate"><span class="pre">double</span></code>. Код обёртки сам преобразует её в массив NumPy, затем извлечёт данные и длину.</p>
+<p><a class="reference external" href="https://www.swig.org">SWIG</a> позволяет задавать такие преобразования механизмом <em>отображений типов (typemaps)</em>. В этом документе объясняется использование <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> — интерфейсного файла <a class="reference external" href="https://www.swig.org">SWIG</a> с набором отображений типов, упрощающих описанные выше преобразования массивов. Например, предположим, что приведённый выше прототип функции <code class="docutils literal notranslate"><span class="pre">rms</span></code> находится в заголовочном файле <code class="docutils literal notranslate"><span class="pre">rms.h</span></code>. Чтобы получить описанный интерфейс Python, в интерфейсный файл <a class="reference external" href="https://www.swig.org">SWIG</a> нужно добавить следующее:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="p">{</span>
+<span class="c1">#define SWIG_FILE_WITH_INIT</span>
+<span class="c1">#include "rms.h"</span>
+<span class="o">%</span><span class="p">}</span>
+
+<span class="o">%</span><span class="n">include</span> <span class="s2">"numpy.i"</span>
+
+<span class="o">%</span><span class="n">init</span> <span class="o">%</span><span class="p">{</span>
+<span class="n">import_array</span><span class="p">();</span>
+<span class="o">%</span><span class="p">}</span>
+
+<span class="o">%</span><span class="n">apply</span> <span class="p">(</span><span class="n">double</span><span class="o">*</span> <span class="n">IN_ARRAY1</span><span class="p">,</span> <span class="nb">int</span> <span class="n">DIM1</span><span class="p">)</span> <span class="p">{(</span><span class="n">double</span><span class="o">*</span> <span class="n">seq</span><span class="p">,</span> <span class="nb">int</span> <span class="n">n</span><span class="p">)};</span>
+<span class="o">%</span><span class="n">include</span> <span class="s2">"rms.h"</span>
+</pre></div>
+</div>
+<p>Сопоставления типов выбираются по списку из одного или нескольких аргументов функции: по их типам либо по типам и именам. Такие списки мы будем называть <em>сигнатурами</em>. Выше используется одно из многих сопоставлений, определённых в <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code>, с сигнатурой <code class="docutils literal notranslate"><span class="pre">(double*</span> <span class="pre">IN_ARRAY1,</span> <span class="pre">int</span> <span class="pre">DIM1)</span></code>. Имена аргументов подсказывают, что <code class="docutils literal notranslate"><span class="pre">double*</span></code> — входной одномерный массив, а <code class="docutils literal notranslate"><span class="pre">int</span></code> — размер этого измерения. Именно такой шаблон встречается в прототипе <code class="docutils literal notranslate"><span class="pre">rms</span></code>.</p>
+<p>В реальных прототипах функций, для которых создаются обёртки, аргументы вряд ли будут называться <code class="docutils literal notranslate"><span class="pre">IN_ARRAY1</span></code> и <code class="docutils literal notranslate"><span class="pre">DIM1</span></code>. Директива <a class="reference external" href="https://www.swig.org">SWIG</a> <code class="docutils literal notranslate"><span class="pre">%apply</span></code> применяет typemap для одномерных входных массивов типа <code class="docutils literal notranslate"><span class="pre">double</span></code> к реальному прототипу <code class="docutils literal notranslate"><span class="pre">rms</span></code>. Поэтому для эффективного использования <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> нужно знать доступные typemap и их действие.</p>
+<p>Файл интерфейса <a class="reference external" href="https://www.swig.org">SWIG</a> с приведёнными выше директивами <a class="reference external" href="https://www.swig.org">SWIG</a> создаёт примерно такой код обёртки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> 1 PyObject *_wrap_rms(PyObject *args) {
+ 2   PyObject *resultobj = 0;
+ 3   double *arg1 = (double *) 0 ;
+ 4   int arg2 ;
+ 5   double result;
+ 6   PyArrayObject *array1 = NULL ;
+ 7   int is_new_object1 = 0 ;
+ 8   PyObject * obj0 = 0 ;
+ 9
+10   if (!PyArg_ParseTuple(args,(char *)"O:rms",&amp;obj0)) SWIG_fail;
+11   {
+12     array1 = obj_to_array_contiguous_allow_conversion(
+13                  obj0, NPY_DOUBLE, &amp;is_new_object1);
+14     npy_intp size[1] = {
+15       -1
+16     };
+17     if (!array1 || !require_dimensions(array1, 1) ||
+18         !require_size(array1, size, 1)) SWIG_fail;
+19     arg1 = (double*) array1-&gt;data;
+20     arg2 = (int) array1-&gt;dimensions[0];
+21   }
+22   result = (double)rms(arg1,arg2);
+23   resultobj = SWIG_From_double((double)(result));
+24   {
+25     if (is_new_object1 &amp;&amp; array1) Py_DECREF(array1);
+26   }
+27   return resultobj;
+28 fail:
+29   {
+30     if (is_new_object1 &amp;&amp; array1) Py_DECREF(array1);
+31   }
+32   return NULL;
+33 }
+</pre></div>
+</div>
+<p>Правила typemap из <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> создают строки кода 12–20, 25 и 30. В строке 10 разбираются входные данные функции <code class="docutils literal notranslate"><span class="pre">rms</span></code>. Строка формата <code class="docutils literal notranslate"><span class="pre">"O:rms"</span></code> показывает, что ожидается единственный объект Python: это задаёт символ <code class="docutils literal notranslate"><span class="pre">O</span></code> перед двоеточием, а указатель сохраняется в <code class="docutils literal notranslate"><span class="pre">obj0</span></code>. Функции из <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> выполняют и проверяют возможное преобразование произвольного объекта Python в массив NumPy. Они описаны в разделе <a class="reference internal" href="#helper-functions">Вспомогательные функции</a>; надеемся, их имена понятны сами по себе. В строке 12 из <code class="docutils literal notranslate"><span class="pre">obj0</span></code> создаётся массив NumPy. В строке 17 проверяется, что результат не равен NULL и имеет одно измерение произвольной длины. После этого в строках 19 и 20 извлекаются буфер данных и длина для вызова базовой функции C в строке 22. Строка 25 освобождает память, если был создан новый массив, который больше не нужен.</p>
+<p>Значительная часть кода обрабатывает ошибки. <code class="docutils literal notranslate"><span class="pre">SWIG_fail</span></code> — макрос для <code class="docutils literal notranslate"><span class="pre">goto</span> <span class="pre">fail</span></code>, переходящий к метке в строке 28. Неверное число аргументов обнаруживается в строке 10. Ошибка создания массива NumPy или неверное число его измерений обнаруживаются в строке 17. Наконец, даже при ошибке память корректно освобождается в строке 30.</p>
+<p>Обратите внимание: если бы аргументы в сигнатуре функции C шли в другом порядке:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">rms</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">double</span><span class="o">*</span> <span class="n">seq</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>что <a class="reference external" href="https://www.swig.org">SWIG</a> не сопоставит приведённую выше сигнатуру сопоставления типов со списком аргументов <code class="docutils literal notranslate"><span class="pre">rms</span></code>. К счастью, <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> содержит набор сопоставлений, где указатель на данные идёт последним:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">apply</span> <span class="p">(</span><span class="nb">int</span> <span class="n">DIM1</span><span class="p">,</span> <span class="n">double</span><span class="o">*</span> <span class="n">IN_ARRAY1</span><span class="p">)</span> <span class="p">{(</span><span class="nb">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">double</span><span class="o">*</span> <span class="n">seq</span><span class="p">)};</span>
+</pre></div>
+</div>
+<p>В результате определения <code class="docutils literal notranslate"><span class="pre">arg1</span></code> и <code class="docutils literal notranslate"><span class="pre">arg2</span></code> в строках 3 и 4 сгенерированного выше кода меняются местами, как и присваивания им в строках 19 и 20.</p>
+</section>
+<section id="using-numpy-i">
+<h2>Использование numpy.i<a class="headerlink" href="#using-numpy-i" title="Link to this heading">#</a></h2>
+<p>Файл <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> сейчас расположен в подкаталоге <code class="docutils literal notranslate"><span class="pre">tools/swig</span></code> каталога установки <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Обычно его следует скопировать в каталог, где разрабатываются обёртки.</p>
+<p>Простой модуль, использующий единственный файл интерфейса <a class="reference external" href="https://www.swig.org">SWIG</a>, должен содержать следующее:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="p">{</span>
+<span class="c1">#define SWIG_FILE_WITH_INIT</span>
+<span class="o">%</span><span class="p">}</span>
+<span class="o">%</span><span class="n">include</span> <span class="s2">"numpy.i"</span>
+<span class="o">%</span><span class="n">init</span> <span class="o">%</span><span class="p">{</span>
+<span class="n">import_array</span><span class="p">();</span>
+<span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>В скомпилированном модуле Python функция <code class="docutils literal notranslate"><span class="pre">import_array()</span></code> должна вызываться только один раз. Вызов может находиться в написанном вами файле C/C++, который компонуется с модулем. Тогда ни один файл интерфейса не должен содержать <code class="docutils literal notranslate"><span class="pre">#define</span> <span class="pre">SWIG_FILE_WITH_INIT</span></code> или вызывать <code class="docutils literal notranslate"><span class="pre">import_array()</span></code>. Другой вариант — разместить вызов инициализации в файле обёртки, который <a class="reference external" href="https://www.swig.org">SWIG</a> генерирует из файла интерфейса с показанным выше блоком <code class="docutils literal notranslate"><span class="pre">%init</span></code>. Если при этом файлов интерфейса <a class="reference external" href="https://www.swig.org">SWIG</a> несколько, только один из них должен содержать <code class="docutils literal notranslate"><span class="pre">#define</span> <span class="pre">SWIG_FILE_WITH_INIT</span></code> и вызывать <code class="docutils literal notranslate"><span class="pre">import_array()</span></code>.</p>
+</section>
+<section id="available-typemaps">
+<h2>Доступные карты типов <a class="headerlink" href="#available-typemaps" title="Link to this heading">#</a></h2>
+<p>Директивы отображения типов (typemap), предоставляемые <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> для массивов разных типов данных, например <code class="docutils literal notranslate"><span class="pre">double</span></code> и <code class="docutils literal notranslate"><span class="pre">int</span></code>, и для размеров, заданных разными типами, например <code class="docutils literal notranslate"><span class="pre">int</span></code> или <code class="docutils literal notranslate"><span class="pre">long</span></code>, идентичны, за исключением спецификаций типов C и NumPy. Поэтому отображения типов реализованы (обычно скрыто от пользователя) с помощью макроса:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">numpy_typemaps</span><span class="p">(</span><span class="n">DATA_TYPE</span><span class="p">,</span> <span class="n">DATA_TYPECODE</span><span class="p">,</span> <span class="n">DIM_TYPE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>который можно вызвать для соответствующих троек <code class="docutils literal notranslate"><span class="pre">(DATA_TYPE,</span> <span class="pre">DATA_TYPECODE,</span>
+<span class="pre">DIM_TYPE)</span></code>. Например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">numpy_typemaps</span><span class="p">(</span><span class="n">double</span><span class="p">,</span> <span class="n">NPY_DOUBLE</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="o">%</span><span class="n">numpy_typemaps</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span>    <span class="n">NPY_INT</span>   <span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Файл интерфейса <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> использует макрос <code class="docutils literal notranslate"><span class="pre">%numpy_typemaps</span></code> для создания отображений следующих типов данных C и размеров типа <code class="docutils literal notranslate"><span class="pre">int</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">signed</span> <span class="pre">char</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">short</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">short</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">long</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">long</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">double</span></code></p></li>
+</ul>
+<p>В следующих описаниях мы ссылаемся на общий <code class="docutils literal notranslate"><span class="pre">DATA_TYPE</span></code>, который может быть любым из типов данных C, перечисленных выше, и <code class="docutils literal notranslate"><span class="pre">DIM_TYPE</span></code>, который должен быть одним из многих типов целых чисел.</p>
+<p>Сигнатуры сопоставлений типов различаются главным образом именем указателя на буфер. Имена с <code class="docutils literal notranslate"><span class="pre">FARRAY</span></code> предназначены для массивов в порядке Fortran, а с <code class="docutils literal notranslate"><span class="pre">ARRAY</span></code> — для массивов в порядке C или одномерных массивов.</p>
+<section id="input-arrays">
+<h3>Входные массивы<a class="headerlink" href="#input-arrays" title="Link to this heading">#</a></h3>
+<p>Входные массивы — это массивы данных, передаваемые в функцию, которые не изменяются на месте и не возвращаются пользователю. Поэтому входным массивом в Python может быть почти любая последовательность Python, например список, которую можно преобразовать в массив нужного типа. Сигнатуры входных массивов:</p>
+<p>1D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">IN_ARRAY1[ANY]</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">IN_ARRAY1,</span> <span class="pre">int</span> <span class="pre">DIM1</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">IN_ARRAY1</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>2D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">IN_ARRAY2[ANY][ANY]</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">IN_ARRAY2,</span> <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">IN_ARRAY2</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">IN_FARRAY2,</span> <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">IN_FARRAY2</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>3D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">IN_ARRAY3[ANY][ANY][ANY]</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">IN_ARRAY3,</span> <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">int</span> <span class="pre">DIM3</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">int</span> <span class="pre">DIM3,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">IN_ARRAY3</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">IN_FARRAY3,</span> <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">int</span> <span class="pre">DIM3</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">int</span> <span class="pre">DIM3,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">IN_FARRAY3</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>4D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE</span> <span class="pre">IN_ARRAY4[ANY][ANY][ANY][ANY])</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE*</span> <span class="pre">IN_ARRAY4,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM3,</span> <span class="pre">,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM4,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">IN_ARRAY4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE*</span> <span class="pre">IN_FARRAY4,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM4,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">IN_FARRAY4)</span></code></p></li>
+</ul>
+<p>Первая сигнатура, <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DATA_TYPE</span> <span class="pre">IN_ARRAY[ANY]</span> <span class="pre">)</span></code>, предназначена для одномерных массивов с фиксированными размерами. Аналогично <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DATA_TYPE</span> <span class="pre">IN_ARRAY2[ANY][ANY]</span> <span class="pre">)</span></code> предназначена для двумерных массивов с фиксированными размерами; для трёхмерных используется тот же подход.</p>
+</section>
+<section id="in-place-arrays">
+<h3>Массивы, изменяемые на месте<a class="headerlink" href="#in-place-arrays" title="Link to this heading">#</a></h3>
+<p>Массивы in-place изменяются на месте. Их входные значения могут использоваться или не использоваться, но значения на момент возврата из функции имеют значение. Поэтому переданный аргумент Python должен быть массивом NumPy требуемого типа. Сигнатуры для работы на месте:</p>
+<p>1D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">INPLACE_ARRAY1[ANY]</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_ARRAY1,</span> <span class="pre">int</span> <span class="pre">DIM1</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_ARRAY1</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>2D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">INPLACE_ARRAY2[ANY][ANY]</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_ARRAY2,</span> <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_ARRAY2</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_FARRAY2,</span> <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_FARRAY2</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>3D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">INPLACE_ARRAY3[ANY][ANY][ANY]</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_ARRAY3,</span> <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">int</span> <span class="pre">DIM3</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">int</span> <span class="pre">DIM3,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_ARRAY3</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_FARRAY3,</span> <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">int</span> <span class="pre">DIM3</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">int</span> <span class="pre">DIM2,</span> <span class="pre">int</span> <span class="pre">DIM3,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_FARRAY3</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>4D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE</span> <span class="pre">INPLACE_ARRAY4[ANY][ANY][ANY][ANY])</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE*</span> <span class="pre">INPLACE_ARRAY4,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM3,</span> <span class="pre">,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM4,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_ARRAY4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE*</span> <span class="pre">INPLACE_FARRAY4,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM4,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">INPLACE_FARRAY4)</span></code></p></li>
+</ul>
+<p>Теперь эти typemap проверяют, что аргументы <code class="docutils literal notranslate"><span class="pre">INPLACE_ARRAY</span></code> используют машинный порядок байтов. В противном случае вызывается исключение.</p>
+<p>Для обработки или изменения каждого элемента независимо от числа измерений предусмотрен также «плоский» массив, изменяемый на месте. Например, функция квантования может изменять на месте каждый элемент одномерного, двумерного или любого другого массива. Эта форма проверяет непрерывность расположения в памяти, но допускает и порядок C, и порядок Fortran.</p>
+<p>ND:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE*</span> <span class="pre">INPLACE_ARRAY_FLAT,</span> <span class="pre">DIM_TYPE</span> <span class="pre">DIM_FLAT)</span></code></p></li>
+</ul>
+</section>
+<section id="argout-arrays">
+<h3>Выходные массивы argout<a class="headerlink" href="#argout-arrays" title="Link to this heading">#</a></h3>
+<p>Массивы argout передаются как аргументы функции C, но фактически служат выходными массивами. Такой подход часто используется, когда выходных переменных несколько и одного возвращаемого значения недостаточно. В Python несколько значений обычно возвращают, упаковав их в последовательность — кортеж, список и т. п. Именно это делают сопоставления типов argout. Если функция в обёртке с такими сопоставлениями возвращает несколько значений, они упаковываются в кортеж или список в зависимости от версии Python. Пользователь Python не передаёт эти массивы: он просто получает их как результат. Если указан размер, пользователь должен передать его аргументом. Сигнатуры argout:</p>
+<p>1D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">ARGOUT_ARRAY1[ANY]</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE*</span> <span class="pre">ARGOUT_ARRAY1,</span> <span class="pre">int</span> <span class="pre">DIM1</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">int</span> <span class="pre">DIM1,</span> <span class="pre">DATA_TYPE*</span> <span class="pre">ARGOUT_ARRAY1</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>2D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">ARGOUT_ARRAY2[ANY][ANY]</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>3D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">ARGOUT_ARRAY3[ANY][ANY][ANY]</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>4D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span>   <span class="pre">DATA_TYPE</span> <span class="pre">ARGOUT_ARRAY4[ANY][ANY][ANY][ANY]</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>Обычно они используются там, где в C/C++ массивы выделяются в куче, а затем функция заполняет их значения. В Python массивы выделяются автоматически и возвращаются как новые объекты массивов.</p>
+<p>Сопоставления выходных массивов argout <code class="docutils literal notranslate"><span class="pre">DATA_TYPE*</span></code> поддерживаются для одного измерения, но не для двух или трёх. Это неизбежное ограничение синтаксиса сопоставлений <a class="reference external" href="https://www.swig.org">SWIG</a>. Для таких одномерных сопоставлений функция Python принимает один аргумент, представляющий <code class="docutils literal notranslate"><span class="pre">DIM1</span></code>.</p>
+</section>
+<section id="argout-view-arrays">
+<h3>Выходные массивы-представления (Argout View Arrays)<a class="headerlink" href="#argout-view-arrays" title="Link to this heading">#</a></h3>
+<p>Массивы Argoutview используются, когда код C предоставляет представление своих внутренних данных и не требует выделять память на стороне пользователя. Это может быть опасно: почти невозможно гарантировать, что внутренние данные кода C будут существовать всё время жизни массива NumPy, который их представляет. Если уничтожить объект, предоставляющий данные, раньше массива NumPy, использование массива может привести к обращению к недействительной памяти или ошибке сегментации. Тем не менее при работе с большими наборами данных иногда другого выбора нет.</p>
+<p>Код C, для которого создаются обёртки с массивами argoutview, использует указатели на размеры и двойные указатели на данные, чтобы возвращать эти значения пользователю. Поэтому сигнатуры отображений типов argoutview имеют вид</p>
+<p>1D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_ARRAY1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_ARRAY1</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>2D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_ARRAY2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_ARRAY2</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_FARRAY2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2</span> <span class="pre">)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_FARRAY2</span> <span class="pre">)</span></code></p></li>
+</ul>
+<p>3D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_ARRAY3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_ARRAY3)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_FARRAY3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_FARRAY3)</span></code></p></li>
+</ul>
+<p>4D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_ARRAY4,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM4,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_ARRAY4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_FARRAY4,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM4,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEW_FARRAY4)</span></code></p></li>
+</ul>
+<p>Массивы с размерами, жёстко заданными в коде, не поддерживаются: они не соответствуют сигнатурам с двойным указателем, используемым этими сопоставлениями типов.</p>
+</section>
+<section id="memory-managed-argout-view-arrays">
+<h3>Выходные массивы-представления (argout) с управлением памятью<a class="headerlink" href="#memory-managed-argout-view-arrays" title="Link to this heading">#</a></h3>
+<p>В <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> недавно добавлены карты типов, позволяющие возвращать массивы argout как представления памяти с управляемым временем жизни.</p>
+<p>1D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_ARRAY1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_ARRAY1)</span></code></p></li>
+</ul>
+<p>2D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_ARRAY2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_ARRAY2)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_FARRAY2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_FARRAY2)</span></code></p></li>
+</ul>
+<p>3D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_ARRAY3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_ARRAY3)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_FARRAY3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_FARRAY3)</span></code></p></li>
+</ul>
+<p>4D:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_ARRAY4,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM4,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_ARRAY4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_FARRAY4,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM4)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(DIM_TYPE*</span> <span class="pre">DIM1,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM2,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM3,</span> <span class="pre">DIM_TYPE*</span> <span class="pre">DIM4,</span> <span class="pre">DATA_TYPE**</span> <span class="pre">ARGOUTVIEWM_FARRAY4)</span></code></p></li>
+</ul>
+</section>
+<section id="output-arrays">
+<h3>Выходные массивы<a class="headerlink" href="#output-arrays" title="Link to this heading">#</a></h3>
+<p>Файл интерфейса <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> не поддерживает отображения типов для выходных массивов по нескольким причинам. Во-первых, функции C/C++ возвращают только одно значение, что не позволяет универсальным способом получать сведения о размерах. Во-вторых, массивы с фиксированной длиной нельзя использовать как возвращаемые значения. Иными словами:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">newVector</span><span class="p">(</span><span class="n">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">double</span> <span class="n">y</span><span class="p">,</span> <span class="n">double</span> <span class="n">z</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>не является допустимым синтаксисом C/C++. Поэтому мы не можем предоставить отображения типов вида:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">typemap</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="p">(</span><span class="n">TYPE</span><span class="p">[</span><span class="n">ANY</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Если вы столкнулись с ситуацией, когда функция или метод возвращает указатель на массив, лучше всего написать собственную версию функции, которую нужно обернуть, либо с помощью <code class="docutils literal notranslate"><span class="pre">%extend</span></code> для методов класса, либо с помощью <code class="docutils literal notranslate"><span class="pre">%ignore</span></code> и <code class="docutils literal notranslate"><span class="pre">%rename</span></code> для функций.</p>
+</section>
+<section id="other-common-types-bool">
+<h3>Другие распространённые типы: bool<a class="headerlink" href="#other-common-types-bool" title="Link to this heading">#</a></h3>
+<p>Тип C++ <code class="docutils literal notranslate"><span class="pre">bool</span></code> не поддерживается в списке раздела <a class="reference internal" href="#available-typemaps">Доступные сопоставления типов</a>. Логический тип NumPy занимает один байт, а тип C++ <code class="docutils literal notranslate"><span class="pre">bool</span></code> — четыре байта, по крайней мере в системе автора. Примечание переводчика: размер bool в C++ зависит от реализации; например, в локальной проверке GCC 16.2.1 он равен 1 байту. Следовательно:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">numpy_typemaps</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">NPY_BOOL</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>приведёт к созданию typemap, генерирующих код с неверными длинами данных. Можно использовать следующее раскрытие макроса:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">numpy_typemaps</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">NPY_UINT</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>чтобы решить проблему длины данных. Для <a class="reference internal" href="#input-arrays">входных массивов</a> это сработает, но <a class="reference internal" href="#in-place-arrays">массивы, изменяемые на месте</a>, могут не пройти проверку типов.</p>
+</section>
+<section id="other-common-types-complex">
+<h3>Другие распространённые типы: complex<a class="headerlink" href="#other-common-types-complex" title="Link to this heading">#</a></h3>
+<p>Преобразования через typemap для комплексных типов с плавающей точкой также не поддерживаются автоматически. Это связано с тем, что Python и NumPy написаны на C, в котором нет встроенных комплексных типов. И Python, и NumPy определяют собственные (по сути эквивалентные) структуры <code class="docutils literal notranslate"><span class="pre">struct</span></code> для комплексных переменных:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Python</span> <span class="o">*/</span>
+<span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span><span class="n">double</span> <span class="n">real</span><span class="p">;</span> <span class="n">double</span> <span class="n">imag</span><span class="p">;}</span> <span class="n">Py_complex</span><span class="p">;</span>
+
+<span class="o">/*</span> <span class="n">NumPy</span> <span class="o">*/</span>
+<span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span><span class="nb">float</span>  <span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">;}</span> <span class="n">npy_cfloat</span><span class="p">;</span>
+<span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span><span class="n">double</span> <span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">;}</span> <span class="n">npy_cdouble</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Мы могли бы реализовать:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">numpy_typemaps</span><span class="p">(</span><span class="n">Py_complex</span> <span class="p">,</span> <span class="n">NPY_CDOUBLE</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="o">%</span><span class="n">numpy_typemaps</span><span class="p">(</span><span class="n">npy_cfloat</span> <span class="p">,</span> <span class="n">NPY_CFLOAT</span> <span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="o">%</span><span class="n">numpy_typemaps</span><span class="p">(</span><span class="n">npy_cdouble</span><span class="p">,</span> <span class="n">NPY_CDOUBLE</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>что обеспечило бы автоматическое преобразование массивов типов <code class="docutils literal notranslate"><span class="pre">Py_complex</span></code>, <code class="docutils literal notranslate"><span class="pre">npy_cfloat</span></code> и <code class="docutils literal notranslate"><span class="pre">npy_cdouble</span></code>. Однако маловероятно, что независимые от Python и NumPy приложения, для которых создаётся интерфейс Python с помощью <a class="reference external" href="https://www.swig.org">SWIG</a>, используют именно эти определения комплексных типов. Скорее они определяют собственные комплексные типы или, в C++, используют <code class="docutils literal notranslate"><span class="pre">std::complex</span></code>. Если их структуры данных совместимы с комплексными типами Python и NumPy, приведённые выше раскрытия <code class="docutils literal notranslate"><span class="pre">%numpy_typemap</span></code> должны работать после подстановки пользовательского комплексного типа в первый аргумент.</p>
+</section>
+</section>
+<section id="numpy-array-scalars-and-swig">
+<h2>Скаляры массива NumPy и SWIG <a class="headerlink" href="#numpy-array-scalars-and-swig" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.swig.org">SWIG</a> тщательно проверяет числовые типы. Например, если процедура C/C++ ожидает целое число, код <a class="reference external" href="https://www.swig.org">SWIG</a> проверяет целые Python обычного и длинного типов и вызывает ошибку переполнения, если число слишком велико для целого C. При использовании скаляров NumPy можно извлечь целое число из массива и передать функции C/C++, обёрнутой <a class="reference external" href="https://www.swig.org">SWIG</a> и ожидающей <code class="docutils literal notranslate"><span class="pre">int</span></code>. Однако проверка <a class="reference external" href="https://www.swig.org">SWIG</a> может не распознать скаляр NumPy как целое число. Часто это всё же работает: зависит от того, наследуется ли используемый целочисленный тип NumPy от целого типа Python на данной платформе. Поэтому код для 32-битной машины иногда не работает на 64-битной. Здесь отражена терминология исторического описания Python.</p>
+<p>Если вы получили ошибку Python, которая выглядит следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span><span class="p">:</span> <span class="ow">in</span> <span class="n">method</span> <span class="s1">'MyClass_MyMethod'</span><span class="p">,</span> <span class="n">argument</span> <span class="mi">2</span> <span class="n">of</span> <span class="nb">type</span> <span class="s1">'int'</span>
+</pre></div>
+</div>
+<p>а передаваемый аргумент — целое число, извлечённое из массива NumPy, значит, вы столкнулись с этой проблемой. Решение — изменить систему преобразования типов <a class="reference external" href="https://www.swig.org">SWIG</a>, чтобы она принимала скаляры массивов NumPy наряду со стандартными целочисленными типами. Такая возможность уже подготовлена. Просто скопируйте файл:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyfragments</span><span class="o">.</span><span class="n">swg</span>
+</pre></div>
+</div>
+<p>в рабочий каталог сборки вашего проекта, и проблема будет решена. Это рекомендуется сделать в любом случае, поскольку возможности вашего интерфейса Python только расширятся.</p>
+<section id="why-is-there-a-second-file">
+<h3>Почему существует второй файл? <a class="headerlink" href="#why-is-there-a-second-file" title="Link to this heading">#</a></h3>
+<p>Система проверки и преобразования типов <a class="reference external" href="https://www.swig.org">SWIG</a> представляет собой сложное сочетание макросов C, макросов <a class="reference external" href="https://www.swig.org">SWIG</a>, отображений типов <a class="reference external" href="https://www.swig.org">SWIG</a> и фрагментов <a class="reference external" href="https://www.swig.org">SWIG</a>. Фрагменты позволяют вставлять код в файл обёртки только при необходимости. Если один и тот же фрагмент нужен нескольким отображениям типов, он вставляется в код обёртки лишь один раз.</p>
+<p>Есть фрагмент для преобразования целого числа Python в <code class="docutils literal notranslate"><span class="pre">long</span></code> языка C. Другой фрагмент преобразует целое число Python в <code class="docutils literal notranslate"><span class="pre">int</span></code> языка C, вызывая функцию, определённую во фрагменте <code class="docutils literal notranslate"><span class="pre">long</span></code>. Нужные изменения можно внести, изменив определение фрагмента <code class="docutils literal notranslate"><span class="pre">long</span></code>. <a class="reference external" href="https://www.swig.org">SWIG</a> выбирает активное определение фрагмента по принципу «первое встретившееся используется». Поэтому нужно определить фрагмент преобразований <code class="docutils literal notranslate"><span class="pre">long</span></code> до того, как <a class="reference external" href="https://www.swig.org">SWIG</a> сделает это сам. <a class="reference external" href="https://www.swig.org">SWIG</a> позволяет поместить наши определения фрагментов в файл <code class="docutils literal notranslate"><span class="pre">pyfragments.swg</span></code>. Если поместить новые определения в <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code>, они будут проигнорированы.</p>
+</section>
+</section>
+<section id="helper-functions">
+<h2>Вспомогательные функции<a class="headerlink" href="#helper-functions" title="Link to this heading">#</a></h2>
+<p>Файл <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> содержит макросы и процедуры, используемые внутри него для построения отображений типов. Однако эти функции могут пригодиться и в других частях вашего интерфейсного файла. Макросы и процедуры реализованы как фрагменты, кратко описанные в предыдущем разделе. Если при использовании приведённых ниже макросов или функций компилятор сообщает, что не распознаёт символ, необходимо явно включить соответствующие фрагменты в код с помощью:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">fragment</span><span class="p">(</span><span class="s2">"NumPy_Fragments"</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>в файле интерфейса <a class="reference external" href="https://www.swig.org"> SWIG </a>.</p>
+<section id="macros">
+<h3>Макросы<a class="headerlink" href="#macros" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt><strong>is_array(a)</strong></dt><dd><p>Принимает истинное значение, если <code class="docutils literal notranslate"><span class="pre">a</span></code> не равен <code class="docutils literal notranslate"><span class="pre">NULL</span></code> и может быть приведён к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_type(a)</strong></dt><dd><p>Возвращает целочисленный код типа данных <code class="docutils literal notranslate"><span class="pre">a</span></code> при условии, что <code class="docutils literal notranslate"><span class="pre">a</span></code> можно привести к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_numdims(a)</strong></dt><dd><p>Возвращает целое число измерений <code class="docutils literal notranslate"><span class="pre">a</span></code>, предполагая, что <code class="docutils literal notranslate"><span class="pre">a</span></code> можно привести к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_dimensions(a)</strong></dt><dd><p>Даёт массив типа <code class="docutils literal notranslate"><span class="pre">npy_intp</span></code> длины <code class="docutils literal notranslate"><span class="pre">array_numdims(a)</span></code>, содержащий размеры всех измерений <code class="docutils literal notranslate"><span class="pre">a</span></code>, при условии что <code class="docutils literal notranslate"><span class="pre">a</span></code> можно привести к типу <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_size(a,i)</strong></dt><dd><p>Возвращает размер измерения <code class="docutils literal notranslate"><span class="pre">i</span></code> массива <code class="docutils literal notranslate"><span class="pre">a</span></code>, при условии что <code class="docutils literal notranslate"><span class="pre">a</span></code> можно привести к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_strides(a)</strong></dt><dd><p>Даёт массив типа <code class="docutils literal notranslate"><span class="pre">npy_intp</span></code> длины <code class="docutils literal notranslate"><span class="pre">array_numdims(a)</span></code> с шагами по памяти для всех измерений <code class="docutils literal notranslate"><span class="pre">a</span></code>, предполагая возможность привести <code class="docutils literal notranslate"><span class="pre">a</span></code> к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>. Шаг — расстояние в байтах между соседними элементами вдоль одной оси.</p>
+</dd>
+<dt><strong>array_stride(a,i)</strong></dt><dd><p>Возвращает <code class="docutils literal notranslate"><span class="pre">i</span></code> -й шаг <code class="docutils literal notranslate"><span class="pre">a</span></code>, предполагая, что <code class="docutils literal notranslate"><span class="pre">a</span></code> можно привести к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_data(a)</strong></dt><dd><p>Даёт указатель типа <code class="docutils literal notranslate"><span class="pre">void*</span></code> на буфер данных <code class="docutils literal notranslate"><span class="pre">a</span></code>, если <code class="docutils literal notranslate"><span class="pre">a</span></code> можно привести к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_descr(a)</strong></dt><dd><p>Возвращает заимствованную ссылку на свойство dtype (<code class="docutils literal notranslate"><span class="pre">PyArray_Descr*</span></code>) объекта <code class="docutils literal notranslate"><span class="pre">a</span></code>; предполагается, что <code class="docutils literal notranslate"><span class="pre">a</span></code> можно привести к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_flags(a)</strong></dt><dd><p>Возвращает целое число, представляющее флаги <code class="docutils literal notranslate"><span class="pre">a</span></code>, предполагая, что <code class="docutils literal notranslate"><span class="pre">a</span></code> можно привести к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_enableflags(a,f)</strong></dt><dd><p>Устанавливает флаг, представленный <code class="docutils literal notranslate"><span class="pre">f</span></code> для <code class="docutils literal notranslate"><span class="pre">a</span></code>, предполагая, что <code class="docutils literal notranslate"><span class="pre">a</span></code> можно привести к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+</dd>
+<dt><strong>array_is_contiguous(a)</strong></dt><dd><p>Возвращает истинное значение, если данные массива <code class="docutils literal notranslate"><span class="pre">a</span></code> непрерывно расположены в памяти. Эквивалентно <code class="docutils literal notranslate"><span class="pre">(PyArray_ISCONTIGUOUS(a))</span></code>.</p>
+</dd>
+<dt><strong>array_is_native(a)</strong></dt><dd><p>Возвращает истинное значение, если буфер данных <code class="docutils literal notranslate"><span class="pre">a</span></code> использует машинный порядок байтов. Эквивалентно <code class="docutils literal notranslate"><span class="pre">(PyArray_ISNOTSWAPPED(a))</span></code>.</p>
+</dd>
+<dt><strong>array_is_fortran(a)</strong></dt><dd><p>Истинно, если <code class="docutils literal notranslate"><span class="pre">a</span></code> расположен в порядке Fortran.</p>
+</dd>
+</dl>
+</section>
+<section id="routines">
+<h3>Функции<a class="headerlink" href="#routines" title="Link to this heading">#</a></h3>
+<dl>
+<dt><strong>pytype_string()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char*</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyObject*</span> <span class="pre">py_obj</span></code> — произвольный объект Python.</p></li>
+</ul>
+<p>Возвращает строку с описанием типа <code class="docutils literal notranslate"><span class="pre">py_obj</span></code>.</p>
+</dd>
+<dt><strong>typecode_string()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char*</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">typecode</span></code> — целочисленный код типа NumPy.</p></li>
+</ul>
+<p>Возвращает строку, описывающую тип, соответствующий <code class="docutils literal notranslate"><span class="pre">typecode</span></code> NumPy.</p>
+</dd>
+<dt><strong>type_match()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">actual_type</span></code>, код типа NumPy массива NumPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">desired_type</span></code> , желаемый код типа NumPy.</p></li>
+</ul>
+<p>Проверяет совместимость <code class="docutils literal notranslate"><span class="pre">actual_type</span></code> с <code class="docutils literal notranslate"><span class="pre">desired_type</span></code>. Например, типы char и byte либо int и long могут считаться совместимыми. Теперь эквивалентно <code class="docutils literal notranslate"><span class="pre">PyArray_EquivTypenums()</span></code>.</p>
+</dd>
+<dt><strong>obj_to_array_no_conversion()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyObject*</span> <span class="pre">input</span></code> — произвольный объект Python.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">typecode</span></code> , желаемый код типа NumPy.</p></li>
+</ul>
+<p>Приводит <code class="docutils literal notranslate"><span class="pre">input</span></code> к <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>, если это допустимо, и проверяет тип <code class="docutils literal notranslate"><span class="pre">typecode</span></code>. Если <code class="docutils literal notranslate"><span class="pre">input</span></code> нельзя привести или <code class="docutils literal notranslate"><span class="pre">typecode</span></code> не подходит, устанавливает ошибку Python и возвращает <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</dd>
+<dt><strong>obj_to_array_allow_conversion()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyObject*</span> <span class="pre">input</span></code> — произвольный объект Python.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">typecode</span></code>, желаемый код типа NumPy полученного массива.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int*</span> <span class="pre">is_new_object</span></code>: возвращает 0, если преобразование не выполнялось, и 1 в противном случае.</p></li>
+</ul>
+<p>Преобразует <code class="docutils literal notranslate"><span class="pre">input</span></code> в массив NumPy с заданным <code class="docutils literal notranslate"><span class="pre">typecode</span></code>. При успехе возвращает корректный <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code> нужного типа. При неудаче устанавливается сообщение об ошибке Python и функция возвращает <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</dd>
+<dt><strong>make_contiguous()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span> <span class="pre">ary</span></code> — массив NumPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int*</span> <span class="pre">is_new_object</span></code>: возвращает 0, если преобразование не выполнялось, и 1 в противном случае.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">min_dims</span></code> — минимальное допустимое число измерений.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">max_dims</span></code> — максимально допустимое число измерений.</p></li>
+</ul>
+<p>Проверяет, расположен ли <code class="docutils literal notranslate"><span class="pre">ary</span></code> непрерывно в памяти. Если да, возвращает исходный указатель и отмечает, что объект не новый. Иначе создаёт новый <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code> на основе исходных данных, отмечает его как новый объект и возвращает указатель.</p>
+</dd>
+<dt><strong>make_fortran()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+<p>Аргументы</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span> <span class="pre">ary</span></code> — массив NumPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int*</span> <span class="pre">is_new_object</span></code>: возвращает 0, если преобразование не выполнялось, и 1 в противном случае.</p></li>
+</ul>
+<p>Проверяет, непрерывно ли <code class="docutils literal notranslate"><span class="pre">ary</span></code> расположен в памяти в порядке Fortran. Если да, возвращает входной указатель, отмечая, что новый объект не создан. Иначе создаёт новый <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code> по исходным данным, отмечает его как новый объект и возвращает указатель.</p>
+</dd>
+<dt><strong>obj_to_array_contiguous_allow_conversion()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyObject*</span> <span class="pre">input</span></code> — произвольный объект Python.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">typecode</span></code>, желаемый код типа NumPy полученного массива.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int*</span> <span class="pre">is_new_object</span></code>: возвращает 0, если преобразование не выполнялось, и 1 в противном случае.</p></li>
+</ul>
+<p>Преобразует <code class="docutils literal notranslate"><span class="pre">input</span></code> в <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code> указанного типа с данными, непрерывно расположенными в памяти. Если входной объект не является <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code> с таким расположением данных, создаётся новый объект и устанавливается соответствующий флаг.</p>
+</dd>
+<dt><strong>obj_to_array_fortran_allow_conversion()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyObject*</span> <span class="pre">input</span></code> — произвольный объект Python.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">typecode</span></code>, желаемый код типа NumPy полученного массива.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int*</span> <span class="pre">is_new_object</span></code>: возвращает 0, если преобразование не выполнялось, и 1 в противном случае.</p></li>
+</ul>
+<p>Преобразует <code class="docutils literal notranslate"><span class="pre">input</span></code> в <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code> заданного типа, непрерывно расположенный в памяти в порядке Fortran. Если вход не является таким <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code>, создаётся новый объект и устанавливается признак создания нового объекта.</p>
+</dd>
+<dt><strong>require_contiguous()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span> <span class="pre">ary</span></code> — массив NumPy.</p></li>
+</ul>
+<p>Проверяет, непрерывно ли расположены данные <code class="docutils literal notranslate"><span class="pre">ary</span></code> в памяти. Если да, возвращает 1; иначе устанавливает ошибку Python и возвращает 0.</p>
+</dd>
+<dt><strong>require_native()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyArray_Object*</span> <span class="pre">ary</span></code> — массив NumPy.</p></li>
+</ul>
+<p>Требует машинного порядка байтов <code class="docutils literal notranslate"><span class="pre">ary</span></code>. Если байты массива не переставлены относительно машинного порядка, возвращает 1; иначе устанавливает ошибку Python и возвращает 0.</p>
+</dd>
+<dt><strong>require_dimensions()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span> <span class="pre">ary</span></code> — массив NumPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">exact_dimensions</span></code> — желаемое количество измерений.</p></li>
+</ul>
+<p>Проверяет, что <code class="docutils literal notranslate"><span class="pre">ary</span></code> имеет заданное число измерений. При совпадении возвращает 1; иначе устанавливает ошибку Python и возвращает 0.</p>
+</dd>
+<dt><strong>require_dimensions_n()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span> <span class="pre">ary</span></code> — массив NumPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int*</span> <span class="pre">exact_dimensions</span></code>, массив целых чисел, представляющих приемлемые числа измерений.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">n</span></code>, длина <code class="docutils literal notranslate"><span class="pre">exact_dimensions</span></code>.</p></li>
+</ul>
+<p>Проверяет, что число измерений <code class="docutils literal notranslate"><span class="pre">ary</span></code> входит в список допустимых значений. Если число измерений массива совпадает с одним из указанных, возвращает 1. Иначе устанавливает сообщение об ошибке Python и возвращает 0.</p>
+</dd>
+<dt><strong>require_size()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span> <span class="pre">ary</span></code> — массив NumPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">npy_int*</span> <span class="pre">size</span></code>, массив, представляющий желаемые длины каждого измерения.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">n</span></code>, длина <code class="docutils literal notranslate"><span class="pre">size</span></code>.</p></li>
+</ul>
+<p>Проверяет, что <code class="docutils literal notranslate"><span class="pre">ary</span></code> имеет заданную форму. Если форма совпадает, возвращает 1. Иначе устанавливает сообщение об ошибке Python и возвращает 0.</p>
+</dd>
+<dt><strong>require_fortran()</strong></dt><dd><p>Тип возвращаемого значения: <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Аргументы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span> <span class="pre">ary</span></code> — массив NumPy.</p></li>
+</ul>
+<p>Требует порядка Fortran для данного <code class="docutils literal notranslate"><span class="pre">PyArrayObject</span></code>. Если <code class="docutils literal notranslate"><span class="pre">PyArrayObject</span></code> уже имеет порядок Fortran, ничего не делает. Иначе устанавливает флаг порядка Fortran и пересчитывает шаги по осям.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="beyond-the-provided-typemaps">
+<h2>Дополнение стандартных отображений типов<a class="headerlink" href="#beyond-the-provided-typemaps" title="Link to this heading">#</a></h2>
+<p>Существует множество ситуаций с массивами C или C++/массивами NumPy, которые не описываются простой директивой <code class="docutils literal notranslate"><span class="pre">%include</span> <span class="pre">"numpy.i"</span></code> и последующими директивами <code class="docutils literal notranslate"><span class="pre">%apply</span></code>.</p>
+<section id="a-common-example">
+<h3>Типичный пример <a class="headerlink" href="#a-common-example" title="Link to this heading">#</a></h3>
+<p>Рассмотрим подходящий прототип функции скалярного произведения:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">dot</span><span class="p">(</span><span class="nb">int</span> <span class="nb">len</span><span class="p">,</span> <span class="n">double</span><span class="o">*</span> <span class="n">vec1</span><span class="p">,</span> <span class="n">double</span><span class="o">*</span> <span class="n">vec2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Интерфейс Python, который мы хотим:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dot</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    dot(PyObject,PyObject) -&gt; double</span>
+<span class="sd">    """</span>
+</pre></div>
+</div>
+<p>Проблема в том, что один аргумент размера относится к двум массивам, а наши отображения типов рассчитаны на размер одного массива. <a class="reference external" href="https://www.swig.org">SWIG</a> не предоставляет механизма связи <code class="docutils literal notranslate"><span class="pre">len</span></code> с <code class="docutils literal notranslate"><span class="pre">vec2</span></code>, принимающего два входных аргумента Python. Рекомендуется следующее решение:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>%apply (int DIM1, double* IN_ARRAY1) {(int len1, double* vec1),
+                                      (int len2, double* vec2)}
+%rename (dot) my_dot;
+%exception my_dot {
+    $action
+    if (PyErr_Occurred()) SWIG_fail;
+}
+%inline %{
+double my_dot(int len1, double* vec1, int len2, double* vec2) {
+    if (len1 != len2) {
+        PyErr_Format(PyExc_ValueError,
+                     "Arrays of lengths (%d,%d) given",
+                     len1, len2);
+        return 0.0;
+    }
+    return dot(len1, vec1, vec2);
+}
+%}
+</pre></div>
+</div>
+<p>Если заголовочный файл с прототипом <code class="docutils literal notranslate"><span class="pre">double</span> <span class="pre">dot()</span></code> содержит и другие прототипы, для которых нужны обёртки, и поэтому его необходимо подключить через <code class="docutils literal notranslate"><span class="pre">%include</span></code>, потребуется также директива <code class="docutils literal notranslate"><span class="pre">%ignore</span>
+<span class="pre">dot;</span></code> после <code class="docutils literal notranslate"><span class="pre">%rename</span></code> и перед <code class="docutils literal notranslate"><span class="pre">%include</span></code>. Если же эта функция является методом класса, следует использовать <code class="docutils literal notranslate"><span class="pre">%extend</span></code> вместо <code class="docutils literal notranslate"><span class="pre">%inline</span></code> и дополнительно указать <code class="docutils literal notranslate"><span class="pre">%ignore</span></code>.</p>
+<p><strong>Об обработке ошибок:</strong> <code class="docutils literal notranslate"><span class="pre">my_dot</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">double</span></code>, но может также установить ошибку Python. При несовпадении длин векторов созданная обёртка вернёт объект float Python со значением 0.0. Поскольку это не <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, интерпретатор не проверит наличие ошибки. Поэтому выше добавлена директива <code class="docutils literal notranslate"><span class="pre">%exception</span></code> для <code class="docutils literal notranslate"><span class="pre">my_dot</span></code>, обеспечивающая нужное поведение. <code class="docutils literal notranslate"><span class="pre">$action</span></code> — макрос, раскрывающийся в корректный вызов <code class="docutils literal notranslate"><span class="pre">my_dot</span></code>. В общем случае для этой задачи, скорее всего, стоит написать макрос <a class="reference external" href="https://www.swig.org">SWIG</a>.</p>
+</section>
+<section id="other-situations">
+<h3>Другие ситуации<a class="headerlink" href="#other-situations" title="Link to this heading">#</a></h3>
+<p>Есть и другие ситуации создания обёрток, в которых <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> может оказаться полезным.</p>
+<ul>
+<li><p>В некоторых случаях макрос <code class="docutils literal notranslate"><span class="pre">%numpy_typemaps</span></code> позволяет реализовать отображения типов (typemap) для собственных типов данных. Примеры см. в разделах <a class="reference internal" href="#other-common-types-bool">Другие распространённые типы: bool</a> и <a class="reference internal" href="#other-common-types-complex">Другие распространённые типы: complex</a>. Другой случай — когда размеры имеют тип, отличный от <code class="docutils literal notranslate"><span class="pre">int</span></code>, например <code class="docutils literal notranslate"><span class="pre">long</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">numpy_typemaps</span><span class="p">(</span><span class="n">double</span><span class="p">,</span> <span class="n">NPY_DOUBLE</span><span class="p">,</span> <span class="n">long</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Код <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> можно использовать для написания собственных сопоставлений типов. Например, для пятимерного массива в аргументе функции можно скопировать подходящие четырёхмерные сопоставления в свой файл интерфейса. Изменения для дополнительного измерения будут простыми. Примечание переводчика: в последнем предложении оригинала ошибочно названо четвёртое измерение; для перехода от четырёхмерного массива к пятимерному нужно добавить пятое.</p></li>
+<li><p>Иногда лучше использовать директиву <code class="docutils literal notranslate"><span class="pre">%extend</span></code>, чтобы определить новые методы классов или перегрузить существующие. Эти методы принимают <code class="docutils literal notranslate"><span class="pre">PyObject*</span></code>, который является <code class="docutils literal notranslate"><span class="pre">PyArrayObject*</span></code> или может быть в него преобразован, вместо указателя на буфер. Здесь могут быть очень полезны вспомогательные функции из <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code>.</p></li>
+<li><p>Написание отображений типов бывает не вполне интуитивным. Если у вас есть конкретные вопросы об отображениях типов <a class="reference external" href="https://www.swig.org">SWIG</a> для NumPy, разработчики <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> читают списки рассылки <a class="reference external" href="mailto:Numpy-discussion%40python.org">Numpy-discussion</a> и <a class="reference external" href="mailto:Swig-user%40lists.sourceforge.net">Swig-user</a>.</p></li>
+</ul>
+</section>
+<section id="a-final-note">
+<h3>Заключительное замечание<a class="headerlink" href="#a-final-note" title="Link to this heading">#</a></h3>
+<p>Директива <code class="docutils literal notranslate"><span class="pre">%apply</span></code>, обычно необходимая для использования <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code>, действует, пока вы явно не сообщите <a class="reference external" href="https://www.swig.org">SWIG</a> об её отмене. Если аргументы оборачиваемых функций или методов имеют распространённые имена, например <code class="docutils literal notranslate"><span class="pre">length</span></code> или <code class="docutils literal notranslate"><span class="pre">vector</span></code>, сопоставления типов могут применяться неожиданно или нежелательно. Поэтому после завершения работы с конкретным сопоставлением рекомендуется добавлять директиву <code class="docutils literal notranslate"><span class="pre">%clear</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">apply</span> <span class="p">(</span><span class="n">double</span><span class="o">*</span> <span class="n">IN_ARRAY1</span><span class="p">,</span> <span class="nb">int</span> <span class="n">DIM1</span><span class="p">)</span> <span class="p">{(</span><span class="n">double</span><span class="o">*</span> <span class="n">vector</span><span class="p">,</span> <span class="nb">int</span> <span class="n">length</span><span class="p">)}</span>
+<span class="o">%</span><span class="n">include</span> <span class="s2">"my_header.h"</span>
+<span class="o">%</span><span class="n">clear</span> <span class="p">(</span><span class="n">double</span><span class="o">*</span> <span class="n">vector</span><span class="p">,</span> <span class="nb">int</span> <span class="n">length</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Обычно эти сигнатуры typemap следует применять только там, где они нужны, а затем удалять их действие.</p>
+</section>
+</section>
+<section id="summary">
+<h2>Краткое описание<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> изначально предоставляет сопоставления типов (typemap) для преобразований между массивами NumPy и массивами C:</p>
+<ul class="simple">
+<li><p>Это может быть один из 12 различных скалярных типов: <code class="docutils literal notranslate"><span class="pre">signed</span> <span class="pre">char</span></code>, <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span></code>, <code class="docutils literal notranslate"><span class="pre">short</span></code>, <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">short</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">long</span></code>, <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span></code>, <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">long</span></code>, <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code> и <code class="docutils literal notranslate"><span class="pre">double</span></code>.</p></li>
+<li><p>Они поддерживают 74 различные сигнатуры аргументов для каждого типа данных, в том числе:</p>
+<ul>
+<li><p>Одномерные, двумерные, трёхмерные и четырёхмерные массивы.</p></li>
+<li><p>Поведение для входных аргументов, изменения на месте, argout, argoutview и argoutview с управлением памятью.</p></li>
+<li><p>Жёстко заданные размеры, запись «буфер данных, затем размеры» и запись «размеры, затем буфер данных».</p></li>
+<li><p>Для двумерных, трёхмерных и четырёхмерных массивов поддерживается как порядок C (быстрее всего меняется последнее измерение), так и порядок Fortran (быстрее всего меняется первое измерение).</p></li>
+</ul>
+</li>
+</ul>
+<p>Файл интерфейса <code class="docutils literal notranslate"><span class="pre">numpy.i</span></code> также предоставляет разработчикам обёрток дополнительные инструменты, в том числе:</p>
+<ul class="simple">
+<li><p>Макрос <a class="reference external" href="https://www.swig.org">SWIG</a> (<code class="docutils literal notranslate"><span class="pre">%numpy_typemaps</span></code>) с тремя аргументами для реализации 74 сигнатур аргументов при выбранных пользователем (1) типе данных C, (2) соответствующем ему типе данных NumPy и (3) типе для размеров измерений.</p></li>
+<li><p>Четырнадцать макросов C и пятнадцать функций C для написания специализированных typemap, расширений или встраиваемых функций, обрабатывающих случаи, не охваченные готовыми typemap. Макросы и функции специально реализованы для работы с C API NumPy независимо от версии — как до, так и после объявления некоторых частей API устаревшими после версии 1.6.</p></li>
+</ul>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="swig.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">NumPy и SWIG</p>
+</div>
+</a>
+<a class="right-next" href="swig.testing.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Тестирование отображений типов numpy.i</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Введение</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-numpy-i">Использование numpy.i</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-typemaps">Доступные карты типов </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-arrays">Входные массивы</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-place-arrays">Массивы, изменяемые на месте</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argout-arrays">Выходные массивы argout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#argout-view-arrays">Выходные массивы-представления (Argout View Arrays)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-managed-argout-view-arrays">Выходные массивы-представления (argout) с управлением памятью</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-arrays">Выходные массивы</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-common-types-bool">Другие распространённые типы: bool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-common-types-complex">Другие распространённые типы: complex</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-scalars-and-swig">Скаляры массива NumPy и SWIG </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-there-a-second-file">Почему существует второй файл? </a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-functions">Вспомогательные функции</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macros">Макросы</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routines">Функции</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-the-provided-typemaps">Дополнение стандартных отображений типов</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-common-example">Типичный пример </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-situations">Другие ситуации</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-final-note">Заключительное замечание</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"> <a class="reference internal nav-link" href="#summary">Краткое описание</a> </li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

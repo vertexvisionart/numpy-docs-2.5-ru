@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'dev/reviewer_guidelines';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="../benchmarking.html" rel="next" title="Измерение производительности NumPy"/>
+<link href="development_ghcodespaces.html" rel="prev" title="Использование GitHub Codespaces для разработки NumPy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"> <a class="reference internal" href="ai_policy.html"> Политика в области ИИ </a> </li>
+<li class="toctree-l1"> <a class="reference internal" href="development_environment.html"> Настройка и использование вашей среды разработки </a> </li>
+<li class="toctree-l1"><a class="reference internal" href="spin.html"> Spin: инструмент разработчика NumPy </a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto_build_docs.html">Сборка документации API и справочного руководства NumPy</a></li>
+<li class="toctree-l1"> <a class="reference internal" href="development_workflow.html"> Процесс разработки </a> </li>
+<li class="toctree-l1"><a class="reference internal" href="development_advanced_debugging.html"> Расширенные инструменты отладки </a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_ghcodespaces.html">Использование GitHub Codespaces для разработки NumPy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Рекомендации для рецензентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarking.html">Тесты производительности NumPy</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/neps/nep-0045-c_style_guide.html">Руководство по стилю кода C в NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="depending_on_numpy.html">Для авторов пакетов, зависящих от NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="releasing.html"> Выпуск версии </a></li>
+<li class="toctree-l1"><a class="reference internal" href="governance/index.html">Управление NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto-docs.html"> Как внести вклад в документацию NumPy </a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Участие в разработке NumPy</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Рекомендации для рецензентов</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="reviewer-guidelines">
+<span id="id1"></span><h1>Рекомендации для рецензентов<a class="headerlink" href="#reviewer-guidelines" title="Link to this heading">#</a></h1>
+<p>Проверка открытых запросов на изменения (PR) помогает развивать проект. Мы приглашаем и внешних участников: это хороший способ познакомиться с кодовой базой.</p>
+<section id="who-can-be-a-reviewer">
+<h2>Кто может быть рецензентом? <a class="headerlink" href="#who-can-be-a-reviewer" title="Link to this heading">#</a></h2>
+<p>Рецензировать изменения могут и люди вне команды NumPy. Мы рады участию экспертов в отдельных областях, например <em class="xref py py-obj">linalg</em> или <em class="xref py py-obj">fft</em>, и сопровождающих других проектов. Для рецензирования необязательно быть сопровождающим NumPy — членом команды с правом слияния PR.</p>
+<p>Если мы ещё не знакомы, представьтесь в <a class="reference external" href="https://numpy.org/community/">списке рассылки или Slack</a>, прежде чем рецензировать запросы на включение изменений.</p>
+</section>
+<section id="communication-guidelines">
+<h2>Правила общения<a class="headerlink" href="#communication-guidelines" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Любой запрос на включение изменений — удачный или неудачный — это проявление щедрости. Начните с положительного комментария: так автор почувствует, что его вклад ценят, и ему будет легче воспринять ваши дальнейшие замечания. Возможно, и вам от этого станет приятнее.</p></li>
+<li><p>По возможности начните с основных вопросов, чтобы автор видел, что его работу поняли. Не спешите сразу разбирать код построчно или начинать с мелких, хотя и повторяющихся, замечаний.</p></li>
+<li><p>Вы представляете проект. NumPy уже определился, <a class="reference external" href="https://numpy.org/code-of-conduct/">каким проектом хочет быть</a>: открытым, чутким, приветливым, дружелюбным и терпеливым. Будьте <a class="reference external" href="https://youtu.be/tzFWz5fiVKU?t=49m30s">доброжелательны</a> к участникам.</p></li>
+<li><p>Не стремитесь к идеалу в ущерб хорошему результату, особенно в документации. Если вы делаете множество мелких замечаний или придираетесь к стилю и грамматике, рассмотрите слияние PR после устранения всех существенных проблем. Затем либо отправьте отдельный коммит напрямую, если вы сопровождающий, либо сами откройте дополнительный PR.</p></li>
+<li><p>Если вам нужна помощь с ответами при проверке кода, посмотрите <a class="reference internal" href="#saved-replies"><span class="std std-ref">стандартные ответы для рецензирования</span></a>.</p></li>
+</ul>
+</section>
+<section id="reviewer-checklist">
+<h2>Контрольный список для рецензента<a class="headerlink" href="#reviewer-checklist" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Понятно ли предполагаемое поведение при любых условиях? Вот на что следует обратить внимание:</dt><dd><ul>
+<li><p>Что происходит с неожиданными входами, такими как пустые массивы или значения nan / inf?</p></li>
+<li><p>Проверены ли аргументы оси или формы на <em class="xref py py-obj">int</em> или <em class="xref py py-obj">tuples</em>?</p></li>
+<li><p>Проверяются ли необычные <em class="xref py py-obj">dtypes</em>, если функция их поддерживает?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Следует ли улучшить имена переменных для обеспечения ясности или согласованности?</p></li>
+<li><p>Нужно ли добавить комментарии или, наоборот, удалить бесполезные и избыточные?</p></li>
+<li><p>Соответствует ли документация <a class="reference internal" href="howto-docs.html#howto-document"><span class="std std-ref">рекомендациям NumPy</span></a>? Правильно ли оформлены строки документации?</p></li>
+<li><p>Соответствует ли код <a class="reference internal" href="index.html#stylistic-guidelines"><span class="std std-ref">рекомендациям NumPy по стилю</span></a>?</p></li>
+<li><p>Если вы сопровождаете проект и назначение ветки не очевидно из описания PR, добавьте краткое объяснение в сообщение коммита слияния. Если при этом закрывается задача, добавьте также «Closes gh-123», где 123 — её номер.</p></li>
+<li><p>Изменения кода должен проверить и одобрить хотя бы один сопровождающий проекта, то есть участник с правом записи коммитов. Если вы первым проверили PR и одобряете изменения, отметьте это с помощью инструмента GitHub <a class="reference external" href="https://help.github.com/articles/reviewing-changes-in-pull-requests/">одобрения при рецензировании (approve review)</a>. Простой PR, например с очевидно корректным исправлением ошибки, можно слить сразу. Более сложный PR или изменение общедоступного API следует оставить открытым хотя бы на пару дней, чтобы другие сопровождающие тоже успели его проверить.</p></li>
+<li><p>Если вы повторно проверяете уже одобренный PR, используйте тот же подход, что и для нового: сосредоточьтесь на существенных вопросах и не ограничивайтесь мелкими придирками. Если у вас есть права на коммит и вы считаете дальнейшую проверку ненужной, выполните слияние PR.</p></li>
+</ul>
+<section id="for-maintainers">
+<h3>Для сопровождающих проекта<a class="headerlink" href="#for-maintainers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Перед слиянием PR убедитесь, что все автоматические тесты CI проходят, а <a class="reference internal" href="index.html#building-docs"><span class="std std-ref">документация собирается</span></a> без ошибок.</p></li>
+<li><p>При конфликтах слияния попросите автора PR <a class="reference internal" href="development_workflow.html#rebasing-on-main"><span class="std std-ref">перенести ветку на main с помощью rebase</span></a>.</p></li>
+<li><p>Для PR, которые добавляют новые функции или в некотором роде сложны, подождите, по крайней мере, день или два, прежде чем объединить его. Таким образом, другие получают возможность комментировать до того, как код войдет. Рассмотрите возможность добавления его в заметки к выпуску.</p></li>
+<li><p>Принимая изменения, участник с правом коммита отвечает за их соответствие <a class="reference internal" href="index.html#guidelines"><span class="std std-ref">правилам процесса разработки</span></a> NumPy. Также необходимо убедиться, что новые возможности и нарушения обратной совместимости обсуждались в <a class="reference external" href="https://mail.python.org/mailman/listinfo/numpy-discussion">списке рассылки numpy-discussion</a>.</p></li>
+<li><p>Допустимо объединять коммиты или приводить в порядок сообщения коммитов PR, если они слишком запутаны. При этом сохраняйте имя исходного автора и проверяйте соответствие сообщений <a class="reference internal" href="development_workflow.html#writing-the-commit-message"><span class="std std-ref">правилам NumPy</span></a>.</p></li>
+<li><p>Если вы хотите отклонить PR и причины очевидны, можно просто закрыть его с объяснением. В противном случае лучше сначала объяснить, почему вы считаете изменение неподходящим для NumPy, и дать второму разработчику с правом внесения изменений возможность высказаться или закрыть PR.</p></li>
+<li><p>Если автор PR не отвечает на замечания в течение 6 месяцев, переведите PR в неактивную категорию и добавьте метку «inactive». После этого сопровождающий проекта может закрыть PR. О желании завершить работу над PR можно сообщить комментарием в любой момент, не дожидаясь истечения 6 месяцев.</p></li>
+<li><p>Сопровождающим рекомендуется самостоятельно дорабатывать PR, если перед слиянием нужны лишь небольшие изменения, например исправления стиля кода или грамматических ошибок. Если работа над PR остановилась, сопровождающие могут вносить и более крупные изменения. Помните, что PR — совместная работа автора и рецензентов; иногда прямой push — лучший способ её завершить.</p></li>
+</ul>
+</section>
+<section id="api-changes">
+<h3>Изменения API<a class="headerlink" href="#api-changes" title="Link to this heading">#</a></h3>
+<p>Как уже упоминалось, большинство публичных изменений API должны обсуждаться заранее и часто с более широкой аудиторией (в списке рассылки или даже через NEP).</p>
+<p>При изменении общедоступного C API учитывайте его обратную совместимость: любое дополнение должно быть совместимо по ABI с предыдущими версиями. Если это не так, необходимо добавить защитную проверку.</p>
+<p>Например, структура <code class="docutils literal notranslate"><span class="pre">PyUnicodeScalarObject</span></code> содержит следующие поля:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#if NPY_FEATURE_VERSION &gt;= NPY_1_20_API_VERSION</span>
+    <span class="n">char</span> <span class="o">*</span><span class="n">buffer_fmt</span><span class="p">;</span>
+<span class="c1">#endif</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Если NPY_FEATURE_VERSION &gt;= NPY_1_20_API_VERSION</li></ul></details></div>
+</div>
+<p>Это связано с тем, что поле <code class="docutils literal notranslate"><span class="pre">buffer_fmt</span></code> добавили в конец структуры в NumPy 1.20; все предшествующие поля сохранили совместимость ABI. Аналогично, любая функция, добавляемая в таблицу API в <code class="docutils literal notranslate"><span class="pre">numpy/_core/code_generators/numpy_api.py</span></code>, должна иметь аннотацию <code class="docutils literal notranslate"><span class="pre">MinVersion</span></code>. Например:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'PyDataMem_SetHandler'</span><span class="p">:</span>                 <span class="p">(</span><span class="mi">304</span><span class="p">,</span> <span class="n">MinVersion</span><span class="p">(</span><span class="s2">"1.22"</span><span class="p">)),</span>
+</pre></div>
+</div>
+<p>Возможности, реализованные только в заголовочных файлах, например новый макрос, обычно не требуют защиты условной компиляцией.</p>
+</section>
+<section id="github-workflow">
+<h3>Рабочий процесс GitHub <a class="headerlink" href="#github-workflow" title="Link to this heading">#</a></h3>
+<p>При проверке запросов на изменения используйте подходящие средства GitHub для отслеживания рабочего процесса:</p>
+<ul class="simple">
+<li><p>Завершив проверку, при необходимости попросите автора внести изменения: установите статус проверки «Changes requested» («Запрошены изменения»). На GitHub для этого откройте страницу pull request, вкладку Files changed и нажмите Review changes в правом верхнем углу.</p></li>
+<li><p>Если текущее состояние вас устраивает, отметьте pull request как Approved (так же, как выбирается Changes requested). Сопровождающие могут вместо этого выполнить слияние pull request, если считают его готовым.</p></li>
+</ul>
+<p>Может оказаться полезным иметь копию кода запроса на включение на своем компьютере, чтобы можно было поиграть с ним локально. Для этого можно использовать <a class="reference external" href="https://docs.github.com/en/github/getting-started-with-github/github-cli"> GitHub CLI </a>, нажав кнопку <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">with</span></code> в правом верхнем углу страницы PR.</p>
+<p>Если <a class="reference internal" href="development_environment.html#development-environment"><span class="std std-ref">окружение для разработки</span></a> уже настроено, теперь можно собрать код и запустить тесты.</p>
+</section>
+</section>
+<section id="standard-replies-for-reviewing">
+<span id="saved-replies"></span><h2>Стандартные ответы при рецензировании<a class="headerlink" href="#standard-replies-for-reviewing" title="Link to this heading">#</a></h2>
+<p>Некоторые из этих ответов удобно сохранить в <a class="reference external" href="https://github.com/settings/replies/">сохранённых ответах GitHub</a> для рецензирования:</p>
+<dl>
+<dt><strong>Вопрос по использованию</strong></dt><dd><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>You are asking a usage question. The issue tracker is for bugs and new features.
+I'm going to close this issue, feel free to ask for help via our [<span class="nt">help channels</span>](<span class="na">https://numpy.org/gethelp/</span>).
+</pre></div>
+</div>
+</dd>
+<dt><strong>Вы можете внести изменения в документацию</strong></dt><dd><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>Please feel free to offer a pull request updating the documentation if you feel it could be improved.
+</pre></div>
+</div>
+</dd>
+<dt><strong>Самодостаточный пример, воспроизводящий ошибку</strong></dt><dd><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>Please provide a [<span class="nt">self-contained example code</span>](<span class="na">https://stackoverflow.com/help/mcve</span>), including imports and data (if possible), so that other contributors can just run it and reproduce your issue.
+Ideally your example code should be minimal.
+</pre></div>
+</div>
+</dd>
+<dt><strong>Версии программного обеспечения</strong></dt><dd><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>To help diagnose your issue, please paste the output of:
+<span class="sb">```</span>
+<span class="sb">python -c 'import numpy; print(numpy.version.version)'</span>
+<span class="sb">```</span>
+Thanks.
+</pre></div>
+</div>
+</dd>
+<dt><strong>Блоки кода</strong></dt><dd><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>Readability can be greatly improved if you [<span class="nt">format</span>](<span class="na">https://help.github.com/articles/creating-and-highlighting-code-blocks/</span>) your code snippets and complete error messages appropriately.
+You can edit your issue descriptions and comments at any time to improve readability.
+This helps maintainers a lot. Thanks!
+</pre></div>
+</div>
+</dd>
+<dt><strong>Ссылки на код</strong></dt><dd><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>For clarity's sake, you can link to code like [<span class="nt">this</span>](<span class="na">https://help.github.com/articles/creating-a-permanent-link-to-a-code-snippet/</span>).
+</pre></div>
+</div>
+</dd>
+<dt><strong>Более понятные описание и заголовок</strong></dt><dd><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>Please make the title of the PR more descriptive.
+The title will become the commit message when this is merged.
+You should state what issue (or PR) it fixes/resolves in the description using the syntax described [<span class="nt">here</span>](<span class="na">https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword</span>).
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>linking-a-pull-request-to-an-issue-using-a-keyword).</li></ul></details></div>
+</div>
+</dd>
+<dt><strong>Нужен регрессионный тест</strong></dt><dd><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>Please add a [<span class="nt">non-regression test</span>](<span class="na">https://en.wikipedia.org/wiki/Non-regression_testing</span>) that would fail at main but pass in this PR.
+</pre></div>
+</div>
+</dd>
+<dt><strong>Не меняйте то, что не относится к задаче</strong></dt><dd><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>Please do not change unrelated lines. It makes your contribution harder to review and may introduce merge conflicts to other pull requests.
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="development_ghcodespaces.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Использование GitHub Codespaces для разработки NumPy</p>
+</div>
+</a>
+<a class="right-next" href="../benchmarking.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Измерение производительности NumPy</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"> <a class="reference internal nav-link" href="#who-can-be-a-reviewer">Кто может быть рецензентом? </a> </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-guidelines">Правила общения</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewer-checklist">Контрольный список для рецензента</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-maintainers">Для сопровождающих проекта</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-changes">Изменения API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-workflow">Рабочий процесс GitHub </a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-replies-for-reviewing">Стандартные ответы при рецензировании</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

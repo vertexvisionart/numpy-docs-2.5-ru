@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'user/c-info.python-as-glue';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="c-info.ufunc-tutorial.html" rel="next" title="Создание собственной универсальной функции"/>
+<link href="c-info.how-to-extend.html" rel="prev" title="Как расширить NumPy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Основы NumPy</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c-info.html">Использование C API NumPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c-info.how-to-extend.html"> Как расширить NumPy </a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Использование Python для связывания компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c-info.ufunc-tutorial.html">Написание собственной универсальной функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c-info.beyond-basics.html"> За пределами основ </a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../f2py/index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="c-info.html">Использование C API NumPy</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Использование Python для связывания компонентов</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="using-python-as-glue">
+<h1>Использование Python для связывания компонентов<a class="headerlink" href="#using-python-as-glue" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Этот текст написан в 2008 году для первоначальной книги Трэвиса Э. Олифанта <a class="reference external" href="https://archive.org/details/NumPyBook">Guide to NumPy</a> и устарел.</p>
+</div>
+<div class="line-block">
+<div class="line">Нет более скучного разговора, чем тот, в котором все</div>
+<div class="line">согласен.</div>
+<div class="line">— <em>Мишель де Монтень</em></div>
+</div>
+<div class="line-block">
+<div class="line">Клейкая лента похожа на Силу. У неё есть светлая сторона, тёмная сторона, и</div>
+<div class="line">Он держит Вселенную вместе.</div>
+<div class="line">— <em>Carl Zwanzig</em></div>
+</div>
+<p>Python часто называют замечательным языком для объединения компонентов. Надеемся, эта глава убедит вас в справедливости такой оценки. Первые пользователи Python в науке обычно связывали с его помощью крупные прикладные программы, работавшие на суперкомпьютерах. Писать на Python было гораздо удобнее, чем сценарии оболочки или код на Perl. Кроме того, простота расширения Python позволяла сравнительно легко создавать новые классы и типы, приспособленные к конкретным задачам. Благодаря совместной работе этих первых участников появился Numeric — объект, подобный массиву, который можно было использовать для передачи данных между такими приложениями.</p>
+<p>По мере развития Numeric и его превращения в NumPy стало возможным писать больше кода непосредственно с помощью NumPy. Зачастую этот код достаточно быстр для практического применения, однако иногда всё же требуется обращаться к скомпилированному коду: чтобы добиться максимальной эффективности алгоритма или упростить использование распространённых программ на C/C++ или Fortran.</p>
+<p>В этой главе рассматриваются многие инструменты для обращения к коду на других компилируемых языках. Существует много материалов о вызове скомпилированных библиотек из Python, и эта глава не ставит целью сделать вас экспертом. Её основная задача — познакомить с некоторыми возможностями, чтобы вы знали, что искать в Google для дальнейшего изучения.</p>
+<section id="calling-other-compiled-libraries-from-python">
+<h2>Вызов других скомпилированных библиотек из Python<a class="headerlink" href="#calling-other-compiled-libraries-from-python" title="Link to this heading">#</a></h2>
+<p>Python — удобный язык, на котором приятно писать, но его динамическая природа создаёт накладные расходы. Из-за них некоторые вычисления (<em>то есть</em> непосредственные вычисления внутри циклов for) могут быть в 10–100 раз медленнее эквивалентного кода на статическом компилируемом языке. Расход памяти также может быть избыточным из-за создания и удаления временных массивов. Во многих вычислительных задачах такое замедление и потребление памяти неприемлемы, по крайней мере в критических участках кода. Поэтому часто требуется вызывать из Python быструю подпрограмму в машинном коде, например скомпилированную из C/C++ или Fortran. Относительная простота таких вызовов — одна из основных причин, по которым Python хорошо подходит как высокоуровневый язык научного и инженерного программирования.</p>
+<p>Есть два основных способа вызвать скомпилированный код: написать модуль расширения и импортировать его в Python инструкцией import либо вызвать подпрограмму разделяемой библиотеки напрямую из Python через модуль <a class="reference external" href="https://docs.python.org/3/library/ctypes.html">ctypes</a>. Наиболее распространён первый способ.</p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Неосторожный вызов кода C из Python может привести к аварийному завершению Python. Ни один из подходов в этой главе не исключает такой риск. Необходимо понимать, как данные обрабатываются и в NumPy, и в используемой сторонней библиотеке.</p>
+</div>
+</section>
+<section id="hand-generated-wrappers">
+<h2>Обёртки, написанные вручную<a class="headerlink" href="#hand-generated-wrappers" title="Link to this heading">#</a></h2>
+<p>Модули расширения рассмотрены в разделе <a class="reference internal" href="c-info.how-to-extend.html#writing-an-extension"><span class="std std-ref">Написание модуля расширения</span></a>. Самый простой способ взаимодействия со скомпилированным кодом — написать модуль расширения с методом, вызывающим этот код. Для удобства чтения кода метод должен использовать <code class="docutils literal notranslate"><span class="pre">PyArg_ParseTuple</span></code> для преобразования объектов Python в типы данных C. Для стандартных типов C, скорее всего, уже существует встроенный преобразователь. Для остальных может потребоваться собственный преобразователь и строка формата <code class="docutils literal notranslate"><span class="pre">"O&amp;"</span></code>: она позволяет указать функцию, преобразующую объект Python в нужные структуры C.</p>
+<p>После преобразования в соответствующие структуры и типы данных C обёртка вызывает базовую функцию. Для функции на C или C++ это просто. Однако для вызова кода Fortran нужно знать, как ваш компилятор и платформа вызывают подпрограммы Fortran из C/C++. Это несколько различается между платформами и компиляторами (ещё одна причина, по которой f2py значительно упрощает взаимодействие с Fortran), но обычно включает добавление подчёркивания к имени и передачу всех переменных по ссылке, то есть все аргументы являются указателями.</p>
+<p>Написанная вручную обёртка даёт полный контроль над использованием и вызовом библиотеки C, что позволяет сделать компактный интерфейс с минимальными накладными расходами. Недостаток — необходимость писать, отлаживать и сопровождать код C, хотя большую его часть можно адаптировать из других модулей расширения проверенным способом: скопировать и изменить. Поскольку вызовы дополнительного кода C устроены довольно однотипно, разработаны средства генерации, упрощающие этот процесс. Одно из них поставляется с NumPy и легко интегрирует Fortran и простой код C. Этот пакет, f2py, кратко рассматривается в следующем разделе.</p>
+</section>
+<section id="f2py">
+<h2>F2PY<a class="headerlink" href="#f2py" title="Ссылка на заголовок">#</a></h2>
+<p>F2PY позволяет автоматически создать модуль расширения для вызова подпрограмм на Fortran 77/90/95. Он умеет разбирать код Fortran 77/90/95 и автоматически генерировать сигнатуры Python для найденных подпрограмм. Также можно самостоятельно задать их интерфейс с Python, создав файл определения интерфейса или изменив файл, сгенерированный f2py.</p>
+<p>Подробнее и примеры см. в <a class="reference internal" href="../f2py/index.html#f2py"><span class="std std-ref">документации F2PY</span></a>.</p>
+<p>Связывание скомпилированного кода через f2py сейчас наиболее развито и тесно интегрировано. Этот подход чётко отделяет Python от скомпилированного кода, позволяя распространять модуль расширения отдельно. Единственный недостаток — для установки кода пользователю нужен компилятор Fortran. Однако наличие свободных g77, gfortran и g95, а также качественных коммерческих компиляторов делает это ограничение необременительным. По нашему мнению, Fortran всё ещё проще всего подходит для быстрого и понятного кода научных вычислений. Он наиболее непосредственно поддерживает комплексные числа и многомерную индексацию. Однако некоторые компиляторы Fortran не оптимизируют код так же хорошо, как качественный код C, написанный вручную.</p>
+</section>
+<section id="cython">
+<span id="index-0"></span><h2>Cython<a class="headerlink" href="#cython" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://cython.org">Cython</a> — компилятор диалекта Python с необязательной статической типизацией для ускорения работы и возможностью включать код C или C++ в модули. Он генерирует расширения на C или C++, которые можно скомпилировать и импортировать в Python.</p>
+<p>Cython хорошо подходит для модуля расширения, который будет содержать значительный объём вашего собственного алгоритмического кода. Среди его возможностей — удобная и быстрая работа с многомерными массивами.</p>
+<p id="index-1">Cython только генерирует модули расширения. В отличие от f2py, он не предоставляет автоматических средств для их компиляции и компоновки. Однако многие инструменты сборки Python поддерживают Cython.</p>
+<p>Ниже показана настройка проекта Python с расширением Cython. В примере используются <a class="reference external" href="https://mesonbuild.com/meson-python/">бэкенд сборки Python meson-python</a> и <a class="reference external" href="https://mesonbuild.com">система сборки Meson</a>. Эту же систему сборки использует сам NumPy.</p>
+<p>Сначала создайте файл под названием <code class="docutils literal notranslate"><span class="pre">my_extension.pyx</span></code>.</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">cimport</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Этот файл находится рядом с файлом <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> со следующим содержимым:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">.my_extension</span><span class="w"> </span><span class="kn">import</span> <span class="n">say_hello</span>
+</pre></div>
+</div>
+<p>Теперь вам нужно создать еще два файла, чтобы настроить систему сборки. Во-первых, файл <code class="docutils literal notranslate"><span class="pre">meson.build</span></code>:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span>
+<span class="w">   </span><span class="s">'module_with_extension'</span><span class="p">,</span>
+<span class="w">   </span><span class="s">'c'</span><span class="p">,</span><span class="w"> </span><span class="s">'cython'</span><span class="p">,</span>
+<span class="w">   </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="s">'0.0.1'</span><span class="p">,</span>
+<span class="w">   </span><span class="n">license</span><span class="p">:</span><span class="w"> </span><span class="s">'MIT'</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">cython</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">find_program</span><span class="p">(</span><span class="s">'cython'</span><span class="p">)</span>
+<span class="n">py</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">import</span><span class="p">(</span><span class="s">'python'</span><span class="p">).</span><span class="n">find_installation</span><span class="p">(</span><span class="n">pure</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+
+<span class="n">numpy_nodepr_api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">'-DNPY_NO_DEPRECATED_API=NPY_2_0_API_VERSION'</span><span class="p">]</span>
+
+<span class="n">np_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">declare_dependency</span><span class="p">(</span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">'numpy'</span><span class="p">),</span>
+<span class="w">                            </span><span class="n">compile_args</span><span class="p">:</span><span class="w"> </span><span class="n">numpy_nodepr_api</span><span class="p">)</span>
+
+<span class="n">py</span><span class="p">.</span><span class="n">extension_module</span><span class="p">(</span>
+<span class="w">  </span><span class="s">'my_extension'</span><span class="p">,</span>
+<span class="w">  </span><span class="s">'my_extension.pyx'</span><span class="p">,</span>
+<span class="w">  </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">np_dep</span><span class="p">],</span>
+<span class="w">  </span><span class="n">install</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nb">subdir</span><span class="p">:</span><span class="w"> </span><span class="s">'my_module_with_extension'</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">py</span><span class="p">.</span><span class="n">install_sources</span><span class="p">(</span>
+<span class="w">  </span><span class="s">'__init__.py'</span><span class="p">,</span>
+<span class="w">  </span><span class="nb">subdir</span><span class="p">:</span><span class="w"> </span><span class="s">'my_module_with_extension'</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>А также файл <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> со следующим содержимым:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build-system]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mesonpy"</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"meson-python"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Cython&gt;=3.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"numpy"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"my_module_with_extension"</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.0.1"</span>
+<span class="n">license</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MIT"</span>
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"numpy"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Затем вы можете выполнить следующую команду для создания, установки и вызова функции, определенной в расширении от Python:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
+$<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from my_module_with_extension import say_hello; say_hello()"</span>
+<span class="s2">"Hello!"</span>
+</pre></div>
+</div>
+<p>Добавление зависимости NumPy в вашу конфигурацию Meson необходимо только в том случае, если вы используете C API NumPy в модуле расширения через <code class="docutils literal notranslate"><span class="pre">cimport</span>
+<span class="pre">numpy</span></code> (мы предполагаем, что для этого вы используете Cython). Если вы просто используете Cython для компиляции стандартного модуля Python, вы получите модуль расширения C, который обычно работает немного быстрее, чем эквивалентный модуль Python. Дальнейшего увеличения скорости можно добиться, используя ключевое слово <code class="docutils literal notranslate"><span class="pre">cdef</span></code> для статического определения переменных C.</p>
+<p>Подробнее о сборке более сложных расширений см. в документации Meson и meson-python.</p>
+<p>Давайте рассмотрим два примера, которые мы видели раньше, чтобы увидеть, как они могут быть реализованы с помощью Cython.</p>
+<section id="complex-addition-in-cython">
+<h3>Комплексное сложение в Cython <a class="headerlink" href="#complex-addition-in-cython" title="Link to this heading">#</a></h3>
+<p>Ниже приведена часть модуля Cython <code class="docutils literal notranslate"><span class="pre">add.pyx</span></code>, реализующего функции сложения комплексных чисел, ранее реализованные с помощью f2py:</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">cimport</span><span class="w"> </span><span class="nn">cython</span>
+<span class="k">cimport</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c"># We need to initialize NumPy.</span>
+<span class="n">np</span><span class="o">.</span><span class="n">import_array</span><span class="p">()</span>
+
+<span class="c">#@cython.boundscheck(False)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">zadd</span><span class="p">(</span><span class="n">in1</span><span class="p">,</span> <span class="n">in2</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="kt">complex</span>[<span class="p">:]</span> <span class="n">a</span> <span class="o">=</span> <span class="n">in1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="kt">complex</span>[<span class="p">:]</span> <span class="n">b</span> <span class="o">=</span> <span class="n">in2</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span> <span class="kt">complex</span>[<span class="p">:]</span> <span class="n">c</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]):</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Нужно инициализировать NumPy.</li><li>@cython.boundscheck(False)</li></ul></details></div>
+</div>
+<p>В этом модуле оператор <code class="docutils literal notranslate"><span class="pre">cimport</span></code> загружает определения из файла <code class="docutils literal notranslate"><span class="pre">numpy.pxd</span></code>, поставляемого с Cython. Кажется, будто NumPy импортируется дважды, но роли разные: <code class="docutils literal notranslate"><span class="pre">cimport</span></code> лишь делает доступным C API NumPy, а обычный <code class="docutils literal notranslate"><span class="pre">import</span></code> выполняет импорт Python во время работы программы и позволяет обращаться к привычному Python API NumPy.</p>
+<p>Пример также показывает типизированные представления памяти Cython (typed memoryviews). На уровне C они похожи на массивы NumPy: хранят форму и шаги и знают свои размеры, в отличие от массива C, доступного через обычный указатель. Запись <code class="docutils literal notranslate"><span class="pre">double</span> <span class="pre">complex[:]</span></code> обозначает одномерный массив (вектор) double с произвольными шагами. Непрерывно расположенный в памяти массив int обозначается <code class="docutils literal notranslate"><span class="pre">int[::1]</span></code>, а матрица float — <code class="docutils literal notranslate"><span class="pre">float[:,</span> <span class="pre">:]</span></code>. Примечание переводчика: в первой записи указан double complex, то есть комплексный тип двойной точности.</p>
+<p>В закомментированном виде показан декоратор <code class="docutils literal notranslate"><span class="pre">cython.boundscheck</span></code>, включающий или отключающий проверку границ при доступе к представлениям памяти для отдельной функции. Его можно использовать для дополнительного ускорения кода, пожертвовав безопасностью или выполнив проверку вручную перед входом в цикл.</p>
+<p>За исключением синтаксиса представлений, функция сразу понятна программисту Python. Статический тип переменной <code class="docutils literal notranslate"><span class="pre">i</span></code> выводится неявно. Вместо синтаксиса представлений можно было бы использовать специальный синтаксис массивов NumPy в Cython, но представления предпочтительнее.</p>
+</section>
+<section id="image-filter-in-cython">
+<h3>Фильтр изображений на Cython<a class="headerlink" href="#image-filter-in-cython" title="Link to this heading">#</a></h3>
+<p>Двумерный пример, который мы создали с помощью Fortran, так же легко написать на Cython:</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">cimport</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">import_array</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span>[<span class="p">:,</span> <span class="p">:]</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">double</span>[<span class="p">:,</span> <span class="p">::</span><span class="mf">1</span><span class="p">]</span> <span class="n">b</span> <span class="o">=</span> <span class="n">out</span>
+
+    <span class="k">cdef</span><span class="w"> </span><span class="kt">np</span>.<span class="kt">npy_intp</span> <span class="nv">i</span><span class="p">,</span> <span class="n">j</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1</span><span class="p">):</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+                       <span class="o">+</span> <span class="o">.</span><span class="mf">5</span> <span class="o">*</span> <span class="p">(</span>  <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mf">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+                               <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mf">1</span><span class="p">])</span>
+                       <span class="o">+</span> <span class="o">.</span><span class="mf">25</span> <span class="o">*</span> <span class="p">(</span>  <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mf">1</span><span class="p">]</span>
+                                <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mf">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mf">1</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mf">1</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+<p>Этот двумерный усредняющий фильтр работает быстро, поскольку цикл выполняется на C, а вычисления с указателями — только по мере необходимости. Если приведённый выше код скомпилировать в модуль <code class="docutils literal notranslate"><span class="pre">image</span></code>, двумерное изображение <code class="docutils literal notranslate"><span class="pre">img</span></code> можно быстро отфильтровать так:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">image</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>В коде важны два момента. Во-первых, представление памяти нельзя вернуть в Python. Поэтому сначала создаётся массив NumPy <code class="docutils literal notranslate"><span class="pre">out</span></code>, а для вычислений используется его представление <code class="docutils literal notranslate"><span class="pre">b</span></code>. Во-вторых, <code class="docutils literal notranslate"><span class="pre">b</span></code> имеет тип <code class="docutils literal notranslate"><span class="pre">double[:,</span> <span class="pre">::1]</span></code>: двумерный массив с непрерывными строками, то есть с порядком C. Явное указание порядка может ускорить некоторые алгоритмы, позволяя не вычислять шаги.</p>
+</section>
+<section id="conclusion">
+<h3>Заключение<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>Cython используют для расширений многие научные библиотеки Python, включая SciPy, pandas, SageMath, scikit-image и scikit-learn, а также библиотека обработки XML lxml. Язык и компилятор активно сопровождаются.</p>
+<p>Есть несколько недостатков использования Cython:</p>
+<ol class="arabic simple">
+<li><p>Для написания собственных алгоритмов, а иногда и обёрток над существующими библиотеками C нужно некоторое знание C. В частности, при управлении памятью средствами C, такими как <code class="docutils literal notranslate"><span class="pre">malloc</span></code> и аналогичные функции, легко допустить утечку памяти. Однако даже простая компиляция модуля Python, переименованного в <code class="docutils literal notranslate"><span class="pre">.pyx</span></code>, может ускорить его работу, а добавление нескольких объявлений типов иногда даёт существенное ускорение.</p></li>
+<li><p>Чёткую границу между Python и C легко потерять; тогда повторно использовать код C в проектах, не связанных с Python, становится сложнее.</p></li>
+<li><p>C-код, сгенерированный Cython, трудно читать и модифицировать (и обычно он компилируется с раздражающими, но безобидными предупреждениями).</p></li>
+</ol>
+<p>Важное преимущество расширений, созданных Cython, — простота распространения. Cython подходит и для связывания с кодом C, и для быстрого создания расширений. Он особенно полезен тем, кто не умеет или не хочет писать код на C или Fortran.</p>
+</section>
+</section>
+<section id="index-2">
+<span id="id2"></span><h2>ctypes<a class="headerlink" href="#index-2" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.python.org/3/library/ctypes.html">ctypes</a> — модуль расширения Python из стандартной библиотеки, позволяющий вызывать произвольные функции из разделяемых библиотек непосредственно из Python. Так можно напрямую взаимодействовать с кодом C, что открывает доступ к огромному числу библиотек. Недостаток этого подхода в том, что ошибки в коде легко приводят к серьёзным сбоям программы, как и в C: типы параметров и допустимые границы почти не проверяются. Это особенно важно, когда данные массива передаются как указатель на область памяти. В таком случае вы отвечаете за то, чтобы подпрограмма не обращалась к памяти за пределами массива. Если этот риск вас не смущает, ctypes может стать эффективным средством для быстрого использования большой разделяемой библиотеки или расширения возможностей собственной библиотеки.</p>
+<p id="index-3">Поскольку ctypes предоставляет прямой низкоуровневый доступ к скомпилированному коду, ошибки пользователя не всегда обрабатываются безопасно. Для надёжного использования обычно нужен дополнительный слой Python, проверяющий типы данных и границы массивов перед передачей объектов в подпрограмму. Эти проверки, а также преобразования объектов ctypes в типы C, выполняемые самим ctypes, делают интерфейс медленнее написанного вручную расширения. Однако если функция C выполняет существенный объём работы, накладные расходы обычно незначительны. Для сильного программиста Python с небольшим опытом C ctypes — простой способ создать полезный интерфейс к скомпилированной разделяемой библиотеке.</p>
+<p>Чтобы использовать ctypes, вы должны</p>
+<ol class="arabic simple">
+<li><p>Иметь разделяемую библиотеку.</p></li>
+<li><p>Загрузить разделяемую библиотеку.</p></li>
+<li><p>Преобразовать объекты Python в аргументы, понятные ctypes.</p></li>
+<li><p>Вызовите функцию библиотеки с аргументами ctypes.</p></li>
+</ol>
+<section id="having-a-shared-library">
+<h3>Наличие разделяемой библиотеки<a class="headerlink" href="#having-a-shared-library" title="Link to this heading">#</a></h3>
+<p>Требования к разделяемым библиотекам, используемым через ctypes, зависят от платформы. Предполагается, что вы умеете создавать такую библиотеку в своей системе или уже располагаете готовой. Важно помнить следующее:</p>
+<ul>
+<li><p>Разделяемую библиотеку нужно компилировать особым образом (<em>например</em>, с флагом <code class="docutils literal notranslate"><span class="pre">-shared</span></code> в gcc).</p></li>
+<li><p>На некоторых платформах (<em>например</em> Windows) разделяемой библиотеке нужен файл .def со списком экспортируемых функций. Например, mylib.def может содержать:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LIBRARY</span> <span class="n">mylib</span><span class="o">.</span><span class="n">dll</span>
+<span class="n">EXPORTS</span>
+<span class="n">cool_function1</span>
+<span class="n">cool_function2</span>
+</pre></div>
+</div>
+<p>В качестве альтернативы, вы можете использовать спецификатор класса хранения <code class="docutils literal notranslate"><span class="pre">__declspec(dllexport)</span></code> в C-определении функции, чтобы избежать необходимости в этом файле <code class="docutils literal notranslate"><span class="pre">.def</span></code>.</p>
+</li>
+</ul>
+<p>В distutils Python нет стандартного переносимого способа создать обычную разделяемую библиотеку (модуль расширения — особая разделяемая библиотека, понятная Python). Поэтому на момент написания книги существенный недостаток ctypes — сложность переносимого распространения расширения Python, которое использует ctypes и содержит собственный код, требующий компиляции в разделяемую библиотеку на компьютере пользователя.</p>
+</section>
+<section id="loading-the-shared-library">
+<h3>Загрузка разделяемой библиотеки<a class="headerlink" href="#loading-the-shared-library" title="Link to this heading">#</a></h3>
+<p>Простой и надёжный способ загрузить разделяемую библиотеку — получить её абсолютный путь и загрузить её с помощью объекта cdll из ctypes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lib</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">cdll</span><span class="p">[</span><span class="o">&lt;</span><span class="n">full_path_name</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Однако в Windows обращение к атрибуту <code class="docutils literal notranslate"><span class="pre">cdll</span></code> загружает первую DLL с таким именем, найденную в текущем каталоге или в PATH. Для кроссплатформенной загрузки библиотеки по абсолютному пути нужны дополнительные меры, поскольку расширения разделяемых библиотек различаются. Утилита <code class="docutils literal notranslate"><span class="pre">ctypes.util.find_library</span></code> может упростить поиск загружаемой библиотеки, но не гарантирует успеха во всех случаях. Дополнительная сложность в том, что на разных платформах используются разные стандартные расширения разделяемых библиотек: например, .dll в Windows, .so в Linux и .dylib в Mac OS X. Это тоже необходимо учитывать, если вы создаёте с помощью ctypes обёртку для кода, который должен работать на нескольких платформах.</p>
+<p>NumPy предоставляет вспомогательную функцию <code class="docutils literal notranslate"><span class="pre">ctypeslib.load_library</span></code>(name, path). Она принимает имя разделяемой библиотеки (включая префикс вроде «lib», но без расширения) и путь, по которому её следует искать. Функция возвращает объект библиотеки ctypes; если библиотека не найдена, вызывает <code class="docutils literal notranslate"><span class="pre">OSError</span></code>, а если модуль ctypes недоступен — <code class="docutils literal notranslate"><span class="pre">ImportError</span></code>. Пользователям Windows: <code class="docutils literal notranslate"><span class="pre">load_library</span></code> всегда загружает объект библиотеки ctypes с соглашением о вызовах cdecl. О загрузке библиотек с другими соглашениями см. документацию ctypes для <code class="docutils literal notranslate"><span class="pre">ctypes.windll</span></code> и/или <code class="docutils literal notranslate"><span class="pre">ctypes.oledll</span></code>.</p>
+<p>Функции разделяемой библиотеки доступны как атрибуты объекта библиотеки ctypes, возвращённого <code class="docutils literal notranslate"><span class="pre">ctypeslib.load_library</span></code>, либо через синтаксис <code class="docutils literal notranslate"><span class="pre">lib['func_name']</span></code>. Второй вариант особенно полезен, если имя функции содержит символы, недопустимые в именах переменных Python.</p>
+</section>
+<section id="converting-arguments">
+<h3>Преобразование аргументов<a class="headerlink" href="#converting-arguments" title="Link to this heading">#</a></h3>
+<p>Объекты Python типов int/long, строки и Unicode-строки автоматически преобразуются по мере необходимости в эквивалентные аргументы ctypes. Объект None также автоматически преобразуется в указатель NULL. Все остальные объекты Python необходимо преобразовать в специальные типы ctypes. Есть два способа обойти это ограничение, позволяющих ctypes взаимодействовать с другими объектами.</p>
+<ol class="arabic simple">
+<li><p>Не задавайте атрибут argtypes объекта функции; вместо этого определите метод <code class="docutils literal notranslate"><span class="pre">_as_parameter_</span></code> у передаваемого объекта. Метод <code class="docutils literal notranslate"><span class="pre">_as_parameter_</span></code> должен возвращать int Python, который будет передан функции напрямую.</p></li>
+<li><p>Присвойте атрибуту argtypes список объектов, у каждого из которых есть метод класса from_param. Этот метод должен уметь преобразовать ваш объект в то, что понимает ctypes: целое int/long, строку, unicode или объект с атрибутом <code class="docutils literal notranslate"><span class="pre">_as_parameter_</span></code>. Обозначения int/long и unicode здесь отражают терминологию исторического примера.</p></li>
+</ol>
+<p>NumPy использует оба способа, предпочитая второй как потенциально более безопасный. Атрибут ctypes массива ndarray возвращает объект с атрибутом <code class="docutils literal notranslate"><span class="pre">_as_parameter_</span></code>, который, согласно оригиналу, возвращает целое число с адресом связанного ndarray. Поэтому объект ctypes можно непосредственно передать функции, ожидающей указатель на данные ndarray. Вызывающий код должен проверить тип, форму и флаги массива: передача указателя на неподходящие данные может привести к тяжёлым сбоям. Примечание переводчика: в современных версиях NumPy _as_parameter_ возвращает объект ctypes.c_void_p с адресом данных массива; само целое значение адреса доступно через его атрибут value.</p>
+<p>Для реализации второго способа NumPy предоставляет функцию — фабрику классов <a class="reference internal" href="#ndpointer" title="ndpointer"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndpointer</span></code></a> в модуле <a class="reference internal" href="../reference/routines.ctypeslib.html#module-numpy.ctypeslib" title="numpy.ctypeslib"><code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.ctypeslib</span></code></a>. Она создаёт подходящий класс, который можно включить в атрибут argtypes функции ctypes. Класс содержит метод from_param, с помощью которого ctypes преобразует переданный ndarray в понятный ей объект. При преобразовании проверяются свойства ndarray, указанные пользователем при вызове <a class="reference internal" href="#ndpointer" title="ndpointer"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndpointer</span></code></a>: тип данных, число измерений, форма и/или состояние флагов переданного массива. Метод from_param возвращает атрибут ctypes массива. Поскольку он содержит атрибут <code class="docutils literal notranslate"><span class="pre">_as_parameter_</span></code>, указывающий на область данных массива, ctypes может использовать его напрямую.</p>
+<p>У атрибута ctypes объекта ndarray есть дополнительные атрибуты, удобные для передачи сведений о массиве в функцию ctypes. Атрибуты <strong>data</strong>, <strong>shape</strong> и <strong>strides</strong> предоставляют совместимые с ctypes объекты, соответствующие области данных, форме и шагам массива. Атрибут data возвращает <code class="docutils literal notranslate"><span class="pre">c_void_p</span></code> — указатель на область данных. Атрибуты shape и strides возвращают массивы целых чисел ctypes (либо None, представляющее указатель NULL, для нульмерного массива). Базовый тип такого массива — целочисленный тип ctypes, размер которого совпадает с размером указателя на данной платформе. Также доступны методы <code class="docutils literal notranslate"><span class="pre">data_as({ctype})</span></code>, <code class="docutils literal notranslate"><span class="pre">shape_as(&lt;base</span> <span class="pre">ctype&gt;)</span></code> и <code class="docutils literal notranslate"><span class="pre">strides_as(&lt;base</span>
+<span class="pre">ctype&gt;)</span></code>. Они возвращают данные в виде объекта ctypes выбранного типа, а массивы формы и шагов — с выбранным базовым типом. Для удобства модуль <code class="docutils literal notranslate"><span class="pre">ctypeslib</span></code> содержит <code class="docutils literal notranslate"><span class="pre">c_intp</span></code> — целочисленный тип данных ctypes, размер которого совпадает с размером <code class="docutils literal notranslate"><span class="pre">c_void_p</span></code> на данной платформе (если ctypes не установлен, его значение равно None).</p>
+</section>
+<section id="calling-the-function">
+<h3>Вызов функции<a class="headerlink" href="#calling-the-function" title="Link to this heading">#</a></h3>
+<p>К функции загруженной разделяемой библиотеки можно обратиться как к атрибуту или элементу. Например, если <code class="docutils literal notranslate"><span class="pre">./mylib.so</span></code> содержит функцию <code class="docutils literal notranslate"><span class="pre">cool_function1</span></code>, доступны следующие способы:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lib</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">load_library</span><span class="p">(</span><span class="s1">'mylib'</span><span class="p">,</span><span class="s1">'.'</span><span class="p">)</span>
+<span class="n">func1</span> <span class="o">=</span> <span class="n">lib</span><span class="o">.</span><span class="n">cool_function1</span>  <span class="c1"># or equivalently</span>
+<span class="n">func1</span> <span class="o">=</span> <span class="n">lib</span><span class="p">[</span><span class="s1">'cool_function1'</span><span class="p">]</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Или, что эквивалентно,</li></ul></details></div>
+</div>
+<p>В ctypes возвращаемое значение функции по умолчанию имеет тип int. Это можно изменить, задав атрибут restype функции. Если функция ничего не возвращает (void), установите restype в None:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">func1</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Как обсуждалось выше, можно задать атрибут argtypes функции, чтобы ctypes проверяла типы входных аргументов при вызове. Фабричная функция <a class="reference internal" href="#ndpointer" title="ndpointer"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndpointer</span></code></a> создаёт готовый класс для проверки типа данных, формы и флагов в новой функции. Сигнатура <a class="reference internal" href="#ndpointer" title="ndpointer"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndpointer</span></code></a>:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndpointer">
+<span class="sig-name descname"><span class="pre">ndpointer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ndpointer" title="Link to this definition">#</a></dt>
+<dd><p>Именованные аргументы со значением <code class="docutils literal notranslate"><span class="pre">None</span></code> не проверяются. Задание аргумента включает проверку соответствующего свойства ndarray при преобразовании в объект, совместимый с ctypes. dtype может быть любым объектом, интерпретируемым как тип данных. ndim должен быть целым числом, а shape — целым числом или последовательностью целых чисел. flags задаёт минимальный набор флагов для любого передаваемого массива. Его можно указать строкой требований, разделённых запятыми; целым числом, объединяющим биты требований операцией ИЛИ; либо объектом flags, полученным из атрибута flags массива с нужными свойствами.</p>
+</dd></dl>
+<p>Использование класса ndpointer в argtypes значительно повышает безопасность вызова функции C через ctypes с областью данных ndarray. Для удобства можно добавить ещё одну обёртку на Python, скрыв очевидные аргументы и сделав некоторые из них выходными. При этом функция NumPy <code class="docutils literal notranslate"><span class="pre">requires</span></code> может помочь получить массив нужного вида из заданных входных данных.</p>
+</section>
+<section id="complete-example">
+<h3>Полный пример<a class="headerlink" href="#complete-example" title="Link to this heading">#</a></h3>
+<p>В этом примере мы продемонстрируем, как функция сложения и функция фильтра, реализованные ранее с использованием других подходов, могут быть реализованы с использованием ctypes. Во-первых, код C, реализующий алгоритмы, содержит функции <code class="docutils literal notranslate"><span class="pre">zadd</span></code>, <code class="docutils literal notranslate"><span class="pre">dadd</span></code>, <code class="docutils literal notranslate"><span class="pre">sadd</span></code>, <code class="docutils literal notranslate"><span class="pre">cadd</span></code> и <code class="docutils literal notranslate"><span class="pre">dfilter2d</span></code>. Функция <code class="docutils literal notranslate"><span class="pre">zadd</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Add arrays of contiguous data */</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="kt">double</span><span class="w"> </span><span class="n">real</span><span class="p">;</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">imag</span><span class="p">;}</span><span class="w"> </span><span class="n">cdouble</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="kt">float</span><span class="w"> </span><span class="n">real</span><span class="p">;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">imag</span><span class="p">;}</span><span class="w"> </span><span class="n">cfloat</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">zadd</span><span class="p">(</span><span class="n">cdouble</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">cdouble</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">cdouble</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="o">-&gt;</span><span class="n">real</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">real</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">-&gt;</span><span class="n">real</span><span class="p">;</span>
+<span class="w">        </span><span class="n">c</span><span class="o">-&gt;</span><span class="n">imag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">imag</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">-&gt;</span><span class="n">imag</span><span class="p">;</span>
+<span class="w">        </span><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Складываем массивы непрерывно расположенных данных</li></ul></details></div>
+</div>
+<p>с аналогичным кодом для <code class="docutils literal notranslate"><span class="pre">cadd</span></code>, <code class="docutils literal notranslate"><span class="pre">dadd</span></code> и <code class="docutils literal notranslate"><span class="pre">sadd</span></code>, обрабатывающим соответственно типы данных complex float, double и float:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">cadd</span><span class="p">(</span><span class="n">cfloat</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">cfloat</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">cfloat</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">c</span><span class="o">-&gt;</span><span class="n">real</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">real</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">-&gt;</span><span class="n">real</span><span class="p">;</span>
+<span class="w">                </span><span class="n">c</span><span class="o">-&gt;</span><span class="n">imag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">imag</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">-&gt;</span><span class="n">imag</span><span class="p">;</span>
+<span class="w">                </span><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">b</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">dadd</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="o">*</span><span class="n">c</span><span class="o">++</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="o">++</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">sadd</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="o">*</span><span class="n">c</span><span class="o">++</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="o">++</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Файл <code class="docutils literal notranslate"><span class="pre">code.c</span></code> также содержит функцию <code class="docutils literal notranslate"><span class="pre">dfilter2d</span></code> :</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Assumes b is contiguous and has strides that are multiples of</span>
+<span class="cm"> * sizeof(double)</span>
+<span class="cm"> */</span>
+<span class="kt">void</span>
+<span class="nf">dfilter2d</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">ssize_t</span><span class="w"> </span><span class="o">*</span><span class="n">astrides</span><span class="p">,</span><span class="w"> </span><span class="kt">ssize_t</span><span class="w"> </span><span class="o">*</span><span class="n">dims</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">ssize_t</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">S0</span><span class="p">,</span><span class="w"> </span><span class="n">S1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">ssize_t</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">rm1</span><span class="p">,</span><span class="w"> </span><span class="n">rp1</span><span class="p">,</span><span class="w"> </span><span class="n">cp1</span><span class="p">,</span><span class="w"> </span><span class="n">cm1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">    </span><span class="n">S0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astrides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+<span class="w">    </span><span class="n">S1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astrides</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">*</span><span class="n">S0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">rp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">S0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">rm1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">S0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="o">*</span><span class="n">S1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">S1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cm1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">S1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">N</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">]</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">rp1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">rm1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">]</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                 </span><span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cp1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cm1</span><span class="p">])</span><span class="o">*</span><span class="mf">0.5</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">rp1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cp1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">rp1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cm1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                 </span><span class="n">a</span><span class="p">[</span><span class="n">rm1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cp1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">rm1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cp1</span><span class="p">])</span><span class="o">*</span><span class="mf">0.25</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Предполагается, что b непрерывно расположен в памяти, а его шаги кратны sizeof(double)</li></ul></details></div>
+</div>
+<p>Возможное преимущество этого кода перед эквивалентом на Fortran — поддержка произвольных шагов, то есть массивов с данными, расположенными в памяти не непрерывно. Он также может работать быстрее в зависимости от возможностей оптимизации компилятора. Однако он явно сложнее простого кода в <code class="docutils literal notranslate"><span class="pre">filter.f</span></code>. Его нужно скомпилировать в разделяемую библиотеку. В моей системе Linux это делается так:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">code</span><span class="o">.</span><span class="n">so</span> <span class="o">-</span><span class="n">shared</span> <span class="n">code</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>В текущем каталоге будет создана разделяемая библиотека code.so. В Windows не забудьте добавить <code class="docutils literal notranslate"><span class="pre">__declspec(dllexport)</span></code> перед void в строке определения каждой функции либо создать файл <code class="docutils literal notranslate"><span class="pre">code.def</span></code> с именами экспортируемых функций.</p>
+<p>Создадим интерфейс Python для этой разделяемой библиотеки. Для этого создайте файл interface.py со следующими строками в начале:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'add'</span><span class="p">,</span> <span class="s1">'filter2d'</span><span class="p">]</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="s1">'__file__'</span><span class="p">)</span>
+<span class="n">lib</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">load_library</span><span class="p">(</span><span class="s1">'code'</span><span class="p">,</span> <span class="n">_path</span><span class="p">)</span>
+<span class="n">_typedict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'zadd'</span> <span class="p">:</span> <span class="nb">complex</span><span class="p">,</span> <span class="s1">'sadd'</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">single</span><span class="p">,</span>
+             <span class="s1">'cadd'</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">csingle</span><span class="p">,</span> <span class="s1">'dadd'</span> <span class="p">:</span> <span class="nb">float</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">_typedict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">lib</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">val</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_type</span> <span class="o">=</span> <span class="n">_typedict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">val</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">ndpointer</span><span class="p">(</span><span class="n">_type</span><span class="p">,</span>
+                      <span class="n">flags</span><span class="o">=</span><span class="s1">'aligned, contiguous'</span><span class="p">),</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">ndpointer</span><span class="p">(</span><span class="n">_type</span><span class="p">,</span>
+                      <span class="n">flags</span><span class="o">=</span><span class="s1">'aligned, contiguous'</span><span class="p">),</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">ndpointer</span><span class="p">(</span><span class="n">_type</span><span class="p">,</span>
+                      <span class="n">flags</span><span class="o">=</span><span class="s1">'aligned, contiguous,'</span>\
+                            <span class="s1">'writeable'</span><span class="p">),</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">c_intp</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Этот код загружает разделяемую библиотеку с именем <code class="docutils literal notranslate"><span class="pre">code.{ext}</span></code> из каталога, в котором находится этот файл. Затем для функций библиотеки задаётся тип возвращаемого значения void и добавляется проверка аргументов. Это позволяет передавать ndarray в качестве первых трёх аргументов, а четвёртым — целое число достаточной разрядности для хранения указателя на данной платформе.</p>
+<p>Аналогичным образом настраивается функция фильтрации: её первые два аргумента — ndarray, а последние два — указатели на целые числа достаточной разрядности для представления шагов и формы ndarray:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lib</span><span class="o">.</span><span class="n">dfilter2d</span><span class="o">.</span><span class="n">restype</span><span class="o">=</span><span class="kc">None</span>
+<span class="n">lib</span><span class="o">.</span><span class="n">dfilter2d</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">ndpointer</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                       <span class="n">flags</span><span class="o">=</span><span class="s1">'aligned'</span><span class="p">),</span>
+                          <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">ndpointer</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                 <span class="n">flags</span><span class="o">=</span><span class="s1">'aligned, contiguous,'</span>\
+                                       <span class="s1">'writeable'</span><span class="p">),</span>
+                          <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">c_intp</span><span class="p">),</span>
+                          <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">c_intp</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>Затем определите простую функцию, выбирающую по типу данных нужную функцию сложения в разделяемой библиотеке:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'?bBhHf'</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">lib</span><span class="o">.</span><span class="n">sadd</span><span class="p">,</span> <span class="n">single</span>
+    <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'F'</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">lib</span><span class="o">.</span><span class="n">cadd</span><span class="p">,</span> <span class="n">csingle</span>
+    <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'DG'</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">lib</span><span class="o">.</span><span class="n">zadd</span><span class="p">,</span> <span class="nb">complex</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lib</span><span class="o">.</span><span class="n">dadd</span><span class="p">,</span> <span class="nb">float</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">,</span> <span class="n">ntype</span>
+</pre></div>
+</div>
+<p>Наконец, две функции, экспортируемые интерфейсом, могут быть записаны просто:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">requires</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'CONTIGUOUS'</span><span class="p">,</span> <span class="s1">'ALIGNED'</span><span class="p">]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">func</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">requires</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">requires</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">c</span>
+</pre></div>
+</div>
+<p>и:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">filter2d</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ALIGNED'</span><span class="p">])</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">lib</span><span class="o">.</span><span class="n">dfilter2d</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>Заключение<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p id="index-4">ctypes — мощное средство связи Python с произвольным кодом C. Его преимущества при расширении Python:</p>
+<ul class="simple">
+<li><p>чёткое разделение кода C и кода Python</p></li>
+<li><p>Не нужно изучать новый синтаксис помимо Python и C.</p></li>
+<li><p>Позволяет повторно использовать код C</p></li>
+<li><p>Возможности разделяемых библиотек, написанных для других задач, можно использовать, найдя библиотеку и создав простую обёртку Python.</p></li>
+<li><p>Удобная интеграция с NumPy через атрибут ctypes.</p></li>
+<li><p>полная проверка аргументов с помощью фабрики классов ndpointer</p></li>
+</ul>
+<p>К его недостаткам относятся</p>
+<ul class="simple">
+<li><p>Модуль расширения, использующий ctypes, трудно распространять из-за отсутствия в distutils поддержки сборки разделяемых библиотек.</p></li>
+<li><p>Код должен быть собран в виде разделяемых библиотек; статические библиотеки не подходят.</p></li>
+<li><p>Очень слабая поддержка кода C++ и различных соглашений о вызове библиотек. Вероятно, вам понадобится оболочка C для кода C++ для использования с ctypes (или вместо этого просто используйте Boost.Python).</p></li>
+</ul>
+<p>Поскольку распространять модуль расширения, созданный с ctypes, сложно, f2py и Cython по-прежнему остаются самыми простыми способами расширить Python при создании пакетов. Однако в некоторых случаях ctypes — полезная альтернатива. Это должно расширить возможности ctypes и устранить сложности разработки и распространения расширений Python с её помощью.</p>
+</section>
+</section>
+<section id="additional-tools-you-may-find-useful">
+<h2>Другие полезные инструменты<a class="headerlink" href="#additional-tools-you-may-find-useful" title="Link to this heading">#</a></h2>
+<p>Эти инструменты оказались полезны другим пользователям Python, поэтому включены сюда. Они рассмотрены отдельно, поскольку либо представляют старые способы решения задач, теперь выполняемых f2py, Cython или ctypes (SWIG, PyFort), либо недостаточно документированы (SIP, Boost). Ссылки не приведены: актуальные легко найти через Google или другую поисковую систему, а здесь они быстро устарели бы. Само включение в список не означает рекомендации пакета. Мы собрали сведения, поскольку многим эти инструменты помогли и мы хотим дать вам как можно больше вариантов интеграции вашего кода.</p>
+<section id="swig">
+<h3>SWIG<a class="headerlink" href="#swig" title="Ссылка на заголовок">#</a></h3>
+<p id="index-5">Simplified Wrapper and Interface Generator (SWIG) — давно существующее и достаточно стабильное средство создания обёрток библиотек C/C++ для множества других языков. Оно не поддерживает массивы NumPy напрямую, но может работать с ними через правила преобразования типов (typemap). Примеры таких правил находятся в файле numpy.i каталога numpy/tools/swig вместе с примером использующего их модуля. SWIG хорошо подходит для больших библиотек C/C++: он способен почти полностью разобрать их заголовки и автоматически создать интерфейс. Формально требуется файл <code class="docutils literal notranslate"><span class="pre">.i</span></code> с описанием интерфейса, но часто файл <code class="docutils literal notranslate"><span class="pre">.i</span></code> может состоять из частей самого заголовка. Обычно интерфейс нужно немного доработать, чтобы им было удобно пользоваться. Способность разбирать заголовки C/C++ и автоматически создавать интерфейс делает SWIG полезным средством расширения Python кодом C/C++, несмотря на появление других способов, более ориентированных на Python. SWIG может создавать расширения для нескольких языков, но typemap обычно привязаны к конкретному языку. Тем не менее, изменив правила для Python, можно использовать SWIG для доступа к библиотеке из других языков, например Perl, Tcl и Ruby.</p>
+<p>Мой опыт работы с SWIG в целом положительный: этот инструмент относительно прост и достаточно мощен. Я часто использовал его, пока не освоил написание расширений на C. Однако создавать собственные интерфейсы с SWIG нередко сложно: для этого нужны отображения типов (typemaps), которые не привязаны к Python и записываются в синтаксисе, похожем на C. Поэтому я предпочитаю другие способы связывания и, вероятно, рассматривал бы SWIG только для создания обёртки над очень большой библиотекой C/C++. Тем не менее многие вполне довольны работой с SWIG.</p>
+</section>
+<section id="sip">
+<h3>SIP<a class="headerlink" href="#sip" title="Ссылка на заголовок">#</a></h3>
+<p id="index-6">SIP — ещё один инструмент для создания обёрток над библиотеками C/C++, предназначенный специально для Python и, по-видимому, хорошо поддерживающий C++. Компания Riverbank Computing разработала SIP для создания привязок Python к библиотеке QT. Для генерации привязок нужно написать файл интерфейса, во многом похожий на заголовочный файл C/C++. SIP не является полноценным синтаксическим анализатором C++, но понимает значительную часть его синтаксиса, а также собственные специальные директивы, управляющие созданием привязок Python. Он также позволяет задавать соответствия между типами Python и структурами и классами C/C++.</p>
+</section>
+<section id="boost-python">
+<h3>Boost Python<a class="headerlink" href="#boost-python" title="Link to this heading">#</a></h3>
+<p id="index-7">Boost — набор библиотек C++. Одна из них, Boost.Python, предоставляет компактный интерфейс для доступа к классам и функциям C++ из Python. Её особенность в том, что она целиком работает на чистом C++, не вводя нового синтаксиса. Многие разработчики C++ отмечают, что Boost.Python позволяет удобно сочетать сильные стороны обоих языков. Для обёрток простых подпрограмм C Boost обычно избыточен: его основная задача — сделать классы C++ доступными в Python. Поэтому, если нужно аккуратно интегрировать набор классов C++ в Python, стоит изучить Boost.Python.</p>
+</section>
+<section id="pyfort">
+<h3>Pyfort <a class="headerlink" href="#pyfort" title="Link to this heading">#</a></h3>
+<p>Pyfort — удобный инструмент для создания Python-обёрток над Fortran и кодом C, написанным в стиле Fortran, с поддержкой массивов Numeric. Его автор — Paul Dubois, известный специалист по информатике и первый сопровождающий Numeric, ныне отошедший от этой работы. Мы упоминаем Pyfort в надежде, что кто-нибудь добавит в него поддержку массивов NumPy, которые теперь могут быть непрерывно расположены в памяти как в порядке Fortran, так и в порядке C.</p>
+</section>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="c-info.how-to-extend.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Как расширить NumPy</p>
+</div>
+</a>
+<a class="right-next" href="c-info.ufunc-tutorial.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Создание собственной универсальной функции</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-other-compiled-libraries-from-python">Вызов других скомпилированных библиотек из Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hand-generated-wrappers">Обёртки, написанные вручную</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f2py">F2PY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cython">Cython</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-addition-in-cython">Комплексное сложение в Cython </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-filter-in-cython">Фильтр изображений на Cython</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Заключение</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-2">ctypes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#having-a-shared-library">Наличие разделяемой библиотеки</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-shared-library">Загрузка разделяемой библиотеки</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-arguments">Преобразование аргументов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-the-function">Вызов функции</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ndpointer"><code class="docutils literal notranslate"><span class="pre">ndpointer</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-example">Полный пример</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Заключение</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-tools-you-may-find-useful">Другие полезные инструменты</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swig">SWIG</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sip">SIP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boost-python">Boost Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyfort">Pyfort </a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

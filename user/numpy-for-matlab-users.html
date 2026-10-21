@@ -1,0 +1,957 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script async="async" src="../_static/scipy-mathjax/MathJax.js?config=scipy-mathjax"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'user/numpy-for-matlab-users';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="howtos_index.html" rel="next" title="Практические инструкции NumPy"/>
+<link href="basics.ufuncs.html" rel="prev" title="Основы универсальных функций (ufunc)"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Основы NumPy</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-info.html">Использование C API NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../f2py/index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Руководство пользователя NumPy</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">NumPy для пользователей MATLAB</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="numpy-for-matlab-users">
+<span id="id1"></span><h1> NumPy Для пользователей MATLAB <a class="headerlink" href="#numpy-for-matlab-users" title="Link to this heading">#</a> </h1>
+<section id="introduction">
+<h2>Введение<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>MATLAB® и NumPy имеют много общего, но NumPy был создан для работы с Python, а не для того, чтобы быть клоном MATLAB. Это руководство поможет пользователям MATLAB начать работу с NumPy.</p>
+<style>
+table.docutils td { border: solid 1px #ccc; }
+</style></section>
+<section id="some-key-differences">
+<h2>Основные отличия <a class="headerlink" href="#some-key-differences" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="docutils table">
+<tbody>
+<tr class="row-odd"><td><p>В MATLAB базовый тип, даже для скаляров, — многомерный массив. При присваивании массивы сохраняются как двумерные массивы чисел с плавающей точкой двойной точности, если число измерений и тип не заданы явно. Операции над такими двумерными массивами соответствуют матричным операциям линейной алгебры.</p></td>
+<td><p>В NumPy основной тип — многомерный <code class="docutils literal notranslate"><span class="pre">array</span></code>. Массивы NumPy обычно хранятся как <a class="reference internal" href="../reference/arrays.html#arrays"><span class="std std-ref">N-мерные массивы</span></a> с минимальным типом, достаточным для представления объектов последовательности, если число измерений и тип не заданы явно. NumPy выполняет операции поэлементно: умножение двумерных массивов через <code class="docutils literal notranslate"><span class="pre">*</span></code> — поэлементное, а не матричное. Для обычного матричного умножения можно использовать оператор <code class="docutils literal notranslate"><span class="pre">@</span></code>, доступный с Python 3.5.</p></td>
+</tr>
+<tr class="row-even"><td><p>В MATLAB индексы начинаются с 1: <code class="docutils literal notranslate"><span class="pre">a(1)</span></code> — первый элемент. <a class="reference internal" href="#numpy-for-matlab-users-notes"><span class="std std-ref">См. примечание «Индексация» (INDEXING)</span></a>.</p></td>
+<td><p>NumPy, как и Python, нумерует индексы с 0;  <code class="docutils literal notranslate"><span class="pre">a[0]</span></code> — первый элемент.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Скриптовый язык MATLAB создавался для линейной алгебры, поэтому синтаксис некоторых операций с массивами компактнее, чем в NumPy. При этом API для графических интерфейсов и полноценных приложений добавлялся уже как дополнение к исходным возможностям.</p></td>
+<td><p>NumPy основан на Python, языке общего назначения. Одно из преимуществ NumPy — доступ к библиотекам Python, включая <a class="reference external" href="https://www.scipy.org/">SciPy</a>, <a class="reference external" href="https://matplotlib.org/">Matplotlib</a>, <a class="reference external" href="https://pandas.pydata.org/">Pandas</a>, <a class="reference external" href="https://opencv.org/">OpenCV</a> и другим. Кроме того, Python часто <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Python_software#Embedded_as_a_scripting_language">встраивается в другие программы как язык сценариев</a>, что позволяет использовать в них и NumPy.</p></td>
+</tr>
+<tr class="row-even"><td><p>Срезы массивов MATLAB используют семантику передачи по значению с отложенным копированием при записи: копии создаются лишь по необходимости. Операции среза копируют части массива.</p></td>
+<td><p>Срезы массивов NumPy используют передачу по ссылке: аргументы не копируются. Результаты операций взятия среза представляют собой представления массива.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="rough-equivalents">
+<h2>Приблизительные эквиваленты<a class="headerlink" href="#rough-equivalents" title="Link to this heading">#</a></h2>
+<p>В таблице ниже приведены приблизительные аналоги распространённых выражений MATLAB. Эти выражения похожи по назначению, но не всегда полностью эквивалентны. Подробности см. в <a class="reference internal" href="../reference/index.html#reference"><span class="std std-ref">документации</span></a>.</p>
+<p>В таблице ниже предполагается, что вы выполнили в Python следующие команды:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">io</span><span class="p">,</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">linalg</span><span class="p">,</span> <span class="n">signal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">cg</span><span class="p">,</span> <span class="n">eigs</span>
+</pre></div>
+</div>
+<p>Также далее предполагается, что если в примечаниях говорится о «матрице», аргументы являются двумерными объектами.</p>
+<section id="general-purpose-equivalents">
+<h3>Соответствия общего назначения<a class="headerlink" href="#general-purpose-equivalents" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>MATLAB</p></th>
+<th class="head"><p>NumPy</p></th>
+<th class="head"><p>Примечания</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">func</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">info(func)</span></code> или <code class="docutils literal notranslate"><span class="pre">help(func)</span></code> или <code class="docutils literal notranslate"><span class="pre">func?</span></code> (в IPython)</p></td>
+<td><p>Получить помощь по функции <em> func </em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">func</span></code></p></td>
+<td><p><a class="reference internal" href="#numpy-for-matlab-users-notes"><span class="std std-ref">См. примечание «Справка» (HELP)</span></a>.</p></td>
+<td><p>узнать, где определена <em>func</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">func</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.source(func)</span></code> или <code class="docutils literal notranslate"><span class="pre">func??</span></code> (в IPython)</p></td>
+<td><p>выводит исходный код <em>func</em>, если функция не реализована в машинном коде</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%</span> <span class="pre">comment</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">comment</span></code></p></td>
+<td><p>закомментируйте строку кода текстом <code class="docutils literal notranslate"><span class="pre">comment</span></code></p></td>
+</tr>
+<tr class="row-even"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span>
+    <span class="n">fprintf</span><span class="p">(</span><span class="s1">'</span><span class="si">%i</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+<td><p>использовать цикл for для вывода чисел 1, 2 и 3 через <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">range</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;&amp;</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">and</span> <span class="pre">b</span></code></p></td>
+<td><p>логический оператор И с сокращённым вычислением (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean" title="(in Python v3.14)"><span class="xref std std-ref">встроенный оператор Python</span></a>); только скалярные аргументы</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">||</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">or</span> <span class="pre">b</span></code></p></td>
+<td><p>логическое ИЛИ с сокращённым вычислением (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#boolean" title="(in Python v3.14)"><span class="xref std std-ref">встроенный оператор Python</span></a>); только скалярные аргументы</p></td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span>
+<span class="nb">ans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span>
+<span class="nb">ans</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">4</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">4</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.14)"><span class="xref std std-ref">Логические объекты</span></a> в Python — <code class="docutils literal notranslate"><span class="pre">True</span></code> и <code class="docutils literal notranslate"><span class="pre">False</span></code>; в MATLAB логическим значениям соответствуют <code class="docutils literal notranslate"><span class="pre">1</span></code> и <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">=</span><span class="mi">4</span>
+<span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="o">==</span><span class="mi">4</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">'a = 4\n'</span><span class="p">)</span>
+<span class="k">elseif</span><span class="w"> </span><span class="n">a</span><span class="o">==</span><span class="mi">5</span>
+<span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">'a = 5\n'</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'a = 4'</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'a = 5'</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+<td><p>создайте условие if-else, проверяющее, равно ли <code class="docutils literal notranslate"><span class="pre">a</span></code> числу 4 или 5, и выведите результат</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1*i</span></code>, <code class="docutils literal notranslate"><span class="pre">1*j</span></code>,  <code class="docutils literal notranslate"><span class="pre">1i</span></code>, <code class="docutils literal notranslate"><span class="pre">1j</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1j</span></code></p></td>
+<td><p>комплексные числа</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">eps</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.finfo(float).eps</span></code> или <code class="docutils literal notranslate"><span class="pre">np.spacing(1)</span></code></p></td>
+<td><p>Разность между 1 и ближайшим большим представимым вещественным числом двойной точности.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">load</span> <span class="pre">data.mat</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">io.loadmat('data.mat')</span></code></p></td>
+<td><p>Загрузите переменные MATLAB, сохраненные в файле <code class="docutils literal notranslate"><span class="pre">data.mat</span></code>. (Примечание: При сохранении массивов в <code class="docutils literal notranslate"><span class="pre">data.mat</span></code> в MATLAB/Octave используйте недавний двоичный формат. <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html#scipy.io.loadmat" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.io.loadmat</span></code></a> создаст словарь с сохраненными массивами и дополнительной информацией).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ode45</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">integrate.solve_ivp(f)</span></code></p></td>
+<td><p>интегрировать ОДУ методом Рунге — Кутты 4,5</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ode15s</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">integrate.solve_ivp(f,</span> <span class="pre">method='BDF')</span></code></p></td>
+<td><p>интегрировать обыкновенное дифференциальное уравнение методом BDF</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="linear-algebra-equivalents">
+<h3>Эквивалентные операции линейной алгебры<a class="headerlink" href="#linear-algebra-equivalents" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>MATLAB</p></th>
+<th class="head"><p>NumPy</p></th>
+<th class="head"><p>Примечания</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ndims(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.ndim(a)</span></code> или <code class="docutils literal notranslate"><span class="pre">a.ndim</span></code></p></td>
+<td><p>число измерений массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numel(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.size(a)</span></code> или <code class="docutils literal notranslate"><span class="pre">a.size</span></code></p></td>
+<td><p>Количество элементов массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">size(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.shape(a)</span></code> или <code class="docutils literal notranslate"><span class="pre">a.shape</span></code></p></td>
+<td><p>«размер» массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">size(a,n)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a.shape[n-1]</span></code></p></td>
+<td><p>Число элементов вдоль n-го измерения массива <code class="docutils literal notranslate"><span class="pre">a</span></code>. Учтите: в MATLAB индексация начинается с 1, а в Python — с 0; см. примечание <a class="reference internal" href="#numpy-for-matlab-users-notes"><span class="std std-ref">«Индексация» (INDEXING)</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3;</span> <span class="pre">4</span> <span class="pre">5</span> <span class="pre">6</span> <span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.array([[1.,</span> <span class="pre">2.,</span> <span class="pre">3.],</span> <span class="pre">[4.,</span> <span class="pre">5.,</span> <span class="pre">6.]])</span></code></p></td>
+<td><p>определить двумерный массив 2x3</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">a</span> <span class="pre">b;</span> <span class="pre">c</span> <span class="pre">d</span> <span class="pre">]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.block([[a,</span> <span class="pre">b],</span> <span class="pre">[c,</span> <span class="pre">d]])</span></code></p></td>
+<td><p>построить матрицу из блоков <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> и <code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a(end)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[-1]</span></code></p></td>
+<td><p>доступ к последнему элементу вектора MATLAB (1xn или nx1) или 1D массива NumPy <code class="docutils literal notranslate"><span class="pre">a</span></code> (длина n)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a(2,5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[1,</span> <span class="pre">4]</span></code></p></td>
+<td><p>получить элемент второй строки и пятого столбца двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a(2,:)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[1]</span></code> или <code class="docutils literal notranslate"><span class="pre">a[1,</span> <span class="pre">:]</span></code></p></td>
+<td><p>вся вторая строка двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a(1:5,:)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[0:5]</span></code> или <code class="docutils literal notranslate"><span class="pre">a[:5]</span></code> или <code class="docutils literal notranslate"><span class="pre">a[0:5,</span> <span class="pre">:]</span></code></p></td>
+<td><p>Первые 5 строк 2D массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a(end-4:end,:)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[-5:]</span></code></p></td>
+<td><p>Последние 5 строк 2D массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a(1:3,5:9)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[0:3,</span> <span class="pre">4:9]</span></code></p></td>
+<td><p>Строки с первой по третью и столбцы с пятого по девятый двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a([2,4,5],[1,3])</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[np.ix_([1,</span> <span class="pre">3,</span> <span class="pre">4],</span> <span class="pre">[0,</span> <span class="pre">2])]</span></code></p></td>
+<td><p>строки 2,4 и 5 и столбцы 1 и 3. Это позволяет изменять матрицу и не требует обычного среза.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a(3:2:21,:)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[2:21:2,:]</span></code></p></td>
+<td><p>каждая вторая строка <code class="docutils literal notranslate"><span class="pre">a</span></code> , начиная с третьей и заканчивая двадцать первой.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a(1:2:end,:)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[::2,</span> <span class="pre">:]</span></code></p></td>
+<td><p>каждая вторая строка <code class="docutils literal notranslate"><span class="pre">a</span></code>, начиная с первой</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a(end:-1:1,:)</span></code> или <code class="docutils literal notranslate"><span class="pre">flipud(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[::-1,:]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span></code> со строками в обратном порядке</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a([1:end</span> <span class="pre">1],:)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[np.r_[:len(a),0]]</span></code></p></td>
+<td><p>Массив <code class="docutils literal notranslate"><span class="pre">a</span></code> с копией первой строки, добавленной в конец.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a.'</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a.transpose()</span></code> или <code class="docutils literal notranslate"><span class="pre">a.T</span></code></p></td>
+<td><p>Транспонирование <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a'</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a.conj().transpose()</span></code> или <code class="docutils literal notranslate"><span class="pre">a.conj().T</span></code></p></td>
+<td><p>сопряжённо-транспонированная матрица <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">@</span> <span class="pre">b</span></code></p></td>
+<td><p>матричное умножение</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">.*</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></code></p></td>
+<td><p>поэлементное умножение</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a./b</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a/b</span></code></p></td>
+<td><p>поэлементное деление</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a.^3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a**3</span></code></p></td>
+<td><p>поэлементное возведение в степень</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">&gt;</span> <span class="pre">0.5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">&gt;</span> <span class="pre">0.5)</span></code></p></td>
+<td><p>Матрица, элемент с индексами i, j которой равен результату проверки a_ij &gt; 0.5. MATLAB возвращает логические значения 0 и 1, а NumPy — булевы <code class="docutils literal notranslate"><span class="pre">False</span></code> и <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">find(a</span> <span class="pre">&gt;</span> <span class="pre">0.5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.nonzero(a</span> <span class="pre">&gt;</span> <span class="pre">0.5)</span></code></p></td>
+<td><p>найти индексы, для которых (<code class="docutils literal notranslate"><span class="pre">a</span></code> &gt; 0.5)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a(:,find(v</span> <span class="pre">&gt;</span> <span class="pre">0.5))</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[:,np.nonzero(v</span> <span class="pre">&gt;</span> <span class="pre">0.5)[0]]</span></code></p></td>
+<td><p>извлечь столбцы <code class="docutils literal notranslate"><span class="pre">a</span></code>, для которых v &gt; 0.5</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a(:,find(v&gt;0.5))</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[:,</span> <span class="pre">v.T</span> <span class="pre">&gt;</span> <span class="pre">0.5]</span></code></p></td>
+<td><p>извлечь столбцы <code class="docutils literal notranslate"><span class="pre">a</span></code>, для которых вектор-столбец v &gt; 0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a(a&lt;0.5)=0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[a</span> <span class="pre">&lt;</span> <span class="pre">0.5]=0</span></code></p></td>
+<td><p>Массив <code class="docutils literal notranslate"><span class="pre">a</span></code>, в котором элементы меньше 0.5 заменены нулями.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">.*</span> <span class="pre">(a&gt;0.5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">(a</span> <span class="pre">&gt;</span> <span class="pre">0.5)</span></code></p></td>
+<td><p>Массив <code class="docutils literal notranslate"><span class="pre">a</span></code>, в котором элементы меньше 0.5 заменены нулями.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a(:)</span> <span class="pre">=</span> <span class="pre">3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[:]</span> <span class="pre">=</span> <span class="pre">3</span></code></p></td>
+<td><p>задать всем элементам одно скалярное значение</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y=x</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x.copy()</span></code></p></td>
+<td><p>В NumPy обычное присваивание связывает имя с объектом по ссылке.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">y=x(2,:)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x[1,</span> <span class="pre">:].copy()</span></code></p></td>
+<td><p>Срезы NumPy ссылаются на исходные данные</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">y=x(:)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x.flatten()</span></code></p></td>
+<td><p>Преобразование массива в вектор; при этом обязательно создаётся копия. Для порядка элементов, совпадающего с MATLAB, используйте <code class="docutils literal notranslate"><span class="pre">x.flatten('F')</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1:10</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.arange(1.,</span> <span class="pre">11.)</span></code> или <code class="docutils literal notranslate"><span class="pre">np.r_[1.:11.]</span></code> или <code class="docutils literal notranslate"><span class="pre">np.r_[1:10:10j]</span></code></p></td>
+<td><p>создать возрастающий вектор (см. примечание <a class="reference internal" href="#numpy-for-matlab-users-notes"><span class="std std-ref">RANGES</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0:9</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.arange(10.)</span></code> или <code class="docutils literal notranslate"><span class="pre">np.r_[:10.]</span></code> или <code class="docutils literal notranslate"><span class="pre">np.r_[:9:10j]</span></code></p></td>
+<td><p>создать возрастающий вектор (см. примечание <a class="reference internal" href="#numpy-for-matlab-users-notes"><span class="std std-ref">RANGES</span></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[1:10]'</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.arange(1.,11.)[:,</span> <span class="pre">np.newaxis]</span></code></p></td>
+<td><p>Создание вектора-столбца.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">zeros(3,4)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.zeros((3,</span> <span class="pre">4))</span></code></p></td>
+<td><p>Двумерный массив формы 3×4, заполненный нулями типа float64.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">zeros(3,4,5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.zeros((3,</span> <span class="pre">4,</span> <span class="pre">5))</span></code></p></td>
+<td><p>Трёхмерный массив формы 3 × 4 × 5, заполненный 64-битными нулями с плавающей точкой</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ones(3,4)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.ones((3,</span> <span class="pre">4))</span></code></p></td>
+<td><p>Двумерный массив 3x4, заполненный единицами с 64-разрядным типом с плавающей запятой</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">eye(3)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.eye(3)</span></code></p></td>
+<td><p>единичная матрица 3x3</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">diag(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.diag(a)</span></code></p></td>
+<td><p>Вектор диагональных элементов двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">diag(v,0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.diag(v,</span> <span class="pre">0)</span></code></p></td>
+<td><p>возвращает квадратную диагональную матрицу, ненулевые значения которой являются элементами вектора <code class="docutils literal notranslate"><span class="pre">v</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">rng</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span><span class="s">'twister'</span><span class="p">)</span>
+<span class="nb">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy.random</span><span class="w"> </span><span class="kn">import</span> <span class="n">default_rng</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Или приведённый в оригинале старый вариант: <code class="docutils literal notranslate"><span class="pre">random.rand((3,</span> <span class="pre">4))</span></code>. Примечание переводчика: для NumPy здесь ошибочно передан кортеж; правильный вызов — random.rand(3, 4), если random обозначает np.random. Вызов с (3, 4) как одним аргументом вызывает TypeError.</p>
+</td>
+<td><p>создать случайный массив 3x4 с генератором случайных чисел по умолчанию и начальным значением seed = 42</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">linspace(1,3,4)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.linspace(1,3,4)</span></code></p></td>
+<td><p>4 равноотстоящих значения от 1 до 3 включительно</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[x,y]=meshgrid(0:8,0:5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.mgrid[0:9.,0:6.]</span></code> или <code class="docutils literal notranslate"><span class="pre">np.meshgrid(r_[0:9.],r_[0:6.])</span></code></p></td>
+<td><p>два двумерных массива: один из значений x, другой из значений y</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ogrid[0:9.,0:6.]</span></code> или <code class="docutils literal notranslate"><span class="pre">np.ix_(np.r_[0:9.],np.r_[0:6.]</span></code></p></td>
+<td><p>лучший способ вычислять значения функций на сетке</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[x,y]=meshgrid([1,2,4],[2,4,5])</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.meshgrid([1,2,4],[2,4,5])</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.ix_([1,2,4],[2,4,5])</span></code></p></td>
+<td><p>лучший способ вычислять значения функций на сетке</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">repmat(a,</span> <span class="pre">m,</span> <span class="pre">n)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.tile(a,</span> <span class="pre">(m,</span> <span class="pre">n))</span></code></p></td>
+<td><p>создать m x n копий <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[a</span> <span class="pre">b]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.concatenate((a,b),1)</span></code>, или <code class="docutils literal notranslate"><span class="pre">np.hstack((a,b))</span></code>, или <code class="docutils literal notranslate"><span class="pre">np.column_stack((a,b))</span></code>, или <code class="docutils literal notranslate"><span class="pre">np.c_[a,b]</span></code>.</p></td>
+<td><p>соединить столбцы <code class="docutils literal notranslate"><span class="pre">a</span></code> и <code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[a;</span> <span class="pre">b]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.concatenate((a,b))</span></code> или <code class="docutils literal notranslate"><span class="pre">np.vstack((a,b))</span></code> или <code class="docutils literal notranslate"><span class="pre">np.r_[a,b]</span></code></p></td>
+<td><p>соединить строки <code class="docutils literal notranslate"><span class="pre">a</span></code> и <code class="docutils literal notranslate"><span class="pre">b</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max(max(a))</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a.max()</span></code> или <code class="docutils literal notranslate"><span class="pre">np.nanmax(a)</span></code></p></td>
+<td><p>Максимальный элемент <code class="docutils literal notranslate"><span class="pre">a</span></code> (с ndims(a)&lt;=2 для MATLAB, если есть NaN, <code class="docutils literal notranslate"><span class="pre">nanmax</span></code> проигнорирует их и вернет наибольшее значение)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a.max(0)</span></code></p></td>
+<td><p>Максимальный элемент каждой колонки массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max(a,[],2)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a.max(1)</span></code></p></td>
+<td><p>Максимальный элемент каждой строки массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max(a,b)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.maximum(a,</span> <span class="pre">b)</span></code></p></td>
+<td><p>Поэлементно сравнивает <code class="docutils literal notranslate"><span class="pre">a</span></code> и <code class="docutils literal notranslate"><span class="pre">b</span></code>, возвращая максимум каждой пары.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">norm(v)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.sqrt(v</span> <span class="pre">@</span> <span class="pre">v)</span></code> или <code class="docutils literal notranslate"><span class="pre">np.linalg.norm(v)</span></code></p></td>
+<td><p>L2 норма вектора <code class="docutils literal notranslate"><span class="pre">v</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">logical_and(a,b)</span></code></p></td>
+<td><p>поэлементный оператор И (универсальная функция NumPy) <a class="reference internal" href="#numpy-for-matlab-users-notes"><span class="std std-ref">См. примечание LOGICOPS</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">|</span> <span class="pre">b</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.logical_or(a,b)</span></code></p></td>
+<td><p>поэлементный оператор ИЛИ (универсальная функция NumPy) <a class="reference internal" href="#numpy-for-matlab-users-notes"><span class="std std-ref">См. примечание LOGICOPS</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bitand(a,b)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;</span> <span class="pre">b</span></code></p></td>
+<td><p>оператор побитового И (встроенный оператор Python и универсальная функция NumPy)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bitor(a,b)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">|</span> <span class="pre">b</span></code></p></td>
+<td><p>побитовый оператор ИЛИ (встроенный в Python и универсальная функция NumPy)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inv(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">linalg.inv(a)</span></code></p></td>
+<td><p>обратная матрица для квадратного двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pinv(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">linalg.pinv(a)</span></code></p></td>
+<td><p>псевдообратная матрица двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rank(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.linalg.matrix_rank(a)</span></code></p></td>
+<td><p>матричный ранг двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a\b</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">linalg.solve(a,</span> <span class="pre">b)</span></code>, если <code class="docutils literal notranslate"><span class="pre">a</span></code> квадратный;  <code class="docutils literal notranslate"><span class="pre">linalg.lstsq(a,</span> <span class="pre">b)</span></code> иначе</p></td>
+<td><p>решение a x = b для x</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">b/a</span></code></p></td>
+<td><p>Вместо этого решите <code class="docutils literal notranslate"><span class="pre">a.T</span> <span class="pre">x.T</span> <span class="pre">=</span> <span class="pre">b.T</span></code>.</p></td>
+<td><p>решение x a = b для x</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[U,S,V]=svd(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">U,</span> <span class="pre">S,</span> <span class="pre">Vh</span> <span class="pre">=</span> <span class="pre">linalg.svd(a);</span> <span class="pre">V</span> <span class="pre">=</span> <span class="pre">Vh.T</span></code></p></td>
+<td><p>сингулярное разложение <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chol(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">linalg.cholesky(a)</span></code></p></td>
+<td><p>Разложение Холецкого двумерного массива</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[V,D]=eig(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D,V</span> <span class="pre">=</span> <span class="pre">linalg.eig(a)</span></code></p></td>
+<td><p>собственные значения <span class="math notranslate nohighlight">\(\lambda\)</span> и собственные векторы <span class="math notranslate nohighlight">\(v\)</span> матрицы <code class="docutils literal notranslate"><span class="pre">a</span></code>, где <span class="math notranslate nohighlight">\(\mathbf{a} v = \lambda v\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[V,D]=eig(a,b)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D,V</span> <span class="pre">=</span> <span class="pre">linalg.eig(a,</span> <span class="pre">b)</span></code></p></td>
+<td><p>собственные значения <span class="math notranslate nohighlight">\(\lambda\)</span> и собственные векторы <span class="math notranslate nohighlight">\(v\)</span> от <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> где <span class="math notranslate nohighlight">\(\mathbf{a} v = \lambda \mathbf{b} v\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[V,D]=eigs(a,3)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D,V</span> <span class="pre">=</span> <span class="pre">eigs(a,</span> <span class="pre">k=3)</span></code></p></td>
+<td><p>найти <code class="docutils literal notranslate"><span class="pre">k=3</span></code> наибольших собственных значений и соответствующих собственных векторов двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[Q,R]=qr(a,0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Q,R</span> <span class="pre">=</span> <span class="pre">linalg.qr(a)</span></code></p></td>
+<td><p>QR-разложение</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[L,U,P]=lu(a)</span></code>, где <code class="docutils literal notranslate"><span class="pre">a==P'*L*U</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P,L,U</span> <span class="pre">=</span> <span class="pre">linalg.lu(a)</span></code>, где <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">P@L@U</span></code></p></td>
+<td><p>LU-разложение с частичным выбором главного элемента (примечание: P(MATLAB) == transpose(P(NumPy)))</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conjgrad</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cg</span></code></p></td>
+<td><p>решатель методом сопряжённых градиентов</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fft(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.fft.fft(a)</span></code></p></td>
+<td><p>Преобразование Фурье <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ifft(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.fft.ifft(a)</span></code></p></td>
+<td><p>Обратное преобразование Фурье массива <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sort(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.sort(a)</span></code> или <code class="docutils literal notranslate"><span class="pre">a.sort(axis=0)</span></code></p></td>
+<td><p>отсортировать каждый столбец двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sort(a,</span> <span class="pre">2)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.sort(a,</span> <span class="pre">axis=1)</span></code> или <code class="docutils literal notranslate"><span class="pre">a.sort(axis=1)</span></code></p></td>
+<td><p>отсортировать каждую строку двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[b,I]=sortrows(a,1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">=</span> <span class="pre">np.argsort(a[:,</span> <span class="pre">0]);</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">a[I,:]</span></code></p></td>
+<td><p>Сохранение массива <code class="docutils literal notranslate"><span class="pre">a</span></code> в массив <code class="docutils literal notranslate"><span class="pre">b</span></code> после сортировки строк по первому столбцу.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">Z\y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">linalg.lstsq(Z,</span> <span class="pre">y)</span></code></p></td>
+<td><p>выполнить линейную регрессию формы <span class="math notranslate nohighlight">\(\mathbf{Zx}=\mathbf{y}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">decimate(x,</span> <span class="pre">q)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">signal.resample(x,</span> <span class="pre">np.ceil(len(x)/q))</span></code></p></td>
+<td><p>понижение частоты дискретизации с фильтрацией нижних частот</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unique(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.unique(a)</span></code></p></td>
+<td><p>вектор уникальных значений в массиве <code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">squeeze(a)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a.squeeze()</span></code></p></td>
+<td><p>удаляет измерения размера 1 из массива <code class="docutils literal notranslate"><span class="pre">a</span></code>. MATLAB всегда возвращает массивы как минимум с двумя измерениями, а NumPy допускает нульмерные массивы</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="notes">
+<span id="numpy-for-matlab-users-notes"></span><h2>Примечания<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
+<p><strong>Подматрица</strong>: присваивать значения подматрице можно с помощью списков индексов и команды <code class="docutils literal notranslate"><span class="pre">ix_</span></code>. Например, для двумерного массива <code class="docutils literal notranslate"><span class="pre">a</span></code>: <code class="docutils literal notranslate"><span class="pre">ind=[1,</span> <span class="pre">3];</span> <span class="pre">a[np.ix_(ind,</span> <span class="pre">ind)]</span> <span class="pre">+=</span> <span class="pre">100</span></code>.</p>
+<p><strong>СПРАВКА</strong>: прямого аналога MATLAB-команды <code class="docutils literal notranslate"><span class="pre">which</span></code> нет, но <a class="reference external" href="https://docs.python.org/3/library/functions.html#help" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">help</span></code></a> обычно показывает имя файла функции. В Python также есть модуль <code class="docutils literal notranslate"><span class="pre">inspect</span></code> (выполните <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">inspect</span></code>) с функцией <code class="docutils literal notranslate"><span class="pre">getfile</span></code>, которая часто помогает.</p>
+<p><strong>ИНДЕКСИРОВАНИЕ</strong>: в MATLAB индексы начинаются с единицы, поэтому первый элемент последовательности имеет индекс 1. В Python индексы начинаются с нуля, поэтому первый элемент имеет индекс 0. У обоих подходов есть достоинства и недостатки, что порождает путаницу и жаркие споры. Индексирование с единицы соответствует обычной речи: «первый» элемент последовательности имеет индекс 1. Индексирование с нуля <a class="reference external" href="https://groups.google.com/group/comp.lang.python/msg/1bf4d925dfbf368?q=g:thl3498076713d&amp;hl=en">упрощает работу с индексами</a>. См. также <a class="reference external" href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html">текст профессора Эдсгера В. Дейкстры</a>.</p>
+<p><strong>ДИАПАЗОНЫ</strong>: в MATLAB <code class="docutils literal notranslate"><span class="pre">0:5</span></code> может служить и литералом диапазона, и индексом среза внутри круглых скобок. В Python конструкции вида <code class="docutils literal notranslate"><span class="pre">0:5</span></code> допускаются <em>только</em> как индексы срезов внутри квадратных скобок. Поэтому создан несколько необычный объект <code class="docutils literal notranslate"><span class="pre">r_</span></code>, обеспечивающий NumPy столь же краткий способ построения диапазонов. Обратите внимание: <code class="docutils literal notranslate"><span class="pre">r_</span></code> не вызывают как функцию или конструктор, а <em>индексируют</em> с помощью квадратных скобок. Это позволяет использовать в аргументах синтаксис срезов Python.</p>
+<p><strong>LOGICOPS</strong>: <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> и <code class="docutils literal notranslate"><span class="pre">|</span></code> в NumPy — побитовые И/ИЛИ, а &amp; и <code class="docutils literal notranslate"><span class="pre">|</span></code> в MATLAB — логические И/ИЛИ. Их действие может казаться одинаковым, но есть существенные различия. Вместо операторов MATLAB <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> и <code class="docutils literal notranslate"><span class="pre">|</span></code> используйте ufunc NumPy <code class="docutils literal notranslate"><span class="pre">logical_and</span></code>/<code class="docutils literal notranslate"><span class="pre">logical_or</span></code>. Основные различия операторов <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> и <code class="docutils literal notranslate"><span class="pre">|</span></code> в MATLAB и NumPy:</p>
+<ul class="simple">
+<li><p>Для входных данных, не ограниченных логическими значениями {0,1}, NumPy возвращает результат побитового И. MATLAB трактует любое ненулевое значение как 1 и возвращает результат логического И. Например, <code class="docutils literal notranslate"><span class="pre">(3</span> <span class="pre">&amp;</span> <span class="pre">4)</span></code> в NumPy даёт <code class="docutils literal notranslate"><span class="pre">0</span></code>, тогда как в MATLAB и <code class="docutils literal notranslate"><span class="pre">3</span></code>, и <code class="docutils literal notranslate"><span class="pre">4</span></code> считаются логической истиной, а <code class="docutils literal notranslate"><span class="pre">(3</span> <span class="pre">&amp;</span> <span class="pre">4)</span></code> возвращает <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+<li><p>Приоритет: оператор &amp; в NumPy имеет более высокий приоритет, чем логические операторы <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> и <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>; в MATLAB — наоборот.</p></li>
+</ul>
+<p>Если аргументы заведомо логические, можно использовать побитовые операторы NumPy, внимательно расставляя скобки: <code class="docutils literal notranslate"><span class="pre">z</span>
+<span class="pre">=</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">1)</span> <span class="pre">&amp;</span> <span class="pre">(x</span> <span class="pre">&lt;</span> <span class="pre">2)</span></code>. Отсутствие операторных форм NumPy для <code class="docutils literal notranslate"><span class="pre">logical_and</span></code> и <code class="docutils literal notranslate"><span class="pre">logical_or</span></code> — досадное следствие устройства Python.</p>
+<p><strong>ИЗМЕНЕНИЕ ФОРМЫ И ЛИНЕЙНАЯ ИНДЕКСАЦИЯ</strong>: MATLAB всегда разрешает обращаться к многомерным массивам по скалярным или линейным индексам; NumPy — нет. Линейные индексы часто используются в программах MATLAB: например, <code class="docutils literal notranslate"><span class="pre">find()</span></code> для матрицы возвращает именно их, тогда как find в NumPy ведёт себя иначе. При переносе кода MATLAB может понадобиться сначала изменить форму матрицы в линейную последовательность, выполнить индексацию, а затем восстановить форму. Поскольку reshape обычно создаёт представления тех же данных, это можно сделать достаточно эффективно. По умолчанию reshape в NumPy использует порядок обхода «C», а MATLAB — порядок Fortran. При простом преобразовании в линейную последовательность и обратно это неважно. Но если исходный код MATLAB зависит от порядка обхода, выражение <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">=</span>
+<span class="pre">reshape(x,3,4);</span></code> нужно заменить в NumPy на <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">=</span> <span class="pre">x.reshape(3,4,order='F').copy()</span></code>.</p>
+</section>
+<section id="array-or-matrix-which-should-i-use">
+<h2>array или matrix: что выбрать?<a class="headerlink" href="#array-or-matrix-which-should-i-use" title="Link to this heading">#</a></h2>
+<p>Исторически NumPy предоставляет специальный матричный тип <em class="xref py py-obj">np.matrix</em> — подкласс ndarray, в котором бинарные операции трактуются как операции линейной алгебры. В существующем коде он иногда используется вместо <em class="xref py py-obj">np.array</em>. Какой же вариант выбрать?</p>
+<section id="short-answer">
+<h3>Краткий ответ<a class="headerlink" href="#short-answer" title="Link to this heading">#</a></h3>
+<p><strong>Используйте массивы</strong>.</p>
+<ul class="simple">
+<li><p>Они поддерживают ту же алгебру многомерных массивов, что и MATLAB</p></li>
+<li><p>Это стандартный тип NumPy для представления векторов, матриц и тензоров. Многие функции NumPy возвращают массивы, а не объекты matrix.</p></li>
+<li><p>Поэлементные операции чётко отделены от операций линейной алгебры.</p></li>
+<li><p>Можно использовать как обычные векторы, так и векторы-строки или векторы-столбцы.</p></li>
+</ul>
+<p>До Python 3.5 единственным недостатком массивов была необходимость использовать <code class="docutils literal notranslate"><span class="pre">dot</span></code> вместо <code class="docutils literal notranslate"><span class="pre">*</span></code> для умножения (свёртки) двух тензоров: скалярного произведения, умножения матрицы на вектор и т. д. Начиная с Python 3.5 можно использовать оператор матричного умножения <code class="docutils literal notranslate"><span class="pre">@</span></code>.</p>
+<p>По этим причинам мы намерены в будущем объявить <code class="docutils literal notranslate"><span class="pre">matrix</span></code> устаревшим.</p>
+</section>
+<section id="long-answer">
+<h3>Подробный ответ<a class="headerlink" href="#long-answer" title="Link to this heading">#</a></h3>
+<p>NumPy содержит классы <code class="docutils literal notranslate"><span class="pre">array</span></code> и <code class="docutils literal notranslate"><span class="pre">matrix</span></code>. Класс <code class="docutils literal notranslate"><span class="pre">array</span></code> представляет универсальный n-мерный массив для различных численных вычислений, а <code class="docutils literal notranslate"><span class="pre">matrix</span></code> специально упрощает вычисления линейной алгебры. На практике между ними лишь несколько ключевых различий.</p>
+<ul class="simple">
+<li><p>Операторы <code class="docutils literal notranslate"><span class="pre">*</span></code> и <code class="docutils literal notranslate"><span class="pre">@</span></code>, функции <code class="docutils literal notranslate"><span class="pre">dot()</span></code> и <code class="docutils literal notranslate"><span class="pre">multiply()</span></code>:</p>
+<ul>
+<li><p>Для <code class="docutils literal notranslate"><span class="pre">array</span></code> оператор <code class="docutils literal notranslate"><span class="pre">*</span></code> <strong>означает поэлементное умножение</strong>, а <code class="docutils literal notranslate"><span class="pre">@</span></code> <strong>означает матричное умножение</strong>; им соответствуют функции <code class="docutils literal notranslate"><span class="pre">multiply()</span></code> и <code class="docutils literal notranslate"><span class="pre">dot()</span></code>.</p></li>
+<li><p>Для <code class="docutils literal notranslate"><span class="pre">matrix</span></code> оператор <code class="docutils literal notranslate"><span class="pre">*</span></code> <strong>означает матричное умножение</strong>, а для поэлементного умножения нужно вызывать <code class="docutils literal notranslate"><span class="pre">multiply()</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Обработка векторов — одномерных массивов</p>
+<ul>
+<li><p>Для <code class="docutils literal notranslate"><span class="pre">array</span></code> <strong>формы векторов 1×N, N×1 и N различаются</strong>. Операции вроде <code class="docutils literal notranslate"><span class="pre">A[:,1]</span></code> возвращают одномерный массив формы N, а не двумерный формы N×1. Транспонирование одномерного <code class="docutils literal notranslate"><span class="pre">array</span></code> ничего не меняет.</p></li>
+<li><p>В случае <code class="docutils literal notranslate"><span class="pre">matrix</span></code> <strong>одномерные массивы всегда преобразуются в матрицы 1×N или N×1</strong>, то есть векторы-строки или векторы-столбцы. Выражение <code class="docutils literal notranslate"><span class="pre">A[:,1]</span></code> возвращает двумерную матрицу формы N×1.</p></li>
+</ul>
+</li>
+<li><p>Обработка массивов с более чем двумя измерениями (ndim &gt; 2)</p>
+<ul>
+<li><p>Объекты <code class="docutils literal notranslate"><span class="pre">array</span></code> <strong>могут иметь более двух измерений</strong>.</p></li>
+<li><p>Объекты <code class="docutils literal notranslate"><span class="pre">matrix</span></code> <strong>всегда имеют ровно два измерения</strong>.</p></li>
+</ul>
+</li>
+<li><p>Удобные атрибуты</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">array</span></code> <strong>имеет атрибут .T</strong>, возвращающий транспонированные данные.</p></li>
+<li><p>У <code class="docutils literal notranslate"><span class="pre">matrix</span></code> <strong>также есть атрибуты .H, .I и .A</strong>, возвращающие соответственно эрмитово сопряжение, обратную матрицу и результат <code class="docutils literal notranslate"><span class="pre">asarray()</span></code> для матрицы.</p></li>
+</ul>
+</li>
+<li><p>Вспомогательный конструктор</p>
+<ul>
+<li><p>Конструктор <code class="docutils literal notranslate"><span class="pre">array</span></code> <strong>принимает вложенные последовательности Python для инициализации</strong>. Например, <code class="docutils literal notranslate"><span class="pre">array([[1,2,3],[4,5,6]])</span></code>.</p></li>
+<li><p>Конструктор <code class="docutils literal notranslate"><span class="pre">matrix</span></code> также <strong>принимает удобный строковый инициализатор</strong>, например <code class="docutils literal notranslate"><span class="pre">matrix("[1</span> <span class="pre">2</span> <span class="pre">3;</span> <span class="pre">4</span> <span class="pre">5</span> <span class="pre">6]")</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>У обоих вариантов есть преимущества и недостатки:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">:)</span></code> Поэлементное умножение выполняется легко: <code class="docutils literal notranslate"><span class="pre">A*B</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:(</span></code> Помните, что для матричного умножения предусмотрен отдельный оператор — <code class="docutils literal notranslate"><span class="pre">@</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:)</span></code> Одномерные массивы можно рассматривать <em>как</em> векторы-строки или векторы-столбцы. <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">@</span> <span class="pre">v</span></code> трактует <code class="docutils literal notranslate"><span class="pre">v</span></code> как вектор-столбец, а <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">@</span> <span class="pre">A</span></code> трактует <code class="docutils literal notranslate"><span class="pre">v</span></code> как вектор-строку. Это позволяет избежать множества явных транспонирований.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:)</span></code> Тип <code class="docutils literal notranslate"><span class="pre">array</span></code> — стандартный тип NumPy, поэтому он проверяется тщательнее всего и чаще всего возвращается сторонним кодом, использующим NumPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:)</span></code> легко справляется с данными любого числа измерений.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:)</span></code> По смыслу это ближе к тензорной алгебре, если вы с ней знакомы.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:)</span></code> <em>Все</em> операции (<code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> и т. д.) выполняются поэлементно.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:(</span></code> Отмечаемый в оригинале недостаток: разреженные матрицы из <code class="docutils literal notranslate"><span class="pre">scipy.sparse</span></code> хуже взаимодействуют с обычными массивами.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">:\\</span></code> Поведение ближе к матрицам MATLAB.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;:(</span></code> Не более двух измерений. Для хранения трёхмерных данных нужен <code class="docutils literal notranslate"><span class="pre">array</span></code> или, возможно, список Python из объектов <code class="docutils literal notranslate"><span class="pre">matrix</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;:(</span></code> Не менее двух измерений. Векторы недопустимы: их нужно представлять матрицами из одного столбца или одной строки.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;:(</span></code> Поскольку <code class="docutils literal notranslate"><span class="pre">array</span></code> используется в NumPy по умолчанию, некоторые функции могут возвращать <code class="docutils literal notranslate"><span class="pre">array</span></code>, даже если передать им <code class="docutils literal notranslate"><span class="pre">matrix</span></code>. Для функций NumPy этого происходить не должно (если происходит, это ошибка), но сторонний код на основе NumPy может не сохранять тип так, как это делает сам NumPy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:)</span></code> <code class="docutils literal notranslate"><span class="pre">A*B</span></code> означает умножение матриц, поэтому запись выглядит так же, как в линейной алгебре (в Python &gt;= 3.5 для обычных массивов столь же удобную запись обеспечивает оператор <code class="docutils literal notranslate"><span class="pre">@</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;:(</span></code> Для поэлементного умножения нужно вызывать функцию <code class="docutils literal notranslate"><span class="pre">multiply(A,B)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;:(</span></code> Перегрузка операторов несколько нелогична: <code class="docutils literal notranslate"><span class="pre">*</span></code> работает не поэлементно, а <code class="docutils literal notranslate"><span class="pre">/</span></code> — поэлементно.</p></li>
+<li><p>Взаимодействие с <code class="docutils literal notranslate"><span class="pre">scipy.sparse</span></code> стало немного проще.</p></li>
+</ul>
+</li>
+</ul>
+<p>Поэтому рекомендуется <code class="docutils literal notranslate"><span class="pre">array</span></code>. Авторы NumPy планируют со временем вывести <code class="docutils literal notranslate"><span class="pre">matrix</span></code> из употребления.</p>
+</section>
+</section>
+<section id="customizing-your-environment">
+<h2>Настройка среды <a class="headerlink" href="#customizing-your-environment" title="Link to this heading">#</a></h2>
+<p>В MATLAB основной способ настройки среды — добавление в путь поиска каталогов с нужными функциями. Такие настройки можно поместить в стартовый скрипт, который MATLAB выполняет при запуске.</p>
+<p>NumPy, или, вернее, Python, имеет аналогичные возможности.</p>
+<ul class="simple">
+<li><p>Чтобы изменить путь поиска Python, включив в него расположение собственных модулей, определите переменную среды <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.</p></li>
+<li><p>Чтобы определённый скрипт выполнялся при запуске интерактивного интерпретатора Python, задайте его имя в переменной окружения <code class="docutils literal notranslate"><span class="pre">PYTHONSTARTUP</span></code>.</p></li>
+</ul>
+<p>В MATLAB доступное через путь поиска можно вызвать сразу, а в Python сначала нужно выполнить import, чтобы получить доступ к функциям соответствующего файла.</p>
+<p>Например, вы можете создать сценарий запуска, который выглядит так (Примечание: это просто пример, а не утверждение «лучших практик»):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make all numpy available via shorter 'np' prefix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1">#</span>
+<span class="c1"># Make the SciPy linear algebra functions available as linalg.func()</span>
+<span class="c1"># e.g. linalg.lu, linalg.eig (for general l*B@u==A@u solution)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span>
+<span class="c1">#</span>
+<span class="c1"># Define a Hermitian function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hermitian</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="c1"># Make a shortcut for hermitian:</span>
+<span class="c1">#    hermitian(A) --&gt; H(A)</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">hermitian</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Делаем весь NumPy доступным через короткий префикс np</li><li>Делаем функции линейной алгебры SciPy доступными как linalg.func()</li><li>Например, linalg.lu, linalg.eig для общей задачи l*B@u==A@u</li><li>Определяем функцию эрмитова сопряжения</li><li>Создаём короткое имя для hermitian:</li><li>hermitian(A) --&gt; H(A)</li></ul></details></div>
+</div>
+<p>Для использования устаревающего <em class="xref py py-obj">matrix</em> и других функций <em class="xref py py-obj">matlib</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make all matlib functions accessible at the top level via M.func()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy.matlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">M</span>
+<span class="c1"># Make some matlib functions accessible directly at the top level via, e.g. rand(3,3)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.matlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">matrix</span><span class="p">,</span><span class="n">rand</span><span class="p">,</span><span class="n">zeros</span><span class="p">,</span><span class="n">ones</span><span class="p">,</span><span class="n">empty</span><span class="p">,</span><span class="n">eye</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Делаем все функции matlib доступными на верхнем уровне через M.func()</li><li>Делаем некоторые функции matlib доступными напрямую, например rand(3,3)</li></ul></details></div>
+</div>
+</section>
+<section id="links">
+<h2>Ссылки<a class="headerlink" href="#links" title="Link to this heading">#</a></h2>
+<p>Ещё один, несколько устаревший справочник соответствий MATLAB и NumPy доступен по адресу <a class="reference external" href="https://mathesaurus.sf.net/">https://mathesaurus.sf.net/</a></p>
+<p>Большой список инструментов для научной работы на Python приведён на <a class="reference external" href="https://projects.scipy.org/topical-software.html">странице программ по тематическим разделам</a>.</p>
+<p>Перечень программ, использующих Python как язык сценариев, см. в разделе <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Python_software#Embedded_as_a_scripting_language">«Список программного обеспечения Python: встроенный язык сценариев»</a></p>
+<p>MATLAB® и SimuLink® — зарегистрированные товарные знаки The MathWorks, Inc.</p>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="basics.ufuncs.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Основы универсальных функций (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>)</p>
+</div>
+</a>
+<a class="right-next" href="howtos_index.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Практические инструкции NumPy</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Введение</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-key-differences">Основные отличия </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rough-equivalents">Приблизительные эквиваленты</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-purpose-equivalents">Соответствия общего назначения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-equivalents">Эквивалентные операции линейной алгебры</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Примечания</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-or-matrix-which-should-i-use">array или matrix: что выбрать?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Краткий ответ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long-answer">Подробный ответ</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-your-environment">Настройка среды </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#links">Ссылки</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

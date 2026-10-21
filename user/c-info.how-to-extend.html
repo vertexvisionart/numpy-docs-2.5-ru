@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'user/c-info.how-to-extend';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="c-info.python-as-glue.html" rel="next" title="Использование Python в качестве клея"/>
+<link href="c-info.html" rel="prev" title="Использование C API NumPy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Основы NumPy</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c-info.html">Использование C API NumPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"> Как расширить NumPy </a></li>
+<li class="toctree-l2"><a class="reference internal" href="c-info.python-as-glue.html">Использование Python для связывания компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c-info.ufunc-tutorial.html">Написание собственной универсальной функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c-info.beyond-basics.html"> За пределами основ </a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../f2py/index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="c-info.html">Использование C API NumPy</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis"> Как расширить NumPy </span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article"><p class="admonition ru-translator-note">Примечание переводчика: в этой главе есть устаревшие примеры расширений для Python 2, использующие init{name} и Py_InitModule. В Python 3 схема инициализации другая: используется PyInit_{name}. Код примеров сохранён для точного соответствия оригиналу; считайте эти фрагменты историческими, а не готовыми шаблонами для современного Python.</p>
+<section id="how-to-extend-numpy">
+<h1>Как расширять NumPy<a class="headerlink" href="#how-to-extend-numpy" title="Link to this heading">#</a></h1>
+<div class="line-block">
+<div class="line">То, что статично и повторяется, скучно. То, что динамично</div>
+<div class="line">и непредсказуемо, сбивает с толку. Между ними — искусство.</div>
+<div class="line">— <em>John A. Locke</em></div>
+</div>
+<div class="line-block">
+<div class="line">Наука — дифференциальное уравнение. Религия — граничное условие.</div>
+<div class="line">— <em>Alan Turing</em></div>
+</div>
+<section id="writing-an-extension-module">
+<span id="writing-an-extension"></span><h2>Написание модуля расширения <a class="headerlink" href="#writing-an-extension-module" title="Link to this heading">#</a></h2>
+<p>Объект ndarray позволяет быстро выполнять вычисления в Python, но при этом рассчитан на самые разные вычислительные задачи. Поэтому, если нужна максимальная скорость, хорошо написанный скомпилированный цикл, учитывающий конкретное приложение и оборудование, незаменим. Это одна из причин включения f2py в NumPy: он предоставляет удобные средства непосредственного подключения простого кода C/C++ и произвольного кода Fortran к Python. Мы рекомендуем использовать и совершенствовать этот механизм. В этом разделе описывается не сам инструмент, а лежащие в его основе базовые шаги написания модуля расширения.</p>
+<p id="index-0">После написания, компиляции и установки модуля расширения в каталог из пути поиска Python (sys.path) его можно импортировать как обычный файл Python. Он содержит объекты и методы, определённые и скомпилированные в коде C. Основные шаги хорошо документированы; подробности доступны в документации Python на <a class="reference external" href="https://www.python.org">www.python.org</a>.</p>
+<p>Помимо C API Python, существует обширный C API NumPy для сложных операций на уровне C. Однако большинству приложений обычно требуется лишь несколько вызовов. Например, для извлечения указателя на память и сведений о форме с передачей их другой вычислительной процедуре нужны совсем другие вызовы, чем для создания нового типа объектов, подобных массивам, или нового типа данных ndarray. В этой главе описаны наиболее употребительные вызовы API и макросы.</p>
+</section>
+<section id="required-subroutine">
+<h2>Необходимая подпрограмма<a class="headerlink" href="#required-subroutine" title="Link to this heading">#</a></h2>
+<p>Чтобы Python мог использовать ваш код C как модуль расширения, в нём необходимо определить одну функцию инициализации. Она должна называться init{name}, где {name} — имя модуля в Python, и быть объявлена так, чтобы быть доступной извне. Помимо добавления нужных методов и констант, эта функция должна вызывать <code class="docutils literal notranslate"><span class="pre">import_array()</span></code> и/или <code class="docutils literal notranslate"><span class="pre">import_ufunc()</span></code> в зависимости от используемого C-API. Если забыть эти вызовы, обращение к любой подпрограмме C-API приведёт к ошибке сегментации и аварийному завершению. В одном файле можно определить несколько функций init{name}, чтобы предоставить несколько модулей. Для их корректной работы необходимы дополнительные приёмы, которые здесь не рассматриваются. Примечание переводчика: в оригинале описана схема инициализации Python 2. В Python 3 функция называется PyInit_{name}; следующий пример с init{name} и Py_InitModule также относится к Python 2.</p>
+<p>Минимальный исторический метод <code class="docutils literal notranslate"><span class="pre">init{name}</span></code> выглядит так:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PyMODINIT_FUNC</span>
+<span class="n">init</span><span class="p">{</span><span class="n">name</span><span class="p">}(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">Py_InitModule</span><span class="p">({</span><span class="n">name</span><span class="p">},</span><span class="w"> </span><span class="n">mymethods</span><span class="p">);</span>
+<span class="w">   </span><span class="n">import_array</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>mymethods должен быть массивом (обычно объявленным статически) структур PyMethodDef, содержащих имена методов, соответствующие функции C, переменную, указывающую, принимает ли метод именованные аргументы, и строки документации. Они описаны в следующем разделе. Чтобы добавить в модуль константы, сохраните возвращаемое значение Py_InitModule — объект модуля. Наиболее общий способ добавления элементов в модуль — получить его словарь с помощью PyModule_GetDict(module). Через этот словарь можно вручную добавить в модуль что угодно. Более простой способ добавить объекты — использовать один из трёх дополнительных вызовов C API Python, не требующих отдельно получать словарь модуля. Они описаны в документации Python, но для удобства приведены и здесь:</p>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyModule_AddObject">
+<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyModule_AddObject</span></span></span><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/c-api/structures.html#c.PyObject" title="(in Python v3.14)"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">name</span></span>, <a class="reference external" href="https://docs.python.org/3/c-api/structures.html#c.PyObject" title="(in Python v3.14)"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyModule_AddObject" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyModule_AddIntConstant">
+<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyModule_AddIntConstant</span></span></span><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/c-api/structures.html#c.PyObject" title="(in Python v3.14)"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">name</span></span>, <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyModule_AddIntConstant" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyModule_AddStringConstant">
+<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyModule_AddStringConstant</span></span></span><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/c-api/structures.html#c.PyObject" title="(in Python v3.14)"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">name</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyModule_AddStringConstant" title="Link to this definition">#</a><br/></dt>
+<dd><p>Все три функции требуют объект <em>module</em> — возвращаемое значение Py_InitModule. <em>name</em> — строка, задающая имя значения в модуле. В зависимости от вызываемой функции аргумент <em>value</em> представляет собой произвольный объект (<a class="reference internal" href="#c.PyModule_AddObject" title="PyModule_AddObject"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_AddObject</span></code></a> забирает владение ссылкой на него), целочисленную константу или строковую константу.</p>
+</dd></dl>
+</section>
+<section id="defining-functions">
+<h2>Определение функций <a class="headerlink" href="#defining-functions" title="Link to this heading">#</a></h2>
+<p>Второй аргумент функции Py_InitModule — структура, упрощающая определение функций модуля. В примере выше структура mymethods должна быть определена ранее в файле (обычно непосредственно перед подпрограммой init{name}) следующим образом:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">PyMethodDef</span><span class="w"> </span><span class="n">mymethods</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">nokeywordfunc</span><span class="p">,</span><span class="n">nokeyword_cfunc</span><span class="p">,</span>
+<span class="w">      </span><span class="n">METH_VARARGS</span><span class="p">,</span>
+<span class="w">      </span><span class="n">Doc</span><span class="w"> </span><span class="n">string</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">keywordfunc</span><span class="p">,</span><span class="w"> </span><span class="n">keyword_cfunc</span><span class="p">,</span>
+<span class="w">      </span><span class="n">METH_VARARGS</span><span class="o">|</span><span class="n">METH_KEYWORDS</span><span class="p">,</span>
+<span class="w">      </span><span class="n">Doc</span><span class="w"> </span><span class="n">string</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">}</span><span class="w"> </span><span class="cm">/* Sentinel */</span>
+<span class="p">}</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Сторожевое значение</li></ul></details></div>
+</div>
+<p>Каждый элемент массива mymethods представляет собой структуру <a class="reference external" href="https://docs.python.org/3/c-api/structures.html#c.PyMethodDef" title="(in Python v3.14)"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyMethodDef</span></code></a>, содержащую: 1) имя функции в Python; 2) реализующую её функцию C; 3) флаги, указывающие, принимает ли функция именованные аргументы; 4) строку документации функции. Добавляя записи в эту таблицу, в одном модуле можно определить любое число функций. Все поля последней записи должны быть NULL, как показано в примере: эта запись служит признаком конца таблицы. По ней Python определяет, что перечислены все функции модуля.</p>
+<p>Для завершения модуля расширения остаётся написать код, выполняющий нужные функции. Функции бывают двух видов: принимающие именованные аргументы и не принимающие их.</p>
+<section id="functions-without-keyword-arguments">
+<h3>Функции без именованных аргументов<a class="headerlink" href="#functions-without-keyword-arguments" title="Link to this heading">#</a></h3>
+<p>Функции, не принимающие именованные аргументы, следует записывать так:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">PyObject</span><span class="o">*</span>
+<span class="nf">nokeyword_cfunc</span><span class="w"> </span><span class="p">(</span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">dummy</span><span class="p">,</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* convert Python arguments */</span>
+<span class="w">    </span><span class="cm">/* do function */</span>
+<span class="w">    </span><span class="cm">/* return something */</span>
+<span class="p">}</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Преобразуем аргументы Python</li><li>Выполняем функцию</li><li>Возвращаем результат</li></ul></details></div>
+</div>
+<p>Фиктивный аргумент в этом контексте не используется, и его можно игнорировать. Аргумент <em>args</em> содержит кортеж всех аргументов, переданных функции. Здесь можно выполнять любые действия, но обычно проще всего обработать входные аргументы вызовом <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.PyArg_ParseTuple" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple</span></code></a> (args, format_string, addresses_to_C_variables…) или <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.PyArg_UnpackTuple" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_UnpackTuple</span></code></a> (tuple, “name”, min, max, …). Первая функция подробно описана в разделе 5.5 справочника C API Python (Parsing arguments and building values). Особое внимание стоит уделить формату «O&amp;»: он использует функции преобразования для перехода между объектом Python и объектом C. Остальные форматы можно в основном считать частными случаями этого общего правила. В C API NumPy определено несколько полезных функций преобразования. В частности, <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_DescrConverter" title="PyArray_DescrConverter"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_DescrConverter</span></code></a> удобна для поддержки произвольного задания типа данных. Она преобразует любой допустимый объект Python, задающий тип данных, в объект <span class="c-expr sig sig-inline c"><a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArray_Descr" title="PyArray_Descr"><span class="n">PyArray_Descr</span></a><span class="p">*</span></span>. Не забудьте передать адреса переменных C, которые нужно заполнить.</p>
+<p>В исходном коде NumPy много примеров <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.PyArg_ParseTuple" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple</span></code></a>. Обычное использование выглядит так:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">;</span>
+<span class="n">PyArray_Descr</span><span class="w"> </span><span class="o">*</span><span class="n">dtype</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">PyArg_ParseTuple</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s">"OO&amp;"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">PyArray_DescrConverter</span><span class="p">,</span>
+<span class="w">                      </span><span class="o">&amp;</span><span class="n">dtype</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Помните, что строка формата «O» возвращает <em>заимствованную</em> ссылку на объект. Однако функции преобразования обычно требуют управления памятью. В этом примере при успешном преобразовании <em>dtype</em> содержит новую ссылку на объект <span class="c-expr sig sig-inline c"><a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArray_Descr" title="PyArray_Descr"><span class="n">PyArray_Descr</span></a><span class="p">*</span></span>, а <em>input</em> — заимствованную ссылку. Поэтому, если это преобразование совмещено с другим (например, в целое число), причём преобразование типа данных прошло успешно, а преобразование в целое завершилось ошибкой, перед возвратом необходимо уменьшить счётчик ссылок объекта типа данных. Обычно для этого <em>dtype</em> присваивают <code class="docutils literal notranslate"><span class="pre">NULL</span></code> до вызова <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.PyArg_ParseTuple" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple</span></code></a>, а перед возвратом вызывают <a class="reference external" href="https://docs.python.org/3/c-api/refcounting.html#c.Py_XDECREF" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_XDECREF</span></code></a> для <em>dtype</em>.</p>
+<p>После обработки аргументов выполняется основной код, при необходимости вызывающий другие функции. Последний шаг функции C — вернуть результат. При ошибке возвращается <code class="docutils literal notranslate"><span class="pre">NULL</span></code>; прежде нужно убедиться, что ошибка Python действительно установлена. Если возвращать нечего, увеличьте счётчик ссылок <a class="reference external" href="https://docs.python.org/3/c-api/none.html#c.Py_None" title="(in Python v3.14)"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_None</span></code></a> и верните этот объект. При возврате одного объекта нужно владеть ссылкой на него. Несколько объектов возвращаются кортежем. Функция <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.Py_BuildValue" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_BuildValue</span></code></a>(format_string, c_variables…) упрощает создание кортежей объектов Python из переменных C. Обратите внимание на разницу между «N» и «O» в строке формата, иначе возможны утечки памяти. «O» увеличивает счётчик ссылок объекта в соответствующей переменной C типа <span class="c-expr sig sig-inline c"><a class="reference external" href="https://docs.python.org/3/c-api/structures.html#c.PyObject" title="(in Python v3.14)"><span class="n">PyObject</span></a><span class="p">*</span></span>, а «N» забирает владение ссылкой из переменной <span class="c-expr sig sig-inline c"><a class="reference external" href="https://docs.python.org/3/c-api/structures.html#c.PyObject" title="(in Python v3.14)"><span class="n">PyObject</span></a><span class="p">*</span></span>. Используйте «N», если уже владеете ссылкой и хотите передать её кортежу; «O» — если имеете лишь заимствованную ссылку и нужно создать новую для кортежа.</p>
+</section>
+<section id="functions-with-keyword-arguments">
+<h3>Функции с именованными аргументами<a class="headerlink" href="#functions-with-keyword-arguments" title="Link to this heading">#</a></h3>
+<p>Эти функции очень похожи на функции без аргументов-ключевых слов. Единственное отличие состоит в том, что сигнатура функции:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">PyObject</span><span class="o">*</span>
+<span class="nf">keyword_cfunc</span><span class="w"> </span><span class="p">(</span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">dummy</span><span class="p">,</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">kwds</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Аргумент kwds содержит словарь Python: его ключи — имена переданных именованных аргументов, значения — соответствующие значения аргументов. Его можно обработать любым подходящим способом. Проще всего заменить <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.PyArg_ParseTuple" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple</span></code></a>(args, format_string, addresses…) вызовом <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.PyArg_ParseTupleAndKeywords" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTupleAndKeywords</span></code></a>(args, kwds, format_string, char *kwlist[], addresses…). Параметр kwlist — массив строк с ожидаемыми именами аргументов, завершающийся <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Каждому элементу format_string должна соответствовать строка. При передаче недопустимых именованных аргументов функция вызывает TypeError.</p>
+<p>Для получения дополнительной помощи по этой функции см. раздел 1.8 (Параметры ключевых слов для функций расширения) учебника по расширению и встраиванию в документации Python.</p>
+</section>
+<section id="reference-counting">
+<h3>Подсчёт ссылок<a class="headerlink" href="#reference-counting" title="Link to this heading">#</a></h3>
+<p>Самая большая трудность при написании модулей расширения — подсчёт ссылок. Во многом этим объясняется популярность f2py, weave, Cython, ctypes и других средств. Ошибки управления ссылками могут приводить к чему угодно — от утечек памяти до ошибок сегментации. Единственная известная мне стратегия правильной работы со счётчиками ссылок — кровь, пот и слёзы. Сначала нужно твёрдо усвоить, что у каждого объекта Python есть счётчик ссылок. Затем — точно понять, как каждая функция меняет счётчики ссылок на ваши объекты, чтобы правильно использовать DECREF и INCREF. Это серьёзное испытание терпения и внимательности программиста. Несмотря на такое мрачное описание, в большинстве случаев подсчёт ссылок довольно прост. Чаще всего забывают вызвать DECREF для объектов перед досрочным выходом из подпрограммы из-за ошибки. На втором месте — передача ссылки, которой вызывающий код не владеет, в функцию или макрос, забирающий владение этой ссылкой (<em>например</em>, <a class="reference external" href="https://docs.python.org/3/c-api/tuple.html#c.PyTuple_SET_ITEM" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyTuple_SET_ITEM</span></code></a> и большинство функций, принимающих объекты <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArray_Descr" title="PyArray_Descr"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArray_Descr</span></code></a>). Примечание переводчика: в оригинале счётчик приписан переменной Python; точнее, он принадлежит объекту, на который могут ссылаться несколько переменных.</p>
+<p id="index-1">Обычно новая ссылка на объект получается при его создании или возврате из функции. Есть важные исключения, например получение элемента кортежа или словаря. Владея ссылкой, вы обязаны вызвать <a class="reference external" href="https://docs.python.org/3/c-api/refcounting.html#c.Py_DECREF" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_DECREF</span></code></a>(var), когда объект больше не нужен, если владение ссылкой не было передано другой функции. Передавая объект Python функции, которая принимает владение ссылкой, убедитесь, что ссылка принадлежит вам, либо получите собственную ссылку с помощью <a class="reference external" href="https://docs.python.org/3/c-api/refcounting.html#c.Py_INCREF" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_INCREF</span></code></a>. Существует также понятие заимствованной ссылки. Функция, заимствующая ссылку, не меняет счётчик ссылок объекта и не собирается сохранять её: объект используется временно. При вызове <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.PyArg_ParseTuple" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple</span></code></a> или <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.PyArg_UnpackTuple" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_UnpackTuple</span></code></a> вы получаете заимствованные ссылки на объекты в кортеже и не должны менять их счётчики ссылок внутри своей функции. Правильное управление ссылками приходит с практикой, хотя поначалу оно может вызывать затруднения.</p>
+<p>Функция <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.Py_BuildValue" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_BuildValue</span></code></a> — частый источник ошибок управления счётчиками ссылок. Обратите внимание на различие кодов формата ‘N’ и ‘O’. Если вы создаёте в подпрограмме новый объект, например выходной массив, и возвращаете его внутри кортежа результатов, то в <a class="reference external" href="https://docs.python.org/3/c-api/arg.html#c.Py_BuildValue" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_BuildValue</span></code></a>, скорее всего, следует использовать ‘N’. Код ‘O’ увеличивает счётчик ссылок на 1, поэтому у совершенно нового массива останутся две ссылки. При удалении переменной счётчик уменьшится на 1, но лишняя ссылка останется, и память массива никогда не будет освобождена. Возникнет утечка памяти из-за неверного подсчёта ссылок. Код ‘N’ позволяет этого избежать: вызывающий код получит объект внутри кортежа с единственной учитываемой ссылкой.</p>
+</section>
+</section>
+<section id="dealing-with-array-objects">
+<span id="index-2"></span><h2>Работа с объектами массивов<a class="headerlink" href="#dealing-with-array-objects" title="Link to this heading">#</a></h2>
+<p>Большинству модулей расширения NumPy нужен доступ к памяти ndarray или экземпляра его подкласса. Простейший способ не требует подробного знания внутреннего устройства NumPy. Он состоит в следующем:</p>
+<ol class="arabic simple">
+<li><p>Убедитесь, что массив имеет нужный тип и число измерений, а его данные выровнены, хранятся в машинном порядке байтов и занимают один непрерывный сегмент памяти.</p>
+<ol class="arabic simple">
+<li><p>Преобразовав его из какого-нибудь объекта Python с помощью <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_FromAny" title="PyArray_FromAny"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_FromAny</span></code></a> или построенного на нем макроса.</p></li>
+<li><p>Создать новый ndarray нужной формы и типа с помощью <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_NewFromDescr" title="PyArray_NewFromDescr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_NewFromDescr</span></code></a> либо более простого макроса или функции на её основе.</p></li>
+</ol>
+</li>
+<li><p>Получает форму массива и указатель на его данные.</p></li>
+<li><p>Передать данные и сведения о форме в подпрограмму или другой участок кода, выполняющий само вычисление.</p></li>
+<li><p>При написании алгоритма рекомендуется обращаться к элементам массива с учётом его шагов: макросы <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_GetPtr" title="PyArray_GetPtr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_GetPtr</span></code></a> упрощают это. Тогда можно ослабить требования, не настаивая на односегментном массиве и избегая возможного копирования данных.</p></li>
+</ol>
+<p>Каждая из этих подтем рассматривается в следующих подразделах.</p>
+<section id="converting-an-arbitrary-sequence-object">
+<h3>Преобразование объекта произвольной последовательности <a class="headerlink" href="#converting-an-arbitrary-sequence-object" title="Link to this heading">#</a></h3>
+<p>Основная функция получения массива из преобразуемого в массив объекта Python — <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_FromAny" title="PyArray_FromAny"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_FromAny</span></code></a>. Она очень гибкая и имеет много аргументов. Несколько макросов упрощают её использование; для распространённых задач особенно полезен <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_FROM_OTF" title="PyArray_FROM_OTF"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_FROM_OTF</span></code></a>. Он преобразует произвольный объект Python в массив заданного встроенного типа данных — <em>например</em>, float — с указанными требованиями, <em>например</em> к непрерывности, выравниванию и возможности записи. Синтаксис:</p>
+<dl>
+<dt><a class="reference internal" href="../reference/c-api/array.html#c.PyArray_FROM_OTF" title="PyArray_FROM_OTF"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_FROM_OTF</span></code></a></dt><dd><p>Возвращает ndarray, полученный из преобразуемого в массив объекта Python <em>obj</em>. Число измерений результата определяется объектом. Нужный тип данных задаётся в <em>typenum</em> одним из значений перечисления типов. Параметр <em>requirements</em> допускает комбинацию стандартных флагов массива. Аргументы подробнее описаны ниже. При успехе возвращается новая ссылка на массив; при неудаче возвращается <code class="docutils literal notranslate"><span class="pre">NULL</span></code> и устанавливается исключение.</p>
+<dl>
+<dt><em> obj </em></dt><dd><p>Допускается любой объект Python, преобразуемый в ndarray. Если это уже ndarray или экземпляр его подкласса, удовлетворяющий требованиям, возвращается новая ссылка на него. Иначе создаётся новый массив. Содержимое <em>obj</em> копируется в него, кроме случаев, когда интерфейс массива позволяет обойтись без копирования данных. В массив можно преобразовать: 1) любую вложенную последовательность; 2) любой объект, предоставляющий интерфейс массива; 3) любой объект с методом <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array__" title="numpy.class.__array__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array__</span></code></a>, который должен возвращать ndarray; 4) любой скаляр, который становится нульмерным массивом. Экземпляры подклассов ndarray, удовлетворяющие требованиям, передаются без изменений. Чтобы гарантировать результат базового класса ndarray, включите <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_ENSUREARRAY" title="NPY_ARRAY_ENSUREARRAY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_ENSUREARRAY</span></code></a> в флаги требований. Копия создаётся только при необходимости. Чтобы гарантировать копирование, включите <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_ENSURECOPY" title="NPY_ARRAY_ENSURECOPY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_ENSURECOPY</span></code></a> в флаги требований.</p>
+</dd>
+<dt><em>typenum</em></dt><dd><p>Одно из значений перечисления типов либо <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_NOTYPE" title="NPY_NOTYPE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_NOTYPE</span></code></a>, если тип данных нужно определить по самому объекту. Можно использовать имена типов C:</p>
+<blockquote>
+<div><p><a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_BOOL" title="NPY_BOOL"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_BOOL</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_BYTE" title="NPY_BYTE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_BYTE</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_UBYTE" title="NPY_UBYTE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_UBYTE</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_SHORT" title="NPY_SHORT"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_SHORT</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_USHORT" title="NPY_USHORT"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_USHORT</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_INT" title="NPY_INT"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_INT</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_UINT" title="NPY_UINT"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_UINT</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_LONG" title="NPY_LONG"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_LONG</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_ULONG" title="NPY_ULONG"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ULONG</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_LONGLONG" title="NPY_LONGLONG"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_LONGLONG</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_ULONGLONG" title="NPY_ULONGLONG"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ULONGLONG</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_DOUBLE" title="NPY_DOUBLE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_DOUBLE</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_LONGDOUBLE" title="NPY_LONGDOUBLE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_LONGDOUBLE</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_CFLOAT" title="NPY_CFLOAT"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_CFLOAT</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_CDOUBLE" title="NPY_CDOUBLE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_CDOUBLE</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_CLONGDOUBLE" title="NPY_CLONGDOUBLE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_CLONGDOUBLE</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_OBJECT" title="NPY_OBJECT"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_OBJECT</span></code></a>.</p>
+</div></blockquote>
+<p>Можно также использовать поддерживаемые платформой имена типов с явно указанной разрядностью. Например:</p>
+<blockquote>
+<div><p><a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_INT8" title="NPY_INT8"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_INT8</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_INT16" title="NPY_INT16"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_INT16</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_INT32" title="NPY_INT32"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_INT32</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_INT64" title="NPY_INT64"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_INT64</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_UINT8" title="NPY_UINT8"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_UINT8</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_UINT16" title="NPY_UINT16"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_UINT16</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_UINT32" title="NPY_UINT32"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_UINT32</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_UINT64" title="NPY_UINT64"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_UINT64</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_FLOAT32" title="NPY_FLOAT32"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_FLOAT32</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_FLOAT64" title="NPY_FLOAT64"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_FLOAT64</span></code></a>, <a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_COMPLEX64" title="NPY_COMPLEX64"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_COMPLEX64</span></code></a>,
+<a class="reference internal" href="../reference/c-api/dtype.html#c.NPY_TYPES.NPY_COMPLEX128" title="NPY_COMPLEX128"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_COMPLEX128</span></code></a>.</p>
+</div></blockquote>
+<p>Объект преобразуется к нужному типу только без потери точности. Иначе возвращается <code class="docutils literal notranslate"><span class="pre">NULL</span></code> и устанавливается ошибка. Чтобы изменить это поведение, добавьте <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_FORCECAST" title="NPY_ARRAY_FORCECAST"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_FORCECAST</span></code></a> к флагам требований.</p>
+</dd>
+<dt><em>requirements</em></dt><dd><p>Модель памяти ndarray допускает произвольный шаг по каждому измерению для перехода к следующему элементу массива. Однако часто нужно взаимодействовать с кодом, ожидающим непрерывного расположения данных в порядке C или Fortran. Кроме того, ndarray может быть не выровнен; в оригинале это поясняется как некратность адреса элемента размеру элемента. Разыменование указателя на данные такого массива может привести к аварийному завершению программы или как минимум замедлить её работу. Обе проблемы решаются преобразованием объекта Python в массив, удовлетворяющий требованиям конкретного применения. Примечание переводчика: требуемая кратность адреса определяется выравниванием типа dtype.alignment, которое не всегда совпадает с размером элемента itemsize. Например, complex128 может иметь размер 16 байт при требуемом выравнивании 8 байт.</p>
+<p>Флаг requirements позволяет указать, какие массивы допустимы. Если переданный объект не удовлетворяет требованиям, создаётся копия, чтобы возвращаемый объект им соответствовал. Такие ndarray могут использовать указатель на произвольную область памяти. Этот флаг задаёт желаемые свойства возвращаемого объекта массива. Все флаги описаны в главе с подробным описанием API. Чаще всего требуются <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_IN_ARRAY" title="NPY_ARRAY_IN_ARRAY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_IN_ARRAY</span></code></a>, <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_OUT_ARRAY" title="NPY_ARRAY_OUT_ARRAY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_OUT_ARRAY</span></code></a> и <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_INOUT_ARRAY" title="NPY_ARRAY_INOUT_ARRAY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_INOUT_ARRAY</span></code></a>:</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_IN_ARRAY" title="NPY_ARRAY_IN_ARRAY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_IN_ARRAY</span></code></a></dt><dd><p>Этот флаг подходит для массивов, которым нужны непрерывное расположение в порядке C и выравнивание. Обычно это входные массивы алгоритма.</p>
+</dd>
+<dt><a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_OUT_ARRAY" title="NPY_ARRAY_OUT_ARRAY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_OUT_ARRAY</span></code></a></dt><dd><p>Этот флаг задаёт массив с данными, непрерывно расположенными в памяти в порядке C, с выравниванием и возможностью записи. Такой массив обычно используется как выходной, хотя выходные массивы чаще создаются с нуля.</p>
+</dd>
+<dt><a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_INOUT_ARRAY" title="NPY_ARRAY_INOUT_ARRAY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_INOUT_ARRAY</span></code></a></dt><dd><p>Этот флаг позволяет указать массив, используемый и для ввода, и для вывода. В конце интерфейсной процедуры необходимо вызвать <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_ResolveWritebackIfCopy" title="PyArray_ResolveWritebackIfCopy"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_ResolveWritebackIfCopy</span></code></a> перед <a class="reference external" href="https://docs.python.org/3/c-api/refcounting.html#c.Py_DECREF" title="(in Python v3.14)"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_DECREF</span></code></a>, чтобы записать временные данные обратно в исходный переданный массив. Флаг <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_WRITEBACKIFCOPY" title="NPY_ARRAY_WRITEBACKIFCOPY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_WRITEBACKIFCOPY</span></code></a> требует, чтобы входной объект уже был массивом: другие объекты нельзя автоматически обновить таким способом. При ошибке вызовите <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_DiscardWritebackIfCopy" title="PyArray_DiscardWritebackIfCopy"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_DiscardWritebackIfCopy</span></code></a> (obj) для массива с этими флагами. Это разрешит запись в базовый массив, не копируя содержимое обратно в исходный массив.</p>
+</dd>
+</dl>
+<p>Следующие полезные флаги можно добавить к требованиям побитовым ИЛИ:</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_FORCECAST" title="NPY_ARRAY_FORCECAST"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_FORCECAST</span></code></a></dt><dd><p>Привести к нужному типу, даже если это невозможно сделать без потери информации.</p>
+</dd>
+<dt><a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_ENSURECOPY" title="NPY_ARRAY_ENSURECOPY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_ENSURECOPY</span></code></a></dt><dd><p>Убедитесь, что полученный массив является копией оригинала.</p>
+</dd>
+<dt><a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_ENSUREARRAY" title="NPY_ARRAY_ENSUREARRAY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_ENSUREARRAY</span></code></a></dt><dd><p>Обеспечить, чтобы результат был именно ndarray, а не экземпляром его подкласса.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Порядок байтов массива определяется его типом данных. <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_FROM_OTF" title="PyArray_FROM_OTF"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_FROM_OTF</span></code></a> всегда запрашивает массивы с родным порядком байтов, поэтому флаг <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_NOTSWAPPED" title="NPY_ARRAY_NOTSWAPPED"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_NOTSWAPPED</span></code></a> в аргументе требований не нужен. Получить с помощью этой функции массив с обратным порядком байтов также невозможно.</p>
+</div>
+</section>
+<section id="creating-a-brand-new-ndarray">
+<h3>Создание нового ndarray с нуля<a class="headerlink" href="#creating-a-brand-new-ndarray" title="Link to this heading">#</a></h3>
+<p>Довольно часто новые массивы нужно создавать в коде модуля расширения. Например, нужен выходной массив, который вы не хотите требовать от вызывающего кода, или временный массив для промежуточных вычислений. В любом случае есть простые способы получить объект ndarray нужного типа данных. Самая универсальная функция для этого — <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_NewFromDescr" title="PyArray_NewFromDescr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_NewFromDescr</span></code></a>. Через этот многократно используемый код проходят все функции создания массивов. Его гибкость может усложнять использование, поэтому предусмотрены более простые варианты. Они входят в семейство функций <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_SimpleNew" title="PyArray_SimpleNew"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_SimpleNew</span></code></a> и упрощают интерфейс за счёт стандартных значений для распространённых случаев.</p>
+</section>
+<section id="getting-at-ndarray-memory-and-accessing-elements-of-the-ndarray">
+<h3>Получение доступа к памяти ndarray и элементам ndarray <a class="headerlink" href="#getting-at-ndarray-memory-and-accessing-elements-of-the-ndarray" title="Link to this heading">#</a></h3>
+<p>Если obj — ndarray (<span class="c-expr sig sig-inline c"><a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayObject" title="PyArrayObject"><span class="n">PyArrayObject</span></a><span class="p">*</span></span>), на его область данных указывает указатель void* <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_DATA" title="PyArray_DATA"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_DATA</span></code></a> (obj) или char* <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_BYTES" title="PyArray_BYTES"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_BYTES</span></code></a> (obj). Помните, что в общем случае эта область может быть не выровнена согласно типу данных, иметь несистемный порядок байтов и/или быть недоступна для записи. Если данные выровнены и имеют системный порядок байтов, доступ к конкретному элементу определяется только массивом переменных npy_intp <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_STRIDES" title="PyArray_STRIDES"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_STRIDES</span></code></a> (obj). Этот массив целых чисел C показывает, сколько <strong>байтов</strong> нужно прибавить к указателю текущего элемента, чтобы перейти к следующему элементу по каждому измерению. Для массивов с числом измерений меньше 4 предусмотрены макросы <code class="docutils literal notranslate"><span class="pre">PyArray_GETPTR{k}</span></code> (obj, …), где {k} — 1, 2, 3 или 4, упрощающие использование шагов массива. Аргументы … представляют собой {k} неотрицательных целочисленных индексов массива. Например, пусть <code class="docutils literal notranslate"><span class="pre">E</span></code> — трёхмерный ndarray. Указатель (void*) на элемент <code class="docutils literal notranslate"><span class="pre">E[i,j,k]</span></code> получают как <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_GETPTR3" title="PyArray_GETPTR3"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_GETPTR3</span></code></a> (E, i, j, k).</p>
+<p>Как объяснялось выше, непрерывным массивам в порядке C и Fortran соответствуют определённые шаги по осям. Флаги <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_C_CONTIGUOUS" title="NPY_ARRAY_C_CONTIGUOUS"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_C_CONTIGUOUS</span></code></a> и <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_F_CONTIGUOUS" title="NPY_ARRAY_F_CONTIGUOUS"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_F_CONTIGUOUS</span></code></a> показывают, соответствует ли расположение элементов одному из этих порядков; возможны оба флага или ни одного. Для проверок в оригинале приведены <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_IS_C_CONTIGUOUS" title="PyArray_IS_C_CONTIGUOUS"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_IS_C_CONTIGUOUS</span></code></a>(obj) и <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_ISFORTRAN" title="PyArray_ISFORTRAN"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_ISFORTRAN</span></code></a>(obj). Примечание переводчика: второй макрос проверяет F-непрерывность при отсутствии C-непрерывности. Для проверки самого флага F, включая массивы, непрерывные в обоих порядках, используйте PyArray_IS_F_CONTIGUOUS. Большинство сторонних библиотек ожидают непрерывные массивы, но поддержать произвольные шаги часто несложно. По возможности учитывайте шаги в собственном коде, оставляя требование единого непрерывного участка памяти для обёрток сторонних библиотек. Это сокращает копирование по сравнению с обязательным преобразованием в непрерывный массив.</p>
+</section>
+</section>
+<section id="example">
+<h2>Примеры <a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<p id="index-3">В следующем примере показано, как можно написать оболочку, которая принимает два входных аргумента (которые будут преобразованы в массив) и выходной аргумент (который должен быть массивом). Функция возвращает None и обновляет выходной массив. Обратите внимание на обновленное использование семантики WRITEBACKIFCOPY для NumPy v1.14 и выше.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span>
+<span class="nf">example_wrapper</span><span class="p">(</span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">dummy</span><span class="p">,</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">arg1</span><span class="o">=</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">arg2</span><span class="o">=</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">arr1</span><span class="o">=</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">arr2</span><span class="o">=</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">oarr</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">PyArg_ParseTuple</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="s">"OOO!"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg2</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">PyArray_Type</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">arr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyArray_FROM_OTF</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="w"> </span><span class="n">NPY_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">NPY_ARRAY_IN_ARRAY</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">arr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyArray_FROM_OTF</span><span class="p">(</span><span class="n">arg2</span><span class="p">,</span><span class="w"> </span><span class="n">NPY_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">NPY_ARRAY_IN_ARRAY</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">fail</span><span class="p">;</span>
+<span class="cp">#if NPY_API_VERSION &gt;= 0x0000000c</span>
+<span class="w">    </span><span class="n">oarr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyArray_FROM_OTF</span><span class="p">(</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="n">NPY_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">NPY_ARRAY_INOUT_ARRAY2</span><span class="p">);</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="n">oarr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyArray_FROM_OTF</span><span class="p">(</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="n">NPY_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="n">NPY_ARRAY_INOUT_ARRAY</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">oarr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">fail</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* code that makes use of arguments */</span>
+<span class="w">    </span><span class="cm">/* You will probably need at least</span>
+<span class="cm">       nd = PyArray_NDIM(&lt;..&gt;)    -- number of dimensions</span>
+<span class="cm">       dims = PyArray_DIMS(&lt;..&gt;)  -- npy_intp array of length nd</span>
+<span class="cm">                                     showing length in each dim.</span>
+<span class="cm">       dptr = (double *)PyArray_DATA(&lt;..&gt;) -- pointer to data.</span>
+
+<span class="cm">       If an error occurs goto fail.</span>
+<span class="cm">     */</span>
+
+<span class="w">    </span><span class="n">Py_DECREF</span><span class="p">(</span><span class="n">arr1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Py_DECREF</span><span class="p">(</span><span class="n">arr2</span><span class="p">);</span>
+<span class="cp">#if NPY_API_VERSION &gt;= 0x0000000c</span>
+<span class="w">    </span><span class="n">PyArray_ResolveWritebackIfCopy</span><span class="p">(</span><span class="n">oarr</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="w">    </span><span class="n">Py_DECREF</span><span class="p">(</span><span class="n">oarr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Py_INCREF</span><span class="p">(</span><span class="n">Py_None</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Py_None</span><span class="p">;</span>
+
+<span class="w"> </span><span class="nl">fail</span><span class="p">:</span>
+<span class="w">    </span><span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">arr1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">arr2</span><span class="p">);</span>
+<span class="cp">#if NPY_API_VERSION &gt;= 0x0000000c</span>
+<span class="w">    </span><span class="n">PyArray_DiscardWritebackIfCopy</span><span class="p">(</span><span class="n">oarr</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="w">    </span><span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">oarr</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Код, использующий аргументы</li><li>Вероятно, понадобятся как минимум nd = PyArray_NDIM(&lt;..&gt;) — число измерений; dims = PyArray_DIMS(&lt;..&gt;) — массив npy_intp длины nd с размерами измерений; dptr = (double *)PyArray_DATA(&lt;..&gt;) — указатель на данные. При ошибке выполняется goto fail.</li></ul></details></div>
+</div>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="c-info.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Использование C API NumPy</p>
+</div>
+</a>
+<a class="right-next" href="c-info.python-as-glue.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Использование Python в качестве клея</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-an-extension-module">Написание модуля расширения </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-subroutine">Необходимая подпрограмма</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-functions">Определение функций </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-without-keyword-arguments">Функции без именованных аргументов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-with-keyword-arguments">Функции с именованными аргументами</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-counting">Подсчёт ссылок</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-array-objects">Работа с объектами массивов</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-an-arbitrary-sequence-object">Преобразование объекта произвольной последовательности </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-brand-new-ndarray">Создание нового ndarray с нуля</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-at-ndarray-memory-and-accessing-elements-of-the-ndarray">Получение доступа к памяти ndarray и элементам ndarray </a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"> <a class="reference internal nav-link" href="#example">Примеры </a> </li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

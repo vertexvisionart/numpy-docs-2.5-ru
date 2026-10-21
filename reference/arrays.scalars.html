@@ -1,0 +1,1277 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script async="async" src="../_static/scipy-mathjax/MathJax.js?config=scipy-mathjax"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'reference/arrays.scalars';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="generated/numpy.generic.flags.html" rel="next" title="numpy.generic.flags"/>
+<link href="generated/numpy.ndarray.__class_getitem__.html" rel="prev" title="numpy.ndarray.__class_getitem__"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="module_structure.html">Структура модулей NumPy</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="arrays.html">Объекты массивов</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="arrays.ndarray.html">N-мерный массив (<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>)</a></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Скаляры</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.flags.html">numpy.generic.flags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.shape.html">numpy.generic.shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.strides.html">numpy.generic.strides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.ndim.html">numpy.generic.ndim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.data.html">numpy.generic.data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.size.html">numpy.generic.size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.itemsize.html">numpy.generic.itemsize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.base.html">numpy.generic.base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.dtype.html">numpy.generic.dtype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.real.html">numpy.generic.real</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.imag.html">numpy.generic.imag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.flat.html">numpy.generic.flat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.T.html">numpy.generic.T</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.__array_interface__.html">numpy.generic.__array_interface__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.__array_struct__.html">numpy.generic.__array_struct__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.__array_priority__.html">numpy.generic.__array_priority__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.__array_wrap__.html">numpy.generic.__array_wrap__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.__array__.html">numpy.generic.__array__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.__array_wrap__.html">numpy.generic.__array_wrap__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.squeeze.html">numpy.generic.squeeze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.byteswap.html">numpy.generic.byteswap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.__reduce__.html">numpy.generic.__reduce__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.__setstate__.html">numpy.generic.__setstate__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.generic.setflags.html">numpy.generic.setflags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/numpy.number.__class_getitem__.html">numpy.number.__class_getitem__</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.dtypes.html">Объекты типов данных (<code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.promotion.html">Повышение типов данных в NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.nditer.html">Итерация по массивам</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.classes.html">Стандартные подклассы массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maskedarray.html"> Маскированные массивы </a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.interface.html">Протокол интерфейса массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.datetime.html">Даты, время и временные интервалы</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ufuncs.html">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="routines.html">Функции и объекты по темам</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="typing.html">Аннотации типов (<code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.typing</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-api/index.html"> NumPy C-API </a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="array_api.html">Совместимость со стандартом Array API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simd/index.html">Оптимизации CPU/SIMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_safety.html">Потокобезопасность</a></li>
+<li class="toctree-l1"><a class="reference internal" href="global_state.html">Глобальные параметры конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Безопасность NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Рекомендации по тестированию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distutils_status_migration.html">Состояние <code class="docutils literal notranslate"><span class="pre">numpy.distutils</span></code> и рекомендации по переходу</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swig.html"> NumPy и SWIG </a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Справочник NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="arrays.html">Объекты массивов</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Скаляры</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="scalars">
+<span id="arrays-scalars"></span><h1>Скаляры<a class="headerlink" href="#scalars" title="Link to this heading">#</a></h1>
+<p>Для каждой категории данных Python определяет только один тип: один целочисленный, один с плавающей точкой и т. д. Это удобно для приложений, которым неважны все особенности представления данных в компьютере. Но в научных вычислениях часто требуется более точный контроль.</p>
+<p>NumPy вводит 24 базовых типа Python для представления различных скалярных значений. Эти дескрипторы типов в основном основаны на типах языка C, на котором написан CPython; кроме того, предусмотрено несколько дополнительных типов, совместимых с типами Python.</p>
+<p>Скаляры NumPy имеют те же атрибуты и методы, что и <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarrays</span></code></a>. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Это позволяет в некоторой степени работать с элементами массива так же, как с массивами, сглаживая различия при смешивании скалярных операций и операций над массивами.</p>
+<p>Скаляры NumPy образуют иерархию типов данных (см. рисунок ниже). По этой иерархии можно определять их тип: например, <code class="docutils literal notranslate"><span class="pre">isinstance(val,</span> <span class="pre">np.generic)</span></code> возвращает <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref py py-data docutils literal notranslate"><span class="pre">True</span></code></a>, если <em>val</em> — скаляр NumPy. Другие элементы иерархии позволяют уточнить его категорию. Например, <code class="docutils literal notranslate"><span class="pre">isinstance(val,</span> <span class="pre">np.complexfloating)</span></code> возвращает <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.14)"><code class="xref py py-data docutils literal notranslate"><span class="pre">True</span></code></a>, если <em>val</em> имеет комплексный тип, а <code class="docutils literal notranslate"><span class="pre">isinstance(val,</span> <span class="pre">np.flexible)</span></code> возвращает истинное значение, если <em>val</em> относится к одному из типов с гибким размером элемента: <a class="reference internal" href="#numpy.str_" title="numpy.str_"><code class="xref py py-class docutils literal notranslate"><span class="pre">str_</span></code></a>, <a class="reference internal" href="#numpy.bytes_" title="numpy.bytes_"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes_</span></code></a> или <a class="reference internal" href="#numpy.void" title="numpy.void"><code class="xref py py-class docutils literal notranslate"><span class="pre">void</span></code></a>.</p>
+<figure class="align-default" id="id4">
+<img alt="../_images/dtype-hierarchy.png" src="../_images/dtype-hierarchy.png"/><span class="ru-image-notes" style="display:block; margin:0.5em 0 1em; font-size:0.95em">Подписи на рисунке: Иерархия скалярных типов NumPy. Английские названия узлов, например generic, integer и floating, — имена классов API; они сохраняются при использовании в коде.</span>
+<figcaption>
+<p><span class="caption-text"><strong>Рисунок:</strong> иерархия объектов типов, представляющих типы данных массивов. Не показаны целочисленные типы <a class="reference internal" href="#numpy.intp" title="numpy.intp"><code class="xref py py-class docutils literal notranslate"><span class="pre">intp</span></code></a> и <a class="reference internal" href="#numpy.uintp" title="numpy.uintp"><code class="xref py py-class docutils literal notranslate"><span class="pre">uintp</span></code></a> для индексирования (с NumPy 2 соответствуют стандартным целочисленным типам).</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a href="#id1" role="doc-backlink">1</a><span class="fn-bracket">]</span></span>
+<p>Однако скалярные объекты NumPy неизменяемы, поэтому ни один из их атрибутов нельзя изменить.</p>
+</aside>
+</aside>
+<section id="built-in-scalar-types">
+<span id="arrays-scalars-built-in"></span><span id="arrays-scalars-character-codes"></span><h2>Встроенные скалярные типы <a class="headerlink" href="#built-in-scalar-types" title="Link to this heading">#</a></h2>
+<p>Встроенные скалярные типы показаны ниже. С-подобные имена связаны с кодами символов, которые показаны в их описаниях. Использование кодов символов, однако, не рекомендуется.</p>
+<p>Некоторые скалярные типы по сути эквивалентны базовым типам Python, поэтому наследуются и от них, и от общего типа скаляров массивов:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Тип скаляра NumPy</p></th>
+<th class="head"><p>Соответствующий тип Python</p></th>
+<th class="head"><p>Наследует?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#numpy.int_" title="numpy.int_"><code class="xref py py-class docutils literal notranslate"><span class="pre">int_</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(в Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p></td>
+<td><p>нет</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#numpy.double" title="numpy.double"><code class="xref py py-class docutils literal notranslate"><span class="pre">double</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(в Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></p></td>
+<td><p>да.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#numpy.cdouble" title="numpy.cdouble"><code class="xref py py-class docutils literal notranslate"><span class="pre">cdouble</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(в Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a></p></td>
+<td><p>да.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#numpy.bytes_" title="numpy.bytes_"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes_</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(в Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a></p></td>
+<td><p>да.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#numpy.str_" title="numpy.str_"><code class="xref py py-class docutils literal notranslate"><span class="pre">str_</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(в Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p></td>
+<td><p>да.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#numpy.bool_" title="numpy.bool_"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool_</span></code></a></p></td>
+<td><p><a class="reference internal" href="#numpy.bool" title="numpy.bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p></td>
+<td><p>нет</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#numpy.datetime64" title="numpy.datetime64"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime64</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(в Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></p></td>
+<td><p>нет</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#numpy.timedelta64" title="numpy.timedelta64"><code class="xref py py-class docutils literal notranslate"><span class="pre">timedelta64</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.timedelta" title="(в Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code></a></p></td>
+<td><p>нет</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Тип данных <a class="reference internal" href="#numpy.bool_" title="numpy.bool_"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool_</span></code></a> очень похож на тип <a class="reference internal" href="#numpy.bool" title="numpy.bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> в Python, но не наследует его, поскольку тип <a class="reference internal" href="#numpy.bool" title="numpy.bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> в Python не допускает наследования. Кроме того, на уровне C размер данных bool отличается от размера булева скаляра Python.</p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Тип <a class="reference internal" href="#numpy.int_" title="numpy.int_"><code class="xref py py-class docutils literal notranslate"><span class="pre">int_</span></code></a> <strong>не</strong> наследуется от встроенного типа <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, поскольку <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> не является целочисленным типом фиксированной разрядности.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Совет</p>
+<p>Тип данных по умолчанию в NumPy — <a class="reference internal" href="#numpy.double" title="numpy.double"><code class="xref py py-class docutils literal notranslate"><span class="pre">double</span></code></a>.</p>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.generic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">generic</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.generic" title="Link to this definition">#</a></dt>
+<dd><p>Базовый класс скалярных типов NumPy.</p>
+<p>Класс, от которого наследует большинство (все?) скалярных типов NumPy. Для единообразия предоставляет тот же API, что и <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray</span></code></a>, хотя многие атрибуты доступны только для чтения или вовсе неприменимы. Пользователям настоятельно рекомендуется наследовать собственные скалярные типы именно от этого класса.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.number">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">number</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.number" title="Link to this definition">#</a></dt>
+<dd><p>Абстрактный базовый класс всех численных скалярных типов.</p>
+</dd></dl>
+<section id="integer-types">
+<h3>Целочисленные типы<a class="headerlink" href="#integer-types" title="Link to this heading">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.integer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">integer</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.integer" title="Link to this definition">#</a></dt>
+<dd><p>Абстрактный базовый класс всех целочисленных скалярных типов.</p>
+</dd></dl>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Целочисленные типы NumPy повторяют поведение целых чисел C, поэтому для них возможны <a class="reference internal" href="../user/basics.types.html#overflow-errors"><span class="std std-ref">ошибки переполнения</span></a>.</p>
+</div>
+<section id="signed-integer-types">
+<h4>Знаковые целочисленные типы <a class="headerlink" href="#signed-integer-types" title="Link to this heading">#</a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.signedinteger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">signedinteger</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.signedinteger" title="Link to this definition">#</a></dt>
+<dd><p>Абстрактный базовый класс всех целочисленных скалярных типов со знаком.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.byte">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">byte</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.byte" title="Link to this definition">#</a></dt>
+<dd><p>int8(value=0, /) –</p>
+<p>Целочисленный тип со знаком, совместимый с C <code class="docutils literal notranslate"><span class="pre">char</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'b'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.byte" title="numpy.byte"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.byte</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.int8" title="numpy.int8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int8</span></code></a>: 8-битное целое число со знаком (от <code class="docutils literal notranslate"><span class="pre">-128</span></code> до <code class="docutils literal notranslate"><span class="pre">127</span></code>).</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.short">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">short</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.short" title="Link to this definition">#</a></dt>
+<dd><p>int16(value=0, /) –</p>
+<p>Целочисленный тип со знаком, совместимый с C <code class="docutils literal notranslate"><span class="pre">short</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'h'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.short" title="numpy.short"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.short</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.int16" title="numpy.int16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int16</span></code></a>: 16-битное целое число со знаком (от <code class="docutils literal notranslate"><span class="pre">-32_768</span></code> до <code class="docutils literal notranslate"><span class="pre">32_767</span></code>).</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.intc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">intc</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.intc" title="Link to this definition">#</a></dt>
+<dd><p>int32(value=0, /) –</p>
+<p>Целочисленный тип со знаком, совместимый с C <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'i'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.intc" title="numpy.intc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.intc</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.int32" title="numpy.int32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code></a>: 32-битное знаковое целое число (от <code class="docutils literal notranslate"><span class="pre">-2_147_483_648</span></code> до <code class="docutils literal notranslate"><span class="pre">2_147_483_647</span></code>).</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.int_">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">int_</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.int_" title="Link to this definition">#</a></dt>
+<dd><p>int64(value=0, /) –</p>
+<p>Целочисленный тип со знаком, совместимый с C <code class="docutils literal notranslate"><span class="pre">long</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'l'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.long" title="numpy.long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.long</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.int64" title="numpy.int64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int64</span></code></a>: 64-битное целое число со знаком, от <code class="docutils literal notranslate"><span class="pre">-9_223_372_036_854_775_808</span></code> до <code class="docutils literal notranslate"><span class="pre">9_223_372_036_854_775_807</span></code>.</p>
+</dd>
+<dt class="field-even">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.intp" title="numpy.intp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.intp</span></code></a>: целочисленный тип со знаком, достаточно большой для хранения указателя; совместим с типом C <code class="docutils literal notranslate"><span class="pre">intptr_t</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.long">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">long</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.long" title="Link to this definition">#</a></dt>
+<dd><p>псевдоним <a class="reference internal" href="#numpy.int_" title="numpy.int_"><code class="xref py py-class docutils literal notranslate"><span class="pre">int_</span></code></a></p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.longlong">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">longlong</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.longlong" title="Link to this definition">#</a></dt>
+<dd><p>Целочисленный тип со знаком, совместимый с C <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">long</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'q'</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="unsigned-integer-types">
+<h4>Беззнаковые целочисленные типы<a class="headerlink" href="#unsigned-integer-types" title="Link to this heading">#</a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.unsignedinteger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">unsignedinteger</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.unsignedinteger" title="Link to this definition">#</a></dt>
+<dd><p>Абстрактный базовый класс всех беззнаковых целочисленных скалярных типов.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.ubyte">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">ubyte</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ubyte" title="Link to this definition">#</a></dt>
+<dd><p>uint8(value=0, /) –</p>
+<p>Целочисленный тип без знака, совместимый с C <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'B'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.ubyte" title="numpy.ubyte"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ubyte</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.uint8" title="numpy.uint8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint8</span></code></a>: 8-разрядное беззнаковое целое число (от <code class="docutils literal notranslate"><span class="pre">0</span></code> до <code class="docutils literal notranslate"><span class="pre">255</span></code>).</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.ushort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">ushort</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ushort" title="Link to this definition">#</a></dt>
+<dd><p>uint16(value=0, /) –</p>
+<p>Целочисленный тип без знака, совместимый с C <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">short</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'H'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.ushort" title="numpy.ushort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ushort</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.uint16" title="numpy.uint16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint16</span></code></a>: 16-битное беззнаковое целое число (от <code class="docutils literal notranslate"><span class="pre">0</span></code> до <code class="docutils literal notranslate"><span class="pre">65_535</span></code>).</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.uintc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">uintc</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.uintc" title="Link to this definition">#</a></dt>
+<dd><p>uint32(value=0, /) –</p>
+<p>Целочисленный тип без знака, совместимый с C <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'I'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.uintc" title="numpy.uintc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uintc</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.uint32" title="numpy.uint32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint32</span></code></a>: 32-битное целое число без знака (от <code class="docutils literal notranslate"><span class="pre">0</span></code> до <code class="docutils literal notranslate"><span class="pre">4_294_967_295</span></code>).</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.uint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">uint</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.uint" title="Link to this definition">#</a></dt>
+<dd><p>uint64(value=0, /) –</p>
+<p>Беззнаковый целочисленный тип: 64 бита в 64-битных системах и 32 бита в 32-битных.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'L'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.uint" title="numpy.uint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.uint64" title="numpy.uint64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint64</span></code></a>: 64-разрядное беззнаковое целое число (от <code class="docutils literal notranslate"><span class="pre">0</span></code> до <code class="docutils literal notranslate"><span class="pre">18_446_744_073_709_551_615</span></code>).</p>
+</dd>
+<dt class="field-even">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.uintp" title="numpy.uintp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uintp</span></code></a>: беззнаковое целое число, достаточное для хранения указателя, совместимое с <code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code> в C.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.ulong">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">ulong</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ulong" title="Link to this definition">#</a></dt>
+<dd><p>псевдоним <a class="reference internal" href="#numpy.uint" title="numpy.uint"><code class="xref py py-class docutils literal notranslate"><span class="pre">uint</span></code></a></p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.ulonglong">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">ulonglong</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ulonglong" title="Link to this definition">#</a></dt>
+<dd><p>Целочисленный тип без знака, совместимый с C <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span> <span class="pre">long</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'Q'</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+</section>
+<section id="inexact-types">
+<h3>Неточные типы <a class="headerlink" href="#inexact-types" title="Link to this heading">#</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.inexact">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">inexact</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.inexact" title="Link to this definition">#</a></dt>
+<dd><p>Абстрактный базовый класс всех числовых скалярных типов, которые могут неточно представлять значения своего диапазона, например чисел с плавающей точкой.</p>
+</dd></dl>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Скаляры неточных типов выводятся с минимальным числом десятичных цифр, позволяющим отличить их значение от других значений того же типа данных; для этого используется подходящее округление. См. параметр <code class="docutils literal notranslate"><span class="pre">unique</span></code> функций <a class="reference internal" href="generated/numpy.format_float_positional.html#numpy.format_float_positional" title="numpy.format_float_positional"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_float_positional</span></code></a> и <a class="reference internal" href="generated/numpy.format_float_scientific.html#numpy.format_float_scientific" title="numpy.format_float_scientific"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_float_scientific</span></code></a>.</p>
+<p>Это означает, что переменные с одинаковыми двоичными значениями, но типы данных которых имеют разную точность, могут отображаться по-разному:</p>
+<div class="try_examples_outer_container docutils container" id="4c7f7fd0-878e-4255-b357-07556a5a7efd">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4c7f7fd0-878e-4255-b357-07556a5a7efd','b2c84be3-2bd0-4f56-98f7-982eccd4cc6f','0988311b-d322-49e8-8311-67489fe28d43','../lite/tree/../notebooks/index.html?path=7387e0a3_f9ec_49da_b291_ef943366878d.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f16</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="s2">"0.1"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f32</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">f16</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f64</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">f32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f16</span> <span class="o">==</span> <span class="n">f32</span> <span class="o">==</span> <span class="n">f64</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f16</span><span class="p">,</span> <span class="n">f32</span><span class="p">,</span> <span class="n">f64</span>
+<span class="go">(0.1, 0.099975586, 0.0999755859375)</span>
+</pre></div>
+</div>
+<p>Ни одно из этих чисел с плавающей точкой не хранит точное значение <span class="math notranslate nohighlight">\(\frac{1}{10}\)</span>. Значение <code class="docutils literal notranslate"><span class="pre">f16</span></code> выводится как <code class="docutils literal notranslate"><span class="pre">0.1</span></code>, поскольку это ближайшее представимое к нему значение. У других типов вывод иной: они обладают большей точностью и могут представить числа, ещё более близкие к этому значению.</p>
+<p>И наоборот, скаляры с плавающей точкой разной точности, приближающие одно десятичное значение, могут оказаться неравными при сравнении, хотя выводятся одинаково:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f16</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="s2">"0.1"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f32</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="s2">"0.1"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f64</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="s2">"0.1"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f16</span> <span class="o">==</span> <span class="n">f32</span> <span class="o">==</span> <span class="n">f64</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f16</span><span class="p">,</span> <span class="n">f32</span><span class="p">,</span> <span class="n">f64</span>
+<span class="go">(0.1, 0.1, 0.1)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="0988311b-d322-49e8-8311-67489fe28d43"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4c7f7fd0-878e-4255-b357-07556a5a7efd','0988311b-d322-49e8-8311-67489fe28d43')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('4c7f7fd0-878e-4255-b357-07556a5a7efd','0988311b-d322-49e8-8311-67489fe28d43')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="b2c84be3-2bd0-4f56-98f7-982eccd4cc6f"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<section id="floating-point-types">
+<h4>Типы с плавающей точкой<a class="headerlink" href="#floating-point-types" title="Link to this heading">#</a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.floating">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">floating</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.floating" title="Link to this definition">#</a></dt>
+<dd><p>Абстрактный базовый класс всех скалярных типов с плавающей точкой.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.half">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">half</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.half" title="Link to this definition">#</a></dt>
+<dd><p>float16(value=0, /) –</p>
+<p>Тип числа с плавающей точкой половинной точности.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'e'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.half" title="numpy.half"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.half</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.float16" title="numpy.float16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float16</span></code></a>: 16-битный тип числа с плавающей точкой: бит знака, 5 бит порядка и 10 бит мантиссы.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.single">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">single</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.single" title="Link to this definition">#</a></dt>
+<dd><p>float32(value=0, /) –</p>
+<p>Тип числа с плавающей точкой одинарной точности, совместимый с <code class="docutils literal notranslate"><span class="pre">float</span></code> в C.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'f'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.single" title="numpy.single"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.single</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.float32" title="numpy.float32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float32</span></code></a>: 32-битный тип числа с плавающей точкой: бит знака, 8 бит порядка и 23 бита мантиссы.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.double">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">double</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.double" title="Link to this definition">#</a></dt>
+<dd><p>float64(value=0, /) –</p>
+<p>Тип чисел с плавающей точкой двойной точности, совместимый с <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a> Python и <code class="docutils literal notranslate"><span class="pre">double</span></code> C.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'d'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.double" title="numpy.double"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.double</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.float64" title="numpy.float64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float64</span></code></a>: 64-битный тип с плавающей точкой — 1 бит знака, 11 бит порядка и 52 бита мантиссы.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.longdouble">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">longdouble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.longdouble" title="Link to this definition">#</a></dt>
+<dd><p>Тип числа с плавающей точкой расширенной точности, совместимый с <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> в C, но не обязательно с четверной точностью IEEE 754.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'g'</span></code></p>
+</dd>
+<dt class="field-even">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.float128" title="numpy.float128"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.float128</span></code></a>: 128-битный тип числа с плавающей точкой расширенной точности.</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="complex-floating-point-types">
+<h4>Комплексные типы с плавающей точкой<a class="headerlink" href="#complex-floating-point-types" title="Link to this heading">#</a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.complexfloating">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">complexfloating</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.complexfloating" title="Link to this definition">#</a></dt>
+<dd><p>Абстрактный базовый класс всех скалярных типов комплексных чисел, состоящих из чисел с плавающей запятой.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.csingle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">csingle</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.csingle" title="Link to this definition">#</a></dt>
+<dd><p>complex64(real=0, imag=0, /) –</p>
+<p>Тип комплексного числа, состоящий из двух чисел одинарной точности с плавающей запятой.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'F'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.csingle" title="numpy.csingle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.csingle</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.complex64" title="numpy.complex64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.complex64</span></code></a>: тип комплексных чисел, состоящих из двух 32-битных чисел с плавающей запятой.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.cdouble">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">cdouble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.cdouble" title="Link to this definition">#</a></dt>
+<dd><p>complex128(real=0, imag=0, /) –</p>
+<p>Комплексный тип, состоящий из двух чисел с плавающей точкой двойной точности, совместимый с типом <a class="reference external" href="https://docs.python.org/3/library/functions.html#complex" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a> в Python.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'D'</span></code></p>
+</dd>
+<dt class="field-even">Каноническое имя<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.cdouble" title="numpy.cdouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.cdouble</span></code></a></p>
+</dd>
+<dt class="field-odd">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#numpy.complex128" title="numpy.complex128"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.complex128</span></code></a>: тип комплексного числа из двух 64-битных чисел с плавающей точкой.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.clongdouble">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">clongdouble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.clongdouble" title="Link to this definition">#</a></dt>
+<dd><p>Комплексный тип, состоящий из двух чисел с плавающей запятой расширенной точности.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'G'</span></code></p>
+</dd>
+<dt class="field-even">Псевдоним на этой платформе (Linux x86_64)<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#numpy.complex256" title="numpy.complex256"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.complex256</span></code></a> : Тип комплексного числа, состоящий из двух 128-битных чисел с плавающей запятой повышенной точности.</p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+</section>
+<section id="other-types">
+<h3>Другие типы <a class="headerlink" href="#other-types" title="Link to this heading">#</a></h3>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.bool_">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">bool_</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.bool_" title="Link to this definition">#</a></dt>
+<dd><p>псевдоним <a class="reference internal" href="#numpy.bool" title="numpy.bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.bool">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.bool" title="Link to this definition">#</a></dt>
+<dd><p>Булевый тип (True или False), хранящийся в виде байта.</p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Тип <a class="reference internal" href="#numpy.bool" title="numpy.bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> не является подклассом типа <a class="reference internal" href="#numpy.int_" title="numpy.int_"><code class="xref py py-class docutils literal notranslate"><span class="pre">int_</span></code></a> (<a class="reference internal" href="#numpy.bool" title="numpy.bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> даже не является типом числа).Это отличается от реализации Python по умолчанию <a class="reference internal" href="#numpy.bool" title="numpy.bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> как подкласса <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'?'</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.datetime64">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">datetime64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.datetime64" title="Link to this definition">#</a></dt>
+<dd><p>При создании из 64-битного целого числа значение задаёт смещение относительно <code class="docutils literal notranslate"><span class="pre">1970-01-01T00:00:00</span></code>. При создании из строки допускается формат даты или даты и времени ISO 8601.</p>
+<p>При разборе строки для создания объекта datetime часовой пояс в конце строки («Z» или смещение) отбрасывается с выдачей UserWarning.</p>
+<p>Объекты Datetime64 должны рассматриваться как UTC и, следовательно, иметь смещение +0000.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'Y'</span><span class="p">)</span>
+<span class="go">np.datetime64('1980')</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">'1980'</span><span class="p">,</span> <span class="s1">'Y'</span><span class="p">)</span>
+<span class="go">np.datetime64('1980')</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">)</span>
+<span class="go">np.datetime64('1970-01-11')</span>
+</pre></div>
+</div>
+<p>Подробнее см. <a class="reference internal" href="arrays.datetime.html#arrays-datetime"><span class="std std-ref">Даты, время и временные интервалы</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'M'</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.timedelta64">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">timedelta64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.timedelta64" title="Link to this definition">#</a></dt>
+<dd><p>Интервал времени, хранящийся как 64-битное целое число.</p>
+<p>Подробнее см. <a class="reference internal" href="arrays.datetime.html#arrays-datetime"><span class="std std-ref">Даты, время и временные интервалы</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'m'</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.object_">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">object_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.object_" title="Link to this definition">#</a></dt>
+<dd><p>Любой объект Python.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'O'</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>В объектных массивах (<em>то есть</em> массивах с dtype <a class="reference internal" href="#numpy.object_" title="numpy.object_"><code class="xref py py-class docutils literal notranslate"><span class="pre">object_</span></code></a>) хранятся ссылки на объекты Python, а не сами объекты. Поэтому такие массивы похожи на обычные <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">lists</span></code></a> в Python: их содержимое может иметь разные типы Python.</p>
+<p>Тип object также особый: при обращении к элементу массива с элементами <a class="reference internal" href="#numpy.object_" title="numpy.object_"><code class="xref py py-class docutils literal notranslate"><span class="pre">object_</span></code></a> возвращается не объект <a class="reference internal" href="#numpy.object_" title="numpy.object_"><code class="xref py py-class docutils literal notranslate"><span class="pre">object_</span></code></a>, а сам объект, на который ссылается элемент массива.</p>
+</div>
+<p id="index-0">Следующие типы данных имеют <strong>переменный размер</strong>: он не задан заранее, и длина описываемых ими данных может различаться между массивами. В символьных кодах <code class="docutils literal notranslate"><span class="pre">#</span></code> обозначает целое число составляющих тип элементов.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.flexible">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">flexible</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.flexible" title="Link to this definition">#</a></dt>
+<dd><p>Абстрактный базовый класс всех скалярных типов без заранее заданной длины. Фактический размер этих типов зависит от конкретного экземпляра <a class="reference internal" href="generated/numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.dtype</span></code></a>.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.character">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">character</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.character" title="Link to this definition">#</a></dt>
+<dd><p>Абстрактный базовый класс всех строковых скалярных типов.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.bytes_">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">bytes_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.bytes_" title="Link to this definition">#</a></dt>
+<dd><p>Байтовая строка.</p>
+<p>При использовании в массивах этот тип удаляет завершающие нулевые байты.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'S'</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.str_">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">str_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.str_" title="Link to this definition">#</a></dt>
+<dd><p>Строка Unicode.</p>
+<p>Этот тип удаляет нулевые кодовые точки в конце.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">str_</span><span class="p">(</span><span class="s2">"abc</span><span class="se">\x00</span><span class="s2">"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">'abc'</span>
+</pre></div>
+</div>
+<p>В отличие от встроенного <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, этот тип поддерживает <a class="reference external" href="https://docs.python.org/3/c-api/buffer.html#bufferobjects" title="(in Python v3.14)"><span>буферный протокол</span></a>, предоставляя доступ к содержимому в формате UCS4:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="nb">memoryview</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str_</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">format</span>
+<span class="go">'3w'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+<span class="go">b'a\x00\x00\x00b\x00\x00\x00c\x00\x00\x00'</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'U'</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.void">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">void</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length_or_data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.void" title="Link to this definition">#</a></dt>
+<dd><p>Создаёт новый структурированный или неструктурированный скаляр void.</p>
+<dl class="field-list">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>length_or_data</strong><span class="classifier">int, объект, подобный массиву, объект, подобный байтовой строке, объект</span></dt><dd><p>Имеет несколько возможных значений (см. примечания): длина или байтовые данные неструктурированного void либо, если задан <a class="reference internal" href="generated/numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a>, данные для хранения в новом скаляре. Можно передать объект array_like; тогда результатом может быть массив.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">dtype, необязательный</span></dt><dd><p>Если задан, определяет dtype нового скаляра. Это должен быть dtype void: структурированный или неструктурированный (см. также <a class="reference internal" href="../user/basics.rec.html#defining-structured-types"><span class="std std-ref">Структурированные типы данных</span></a>).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Добавлено в версии 1.24.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Примечания</p>
+<p>По историческим причинам и потому, что скаляры void могут представлять как произвольные байты, так и структурированные данные, конструктор void поддерживает три формы вызова:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">np.void(5)</span></code> создаёт скаляр <code class="docutils literal notranslate"><span class="pre">dtype="V5"</span></code>, содержащий пять</dt><dd><p>байтов <code class="docutils literal notranslate"><span class="pre">\0</span></code>. Число 5 может быть целым числом Python или NumPy.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">np.void(b"bytes-like")</span></code> создаёт скаляр void из байтовой строки.</dt><dd><p>Размер элемента dtype будет совпадать с длиной байтовой строки, в данном случае <code class="docutils literal notranslate"><span class="pre">"V10"</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>При передаче <code class="docutils literal notranslate"><span class="pre">dtype=</span></code> вызов примерно эквивалентен</dt><dd><p>создание массива. Однако возвращается скаляр void, а не массив.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Пожалуйста, посмотрите примеры, которые показывают все три различных соглашения.</p>
+<p class="rubric">Примеры</p>
+<div class="try_examples_outer_container docutils container" id="31ed19d7-a1ba-4b83-b595-2317bb9d7857">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('31ed19d7-a1ba-4b83-b595-2317bb9d7857','16c08d80-4483-4ec9-bc3d-64512b046594','5932026c-f0e6-4739-a612-c03fe26d7b22','../lite/tree/../notebooks/index.html?path=bfe47939_2977_416f_9235_91af831d412b.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">void</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">np.void(b'\x00\x00\x00\x00\x00')</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">void</span><span class="p">(</span><span class="sa">b</span><span class="s1">'abcd'</span><span class="p">)</span>
+<span class="go">np.void(b'\x61\x62\x63\x64')</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">void</span><span class="p">((</span><span class="mf">3.2</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'eggs'</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"d,S5"</span><span class="p">)</span>
+<span class="go">np.void((3.2, b'eggs'), dtype=[('f0', '&lt;f8'), ('f1', 'S5')])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">void</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">),</span> <span class="p">(</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)])</span>
+<span class="go">np.void((3, 3), dtype=[('x', 'i1'), ('y', 'i1')])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'V'</span></code></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="5932026c-f0e6-4739-a612-c03fe26d7b22"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('31ed19d7-a1ba-4b83-b595-2317bb9d7857','5932026c-f0e6-4739-a612-c03fe26d7b22')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('31ed19d7-a1ba-4b83-b595-2317bb9d7857','5932026c-f0e6-4739-a612-c03fe26d7b22')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="16c08d80-4483-4ec9-bc3d-64512b046594"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></dd></dl>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Совместимость с Numeric: если в коде Numeric вы использовали старые символьные коды типов (что никогда не рекомендовалось), некоторые из них нужно заменить новыми. Необходимые замены: <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">-&gt;</span> <span class="pre">S1</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">-&gt;</span> <span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-&gt;</span> <span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">-&gt;</span> <span class="pre">h</span></code>, <code class="docutils literal notranslate"><span class="pre">w</span> <span class="pre">-&gt;</span>
+<span class="pre">H</span></code> и <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">-&gt;</span> <span class="pre">I</span></code>. Это согласует символьные коды типов с другими модулями Python, например <a class="reference external" href="https://docs.python.org/3/library/struct.html#module-struct" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code></a>.</p>
+</div>
+</section>
+<section id="sized-aliases">
+<span id="id3"></span><h3>Псевдонимы с указанием размера<a class="headerlink" href="#sized-aliases" title="Link to this heading">#</a></h3>
+<p>Помимо имён, в основном заимствованных из C, целочисленные, вещественные и комплексные типы данных доступны под именами с явным указанием разрядности, что позволяет гарантировать нужный размер элементов массива. Также предусмотрены два псевдонима — <a class="reference internal" href="#numpy.intp" title="numpy.intp"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.intp</span></code></a> и <a class="reference internal" href="#numpy.uintp" title="numpy.uintp"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.uintp</span></code></a> — для целочисленного типа, достаточно большого для хранения указателя C.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.int8">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">int8</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.int8" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="numpy.int16">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">int16</span></span><a class="headerlink" href="#numpy.int16" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="numpy.int32">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">int32</span></span><a class="headerlink" href="#numpy.int32" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="numpy.int64">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">int64</span></span><a class="headerlink" href="#numpy.int64" title="Link to this definition">#</a></dt>
+<dd><p>Псевдонимы для целочисленных типов со знаком (один из <a class="reference internal" href="#numpy.byte" title="numpy.byte"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.byte</span></code></a> , <a class="reference internal" href="#numpy.short" title="numpy.short"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.short</span></code></a> , <a class="reference internal" href="#numpy.intc" title="numpy.intc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.intc</span></code></a> , <a class="reference internal" href="#numpy.int_" title="numpy.int_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int_</span></code></a> , <a class="reference internal" href="#numpy.long" title="numpy.long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.long</span></code></a> и <a class="reference internal" href="#numpy.longlong" title="numpy.longlong"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.longlong</span></code></a> ) с указанным количеством бит.</p>
+<p>Совместим с C99 <code class="docutils literal notranslate"><span class="pre">int8_t</span></code>, <code class="docutils literal notranslate"><span class="pre">int16_t</span></code>, <code class="docutils literal notranslate"><span class="pre">int32_t</span></code> и <code class="docutils literal notranslate"><span class="pre">int64_t</span></code> соответственно.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.uint8">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">uint8</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.uint8" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="numpy.uint16">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">uint16</span></span><a class="headerlink" href="#numpy.uint16" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="numpy.uint32">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">uint32</span></span><a class="headerlink" href="#numpy.uint32" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="numpy.uint64">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">uint64</span></span><a class="headerlink" href="#numpy.uint64" title="Link to this definition">#</a></dt>
+<dd><p>Псевдоним беззнакового целочисленного типа (одного из <a class="reference internal" href="#numpy.ubyte" title="numpy.ubyte"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ubyte</span></code></a>, <a class="reference internal" href="#numpy.ushort" title="numpy.ushort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ushort</span></code></a>, <a class="reference internal" href="#numpy.uintc" title="numpy.uintc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uintc</span></code></a>, <a class="reference internal" href="#numpy.uint" title="numpy.uint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.uint</span></code></a>, <a class="reference internal" href="#numpy.ulong" title="numpy.ulong"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ulong</span></code></a> и <a class="reference internal" href="#numpy.ulonglong" title="numpy.ulonglong"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ulonglong</span></code></a>) с заданным числом битов.</p>
+<p>Совместим с C99 <code class="docutils literal notranslate"><span class="pre">uint8_t</span></code>, <code class="docutils literal notranslate"><span class="pre">uint16_t</span></code>, <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code> и <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> соответственно.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.intp">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">intp</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.intp" title="Link to this definition">#</a></dt>
+<dd><p>Псевдоним знакового целочисленного типа — одного из <a class="reference internal" href="#numpy.byte" title="numpy.byte"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.byte</span></code></a>, <a class="reference internal" href="#numpy.short" title="numpy.short"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.short</span></code></a>, <a class="reference internal" href="#numpy.intc" title="numpy.intc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.intc</span></code></a>, <a class="reference internal" href="#numpy.int_" title="numpy.int_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int_</span></code></a>, <a class="reference internal" href="#numpy.long" title="numpy.long"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.long</span></code></a> и <a class="reference internal" href="#numpy.longlong" title="numpy.longlong"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.longlong</span></code></a>, — используемого по умолчанию для целых чисел и индексирования.</p>
+<p>Совместим с C <code class="docutils literal notranslate"><span class="pre">Py_ssize_t</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'n'</span></code></p>
+</dd>
+</dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Изменено в версии 2.0: </span>До NumPy 2 размер этого типа совпадал с размером указателя. На практике размеры почти всегда совпадают, однако символьный код <code class="docutils literal notranslate"><span class="pre">'p'</span></code> соответствует типу C <code class="docutils literal notranslate"><span class="pre">intptr_t</span></code>. Символьный код <code class="docutils literal notranslate"><span class="pre">'n'</span></code> добавлен в NumPy 2.0.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.uintp">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">uintp</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.uintp" title="Link to this definition">#</a></dt>
+<dd><p>Псевдоним беззнакового целочисленного типа того же размера, что и <code class="docutils literal notranslate"><span class="pre">intp</span></code>.</p>
+<p>Совместим с C <code class="docutils literal notranslate"><span class="pre">size_t</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Код символа <span class="colon">: </span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">'N'</span></code></p>
+</dd>
+</dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Изменено в версии 2.0: </span>До NumPy 2 размер этого типа совпадал с размером указателя. На практике размеры почти всегда совпадают, однако символьный код <code class="docutils literal notranslate"><span class="pre">'P'</span></code> соответствует типу C <code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code>. Символьный код <code class="docutils literal notranslate"><span class="pre">'N'</span></code> добавлен в NumPy 2.0.</p>
+</div>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.float16">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">float16</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.float16" title="Link to this definition">#</a></dt>
+<dd><p>псевдоним <a class="reference internal" href="#numpy.half" title="numpy.half"><code class="xref py py-class docutils literal notranslate"><span class="pre">half</span></code></a></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.float32">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">float32</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.float32" title="Link to this definition">#</a></dt>
+<dd><p>псевдоним <a class="reference internal" href="#numpy.single" title="numpy.single"><code class="xref py py-class docutils literal notranslate"><span class="pre">single</span></code></a></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.float64">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">float64</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.float64" title="Link to this definition">#</a></dt>
+<dd><p>псевдоним <a class="reference internal" href="#numpy.double" title="numpy.double"><code class="xref py py-class docutils literal notranslate"><span class="pre">double</span></code></a></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.float96">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">float96</span></span><a class="headerlink" href="#numpy.float96" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="numpy.float128">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">float128</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.float128" title="Link to this definition">#</a></dt>
+<dd><p>Псевдоним <a class="reference internal" href="#numpy.longdouble" title="numpy.longdouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.longdouble</span></code></a>, названный по размеру типа в битах. Наличие этих псевдонимов зависит от платформы.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.complex64">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">complex64</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.complex64" title="Link to this definition">#</a></dt>
+<dd><p>псевдоним <a class="reference internal" href="#numpy.csingle" title="numpy.csingle"><code class="xref py py-class docutils literal notranslate"><span class="pre">csingle</span></code></a></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.complex128">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">complex128</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.complex128" title="Link to this definition">#</a></dt>
+<dd><p>псевдоним <a class="reference internal" href="#numpy.cdouble" title="numpy.cdouble"><code class="xref py py-class docutils literal notranslate"><span class="pre">cdouble</span></code></a></p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.complex192">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">complex192</span></span><a class="headerlink" href="#numpy.complex192" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="numpy.complex256">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">complex256</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v2.5.0/numpy/_core/src/multiarray/scalartypes.c.src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.complex256" title="Link to this definition">#</a></dt>
+<dd><p>Псевдоним <a class="reference internal" href="#numpy.clongdouble" title="numpy.clongdouble"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.clongdouble</span></code></a>, названный по размеру типа в битах. Наличие этих псевдонимов зависит от платформы.</p>
+</dd></dl>
+</section>
+</section>
+<section id="attributes">
+<h2>Атрибуты<a class="headerlink" href="#attributes" title="Link to this heading">#</a> </h2>
+<p>У скалярных объектов NumPy значение <a class="reference internal" href="arrays.classes.html#numpy.class.__array_priority__" title="numpy.class.__array_priority__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">array</span> <span class="pre">priority</span></code></a> равно <a class="reference internal" href="c-api/array.html#c.NPY_SCALAR_PRIORITY" title="NPY_SCALAR_PRIORITY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_SCALAR_PRIORITY</span></code></a> (-1 000 000,0). У них также (пока) нет атрибута <a class="reference internal" href="generated/numpy.ndarray.ctypes.html#numpy.ndarray.ctypes" title="numpy.ndarray.ctypes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ctypes</span></code></a>. Остальные атрибуты совпадают с атрибутами массивов:</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.flags.html#numpy.generic.flags" title="numpy.generic.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.flags</span></code></a></p></td>
+<td><p>Целое значение флагов.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.shape.html#numpy.generic.shape" title="numpy.generic.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.shape</span></code></a></p></td>
+<td><p>Кортеж размеров массива по осям.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.strides.html#numpy.generic.strides" title="numpy.generic.strides"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.strides</span></code></a></p></td>
+<td><p>Кортеж шагов в байтах по каждому измерению.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.ndim.html#numpy.generic.ndim" title="numpy.generic.ndim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.ndim</span></code></a></p></td>
+<td><p>Число измерений массива.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.data.html#numpy.generic.data" title="numpy.generic.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.data</span></code></a></p></td>
+<td><p>Указатель на начало данных.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.size.html#numpy.generic.size" title="numpy.generic.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.size</span></code></a></p></td>
+<td><p>Число элементов в gentype.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.itemsize.html#numpy.generic.itemsize" title="numpy.generic.itemsize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.itemsize</span></code></a></p></td>
+<td><p>Длина одного элемента в байтах.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.base.html#numpy.generic.base" title="numpy.generic.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.base</span></code></a></p></td>
+<td><p>Атрибут скаляра, идентичный <a class="reference internal" href="generated/numpy.ndarray.base.html#numpy.ndarray.base" title="numpy.ndarray.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.base</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.dtype.html#numpy.generic.dtype" title="numpy.generic.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.dtype</span></code></a></p></td>
+<td><p>Получает дескриптор данных массива.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.real.html#numpy.generic.real" title="numpy.generic.real"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.real</span></code></a></p></td>
+<td><p>Действительная часть скаляра.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.imag.html#numpy.generic.imag" title="numpy.generic.imag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.imag</span></code></a></p></td>
+<td><p>Мнимая часть скаляра.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.flat.html#numpy.generic.flat" title="numpy.generic.flat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.flat</span></code></a></p></td>
+<td><p>Одномерное представление скаляра.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.T.html#numpy.generic.T" title="numpy.generic.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.T</span></code></a></p></td>
+<td><p>Атрибут скаляра, идентичный <a class="reference internal" href="generated/numpy.ndarray.T.html#numpy.ndarray.T" title="numpy.ndarray.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.T</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.__array_interface__.html#numpy.generic.__array_interface__" title="numpy.generic.__array_interface__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.__array_interface__</span></code></a></p></td>
+<td><p>Протокол массива: сторона Python</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.__array_struct__.html#numpy.generic.__array_struct__" title="numpy.generic.__array_struct__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.__array_struct__</span></code></a></p></td>
+<td><p>Протокол массива: struct</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.__array_priority__.html#numpy.generic.__array_priority__" title="numpy.generic.__array_priority__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.__array_priority__</span></code></a></p></td>
+<td><p>Приоритет массива.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.__array_wrap__.html#numpy.generic.__array_wrap__" title="numpy.generic.__array_wrap__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.__array_wrap__</span></code></a></p></td>
+<td><p>__array_wrap__ реализация для скалярных типов</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="indexing">
+<h2>Индексация <a class="headerlink" href="#indexing" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="routines.indexing.html#arrays-indexing"><span class="std std-ref">Функции индексации</span></a>, <a class="reference internal" href="arrays.dtypes.html#arrays-dtypes"><span class="std std-ref">Объекты типов данных (dtype)</span></a></p>
+</div>
+<p>Скалярные объекты NumPy можно индексировать как нульмерные массивы. Если <em>x</em> — такой скаляр,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x[()]</span></code> возвращает копию скаляра NumPy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x[...]</span></code> возвращает нульмерный <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x['field-name']</span></code> возвращает скаляр NumPy из поля <em>field-name</em>. (У <em>x</em> могут быть поля, например, если он соответствует структурированному типу данных.)</p></li>
+</ul>
+</section>
+<section id="methods">
+<h2>Методы <a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
+<p>Скаляры массива имеют те же методы, что и массивы. По умолчанию метод преобразует скаляр в эквивалентный нульмерный массив и вызывает соответствующий метод массива. Кроме того, арифметические операции над скалярами массива устанавливают и используют те же аппаратные флаги для интерпретации результатов, что и <a class="reference internal" href="ufuncs.html#ufuncs"><span class="std std-ref">универсальные функции</span></a>. Поэтому настройки обработки ошибок универсальных функций распространяются и на арифметику скаляров массива.</p>
+<p>Исключения из вышеуказанных правил приведены ниже:</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.__array__.html#numpy.generic.__array__" title="numpy.generic.__array__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.__array__</span></code></a></p></td>
+<td><p>sc.__array__(dtype) возвращает нульмерный массив заданного dtype из скаляра</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.__array_wrap__.html#numpy.generic.__array_wrap__" title="numpy.generic.__array_wrap__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.__array_wrap__</span></code></a></p></td>
+<td><p>__array_wrap__ реализация для скалярных типов</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.squeeze.html#numpy.generic.squeeze" title="numpy.generic.squeeze"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.squeeze</span></code></a>(/[, axis])</p></td>
+<td><p>Скалярный метод идентичен <a class="reference internal" href="generated/numpy.ndarray.squeeze.html#numpy.ndarray.squeeze" title="numpy.ndarray.squeeze"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.squeeze</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.byteswap.html#numpy.generic.byteswap" title="numpy.generic.byteswap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.byteswap</span></code></a>(/[, inplace])</p></td>
+<td><p>Скалярный метод идентичен <a class="reference internal" href="generated/numpy.ndarray.byteswap.html#numpy.ndarray.byteswap" title="numpy.ndarray.byteswap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.byteswap</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.__reduce__.html#numpy.generic.__reduce__" title="numpy.generic.__reduce__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.__reduce__</span></code></a></p></td>
+<td><p>Вспомогательный метод для pickle.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/numpy.generic.__setstate__.html#numpy.generic.__setstate__" title="numpy.generic.__setstate__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.__setstate__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.generic.setflags.html#numpy.generic.setflags" title="numpy.generic.setflags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generic.setflags</span></code></a>(*[, write, align, uic])</p></td>
+<td><p>Скалярный метод идентичен <a class="reference internal" href="generated/numpy.ndarray.setflags.html#numpy.ndarray.setflags" title="numpy.ndarray.setflags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.setflags</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Вспомогательный метод для аннотаций типов:</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/numpy.number.__class_getitem__.html#numpy.number.__class_getitem__" title="numpy.number.__class_getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number.__class_getitem__</span></code></a>(item, /)</p></td>
+<td><p>Возвращает параметризованную обёртку над типом <a class="reference internal" href="#numpy.number" title="numpy.number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="defining-new-types">
+<h2>Определение новых типов<a class="headerlink" href="#defining-new-types" title="Link to this heading">#</a></h2>
+<p>Новый скалярный тип массива можно определить двумя способами, не считая построения структурированных <a class="reference internal" href="arrays.dtypes.html#arrays-dtypes"><span class="std std-ref">типов данных</span></a> из встроенных скалярных типов. Первый — создать подкласс <a class="reference internal" href="generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> и переопределить нужные методы. Это даёт ограниченные возможности: часть поведения определяется типом данных массива. Для полной настройки нужно определить новый тип данных и зарегистрировать его в NumPy. Это возможно только на C с использованием <a class="reference internal" href="c-api/index.html#c-api"><span class="std std-ref">C API NumPy</span></a>.</p>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="generated/numpy.ndarray.__class_getitem__.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">numpy.ndarray.__class_getitem__</p>
+</div>
+</a>
+<a class="right-next" href="generated/numpy.generic.flags.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">numpy.generic.flags</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-scalar-types">Встроенные скалярные типы </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.generic"><code class="docutils literal notranslate"><span class="pre">generic</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.number"><code class="docutils literal notranslate"><span class="pre">number</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integer-types">Целочисленные типы</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.integer"><code class="docutils literal notranslate"><span class="pre">integer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signed-integer-types">Знаковые целочисленные типы </a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.signedinteger"><code class="docutils literal notranslate"><span class="pre">signedinteger</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.byte"><code class="docutils literal notranslate"><span class="pre">byte</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.short"><code class="docutils literal notranslate"><span class="pre">short</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.intc"><code class="docutils literal notranslate"><span class="pre">intc</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.int_"><code class="docutils literal notranslate"><span class="pre">int_</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.long"><code class="docutils literal notranslate"><span class="pre">long</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.longlong"><code class="docutils literal notranslate"><span class="pre">longlong</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unsigned-integer-types">Беззнаковые целочисленные типы</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.unsignedinteger"><code class="docutils literal notranslate"><span class="pre">unsignedinteger</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.ubyte"><code class="docutils literal notranslate"><span class="pre">ubyte</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.ushort"><code class="docutils literal notranslate"><span class="pre">ushort</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.uintc"><code class="docutils literal notranslate"><span class="pre">uintc</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.uint"><code class="docutils literal notranslate"><span class="pre">uint</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.ulong"><code class="docutils literal notranslate"><span class="pre">ulong</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.ulonglong"><code class="docutils literal notranslate"><span class="pre">ulonglong</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inexact-types">Неточные типы </a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.inexact"><code class="docutils literal notranslate"><span class="pre">inexact</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#floating-point-types">Типы с плавающей точкой</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.floating"><code class="docutils literal notranslate"><span class="pre">floating</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.half"><code class="docutils literal notranslate"><span class="pre">half</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.single"><code class="docutils literal notranslate"><span class="pre">single</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.double"><code class="docutils literal notranslate"><span class="pre">double</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.longdouble"><code class="docutils literal notranslate"><span class="pre">longdouble</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-floating-point-types">Комплексные типы с плавающей точкой</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.complexfloating"><code class="docutils literal notranslate"><span class="pre">complexfloating</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.csingle"><code class="docutils literal notranslate"><span class="pre">csingle</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.cdouble"><code class="docutils literal notranslate"><span class="pre">cdouble</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.clongdouble"><code class="docutils literal notranslate"><span class="pre">clongdouble</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-types">Другие типы </a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.bool_"><code class="docutils literal notranslate"><span class="pre">bool_</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.bool"><code class="docutils literal notranslate"><span class="pre">bool</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.datetime64"><code class="docutils literal notranslate"><span class="pre">datetime64</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.timedelta64"><code class="docutils literal notranslate"><span class="pre">timedelta64</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.object_"><code class="docutils literal notranslate"><span class="pre">object_</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.flexible"><code class="docutils literal notranslate"><span class="pre">flexible</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.character"><code class="docutils literal notranslate"><span class="pre">character</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.bytes_"><code class="docutils literal notranslate"><span class="pre">bytes_</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.str_"><code class="docutils literal notranslate"><span class="pre">str_</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.void"><code class="docutils literal notranslate"><span class="pre">void</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sized-aliases">Псевдонимы с указанием размера</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.int8"><code class="docutils literal notranslate"><span class="pre">int8</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.int16"><code class="docutils literal notranslate"><span class="pre">int16</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.int32"><code class="docutils literal notranslate"><span class="pre">int32</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.int64"><code class="docutils literal notranslate"><span class="pre">int64</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.uint8"><code class="docutils literal notranslate"><span class="pre">uint8</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.uint16"><code class="docutils literal notranslate"><span class="pre">uint16</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.uint32"><code class="docutils literal notranslate"><span class="pre">uint32</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.uint64"><code class="docutils literal notranslate"><span class="pre">uint64</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.intp"><code class="docutils literal notranslate"><span class="pre">intp</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.uintp"><code class="docutils literal notranslate"><span class="pre">uintp</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.float16"><code class="docutils literal notranslate"><span class="pre">float16</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.float32"><code class="docutils literal notranslate"><span class="pre">float32</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.float64"><code class="docutils literal notranslate"><span class="pre">float64</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.float96"><code class="docutils literal notranslate"><span class="pre">float96</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.float128"><code class="docutils literal notranslate"><span class="pre">float128</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.complex64"><code class="docutils literal notranslate"><span class="pre">complex64</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.complex128"><code class="docutils literal notranslate"><span class="pre">complex128</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.complex192"><code class="docutils literal notranslate"><span class="pre">complex192</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy.complex256"><code class="docutils literal notranslate"><span class="pre">complex256</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Атрибуты </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Индексация </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Методы </a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-new-types">Определение новых типов</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

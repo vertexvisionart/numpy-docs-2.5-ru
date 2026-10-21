@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=824642aa"></script>
+<script src="../../_static/doctools.js?v=888ff710"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=30646c52"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'dev/governance/governance';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../../_static/favicon.ico" rel="icon"/>
+<link href="../../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../../search.html" rel="search" title="Поиск"/>
+<link href="../howto-docs.html" rel="next" title="Как внести свой вклад в документацию NumPy"/>
+<link href="index.html" rel="prev" title="Управление NumPy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../../_static/searchtools.js"></script>
+<script src="../../_static/language_data.js"></script>
+<script src="../../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"> <a class="reference internal" href="../ai_policy.html"> Политика в области ИИ </a> </li>
+<li class="toctree-l1"> <a class="reference internal" href="../development_environment.html"> Настройка и использование вашей среды разработки </a> </li>
+<li class="toctree-l1"><a class="reference internal" href="../spin.html"> Spin: инструмент разработчика NumPy </a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto_build_docs.html">Сборка документации API и справочного руководства NumPy</a></li>
+<li class="toctree-l1"> <a class="reference internal" href="../development_workflow.html"> Процесс разработки </a> </li>
+<li class="toctree-l1"><a class="reference internal" href="../development_advanced_debugging.html"> Расширенные инструменты отладки </a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development_ghcodespaces.html">Использование GitHub Codespaces для разработки NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reviewer_guidelines.html">Рекомендации для рецензентов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmarking.html">Тесты производительности NumPy</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/neps/nep-0045-c_style_guide.html">Руководство по стилю кода C в NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../depending_on_numpy.html">Для авторов пакетов, зависящих от NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releasing.html"> Выпуск версии </a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Управление NumPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"> Управление проектом NumPy и принятие решений </a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto-docs.html"> Как внести вклад в документацию NumPy </a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Участие в разработке NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Управление NumPy</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis"> Управление проектом NumPy и принятие решений </span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="numpy-project-governance-and-decision-making">
+<h1>Управление проектом NumPy и принятие решений<a class="headerlink" href="#numpy-project-governance-and-decision-making" title="Link to this heading">#</a></h1>
+<p>Цель этого документа — формализовать процесс управления, используемый проектом NumPy как в обычных, так и в чрезвычайных ситуациях, а также прояснить, как принимаются решения и как взаимодействуют различные элементы нашего сообщества, включая взаимосвязь между совместной разработкой с открытым исходным кодом и работой, которая может финансироваться коммерческими или некоммерческими организациями.</p>
+<section id="summary">
+<h2>Краткое описание<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>NumPy — проект, принадлежащий сообществу и управляемый им. Насколько возможно, направление развития определяется консенсусом сообщества. При этом «консенсус» имеет здесь специальное значение, которое может отличаться от обычных ожиданий; см. ниже. Некоторые участники также входят в Руководящий совет NumPy. Они помогают достигать консенсуса, управляют ресурсами проекта и в исключительных случаях принимают решения, если обычный процесс обсуждения в сообществе не срабатывает.</p>
+</section>
+<section id="the-project">
+<h2>Проект <a class="headerlink" href="#the-project" title="Link to this heading">#</a></h2>
+<p>Проект NumPy («Проект») — проект открытого программного обеспечения, связанный с фондом NumFOCUS со статусом 501(c)3. Его цель — разрабатывать открытое ПО для вычислений над массивами в Python, прежде всего пакет <code class="docutils literal notranslate"><span class="pre">numpy</span></code> и связанное ПО, включая <code class="docutils literal notranslate"><span class="pre">f2py</span></code> и расширения NumPy для Sphinx. ПО Проекта выпускается под открытой лицензией BSD или аналогичной, разрабатывается открыто и размещается в публичных репозиториях организации GitHub <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+<p>Проект разрабатывается распределённой командой, члены которой называются Участниками. Участники — люди, внесшие в Проект код, документацию, проектные решения или иную работу. Стать Участником может каждый. Участники могут быть связаны с любым юридическим лицом или не быть связаны ни с одним. Они участвуют в проекте, отправляя, рассматривая и обсуждая pull request и сообщения об ошибках на GitHub, а также участвуя в открытых публичных обсуждениях Проекта на GitHub, в списках рассылки и других каналах. Участие в Проекте основано на открытости и прозрачности.</p>
+<p>Сообщество проекта состоит из всех его разработчиков и пользователей. Разработчики действуют от имени всего сообщества и подотчётны ему; мы стремимся свести к минимуму барьер между разработчиками и пользователями.</p>
+<p>Проект официально связан с фондом NumFOCUS, имеющим статус 501(c)3 (<a class="reference external" href="https://numfocus.org/">https://numfocus.org/</a>). Фонд выступает его финансовым спонсором, может владеть товарными знаками проекта и другой интеллектуальной собственностью, помогает управлять пожертвованиями и служит головным юридическим лицом. NumFOCUS — единственное юридическое лицо, официально связанное с проектом (см. ниже раздел об институциональных партнёрах).</p>
+</section>
+<section id="governance">
+<h2>Управление <a class="headerlink" href="#governance" title="Link to this heading">#</a></h2>
+<p>В этом разделе описывается модель управления и лидерства Проекта.</p>
+<p>Основами управления Проектом являются:</p>
+<ul class="simple">
+<li><p>Открытость и прозрачность</p></li>
+<li><p>Активный вклад</p></li>
+<li><p>Институциональный нейтралитет</p></li>
+</ul>
+<section id="consensus-based-decision-making-by-the-community">
+<h3>Принятие решений сообществом на основе консенсуса<a class="headerlink" href="#consensus-based-decision-making-by-the-community" title="Link to this heading">#</a></h3>
+<p>Обычно все решения проекта принимаются консенсусом заинтересованных участников. Цель такого подхода — дать людям, которых изменение затрагивает сильнее всего и которые непосредственно с ним работают, возможность поделиться знаниями и быть уверенными, что их услышат. Внимательная проверка широким сообществом — лучший известный нам способ создавать качественное программное обеспечение.</p>
+<p>Наш механизм достижения этой цели может быть незнаком тем, кто не сталкивался с нормами сообщества свободного ПО и проектов с открытым исходным кодом. Здесь приведено краткое описание. Для подробного обсуждения настоятельно рекомендуем всем участникам прочесть <a class="reference external" href="https://producingoss.com/en/producingoss.html#social-infrastructure">главу 4 «Социальная и политическая инфраструктура»</a> классической книги Карла Фогеля <em>Producing Open Source Software</em>, особенно раздел <a class="reference external" href="https://producingoss.com/en/producingoss.html#consensus-democracy">Демократия на основе консенсуса</a>.</p>
+<p>В этом контексте консенсус <em>не</em> требует:</p>
+<ul class="simple">
+<li><p>что мы ждём, пока каждый выскажет своё мнение о каждом изменении,</p></li>
+<li><p>что мы вообще будем проводить голосование по какому-либо вопросу,</p></li>
+<li><p>или что все довольны либо согласны с каждым решением.</p></li>
+</ul>
+<p>Для нас консенсус означает, что мы предоставляем <em>каждому</em> право наложить вето на любое изменение, если он сочтёт это необходимым. Хотя это может показаться верным способом столкнуться с противодействием и трудностями, на практике этого не происходит. Большинство людей серьёзно относятся к этой ответственности и прибегают к вето лишь тогда, когда считают, что серьёзная проблема остаётся без внимания и вето необходимо для защиты проекта. На деле формальное вето почти никогда не применяется: сама такая возможность побуждает участников с самого начала искать решение, приемлемое для всех. Так достигается наша цель — учитывать все заинтересованные точки зрения.</p>
+<p>Как определить, достигнут ли консенсус? Теоретически это довольно трудно: консенсус означает отсутствие вето, то есть нужно как-то доказать отсутствие возражений. На практике мы сочетаем разумную оценку ситуации и необходимые усилия. Например, простое и бесспорное исправление ошибки, опубликованное на GitHub и проверенное основным разработчиком, скорее всего, можно принять. А все существенные изменения API нужно публиковать в рассылке, чтобы более широкое сообщество могло заметить проблемы и предложить улучшения; мы предполагаем, что любой, кто достаточно заинтересован в NumPy, чтобы воспользоваться правом вето, подписан на рассылку. Если за несколько дней никто не высказался в рассылке, вероятно, всё в порядке. В худшем случае изменение окажется более спорным, чем ожидалось, или важное замечание задержится из-за чьего-то отпуска. Это поправимо: мы извинимся за неверную оценку ситуации, <a class="reference external" href="https://producingoss.com/en/producingoss.html#version-control-relaxation">вернёмся на шаг назад и разберёмся</a>.</p>
+<p>Если действительно необходимо применить формальное вето, то оно должно состоять из:</p>
+<ul class="simple">
+<li><p>Однозначное заявление о том, что применяется право вето,</p></li>
+<li><p>объяснение, почему оно было применено, и</p></li>
+<li><p>описание условий, если они есть, при которых наложивший вето согласился бы его отозвать.</p></li>
+</ul>
+<p>Если на все предложения по решению какого-то вопроса наложено вето, то статус-кво выигрывает по умолчанию.</p>
+<p>В крайнем случае, если участник злоупотребляет вето, препятствуя работе в ущерб проекту, Руководящий совет может консенсусом исключить его из проекта; см. ниже.</p>
+</section>
+<section id="steering-council">
+<h3>Руководящий совет <a class="headerlink" href="#steering-council" title="Link to this heading">#</a></h3>
+<p>В проекте будет руководящий совет из участников, которые не менее года вносят значительный вклад как по качеству, так и по объёму. Общая задача совета — с учётом мнения сообщества обеспечивать долгосрочное благополучие проекта и в техническом отношении, и как сообщества.</p>
+<p>В повседневной работе проекта члены совета участвуют в обсуждениях, проверке кода и других делах наравне с остальными участниками и сообществом. Членство в совете не даёт им особых полномочий или привилегий в этой работе. Однако благодаря качеству и объёму их вклада, а также глубокому знанию программного обеспечения и сервисов проекта ожидается, что члены совета будут давать полезные рекомендации менее опытным участникам — как по техническим вопросам, так и по направлению развития проекта.</p>
+<p>Руководящий совет и его члены играют особую роль в определенных ситуациях. В частности, Совет может при необходимости:</p>
+<ul class="simple">
+<li><p>Принимать решения об общем охвате, видении и направлении развития проекта.</p></li>
+<li><p>Принимать решения о стратегическом сотрудничестве с другими организациями или отдельными людьми.</p></li>
+<li><p>Принимают решения по конкретным техническим вопросам, возможностям, ошибкам и запросам на изменения. Это основной механизм организации проверки кода и слияния pull request.</p></li>
+<li><p>Принимать решения о сервисах проекта и управлять ими в интересах проекта и сообщества.</p></li>
+<li><p>Обновляйте документы с правилами и принципами работы, подобные этому.</p></li>
+<li><p>Принимайте решения, когда регулярные обсуждения в сообществе не дают консенсуса по вопросу в разумные сроки.</p></li>
+</ul>
+<p>Однако главная обязанность Совета — содействовать обычному процессу принятия решений сообществом, описанному выше. Если ради благополучия Проекта нам придётся вмешаться и формально отменить решение сообщества, мы это сделаем. Но сам факт возникновения такой необходимости будем считать неудачей нашего руководства.</p>
+<section id="council-decision-making">
+<h4>Принятие решений Советом<a class="headerlink" href="#council-decision-making" title="Link to this heading">#</a></h4>
+<p>Если Руководящему совету потребуется принять формальное решение, он воспользуется вариантом <a class="reference external" href="https://www.apache.org/foundation/voting.html">процедуры голосования Apache Foundation</a>. Это формализованный способ достижения консенсуса: +1 означает согласие, а -1 — вето, которое должно сопровождаться обоснованием, как описано выше. Можно также голосовать дробными значениями, например -0.5 или +0.5, чтобы выразить мнение без полного вето. Эти числовые оценки часто используются и неформально для выяснения общего отношения к вопросу; обычно их не следует считать официальными голосами. Формальное голосование проводится только при явном объявлении. В таком случае оно должно оставаться открытым достаточно долго, чтобы все заинтересованные члены Совета могли ответить, — не менее недели.</p>
+<p>На практике для большинства решений руководящего совета, например принятия новых членов, скорее всего, будет достаточно менее формальной процедуры.</p>
+</section>
+<section id="council-membership">
+<h4>Членство в совете<a class="headerlink" href="#council-membership" title="Link to this heading">#</a></h4>
+<p>Список нынешних членов Руководящего совета поддерживается на странице <a class="reference external" href="https://numpy.org/about/"> О нас </a>.</p>
+<p>Чтобы претендовать на вступление в Руководящий совет, человек должен быть Участником Проекта и на протяжении как минимум года регулярно вносить существенный по качеству и объёму вклад. Кандидатов выдвигают действующие члены Совета. Они становятся членами после достижения согласия действующими членами и подтверждения заинтересованности кандидата и его готовности исполнять эту роль. Первоначальный состав Совета будет сформирован из основных разработчиков, которые по состоянию на конец 2015 года были достаточно активны в течение предшествующего года.</p>
+<p>При рассмотрении кандидатов в Совет их вклад оценивается в целом. Учитываются, среди прочего, код, рецензирование кода, работа над инфраструктурой, участие в рассылках и чатах, помощь сообществу и его развитие, обучение и популяризация, проектирование. Мы намеренно не задаём произвольные количественные критерии вроде «100 коммитов в этом репозитории», чтобы не поощрять работу ради показателей вместо пользы Проекту в целом. Мы стремимся к разнообразию опыта, взглядов и талантов в команде, поэтому написание кода явно не считается единственным критерием членства в Совете.</p>
+<p>Если член Совета не участвует в проекте в течение года, рассматривается вопрос о его исключении из Совета. Предварительно с ним связываются, чтобы выяснить, планирует ли он вернуться к активному участию. Если нет, он исключается сразу после голосования Совета. Если он намерен вскоре вернуться, ему предоставляется дополнительный год. Если за этот срок активное участие не возобновится, Совет исключает его голосованием без дальнейшей отсрочки. Бывшие члены Совета в любой момент могут снова претендовать на членство наравне с другими участниками проекта. Их имена остаются на сайте проекта с указанием периода активной работы в Совете.</p>
+<p>Совет оставляет за собой право изгнать действующих членов, если они считаются активно вредными для благополучия проекта, а попытки коммуникации и разрешения конфликтов провалились. Для этого требуется консенсус остальных членов.</p>
+</section>
+<section id="conflict-of-interest">
+<h4>Конфликт интересов <a class="headerlink" href="#conflict-of-interest" title="Link to this heading">#</a></h4>
+<p>Ожидается, что члены Совета будут работать в самых разных компаниях, университетах и некоммерческих организациях. Поэтому у них могут возникать конфликты интересов. К таким конфликтам относятся, в частности:</p>
+<ul class="simple">
+<li><p>Финансовые интересы, такие как инвестиции, занятость или работа по контракту, за пределами Проекта, которые могут повлиять на их работу в Проекте.</p></li>
+<li><p>Доступ к закрытой информации работодателя, которая потенциально может попасть в работу над Проектом.</p></li>
+</ul>
+<p>Все члены Совета должны сообщать остальным членам Совета о любом конфликте интересов, который у них может возникнуть. Члены, имеющие конфликт интересов по определенному вопросу, могут участвовать в обсуждениях Совета по этому вопросу, но должны отказаться от голосования по этому вопросу.</p>
+</section>
+<section id="private-communications-of-the-council">
+<h4>Закрытая переписка Совета<a class="headerlink" href="#private-communications-of-the-council" title="Link to this heading">#</a></h4>
+<p>Обсуждения и деятельность Совета по возможности будут открытыми, с участием разработчиков проекта и сообщества. У Совета будет закрытый список рассылки, используемый редко и только по вопросам, требующим конфиденциальности. Если закрытое обсуждение или решение необходимо, Совет постарается сообщить сообществу его суть, исключив личные, конфиденциальные и другие чувствительные сведения, которые нельзя публиковать в открытом интернете.</p>
+</section>
+<section id="subcommittees">
+<h4>Подкомитеты<a class="headerlink" href="#subcommittees" title="Link to this heading">#</a></h4>
+<p>Совет может создавать подкомитеты, руководящие определёнными направлениями проекта и вырабатывающие рекомендации по ним. Как и Совет в целом, подкомитеты должны работать открыто и публично, кроме случаев, требующих конфиденциальности. Закрытое общение подкомитетов должно проходить в основном закрытом списке рассылки Совета, если нет особых причин поступить иначе.</p>
+</section>
+<section id="numfocus-subcommittee">
+<h4>Подкомитет NumFOCUS <a class="headerlink" href="#numfocus-subcommittee" title="Link to this heading">#</a></h4>
+<p>Совет сохранит один узкоспециализированный подкомитет для управления взаимодействием с NumFOCUS.</p>
+<ul class="simple">
+<li><p>Подкомитет NumFOCUS состоит из пяти человек, управляющих средствами проекта, поступающими через NumFOCUS. Предполагается, что средства расходуются в соответствии с некоммерческой миссией NumFOCUS и направлением развития Проекта, определённым Советом в полном составе.</p></li>
+<li><p>Этот Подкомитет НЕ принимает решения о направлении, объеме или техническом направлении Проекта.</p></li>
+<li><p>В подкомитете будет 5 участников: 4 действующих члена Совета и 1 участник вне Руководящего совета. Не более двух участников могут подчиняться одному человеку по трудовым или договорным отношениям, включая самого этого руководителя, если он входит в подкомитет: максимум руководитель плюс один подчинённый. Это не даёт одному человеку фактически контролировать большинство.</p></li>
+</ul>
+<p>Текущий состав подкомитета NumFOCUS указан на странице <a class="reference external" href="https://numpy.org/about/">О нас</a>.</p>
+</section>
+</section>
+</section>
+<section id="institutional-partners-and-funding">
+<h2>Организации-партнёры и финансирование<a class="headerlink" href="#institutional-partners-and-funding" title="Link to this heading">#</a></h2>
+<p>Руководящий совет осуществляет основное руководство проектом. Ни сторонняя организация, ни физическое или юридическое лицо не может владеть проектом, контролировать его, захватывать управление или влиять на него иначе как через участие в проекте в качестве участника или члена совета. При этом организации могут существенно помогать финансированию, поэтому важно официально признавать их участие. Такие организации называются организациями-партнёрами.</p>
+<p>Участник от организации — любой участник проекта, вносящий вклад в рамках своих служебных обязанностей у организации-партнёра. Аналогично, член Руководящего совета от организации — любой член Руководящего совета проекта, вносящий вклад в рамках своих служебных обязанностей у организации-партнёра.</p>
+<p>Согласно этим определениям, институциональным партнером является любое признанное юридическое лицо в США или где-либо еще, в котором работает как минимум 1 институциональный участник или член институционального совета. Институциональные партнеры могут быть коммерческими или некоммерческими организациями.</p>
+<p>Организация получает право стать институциональным партнёром, если её сотрудники активно участвуют в Проекте в рамках служебных обязанностей. Иными словами, партнёр может влиять на Проект только через активное участие в его открытой разработке на равных условиях с остальными участниками и членами Совета. Одного использования программного обеспечения Проекта в организации недостаточно. Финансовые пожертвования также не дают статуса институционального партнёра. После выполнения условий Руководящий совет должен выдвинуть и одобрить партнёрство.</p>
+<p>Если у действующего институционального партнёра не останется сотрудников, участвующих в проекте, начинается переходный период длительностью один год. Если к его концу таких сотрудников по-прежнему нет, партнёрство прекращается. Для его возобновления потребуется обычная процедура оформления нового партнёрства.</p>
+<p>Институциональный партнёр вправе привлекать финансирование своей работы над Проектом любыми законными способами. Например, некоммерческая организация может собирать средства частных фондов и доноров, а коммерческая компания — создавать закрытые продукты и услуги с использованием программного обеспечения и услуг Проекта. Средства, привлечённые институциональными партнёрами для работы над Проектом, называются институциональным финансированием. Однако финансирование партнёра не даёт ему права отменять решения Руководящего совета. Если у партнёра есть средства на работу над NumPy, а Совет решает не выполнять её в рамках Проекта, партнёр вправе выполнить её самостоятельно. В таком случае эта часть работы не относится к проекту NumPy, и товарные знаки Проекта нельзя использовать так, чтобы создавать впечатление официальной связи.</p>
+<p>Преимуществами институциональных партнеров являются:</p>
+<ul class="simple">
+<li><p>Благодарность на сайтах NumPy, в выступлениях и на футболках.</p></li>
+<li><p>Возможность указывать свои источники финансирования на сайтах NumPy, в выступлениях и на футболках.</p></li>
+<li><p>Возможность влиять на проект через участие своего представителя в совете.</p></li>
+<li><p>Члены Совета приглашаются на встречи разработчиков NumPy.</p></li>
+</ul>
+<p>Актуальный список организаций-партнёров приведён на странице <a class="reference external" href="https://numpy.org/about/">«О нас»</a>.</p>
+</section>
+<section id="document-history">
+<h2>История создания <a class="headerlink" href="#document-history" title="Link to this heading">#</a></h2>
+<p><a class="github reference external" href="https://github.com/numpy/numpy/commits/main/doc/source/dev/governance/governance.rst"> numpy/numpy </a></p>
+</section>
+<section id="acknowledgements">
+<h2>Благодарности <a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h2>
+<p>Значительные части этого документа адаптированы из <a class="reference external" href="https://github.com/jupyter/governance">документа об управлении проектом Jupyter/IPython</a></p>
+</section>
+<section id="license">
+<h2>Лицензия <a class="headerlink" href="#license" title="Link to this heading">#</a></h2>
+<p>В пределах, допускаемых законом, авторы отказались от авторских и всех связанных или смежных прав на документ об управлении проектом NumPy и принятии решений согласно <a class="reference external" href="https://creativecommons.org/publicdomain/zero/1.0/">декларации передачи в общественное достояние / лицензии CC-0</a>.</p>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="index.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Управление NumPy</p>
+</div>
+</a>
+<a class="right-next" href="../howto-docs.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Как внести свой вклад в документацию NumPy</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"> <a class="reference internal nav-link" href="#summary">Краткое описание</a> </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-project">Проект </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#governance">Управление </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consensus-based-decision-making-by-the-community">Принятие решений сообществом на основе консенсуса</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steering-council">Руководящий совет </a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#council-decision-making">Принятие решений Советом</a></li>
+<li class="toc-h4 nav-item toc-entry"> <a class="reference internal nav-link" href="#council-membership">Членство в совете</a> </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-of-interest">Конфликт интересов </a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#private-communications-of-the-council">Закрытая переписка Совета</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subcommittees">Подкомитеты</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numfocus-subcommittee">Подкомитет NumFOCUS </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#institutional-partners-and-funding">Организации-партнёры и финансирование</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-history">История создания </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Благодарности </a></li>
+<li class="toc-h2 nav-item toc-entry"> <a class="reference internal nav-link" href="#license">Лицензия </a> </li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

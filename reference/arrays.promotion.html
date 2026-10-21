@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'reference/arrays.promotion';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="arrays.nditer.html" rel="next" title="Итерация по массивам"/>
+<link href="generated/numpy.dtype.__lt__.html" rel="prev" title="numpy.dtype.__lt__"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="module_structure.html">Структура модулей NumPy</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="arrays.html">Объекты массивов</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="arrays.ndarray.html">N-мерный массив (<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.scalars.html">Скаляры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.dtypes.html">Объекты типов данных (<code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Повышение типов данных в NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.nditer.html">Итерация по массивам</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.classes.html">Стандартные подклассы массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maskedarray.html"> Маскированные массивы </a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.interface.html">Протокол интерфейса массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.datetime.html">Даты, время и временные интервалы</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ufuncs.html">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="routines.html">Функции и объекты по темам</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="typing.html">Аннотации типов (<code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.typing</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-api/index.html"> NumPy C-API </a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="array_api.html">Совместимость со стандартом Array API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simd/index.html">Оптимизации CPU/SIMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_safety.html">Потокобезопасность</a></li>
+<li class="toctree-l1"><a class="reference internal" href="global_state.html">Глобальные параметры конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Безопасность NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Рекомендации по тестированию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distutils_status_migration.html">Состояние <code class="docutils literal notranslate"><span class="pre">numpy.distutils</span></code> и рекомендации по переходу</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swig.html"> NumPy и SWIG </a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Справочник NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="arrays.html">Объекты массивов</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Повышение типов данных в NumPy</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="data-type-promotion-in-numpy">
+<span id="arrays-promotion"></span><h1>Повышение типов данных в NumPy<a class="headerlink" href="#data-type-promotion-in-numpy" title="Link to this heading">#</a></h1>
+<p>При сочетании двух разных типов данных NumPy определяет подходящий dtype для результата операции. Этот шаг называется <em>повышением типов</em> или <em>поиском общего dtype</em>.</p>
+<p>Обычно пользователю не нужно разбираться в деталях повышения типов: этот шаг, как правило, обеспечивает точность результата не ниже точности входных данных.</p>
+<p>Например, когда входы имеют один и тот же dtype, dtype результата соответствует dtype входов:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">np.int8(2)</span>
+</pre></div>
+</div>
+<p>Смешивание двух разных типов данных обычно даёт результат с типом того из входных значений, у которого выше точность:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>  <span class="c1"># 64 &gt; 8</span>
+<span class="go">np.int64(12)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 32 &gt; 16</span>
+<span class="go">np.float32(6.0)</span>
+</pre></div>
+</div>
+<p>Обычно это не приводит к неожиданностям. Но при нестандартных dtype, например беззнаковых целых и вещественных типах низкой точности, либо при смешивании целых NumPy, вещественных NumPy и скаляров Python могут быть важны детали правил повышения типов. Они не всегда совпадают с правилами других языков <a class="footnote-reference brackets" href="#hist-reasons" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>Численные типы бывают четырех видов с естественной иерархией.</p>
+<ol class="arabic simple">
+<li><p>целые числа без знака (<code class="docutils literal notranslate"><span class="pre">uint</span></code>)</p></li>
+<li><p>знаковые целые числа (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+<li><p>float (<code class="docutils literal notranslate"><span class="pre">float</span></code>)</p></li>
+<li><p>комплексный (<code class="docutils literal notranslate"><span class="pre">complex</span></code>)</p></li>
+</ol>
+<p>В дополнение к виду, числовые типы NumPy также имеют связанную точность, указанную в битах.Вместе вид и точность указывают dtype. Например, <code class="docutils literal notranslate"><span class="pre">uint8</span></code> является целым числом без знака, хранящимся с использованием 8 битов.</p>
+<p>Категория типа результата всегда не ниже категории любого входного типа. Точность результата также не ниже точности входных данных. Уже эти правила могут давать неожиданные результаты:</p>
+<ol class="arabic simple">
+<li><p>При смешивании чисел с плавающей точкой и целых чисел точность целого числа может привести результат к более высокой точности с плавающей точкой. Например, результатом операции с участием <code class="docutils literal notranslate"><span class="pre">int64</span></code> и <code class="docutils literal notranslate"><span class="pre">float16</span></code> является <code class="docutils literal notranslate"><span class="pre">float64</span></code>.</p></li>
+<li><p>При сочетании знаковых и беззнаковых целых чисел одной разрядности результат имеет <em>более высокую</em> разрядность, чем оба входных типа. Если один из них уже 64-битный, более широкого целочисленного типа нет: например, операция с <code class="docutils literal notranslate"><span class="pre">int64</span></code> и <code class="docutils literal notranslate"><span class="pre">uint64</span></code> даёт <code class="docutils literal notranslate"><span class="pre">float64</span></code>.</p></li>
+</ol>
+<p>Подробнее об обоих случаях см. раздел <em class="xref py py-obj">Numerical promotion</em> и рисунок ниже.</p>
+<section id="detailed-behavior-of-python-scalars">
+<h2>Подробное поведение скаляров Python <a class="headerlink" href="#detailed-behavior-of-python-scalars" title="Link to this heading">#</a></h2>
+<p>Начиная с NumPy 2.0 <a class="footnote-reference brackets" href="#nep50" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> действует важное правило повышения типов: операции с двумя типами данных NumPy никогда не теряют точности, однако операции с типом данных NumPy и скаляром Python (<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code> или <code class="docutils literal notranslate"><span class="pre">complex</span></code>) <em>могут</em> её терять. Например, естественно ожидать, что операция между целым числом Python и целым числом NumPy даст целое число NumPy. Однако целые числа Python имеют произвольную точность, а все типы данных NumPy — фиксированную, поэтому сохранить произвольную точность целых чисел Python невозможно.</p>
+<p>В более общем плане NumPy рассматривает «вид» скаляров Python, но игнорирует их точность при определении результата dtype. Это часто удобно. Например, при работе с массивами низкой точности dtype обычно желательно для простых операций со скалярами Python сохранять dtype.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr_float32</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr_float32</span> <span class="o">+</span> <span class="mf">10.0</span>  <span class="c1"># undesirable to promote to float64</span>
+<span class="go">array([11. , 12.5, 12.1], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr_int16</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr_int16</span> <span class="o">+</span> <span class="mi">10</span>  <span class="c1"># undesirable to promote to int64</span>
+<span class="go">array([13, 15, 17], dtype=int16)</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Нежелательно повышать точность до float64</li><li>Нежелательно повышать разрядность до int64</li></ul></details></div>
+</div>
+<p>В обоих случаях точность результата диктуется NumPy dtype. Из-за этого <code class="docutils literal notranslate"><span class="pre">arr_float32</span> <span class="pre">+</span> <span class="pre">3.0</span></code> ведет себя так же, как <code class="docutils literal notranslate"><span class="pre">arr_float32</span> <span class="pre">+</span> <span class="pre">np.float32(3.0)</span></code>, а <code class="docutils literal notranslate"><span class="pre">arr_int16</span> <span class="pre">+</span> <span class="pre">10</span></code> ведет себя как <code class="docutils literal notranslate"><span class="pre">arr_int16</span> <span class="pre">+</span> <span class="pre">np.int16(10.)</span></code>.</p>
+<p>В качестве другого примера, при смешивании целых чисел NumPy с Python <code class="docutils literal notranslate"><span class="pre">float</span></code> или <code class="docutils literal notranslate"><span class="pre">complex</span></code>, результат всегда имеет тип <code class="docutils literal notranslate"><span class="pre">float64</span></code> или <code class="docutils literal notranslate"><span class="pre">complex128</span></code> :</p>
+<blockquote>
+<div><p>&gt;&gt; np.int16(1) + 1.0 np.float64(2.0)</p>
+</div></blockquote>
+<p>Однако эти правила могут также привести к удивительному поведению при работе с низкоточными типами.</p>
+<p>Во-первых, значение Python преобразуется в значение NumPy до выполнения операции. Поэтому ошибка возможна даже тогда, когда результат кажется очевидным. Например, <code class="docutils literal notranslate"><span class="pre">np.int8(1)</span> <span class="pre">+</span> <span class="pre">1000</span></code> невозможно выполнить, поскольку <code class="docutils literal notranslate"><span class="pre">1000</span></code> превышает максимальное значение <code class="docutils literal notranslate"><span class="pre">int8</span></code>. Если скаляр Python нельзя преобразовать в dtype NumPy, возникает ошибка:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1000</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">OverflowError</span>: <span class="n">Python integer 1000 out of bounds for int8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">100</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">OverflowError</span>: <span class="n">Python int too large to convert to C long</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e300</span>
+<span class="go">np.float32(inf)</span>
+<span class="go">... RuntimeWarning: overflow encountered in cast</span>
+</pre></div>
+</div>
+<p>Во-вторых, точность float и int Python всегда игнорируется, поэтому скаляр NumPy низкой точности сохраняет её, пока не будет явно преобразован в более точный dtype NumPy или скаляр Python, например через <code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code> или <code class="docutils literal notranslate"><span class="pre">scalar.item()</span></code>. Низкая точность может ухудшать вычисления или давать неверные результаты, особенно при целочисленном переполнении:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="mi">100</span>  <span class="c1"># the result exceeds the capacity of int8</span>
+<span class="go">np.int8(-56)</span>
+<span class="go">... RuntimeWarning: overflow encountered in scalar add</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Результат выходит за диапазон int8</li></ul></details></div>
+</div>
+<p>NumPy предупреждает о переполнении для скаляров, но не для массивов. Например, <code class="docutils literal notranslate"><span class="pre">np.array(100,</span> <span class="pre">dtype=np.uint8)</span> <span class="pre">+</span> <span class="pre">100</span></code> <em>не</em> выдаёт предупреждение.</p>
+</section>
+<section id="numerical-promotion">
+<h2>Повышение числовых типов<a class="headerlink" href="#numerical-promotion" title="Link to this heading">#</a></h2>
+<p>На следующем изображении показаны правила повышения числовых типов: по вертикали расположены категории типов, по горизонтали — точность.</p>
+<figure class="align-center align-default">
+<img alt="../_images/nep-0050-promotion-no-fonts.svg" src="../_images/nep-0050-promotion-no-fonts.svg"/><span class="ru-image-notes" style="display:block; margin:0.5em 0 1em; font-size:0.95em">Подписи на рисунке: Python scalars — скаляры Python; Promotion paths — пути повышения типов; Minimum Python scalar precision when other is integral/boolean — минимальная точность скаляра Python, если другой операнд имеет целочисленный или логический тип; DType kind — вид типа данных; integral — целочисленные типы; inexact — типы приближённых чисел, то есть вещественные и комплексные; DType precision — точность типа данных. Python int, float и complex — встроенные типы Python; остальные названия — типы NumPy. Стрелка вправо показывает увеличение точности, стрелка вверх — переход к другому виду чисел.</span></figure>
+<p>Категория результирующего dtype определяется входным dtype с более высокой категорией. Точность результата выбирается минимально возможной, но так, чтобы на диаграмме он не находился левее ни одного из входных типов.</p>
+<p>Обратите внимание на следующие конкретные правила и замечания:</p>
+<ol class="arabic simple">
+<li><p>При взаимодействии Python <code class="docutils literal notranslate"><span class="pre">float</span></code> или <code class="docutils literal notranslate"><span class="pre">complex</span></code> с целым числом NumPy результат имеет тип <code class="docutils literal notranslate"><span class="pre">float64</span></code> или <code class="docutils literal notranslate"><span class="pre">complex128</span></code> (жёлтая рамка). Логические значения NumPy также приводятся к целочисленному типу по умолчанию <a class="footnote-reference brackets" href="#default-int" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Это правило не применяется, если в операции дополнительно участвуют значения NumPy с плавающей запятой.</p></li>
+<li><p>На рисунке точность расположена так, что <code class="docutils literal notranslate"><span class="pre">float16</span> <span class="pre">&lt;</span> <span class="pre">int16</span> <span class="pre">&lt;</span> <span class="pre">uint16</span></code>: большие значения <code class="docutils literal notranslate"><span class="pre">uint16</span></code> не помещаются в <code class="docutils literal notranslate"><span class="pre">int16</span></code>, а большие значения <code class="docutils literal notranslate"><span class="pre">int16</span></code> теряют точность при хранении в <code class="docutils literal notranslate"><span class="pre">float16</span></code>. Однако из этого правила есть исключение: NumPy всегда считает <code class="docutils literal notranslate"><span class="pre">float64</span></code> и <code class="docutils literal notranslate"><span class="pre">complex128</span></code> допустимыми результатами повышения для любого целого значения.</p></li>
+<li><p>Особый случай: многие сочетания знаковых и беззнаковых целых типов NumPy повышает до <code class="docutils literal notranslate"><span class="pre">float64</span></code>. Здесь используется более высокая категория типов, поскольку ни один знаковый целочисленный dtype не может представить весь диапазон <code class="docutils literal notranslate"><span class="pre">uint64</span></code>.</p></li>
+</ol>
+</section>
+<section id="exceptions-to-the-general-promotion-rules">
+<h2>Исключения из общих правил повышения типов<a class="headerlink" href="#exceptions-to-the-general-promotion-rules" title="Link to this heading">#</a></h2>
+<p>В NumPy продвижение типов определяется поведением конкретных функций при выборе типа результата, поэтому иногда оно отличается от результата <em class="xref py py-obj">np.result_type</em>.</p>
+<section id="behavior-of-sum-and-prod">
+<h3>Поведение <code class="docutils literal notranslate"><span class="pre">sum</span></code> и <code class="docutils literal notranslate"><span class="pre">prod</span></code> <a class="headerlink" href="#behavior-of-sum-and-prod" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">np.sum</span></code> и <code class="docutils literal notranslate"><span class="pre">np.prod</span></code> при свёртке целочисленных или логических значений обычно используют целочисленный тип платформы; для знаковых чисел это обычно <code class="docutils literal notranslate"><span class="pre">int64</span></code>. Типы малой разрядности повышаются, чтобы снизить вероятность переполнения и неожиданных результатов. То же правило действует для <code class="docutils literal notranslate"><span class="pre">np.add.reduce</span></code> и <code class="docutils literal notranslate"><span class="pre">np.multiply.reduce</span></code>. Примечание переводчика: утверждение оригинала «всегда целочисленный тип по умолчанию» неточно: для беззнаковых входов используется беззнаковый целочисленный тип, а явно заданный dtype также влияет на результат.</p>
+</section>
+<section id="notable-behavior-with-numpy-or-python-integer-scalars">
+<h3>Особенности поведения целочисленных скаляров NumPy и Python<a class="headerlink" href="#notable-behavior-with-numpy-or-python-integer-scalars" title="Link to this heading">#</a></h3>
+<p>Повышение типов в NumPy определяет dtype результата и точность операции, но иногда тип результата задаётся самой операцией. Деление всегда возвращает числа с плавающей точкой, а сравнение — логические значения.</p>
+<p>Это приводит к тому, что может показаться «исключениями» из правил:</p>
+<ul class="simple">
+<li><p>Сравнения в NumPy с целыми числами Python или с целыми числами разной точности всегда дают правильный результат. Входные данные никогда не приводятся к типу, вызывающему потерю точности.</p></li>
+<li><p>При сравнении типов, которые нельзя привести к общему типу, все результаты будут <code class="docutils literal notranslate"><span class="pre">False</span></code> для проверки равенства или <code class="docutils literal notranslate"><span class="pre">True</span></code> для проверки неравенства.</p></li>
+<li><p>Унарные математические функции, такие как <code class="docutils literal notranslate"><span class="pre">np.sin</span></code>, которые всегда возвращают значения с плавающей запятой, принимают любые целочисленные входные данные Python, преобразуя их в <code class="docutils literal notranslate"><span class="pre">float64</span></code>.</p></li>
+<li><p>Деление всегда возвращает значения с плавающей точкой. Поэтому оно допускает деление любого целого числа NumPy на любое целое число Python, приводя оба операнда к <code class="docutils literal notranslate"><span class="pre">float64</span></code>.</p></li>
+</ul>
+<p>В принципе, некоторые из этих исключений могут быть полезны и для других функций. Если вы так считаете, создайте задачу в трекере.</p>
+</section>
+<section id="notable-behavior-with-python-builtin-type-classes">
+<h3>Особенности поведения со встроенными классами типов Python<a class="headerlink" href="#notable-behavior-with-python-builtin-type-classes" title="Link to this heading">#</a></h3>
+<p>При объединении встроенных скалярных <em>типов</em> Python (то есть <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code> или <code class="docutils literal notranslate"><span class="pre">complex</span></code>, а не скалярных <em>значений</em>) правила повышения типов могут показаться неожиданными:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">result_type</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="go">dtype('float32')  # The scalar value '7' does not impact type promotion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">result_type</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="go">dtype('float64')  # The *type* of the scalar value '7' does impact promotion</span>
+<span class="go"># Similar situations happen with Python's float and complex types</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Скалярное значение 7 не влияет на продвижение типов</li><li>А вот *тип* скалярного значения 7 влияет на продвижение типов</li><li>Аналогичные ситуации возникают с типами float и complex Python</li></ul></details></div>
+</div>
+<p>Такое поведение объясняется тем, что NumPy преобразует <code class="docutils literal notranslate"><span class="pre">int</span></code> в свой целочисленный тип по умолчанию и использует его при повышении типа:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">result_type</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="go">dtype('int64')</span>
+</pre></div>
+</div>
+<p>Подробнее см. также <a class="reference internal" href="arrays.dtypes.html#dtype-constructing-from-python-types"><span class="std std-ref">Встроенные типы Python</span></a>.</p>
+</section>
+</section>
+<section id="promotion-of-non-numerical-datatypes">
+<h2>Повышение нечисловых типов данных<a class="headerlink" href="#promotion-of-non-numerical-datatypes" title="Link to this heading">#</a></h2>
+<p>NumPy распространяет правила продвижения типов и на нечисловые типы, хотя во многих случаях такое продвижение не определено однозначно и поэтому запрещено.</p>
+<p>Применяются следующие правила:</p>
+<ul class="simple">
+<li><p>Байтовые строки NumPy (<code class="docutils literal notranslate"><span class="pre">np.bytes_</span></code>) могут повышаться до строк Unicode (<code class="docutils literal notranslate"><span class="pre">np.str_</span></code>). Однако приведение байтов к Unicode завершается ошибкой для символов вне ASCII.</p></li>
+<li><p>В некоторых случаях NumPy приводит почти любой другой тип данных к строковому. Это относится к созданию и объединению массивов.</p></li>
+<li><p>Если подходящий общий тип подобрать невозможно, конструкторы массивов, например <code class="docutils literal notranslate"><span class="pre">np.array()</span></code>, используют тип <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p></li>
+<li><p>Структурированные типы данных могут приводиться к общему типу, если совпадают имена и порядок их полей. В этом случае тип каждого поля повышается отдельно.</p></li>
+<li><p>В некоторых случаях NumPy допускает повышение типа <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> совместно с целочисленными типами.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Некоторые из этих правил могут удивить; в будущем рассматривается возможность их изменения. Однако пользу любых изменений, нарушающих обратную совместимость, необходимо сопоставлять с риском нарушения работы существующего кода. Если у вас есть конкретные предложения о том, как должно работать повышение типов, создайте issue.</p>
+</div>
+</section>
+<section id="details-of-promoted-dtype-instances">
+<h2>Особенности экземпляров <code class="docutils literal notranslate"><span class="pre">dtype</span></code> после повышения типов<a class="headerlink" href="#details-of-promoted-dtype-instances" title="Link to this heading">#</a></h2>
+<p>Выше в основном обсуждалось смешивание разных классов DType. Экземпляр <code class="docutils literal notranslate"><span class="pre">dtype</span></code>, связанный с массивом, может содержать дополнительные сведения: порядок байтов, метаданные, длину строк или точную структуру структурированного dtype.</p>
+<p>Хотя длина строки и имена полей структурированного типа данных важны, порядок байтов, метаданные и точное размещение полей NumPy считает деталями хранения.</p>
+<p>При повышении типов NumPy <em>не</em> учитывает эти особенности хранения:</p>
+<ul class="simple">
+<li><p>Порядок байтов преобразуется в родной порядок платформы.</p></li>
+<li><p>Метаданные, прикрепленные к dtype, могут сохраняться или не сохраняться.</p></li>
+<li><p>Полученные структурированные типы будут упакованы (но выровнены, если входы были).</p></li>
+</ul>
+<p>Такое поведение лучше всего подходит большинству программ, где детали хранения не влияют на результат, а неправильный порядок байтов может существенно замедлить вычисления.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="hist-reasons" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a href="#id1" role="doc-backlink">1</a><span class="fn-bracket">]</span></span>
+<p>Во многом это может объясняться решениями, принятыми ещё в предшественниках NumPy. Подробнее см. <a class="reference external" href="https://numpy.org/neps/nep-0050-scalar-promotion.html#nep50" title="(in NumPy Enhancement Proposals)"><span class="xref std std-ref">NEP 50</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="nep50" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a href="#id2" role="doc-backlink">2</a><span class="fn-bracket">]</span></span>
+<p>См. также <a class="reference external" href="https://numpy.org/neps/nep-0050-scalar-promotion.html#nep50" title="(in NumPy Enhancement Proposals)"><span class="xref std std-ref">NEP 50</span></a>, изменивший правила в NumPy 2.0. Раньше NumPy иногда возвращал результат повышенной точности в зависимости от значения входного скаляра Python. Кроме того, при определении общего типа прежние версии NumPy обычно игнорировали повышенную точность скаляров NumPy и нульмерных массивов.</p>
+</aside>
+<aside class="footnote brackets" id="default-int" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a href="#id3" role="doc-backlink">3</a><span class="fn-bracket">]</span></span>
+<p>Целое число по умолчанию помечено как <code class="docutils literal notranslate"><span class="pre">int64</span></code> в схеме, но является <code class="docutils literal notranslate"><span class="pre">int32</span></code> на 32-битных платформах.Однако большинство современных систем являются 64-битными.</p>
+</aside>
+</aside>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="generated/numpy.dtype.__lt__.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">numpy.dtype.__lt__</p>
+</div>
+</a>
+<a class="right-next" href="arrays.nditer.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Итерация по массивам</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-behavior-of-python-scalars">Подробное поведение скаляров Python </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-promotion">Повышение числовых типов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions-to-the-general-promotion-rules">Исключения из общих правил повышения типов</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-of-sum-and-prod">Поведение <code class="docutils literal notranslate"><span class="pre">sum</span></code> и <code class="docutils literal notranslate"><span class="pre">prod</span></code> </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notable-behavior-with-numpy-or-python-integer-scalars">Особенности поведения целочисленных скаляров NumPy и Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notable-behavior-with-python-builtin-type-classes">Особенности поведения со встроенными классами типов Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#promotion-of-non-numerical-datatypes">Повышение нечисловых типов данных</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#details-of-promoted-dtype-instances">Особенности экземпляров <code class="docutils literal notranslate"><span class="pre">dtype</span></code> после повышения типов</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

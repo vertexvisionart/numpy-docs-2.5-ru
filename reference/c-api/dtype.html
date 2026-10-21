@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=824642aa"></script>
+<script src="../../_static/doctools.js?v=888ff710"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=30646c52"></script>
+<script src="../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'reference/c-api/dtype';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../../_static/favicon.ico" rel="icon"/>
+<link href="../../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../../search.html" rel="search" title="Поиск"/>
+<link href="array.html" rel="next" title="Array API"/>
+<link href="config.html" rel="prev" title="Конфигурация системы"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../../_static/searchtools.js"></script>
+<script src="../../_static/language_data.js"></script>
+<script src="../../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../module_structure.html">Структура модулей NumPy</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../arrays.html">Объекты массивов</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ufuncs.html">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../routines.html">Функции и объекты по темам</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../typing.html">Аннотации типов (<code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.typing</span></code>)</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">C API NumPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="types-and-structures.html">Типы Python и структуры C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Конфигурация системы</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">API типов данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array.html"> Array API </a></li>
+<li class="toctree-l2"><a class="reference internal" href="iterator.html">API итератора массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ufunc.html"> Ufunc API </a></li>
+<li class="toctree-l2"><a class="reference internal" href="generalized-ufuncs.html">API обобщённых универсальных функций</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strings.html"> NpyString API </a></li>
+<li class="toctree-l2"><a class="reference internal" href="coremath.html">Базовая математическая библиотека NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datetimes.html">API даты и времени</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deprecations.html">Устаревшие возможности C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_memory.html">Управление памятью в NumPy</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../array_api.html">Совместимость со стандартом Array API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simd/index.html">Оптимизации CPU/SIMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thread_safety.html">Потокобезопасность</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../global_state.html">Глобальные параметры конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Безопасность NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing.html">Рекомендации по тестированию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distutils_status_migration.html">Состояние <code class="docutils literal notranslate"><span class="pre">numpy.distutils</span></code> и рекомендации по переходу</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../swig.html"> NumPy и SWIG </a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Справочник NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html"> NumPy C-API </a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">API типов данных</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="data-type-api">
+<h1>API типов данных<a class="headerlink" href="#data-type-api" title="Link to this heading">#</a></h1>
+<p>Стандартный массив может иметь один из 25 типов данных; предусмотрена и некоторая поддержка добавления собственных типов. У каждого типа данных есть константа перечисления, символьный код и соответствующий объект скалярного типа Python, включённый в иерархию типов. Также предусмотрены стандартные определения typedef в C для удобной работы с элементами данного типа. Для числовых типов дополнительно есть определения typedef C с заданной разрядностью и именованные номера типов, упрощающие выбор нужной точности.</p>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Имена типов в коде C ближе к соглашениям языка C, а их имена в Python следуют соглашениям Python. Например, <a class="reference internal" href="#c.NPY_TYPES.NPY_FLOAT" title="NPY_FLOAT"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_FLOAT</span></code></a> обозначает 32-битный float в C, а <a class="reference internal" href="../arrays.scalars.html#numpy.float64" title="numpy.float64"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.float64</span></code></a> в Python соответствует 64-битному double. Для ясности и в Python, и в C можно использовать имена с явным указанием разрядности.</p>
+</div>
+<section id="enumerated-types">
+<h2>Перечисляемые типы<a class="headerlink" href="#enumerated-types" title="Link to this heading">#</a></h2>
+<dl class="c enum">
+<dt class="sig sig-object c" id="c.NPY_TYPES">
+<span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_TYPES</span></span></span><a class="headerlink" href="#c.NPY_TYPES" title="Link to this definition">#</a><br/></dt>
+<dd><p>Определены значения перечисления для 25 базовых типов данных и нескольких полезных обобщённых имён. Когда коду нужен номер типа, используется одно из этих значений. Их имена имеют вид <code class="docutils literal notranslate"><span class="pre">NPY_{NAME}</span></code>:</p>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_BOOL">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_BOOL</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_BOOL" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для булевого типа, хранящееся в виде одного байта, может быть установлено только на значения 0 и 1.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_BYTE">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_BYTE</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_BYTE" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_INT8">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_INT8</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_INT8" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 8-битного/1-байтового целого числа со знаком.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_SHORT">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_SHORT</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_SHORT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_INT16">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_INT16</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_INT16" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 16-разрядного (2-байтового) знакового целого числа.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_INT">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_INT</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_INT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_INT32">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_INT32</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_INT32" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 32-битного (4-байтного) знакового целого числа.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_LONG">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_LONG</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_LONG" title="Link to this definition">#</a><br/></dt>
+<dd><p>Эквивалент NPY_INT или NPY_LONGLONG, в зависимости от платформы.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_LONGLONG">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_LONGLONG</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_LONGLONG" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_INT64">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_INT64</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_INT64" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 64-битного (8-байтового) целого числа со знаком.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_UBYTE">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_UBYTE</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_UBYTE" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_UINT8">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_UINT8</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_UINT8" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для беззнакового целого числа размером 8 бит (1 байт).</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_USHORT">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_USHORT</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_USHORT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_UINT16">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_UINT16</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_UINT16" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 16-битного (2-байтового) беззнакового целого числа.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_UINT">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_UINT</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_UINT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_UINT32">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_UINT32</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_UINT32" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 32-разрядного (4-байтового) беззнакового целого числа.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_ULONG">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_ULONG</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_ULONG" title="Link to this definition">#</a><br/></dt>
+<dd><p>Эквивалентно NPY_UINT или NPY_ULONGLONG, в зависимости от платформы.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_ULONGLONG">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_ULONGLONG</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_ULONGLONG" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_UINT64">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_UINT64</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_UINT64" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 64-битного (8-байтового) беззнакового целого числа.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_HALF">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_HALF</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_HALF" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_FLOAT16">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_FLOAT16</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_FLOAT16" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 16-разрядного (2-байтового) типа с плавающей запятой, совместимого с IEEE 754-2008.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_FLOAT">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_FLOAT</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_FLOAT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_FLOAT32">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_FLOAT32</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_FLOAT32" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 32-битного (4-байтового) типа с плавающей точкой, совместимого с IEEE 754.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_DOUBLE">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_DOUBLE</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_DOUBLE" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_FLOAT64">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_FLOAT64</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_FLOAT64" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 64-битного, то есть 8-байтного, типа с плавающей точкой, совместимого с IEEE 754.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_LONGDOUBLE">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_LONGDOUBLE</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_LONGDOUBLE" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для зависящего от платформы типа с плавающей точкой, размер которого не меньше NPY_DOUBLE, а на многих платформах больше.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_CFLOAT">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_CFLOAT</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_CFLOAT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_COMPLEX64">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_COMPLEX64</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_COMPLEX64" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 64-битного (8-байтового) комплексного типа, состоящего из двух значений NPY_FLOAT.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_CDOUBLE">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_CDOUBLE</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_CDOUBLE" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_COMPLEX128">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_COMPLEX128</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_COMPLEX128" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для 128-битного (16-байтового) комплексного типа, состоящего из двух значений NPY_DOUBLE.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_CLONGDOUBLE">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_CLONGDOUBLE</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_CLONGDOUBLE" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для зависящего от платформы комплексного типа с плавающей запятой, состоящего из двух значений NPY_LONGDOUBLE.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_DATETIME">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_DATETIME</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_DATETIME" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для типа, хранящего даты или дату и время с точностью, задаваемой выбранной единицей даты или времени.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_TIMEDELTA">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_TIMEDELTA</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_TIMEDELTA" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для типа данных, представляющего длительности целыми числами в выбранных единицах даты или времени.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_STRING">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_STRING</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_STRING" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для байтовых строк задаваемого размера, дополненных нулевыми байтами. В пределах одного массива максимальный размер строк фиксирован.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_UNICODE">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_UNICODE</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_UNICODE" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для строк UCS4 выбираемого размера. В пределах одного массива строки имеют фиксированную максимальную длину.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_VSTRING">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_VSTRING</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_VSTRING" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для строк переменной длины UTF-8. Этот dtype содержит массив ссылок, а строковые данные хранятся вне буфера массива. Для доступа к строке каждого элемента используйте C API строк NumPy переменной длины.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Этот DType относится к новому API и не входит в <code class="docutils literal notranslate"><span class="pre">NPY_NTYPES_LEGACY</span></code>.</p>
+</div>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_OBJECT">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_OBJECT</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_OBJECT" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для ссылок на произвольные объекты Python.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_VOID">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_VOID</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_VOID" title="Link to this definition">#</a><br/></dt>
+<dd><p>В основном используется для хранения структурированных dtype, но может содержать произвольные двоичные данные.</p>
+</dd></dl>
+<p>Некоторые полезные псевдонимы вышеперечисленных типов</p>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_INTP">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_INTP</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_INTP" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для целого со знаком типа <code class="docutils literal notranslate"><span class="pre">Py_ssize_t</span></code>, совпадающего с <code class="docutils literal notranslate"><span class="pre">ssize_t</span></code>, если тот определён. Этот тип используется всеми массивами индексов.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Изменено в версии 2.0: </span>Ранее этот тип совпадал с <code class="docutils literal notranslate"><span class="pre">intptr_t</span></code> и имел размер указателя. На практике различие проявляется лишь на очень редких платформах. Для обозначения типа, соответствующего указателю, можно использовать символьный код <code class="docutils literal notranslate"><span class="pre">'p'</span></code>.</p>
+</div>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_UINTP">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_UINTP</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_UINTP" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления для беззнакового целочисленного типа, идентичного <code class="docutils literal notranslate"><span class="pre">size_t</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Изменено в версии 2.0: </span>Ранее этот тип совпадал с <code class="docutils literal notranslate"><span class="pre">uintptr_t</span></code> и имел размер указателя. На практике различие проявляется лишь на очень редких платформах. Для обозначения типа, соответствующего указателю, можно использовать символьный код <code class="docutils literal notranslate"><span class="pre">'P'</span></code>.</p>
+</div>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_MASK">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_MASK</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_MASK" title="Link to this definition">#</a><br/></dt>
+<dd><p>Значение перечисления типа, используемого для масок, например, с флагом итератора <a class="reference internal" href="iterator.html#c.NPY_ITER_ARRAYMASK" title="NPY_ITER_ARRAYMASK"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ITER_ARRAYMASK</span></code></a>. Это эквивалентно <a class="reference internal" href="#c.NPY_TYPES.NPY_UINT8" title="NPY_UINT8"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_UINT8</span></code></a>.</p>
+</dd></dl>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.NPY_TYPES.NPY_DEFAULT_TYPE">
+<span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NPY_DEFAULT_TYPE</span></span></span><a class="headerlink" href="#c.NPY_TYPES.NPY_DEFAULT_TYPE" title="Link to this definition">#</a><br/></dt>
+<dd><p>Тип по умолчанию, используемый, когда dtype не задан явно, например при вызове np.zero(shape). Эквивалентен <a class="reference internal" href="#c.NPY_TYPES.NPY_DOUBLE" title="NPY_DOUBLE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_DOUBLE</span></code></a>.</p>
+</dd></dl>
+</dd></dl>
+<p>Другие полезные связанные константы:</p>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.NPY_NTYPES_LEGACY">
+<span class="sig-name descname"><span class="n"><span class="pre">NPY_NTYPES_LEGACY</span></span></span><a class="headerlink" href="#c.NPY_NTYPES_LEGACY" title="Link to this definition">#</a><br/></dt>
+<dd><p>Число встроенных типов NumPy, реализованных с помощью прежней системы DType. Новые dtype NumPy будут использовать новый API DType и могут вести себя иначе. Этот макрос подходит, если для прежних DType нужны отдельные ветви кода либо если вы не хотите обновлять код, использующий <code class="docutils literal notranslate"><span class="pre">NPY_NTYPES_LEGACY</span></code> и некорректно работающий с новыми DType.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Новые DType, такие как <code class="docutils literal notranslate"><span class="pre">NPY_VSTRING</span></code>, не будут учитываться в <code class="docutils literal notranslate"><span class="pre">NPY_NTYPES_LEGACY</span></code>.</p>
+</div>
+</dd></dl>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.NPY_NOTYPE">
+<span class="sig-name descname"><span class="n"><span class="pre">NPY_NOTYPE</span></span></span><a class="headerlink" href="#c.NPY_NOTYPE" title="Link to this definition">#</a><br/></dt>
+<dd><p>Сигнальное значение, гарантированно не совпадающее с допустимым номером типа из перечисления.</p>
+</dd></dl>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.NPY_USERDEF">
+<span class="sig-name descname"><span class="n"><span class="pre">NPY_USERDEF</span></span></span><a class="headerlink" href="#c.NPY_USERDEF" title="Link to this definition">#</a><br/></dt>
+<dd><p>Начальный номер диапазона типов, используемого для пользовательских типов данных старого образца. Пользовательским DType нового образца сейчас <em>не</em> присваивается номер типа.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Общее количество пользовательских типов ограничено значением ниже <code class="docutils literal notranslate"><span class="pre">NPY_VSTRING</span></code>. Более высокие номера зарезервированы для будущего использования DType нового стиля.</p>
+</div>
+</dd></dl>
+<p>Символьные коды, обозначающие определённые типы, также входят в перечисление. Для обращения к символам типов, если это вообще требуется, всегда следует использовать эти константы перечисления. Они имеют вид <code class="docutils literal notranslate"><span class="pre">NPY_{NAME}LTR</span></code>, где <code class="docutils literal notranslate"><span class="pre">{NAME}</span></code> может принимать значения</p>
+<blockquote>
+<div><p> <strong> BOOL </strong> , <strong> BYTE </strong> , <strong> UBYTE </strong> , <strong> SHORT </strong> , <strong> USHORT </strong> , <strong> INT </strong> , <strong> UINT </strong> , <strong> LONG </strong> , <strong> ULONG </strong> , <strong> LONGLONG </strong> , <strong> ULONGLONG </strong> , <strong> HALF </strong> , <strong> FLOAT </strong> , <strong> DOUBLE </strong> , <strong> LONGDOUBLE </strong> , <strong> CFLOAT </strong> , <strong> CDOUBLE </strong> , <strong> CLONGDOUBLE </strong> , <strong> DATETIME </strong> , <strong> TIMEDELTA </strong> , <strong> OBJECT </strong> , <strong> STRING </strong> , <strong> UNICODE </strong> , <strong> VSTRING </strong> , <strong> VOID </strong> </p>
+<p><strong> INTP </strong>, <strong> UINTP </strong></p>
+<p><strong> GENBOOL </strong>, <strong> SIGNED </strong>, <strong> UNSIGNED </strong>, <strong> FLOATING </strong>, <strong> COMPLEX </strong></p>
+</div></blockquote>
+<p>Последняя группа <code class="docutils literal notranslate"><span class="pre">{NAME}s</span></code> соответствует буквам, используемым в спецификации строки типа интерфейса массива.</p>
+</section>
+<section id="defines">
+<h2>Определения препроцессора<a class="headerlink" href="#defines" title="Link to this heading">#</a></h2>
+<section id="max-and-min-values-for-integers">
+<h3>Максимальные и минимальные значения целых чисел<a class="headerlink" href="#max-and-min-values-for-integers" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">NPY_MAX_INT{bits}</span></code>, <code class="docutils literal notranslate"><span class="pre">NPY_MAX_UINT{bits}</span></code>, <code class="docutils literal notranslate"><span class="pre">NPY_MIN_INT{bits}</span></code></dt><dd><p>Эти определения существуют для <code class="docutils literal notranslate"><span class="pre">{bits}</span></code> = 8, 16, 32, 64, 128 и 256 и задают максимальное или минимальное значение соответствующего целочисленного типа, в том числе беззнакового. Сам тип может быть доступен не на всех платформах: например, 128- и 256-битные целые редки.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NPY_MIN_{type}</span></code></dt><dd><p>Это определено для <code class="docutils literal notranslate"><span class="pre">{type}</span></code> = <strong> BYTE </strong>, <strong> SHORT </strong>, <strong> INT </strong>, <strong> LONG </strong>, <strong> LONGLONG </strong>, <strong> INTP </strong></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NPY_MAX_{type}</span></code></dt><dd><p>Определено для <code class="docutils literal notranslate"><span class="pre">{type}</span></code> = <strong>BYTE</strong>, <strong>UBYTE</strong>, <strong>SHORT</strong>, <strong>USHORT</strong>, <strong>INT</strong>, <strong>UINT</strong>, <strong>LONG</strong>, <strong>ULONG</strong>, <strong>LONGLONG</strong>, <strong>ULONGLONG</strong>, <strong>INTP</strong>, <strong>UINTP</strong></p>
+</dd>
+</dl>
+</section>
+<section id="number-of-bits-in-data-types">
+<h3>Количество битов в типах данных <a class="headerlink" href="#number-of-bits-in-data-types" title="Link to this heading">#</a></h3>
+<p>Для всех констант <code class="docutils literal notranslate"><span class="pre">NPY_SIZEOF_{CTYPE}</span></code> определены соответствующие константы <code class="docutils literal notranslate"><span class="pre">NPY_BITSOF_{CTYPE}</span></code>. Константы <code class="docutils literal notranslate"><span class="pre">NPY_BITSOF_{CTYPE}</span></code> предоставляют количество битов в типе данных. В частности, доступные <code class="docutils literal notranslate"><span class="pre">{CTYPE}s</span></code>:</p>
+<blockquote>
+<div><p><strong>BOOL</strong>, <strong>CHAR</strong>, <strong>SHORT</strong>, <strong>INT</strong>, <strong>LONG</strong>, <strong>LONGLONG</strong>, <strong>FLOAT</strong>, <strong>DOUBLE</strong>, <strong>LONGDOUBLE</strong></p>
+</div></blockquote>
+</section>
+<section id="bit-width-references-to-enumerated-typenums">
+<h3>Обращение к номерам типов перечисления по разрядности<a class="headerlink" href="#bit-width-references-to-enumerated-typenums" title="Link to this heading">#</a></h3>
+<p>Для всех числовых типов данных — целых, вещественных и комплексных — определены константы, соответствующие определённым номерам типов в перечислении. Какому именно типу перечисления соответствует тип заданной разрядности, зависит от платформы. Доступны константы <code class="docutils literal notranslate"><span class="pre">PyArray_{NAME}{BITS}</span></code>, где <code class="docutils literal notranslate"><span class="pre">{NAME}</span></code> — <strong>INT</strong>, <strong>UINT</strong>, <strong>FLOAT</strong> или <strong>COMPLEX</strong>, а <code class="docutils literal notranslate"><span class="pre">{BITS}</span></code> может быть 8, 16, 32, 64, 80, 96, 128, 160, 192, 256 или 512. Не все разрядности доступны на всех платформах для каждой категории числовых типов. Обычно доступны целые числа разрядности 8, 16, 32 и 64 бита, вещественные числа разрядности 32 и 64 бита и комплексные числа разрядности 64 и 128 бит.</p>
+</section>
+<section id="further-integer-aliases">
+<h3>Дополнительные псевдонимы целочисленных типов<a class="headerlink" href="#further-integer-aliases" title="Link to this heading">#</a></h3>
+<p>Константы <strong>NPY_INTP</strong> и <strong>NPY_UINTP</strong> соответствуют <code class="docutils literal notranslate"><span class="pre">Py_ssize_t</span></code> и <code class="docutils literal notranslate"><span class="pre">size_t</span></code>. Хотя на практике размеры этих типов обычно совпадают с размером указателя, строго говоря, это не гарантируется. Для целых чисел размером с указатель можно использовать символьные коды <code class="docutils literal notranslate"><span class="pre">'p'</span></code> и <code class="docutils literal notranslate"><span class="pre">'P'</span></code>. До NumPy 2 тип <code class="docutils literal notranslate"><span class="pre">intp</span></code> имел размер указателя — отсюда и название, хотя реальное использование этого типа почти никогда не требовало именно этого свойства.</p>
+<p>Начиная с NumPy 2 дополнительно определён макрос <strong>NPY_DEFAULT_INT</strong>. Его значение зависит от используемой во время выполнения версии: для NumPy 2 и новее он соответствует <code class="docutils literal notranslate"><span class="pre">NPY_INTP</span></code>, для более ранних версий — <code class="docutils literal notranslate"><span class="pre">NPY_LONG</span></code>.</p>
+</section>
+</section>
+<section id="c-type-names">
+<h2>Наименования типов C <a class="headerlink" href="#c-type-names" title="Link to this heading">#</a></h2>
+<p>Существуют стандартные типы переменных для каждого из типов числовых данных и тип данных bool. Некоторые из них уже доступны в спецификации C. С помощью этих типов можно создавать переменные в коде расширения.</p>
+<section id="boolean">
+<h3>Логический тип<a class="headerlink" href="#boolean" title="Link to this heading">#</a></h3>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_bool">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_bool</span></span></span><a class="headerlink" href="#c.npy_bool" title="Link to this definition">#</a><br/></dt>
+<dd><p>unsigned char; также определены константы <a class="reference internal" href="array.html#c.NPY_FALSE" title="NPY_FALSE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_FALSE</span></code></a> и <a class="reference internal" href="array.html#c.NPY_TRUE" title="NPY_TRUE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_TRUE</span></code></a>.</p>
+</dd></dl>
+</section>
+<section id="un-signed-integer">
+<h3>Целое со знаком или без знака<a class="headerlink" href="#un-signed-integer" title="Link to this heading">#</a></h3>
+<p>Беззнаковые варианты целочисленных типов можно задать, добавив «u» в начало имени целочисленного типа.</p>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_byte">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_byte</span></span></span><a class="headerlink" href="#c.npy_byte" title="Link to this definition">#</a><br/></dt>
+<dd><p>char</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_ubyte">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_ubyte</span></span></span><a class="headerlink" href="#c.npy_ubyte" title="Link to this definition">#</a><br/></dt>
+<dd><p>unsigned char</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_short">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_short</span></span></span><a class="headerlink" href="#c.npy_short" title="Link to this definition">#</a><br/></dt>
+<dd><p>short</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_ushort">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_ushort</span></span></span><a class="headerlink" href="#c.npy_ushort" title="Link to this definition">#</a><br/></dt>
+<dd><p>беззнаковый short</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_int">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_int</span></span></span><a class="headerlink" href="#c.npy_int" title="Link to this definition">#</a><br/></dt>
+<dd><p>int</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_uint">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_uint</span></span></span><a class="headerlink" href="#c.npy_uint" title="Link to this definition">#</a><br/></dt>
+<dd><p>unsigned int</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_int16">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_int16</span></span></span><a class="headerlink" href="#c.npy_int16" title="Link to this definition">#</a><br/></dt>
+<dd><p>16-битное целое число</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_uint16">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_uint16</span></span></span><a class="headerlink" href="#c.npy_uint16" title="Link to this definition">#</a><br/></dt>
+<dd><p>16-битное беззнаковое целое число</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_int32">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_int32</span></span></span><a class="headerlink" href="#c.npy_int32" title="Link to this definition">#</a><br/></dt>
+<dd><p>32-битное целое число</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_uint32">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_uint32</span></span></span><a class="headerlink" href="#c.npy_uint32" title="Link to this definition">#</a><br/></dt>
+<dd><p>32-битное беззнаковое целое число</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_int64">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_int64</span></span></span><a class="headerlink" href="#c.npy_int64" title="Link to this definition">#</a><br/></dt>
+<dd><p>64-битное целое число</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_uint64">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_uint64</span></span></span><a class="headerlink" href="#c.npy_uint64" title="Link to this definition">#</a><br/></dt>
+<dd><p>64-битное беззнаковое целое число</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_long">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_long</span></span></span><a class="headerlink" href="#c.npy_long" title="Link to this definition">#</a><br/></dt>
+<dd><p>long int</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_ulong">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_ulong</span></span></span><a class="headerlink" href="#c.npy_ulong" title="Link to this definition">#</a><br/></dt>
+<dd><p>беззнаковый long int</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_longlong">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_longlong</span></span></span><a class="headerlink" href="#c.npy_longlong" title="Link to this definition">#</a><br/></dt>
+<dd><p>long long int</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_ulonglong">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_ulonglong</span></span></span><a class="headerlink" href="#c.npy_ulonglong" title="Link to this definition">#</a><br/></dt>
+<dd><p>unsigned long long int</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_intp">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_intp</span></span></span><a class="headerlink" href="#c.npy_intp" title="Link to this definition">#</a><br/></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">Py_ssize_t</span></code> — целое со знаком того же размера, что и тип C <code class="docutils literal notranslate"><span class="pre">size_t</span></code>. Это подходящий целочисленный тип для длин и индексов. На практике его размер обычно равен размеру указателя, но это не гарантируется.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>До NumPy 2.0 этот тип совпадал с <code class="docutils literal notranslate"><span class="pre">Py_intptr_t</span></code>. Хотя это лучше соответствовало названию, на практике оно не отражало реального использования. В Python по-прежнему можно использовать <code class="docutils literal notranslate"><span class="pre">np.dtype('p')</span></code>, чтобы получить dtype, подходящий для хранения указателей, а символьный код <code class="docutils literal notranslate"><span class="pre">n</span></code> соответствует <code class="docutils literal notranslate"><span class="pre">ssize_t</span></code>.</p>
+</div>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_uintp">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_uintp</span></span></span><a class="headerlink" href="#c.npy_uintp" title="Link to this definition">#</a><br/></dt>
+<dd><p>C <code class="docutils literal notranslate"><span class="pre">size_t</span></code>/<code class="docutils literal notranslate"><span class="pre">Py_size_t</span></code>.</p>
+</dd></dl>
+</section>
+<section id="complex-floating-point">
+<h3>Числа с плавающей точкой, в том числе комплексные<a class="headerlink" href="#complex-floating-point" title="Link to this heading">#</a></h3>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_half">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_half</span></span></span><a class="headerlink" href="#c.npy_half" title="Link to this definition">#</a><br/></dt>
+<dd><p>16-битный float</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_float">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_float</span></span></span><a class="headerlink" href="#c.npy_float" title="Link to this definition">#</a><br/></dt>
+<dd><p>32-разрядный float</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_cfloat">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_cfloat</span></span></span><a class="headerlink" href="#c.npy_cfloat" title="Link to this definition">#</a><br/></dt>
+<dd><p>32-битное комплексное число с плавающей точкой</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_double">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_double</span></span></span><a class="headerlink" href="#c.npy_double" title="Link to this definition">#</a><br/></dt>
+<dd><p>64-битный double</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_cdouble">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_cdouble</span></span></span><a class="headerlink" href="#c.npy_cdouble" title="Link to this definition">#</a><br/></dt>
+<dd><p>64-битный комплексный double</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_longdouble">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_longdouble</span></span></span><a class="headerlink" href="#c.npy_longdouble" title="Link to this definition">#</a><br/></dt>
+<dd><p>long double — расширенная точность</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_clongdouble">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_clongdouble</span></span></span><a class="headerlink" href="#c.npy_clongdouble" title="Link to this definition">#</a><br/></dt>
+<dd><p>комплексный тип расширенной точности (long complex double)</p>
+</dd></dl>
+<p>Комплексные типы — структуры с полями <strong>.real</strong> и <strong>.imag</strong> в указанном порядке.</p>
+</section>
+<section id="bit-width-names">
+<h3>Имена, указывающие разрядность<a class="headerlink" href="#bit-width-names" title="Link to this heading">#</a></h3>
+<p>Также определены псевдонимы типов (typedef) для целых чисел со знаком и без знака, вещественных и комплексных чисел с плавающей точкой заданной разрядности. Доступны следующие имена типов:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">npy_int{bits}</span></code>, <code class="docutils literal notranslate"><span class="pre">npy_uint{bits}</span></code>, <code class="docutils literal notranslate"><span class="pre">npy_float{bits}</span></code> и <code class="docutils literal notranslate"><span class="pre">npy_complex{bits}</span></code></p>
+</div></blockquote>
+<p>где <code class="docutils literal notranslate"><span class="pre">{bits}</span></code> — число битов типа: <strong>8</strong>, <strong>16</strong>, <strong>32</strong>, <strong>64</strong>, 128 и 256 для целых типов; 16, <strong>32</strong>, <strong>64</strong>, 80, 96, 128 и 256 для типов с плавающей точкой; 32, <strong>64</strong>, <strong>128</strong>, 160, 192 и 512 для комплексных типов. Доступная разрядность зависит от платформы. Выделенные полужирным значения обычно доступны на всех платформах.</p>
+</section>
+<section id="time-and-timedelta">
+<h3>Время и интервалы времени<a class="headerlink" href="#time-and-timedelta" title="Link to this heading">#</a></h3>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_datetime">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_datetime</span></span></span><a class="headerlink" href="#c.npy_datetime" title="Link to this definition">#</a><br/></dt>
+<dd><p>дата или дата и время (псевдоним <a class="reference internal" href="#c.npy_int64" title="npy_int64"><code class="xref c c-type docutils literal notranslate"><span class="pre">npy_int64</span></code></a>)</p>
+</dd></dl>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.npy_timedelta">
+<span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">npy_timedelta</span></span></span><a class="headerlink" href="#c.npy_timedelta" title="Link to this definition">#</a><br/></dt>
+<dd><p>интервал времени (псевдоним <a class="reference internal" href="#c.npy_int64" title="npy_int64"><code class="xref c c-type docutils literal notranslate"><span class="pre">npy_int64</span></code></a>)</p>
+</dd></dl>
+</section>
+</section>
+<section id="printf-formatting">
+<h2>Форматирование в стиле printf<a class="headerlink" href="#printf-formatting" title="Link to this heading">#</a></h2>
+<p>Для помощи в печати следующие строки определяются как правильный спецификатор формата в printf и соответствующих командах.</p>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.NPY_LONGLONG_FMT">
+<span class="sig-name descname"><span class="n"><span class="pre">NPY_LONGLONG_FMT</span></span></span><a class="headerlink" href="#c.NPY_LONGLONG_FMT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.NPY_ULONGLONG_FMT">
+<span class="sig-name descname"><span class="n"><span class="pre">NPY_ULONGLONG_FMT</span></span></span><a class="headerlink" href="#c.NPY_ULONGLONG_FMT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.NPY_INTP_FMT">
+<span class="sig-name descname"><span class="n"><span class="pre">NPY_INTP_FMT</span></span></span><a class="headerlink" href="#c.NPY_INTP_FMT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.NPY_UINTP_FMT">
+<span class="sig-name descname"><span class="n"><span class="pre">NPY_UINTP_FMT</span></span></span><a class="headerlink" href="#c.NPY_UINTP_FMT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.NPY_LONGDOUBLE_FMT">
+<span class="sig-name descname"><span class="n"><span class="pre">NPY_LONGDOUBLE_FMT</span></span></span><a class="headerlink" href="#c.NPY_LONGDOUBLE_FMT" title="Link to this definition">#</a><br/></dt>
+<dd></dd></dl>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="config.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Конфигурация системы</p>
+</div>
+</a>
+<a class="right-next" href="array.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Array API</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerated-types">Перечисляемые типы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defines">Определения препроцессора</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#max-and-min-values-for-integers">Максимальные и минимальные значения целых чисел</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-bits-in-data-types">Количество битов в типах данных </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-width-references-to-enumerated-typenums">Обращение к номерам типов перечисления по разрядности</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-integer-aliases">Дополнительные псевдонимы целочисленных типов</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-type-names">Наименования типов C </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean">Логический тип</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#un-signed-integer">Целое со знаком или без знака</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-floating-point">Числа с плавающей точкой, в том числе комплексные</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-width-names">Имена, указывающие разрядность</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-and-timedelta">Время и интервалы времени</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printf-formatting">Форматирование в стиле printf</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

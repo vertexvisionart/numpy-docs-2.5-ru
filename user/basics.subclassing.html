@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'user/basics.subclassing';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="basics.interoperability.html" rel="next" title="Совместимость с NumPy"/>
+<link href="basics.dispatch.html" rel="prev" title="Создание собственных контейнеров массивов"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Основы NumPy</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-info.html">Использование C API NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../f2py/index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../dev/internals.html">Внутренняя организация массивов NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/internals.code-explanations.html">Пояснения к коду NumPy на C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/alignment.html">Выравнивание памяти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="byteswapping.html">Изменение порядка байтов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.dispatch.html">Создание собственных контейнеров массивов</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"> Создание подкласса ndarray </a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis"> Создание подкласса ndarray </span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="subclassing-ndarray">
+<span id="basics-subclassing"></span><h1>Наследование от ndarray<a class="headerlink" href="#subclassing-ndarray" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Введение<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Создать подкласс ndarray сравнительно просто, но есть особенности, которых нет у многих других объектов Python. На этой странице объясняются механизм создания таких подклассов и его последствия для реализации подкласса.</p>
+<section id="ndarrays-and-object-creation">
+<h3>Массивы ndarray и создание объектов<a class="headerlink" href="#ndarrays-and-object-creation" title="Link to this heading">#</a></h3>
+<p>Создание подкласса ndarray осложняется тем фактом, что новые экземпляры классов ndarray могут создаваться тремя разными способами. Это:</p>
+<ol class="arabic simple">
+<li><p>Явный вызов конструктора, например <code class="docutils literal notranslate"><span class="pre">MySubClass(params)</span></code>. Это обычный способ создания экземпляра в Python.</p></li>
+<li><p>Преобразование через представление: получение представления существующего ndarray как экземпляра заданного подкласса.</p></li>
+<li><p>Создание по шаблону — создание нового экземпляра на основе экземпляра-шаблона. Примеры: получение срезов массива-подкласса, создание возвращаемых объектов универсальными функциями и копирование массивов. Подробнее см. в разделе <a class="reference internal" href="#new-from-template"><span class="std std-ref">«Создание по шаблону»</span></a></p></li>
+</ol>
+<p>Последние два способа характерны именно для ndarray: они нужны, в частности, для получения срезов массива. Дополнительные сложности при создании подклассов ndarray связаны с механизмами NumPy, которые поддерживают эти два способа создания экземпляров.</p>
+</section>
+<section id="when-to-use-subclassing">
+<h3>Когда использовать наследование<a class="headerlink" href="#when-to-use-subclassing" title="Link to this heading">#</a></h3>
+<p>Помимо сложности самого создания подклассов массивов NumPy, есть риск неожиданного поведения: некоторые функции преобразуют экземпляр подкласса в объект базового класса и «забывают» связанную с подклассом дополнительную информацию. Поэтому использование методов и функций NumPy, которые вы явно не тестировали с вашим подклассом, может давать неожиданные результаты.</p>
+<p>По сравнению с другими способами взаимодействия создание подклассов может быть полезно тем, что многие возможности будут «просто работать».</p>
+<p>Таким образом, создание подкласса бывает удобным подходом, а долгое время часто было единственным доступным. Теперь у NumPy есть дополнительные протоколы совместимости, описанные в разделе «<a class="reference internal" href="basics.interoperability.html#basics-interoperability"><span class="std std-ref">Взаимодействие с NumPy</span></a>». Во многих случаях они лучше подходят для задачи либо дополняют использование подклассов.</p>
+<p>Создание подкласса может быть уместно, если:</p>
+<ul class="simple">
+<li><p>вы меньше заботитесь о сопровождаемости кода и других пользователях: подкласс быстрее реализовать, а дополнительную совместимость можно добавлять по мере необходимости. При небольшом числе пользователей возможные неожиданности не столь существенны.</p></li>
+<li><p>Вы не считаете проблемой, если сведения, специфичные для подкласса, будут незаметно проигнорированы или потеряны. Например, у <code class="docutils literal notranslate"><span class="pre">np.memmap</span></code> потеря сведений о том, что данные отображены из файла в память, не приводит к неверному результату вычисления. Пример подкласса, который иногда вызывает путаницу, — маскированные массивы NumPy. При их появлении наследование было единственным способом реализации; сегодня мы, возможно, постарались бы обойтись протоколами совместимости без создания подкласса.</p></li>
+</ul>
+<p>Авторам подклассов также стоит изучить раздел <a class="reference internal" href="basics.interoperability.html#basics-interoperability"><span class="std std-ref">Взаимодействие с NumPy</span></a>, чтобы поддержать более сложные сценарии использования или обойти неожиданное поведение.</p>
+<p><code class="docutils literal notranslate"><span class="pre">astropy.units.Quantity</span></code> и <code class="docutils literal notranslate"><span class="pre">xarray</span></code> — примеры объектов, подобных массивам и хорошо взаимодействующих с NumPy. <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> из Astropy использует комбинированный подход: и наследование, и протоколы взаимодействия.</p>
+</section>
+</section>
+<section id="view-casting">
+<span id="id1"></span><h2>Преобразование через представление<a class="headerlink" href="#view-casting" title="Link to this heading">#</a></h2>
+<p><em>Преобразование через представление</em> — стандартный механизм ndarray: из массива любого подкласса получают представление в виде экземпляра другого, явно указанного подкласса:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># create a completely useless ndarray subclass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span> <span class="k">pass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># create a standard ndarray</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># take a view of it, as our useless subclass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">c_arr</span><span class="p">)</span>
+<span class="go">&lt;class '__main__.C'&gt;</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Создаём совершенно бесполезный подкласс ndarray</li><li>Создаём обычный ndarray</li><li>Получаем его представление в виде нашего бесполезного подкласса</li></ul></details></div>
+</div>
+</section>
+<section id="creating-new-from-template">
+<span id="new-from-template"></span><h2>Создание нового объекта по шаблону<a class="headerlink" href="#creating-new-from-template" title="Link to this heading">#</a></h2>
+<p>Новый экземпляр подкласса ndarray может возникнуть и по механизму, очень похожему на <a class="reference internal" href="#view-casting"><span class="std std-ref">преобразование через представление</span></a>: NumPy создаёт его по существующему экземпляру-шаблону. Самый очевидный пример — получение среза массива, принадлежащего подклассу. Например:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">c_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="c1"># the view is of type 'C'</span>
+<span class="go">&lt;class '__main__.C'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="ow">is</span> <span class="n">c_arr</span> <span class="c1"># but it's a new instance</span>
+<span class="go">False</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Представление имеет тип C</li><li>Но это новый экземпляр</li></ul></details></div>
+</div>
+<p>Срез — <em>представление</em> исходных данных <code class="docutils literal notranslate"><span class="pre">c_arr</span></code>. Получая представление ndarray, мы создаём новый ndarray того же класса, указывающий на исходные данные.</p>
+<p>Такие представления нужны и в других операциях с ndarray: при копировании массивов (<code class="docutils literal notranslate"><span class="pre">c_arr.copy()</span></code>), создании выходных массивов универсальных функций (см. также <a class="reference internal" href="#array-wrap"><span class="std std-ref">__array_wrap__ для универсальных и других функций</span></a>) и в методах свёртки, например <code class="docutils literal notranslate"><span class="pre">c_arr.mean()</span></code>.</p>
+</section>
+<section id="relationship-of-view-casting-and-new-from-template">
+<h2>Связь создания представления с приведением типа и создания объекта по шаблону<a class="headerlink" href="#relationship-of-view-casting-and-new-from-template" title="Link to this heading">#</a></h2>
+<p>Оба способа используют один механизм. Мы различаем их, поскольку аргументы ваших методов будут разными. При <a class="reference internal" href="#view-casting"><span class="std std-ref">преобразовании через представление</span></a> новый экземпляр вашего типа массива создаётся из массива, который может относиться к любому подклассу ndarray. При <a class="reference internal" href="#new-from-template"><span class="std std-ref">создании по шаблону</span></a> новый экземпляр вашего класса создаётся по уже существующему экземпляру того же класса. Это позволяет, например, перенести атрибуты, специфичные для вашего подкласса.</p>
+</section>
+<section id="implications-for-subclassing">
+<h2>Последствия для реализации подклассов<a class="headerlink" href="#implications-for-subclassing" title="Link to this heading">#</a></h2>
+<p>При создании подкласса ndarray нужно учитывать не только явное создание массива своего типа, но и <a class="reference internal" href="#view-casting"><span class="std std-ref">приведение типа через представление</span></a> и <a class="reference internal" href="#new-from-template"><span class="std std-ref">создание нового объекта по шаблону</span></a>. NumPy предоставляет для этого специальный механизм, из-за которого создание подклассов немного отличается от обычного.</p>
+<p>В механизме поддержки представлений и создания новых объектов по шаблону в подклассах ndarray есть два аспекта.</p>
+<p>Первая особенность: основная работа по инициализации объекта выполняется методом <code class="docutils literal notranslate"><span class="pre">ndarray.__new__</span></code>, а не более привычным <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. Вторая — метод <code class="docutils literal notranslate"><span class="pre">__array_finalize__</span></code>: он позволяет подклассу завершить настройку после создания представления или нового экземпляра по шаблону.</p>
+<section id="a-brief-python-primer-on-new-and-init">
+<h3>Краткое введение в <code class="docutils literal notranslate"><span class="pre">__new__</span></code> и <code class="docutils literal notranslate"><span class="pre">__init__</span></code> в Python<a class="headerlink" href="#a-brief-python-primer-on-new-and-init" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">__new__</span></code> — стандартный метод Python, который при наличии вызывается до <code class="docutils literal notranslate"><span class="pre">__init__</span></code> при создании экземпляра класса. Подробнее см. <a class="reference external" href="https://docs.python.org/reference/datamodel.html#object.__new__">документацию Python по __new__</a>.</p>
+<p>Например, рассмотрим следующий код Python:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">'Cls in __new__:'</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">'Args in __new__:'</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="c1"># The `object` type __new__ method takes a single argument.</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">'type(self) in __init__:'</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">'Args in __init__:'</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Метод __new__ типа `object` принимает один аргумент.</li></ul></details></div>
+</div>
+<p>это означает, что мы получаем:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+<span class="go">Cls in __new__: &lt;class '__main__.C'&gt;</span>
+<span class="go">Args in __new__: ('hello',)</span>
+<span class="go">type(self) in __init__: &lt;class '__main__.C'&gt;</span>
+<span class="go">Args in __init__: ('hello',)</span>
+</pre></div>
+</div>
+<p>При вызове <code class="docutils literal notranslate"><span class="pre">C('hello')</span></code> метод <code class="docutils literal notranslate"><span class="pre">__new__</span></code> получает первым аргументом сам класс, а следующим — переданную строку <code class="docutils literal notranslate"><span class="pre">'hello'</span></code>. После вызова <code class="docutils literal notranslate"><span class="pre">__new__</span></code> Python обычно (см. ниже) вызывает наш метод <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. Первым аргументом ему передаётся результат <code class="docutils literal notranslate"><span class="pre">__new__</span></code> — уже экземпляр класса, — а затем аргументы, указанные при вызове.</p>
+<p>Как видно, объект можно инициализировать в методе <code class="docutils literal notranslate"><span class="pre">__new__</span></code>, в методе <code class="docutils literal notranslate"><span class="pre">__init__</span></code> или в обоих. У ndarray нет собственного метода <code class="docutils literal notranslate"><span class="pre">__init__</span></code>: вся инициализация выполняется в <code class="docutils literal notranslate"><span class="pre">__new__</span></code>.</p>
+<p>Зачем использовать <code class="docutils literal notranslate"><span class="pre">__new__</span></code>, а не обычный <code class="docutils literal notranslate"><span class="pre">__init__</span></code>? Потому что в некоторых случаях, как в случае с ndarray, мы хотим иметь возможность возвращать объект какого-то другого класса. Учтите следующее:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">D</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'D cls is:'</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'D args in __new__:'</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">C</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="c1"># we never get here</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'In D __init__'</span><span class="p">)</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Сюда выполнение не дойдёт</li></ul></details></div>
+</div>
+<p>Это означает следующее:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">D</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+<span class="go">D cls is: &lt;class 'D'&gt;</span>
+<span class="go">D args in __new__: ('hello',)</span>
+<span class="go">Cls in __new__: &lt;class 'C'&gt;</span>
+<span class="go">Args in __new__: ('hello',)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="go">&lt;class 'C'&gt;</span>
+</pre></div>
+</div>
+<p>Определение <code class="docutils literal notranslate"><span class="pre">C</span></code> осталось прежним, но для <code class="docutils literal notranslate"><span class="pre">D</span></code> метод <code class="docutils literal notranslate"><span class="pre">__new__</span></code> возвращает экземпляр класса <code class="docutils literal notranslate"><span class="pre">C</span></code> вместо <code class="docutils literal notranslate"><span class="pre">D</span></code>. При этом метод <code class="docutils literal notranslate"><span class="pre">__init__</span></code> класса <code class="docutils literal notranslate"><span class="pre">D</span></code> не вызывается. В общем случае, когда метод <code class="docutils literal notranslate"><span class="pre">__new__</span></code> возвращает объект другого класса, метод <code class="docutils literal notranslate"><span class="pre">__init__</span></code> класса, в котором он определён, не вызывается.</p>
+<p>Именно так подклассы ndarray могут возвращать представления с сохранением своего типа. При создании представления стандартный механизм ndarray создаёт новый объект ndarray примерно следующим образом:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">ndarray</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">subtype</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Здесь <code class="docutils literal notranslate"><span class="pre">subtype</span></code> — подкласс. Поэтому возвращаемое представление принадлежит этому подклассу, а не классу <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>.</p>
+<p>Это решает задачу возврата представлений того же типа, но создаёт новую проблему. Внутренние механизмы ndarray могут устанавливать класс таким способом в стандартных методах создания представлений, однако метод <code class="docutils literal notranslate"><span class="pre">__new__</span></code> класса ndarray ничего не знает о действиях нашего собственного метода <code class="docutils literal notranslate"><span class="pre">__new__</span></code> по установке атрибутов и т. д. Почему бы тогда не вызвать <code class="docutils literal notranslate"><span class="pre">obj</span> <span class="pre">=</span> <span class="pre">subdtype.__new__(...</span></code>? Потому что у нашего метода <code class="docutils literal notranslate"><span class="pre">__new__</span></code> может быть другая сигнатура вызова.</p>
+</section>
+<section id="the-role-of-array-finalize">
+<h3>Роль <code class="docutils literal notranslate"><span class="pre">__array_finalize__</span></code><a class="headerlink" href="#the-role-of-array-finalize" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">__array_finalize__</span></code> — это механизм, который предоставляет numpy, позволяющий подклассам обрабатывать различные способы создания новых экземпляров.</p>
+<p>Напомним три способа появления экземпляра подкласса:</p>
+<ol class="arabic simple">
+<li><p>Явный вызов конструктора: <code class="docutils literal notranslate"><span class="pre">obj</span> <span class="pre">=</span> <span class="pre">MySubClass(params)</span></code>. При этом в обычном порядке вызываются <code class="docutils literal notranslate"><span class="pre">MySubClass.__new__</span></code>, затем <code class="docutils literal notranslate"><span class="pre">MySubClass.__init__</span></code>, если он определён.</p></li>
+<li><p><a class="reference internal" href="#view-casting"><span class="std std-ref">Приведение через представление</span></a></p></li>
+<li><p><a class="reference internal" href="#new-from-template"><span class="std std-ref">Создание по шаблону</span></a></p></li>
+</ol>
+<p>Наш метод <code class="docutils literal notranslate"><span class="pre">MySubClass.__new__</span></code> вызывается только при явном вызове конструктора, поэтому нельзя полагаться на <code class="docutils literal notranslate"><span class="pre">MySubClass.__new__</span></code> или <code class="docutils literal notranslate"><span class="pre">MySubClass.__init__</span></code> при создании представления с приведением к подклассу или нового объекта по шаблону. Оказывается, <code class="docutils literal notranslate"><span class="pre">MySubClass.__array_finalize__</span></code> <em>действительно</em> вызывается при всех трёх способах создания объекта, поэтому именно в нём обычно выполняются необходимые служебные действия.</p>
+<ul class="simple">
+<li><p>При явном вызове конструктора наш подкласс должен создать новый экземпляр ndarray собственного класса. На практике для этого нужно вызвать <code class="docutils literal notranslate"><span class="pre">ndarray.__new__(MySubClass,...)</span></code>, использовать учитывающий иерархию классов вызов <code class="docutils literal notranslate"><span class="pre">super().__new__(cls,</span> <span class="pre">...)</span></code> либо создать представление существующего массива с приведением к подклассу (см. ниже).</p></li>
+<li><p>При приведении к представлению и создании по шаблону на уровне C вызывается эквивалент <code class="docutils literal notranslate"><span class="pre">ndarray.__new__(MySubClass,...</span></code>.</p></li>
+</ul>
+<p>Аргументы, которые получает <code class="docutils literal notranslate"><span class="pre">__array_finalize__</span></code>, отличаются для трех методов создания экземпляров выше.</p>
+<p>Следующий код позволяет нам просмотреть последовательности вызовов и аргументы:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'In __new__ with class </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="bp">cls</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># in practice you probably will not need or want an __init__</span>
+        <span class="c1"># method for your subclass</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'In __init__ with class </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'In array_finalize:'</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'   self type is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'   obj type is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>На практике подклассу, скорее всего, не понадобится</li><li>метод __init__</li></ul></details></div>
+</div>
+<p>Теперь:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Explicit constructor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">((</span><span class="mi">10</span><span class="p">,))</span>
+<span class="go">In __new__ with class &lt;class 'C'&gt;</span>
+<span class="go">In array_finalize:</span>
+<span class="go">   self type is &lt;class 'C'&gt;</span>
+<span class="go">   obj type is &lt;type 'NoneType'&gt;</span>
+<span class="go">In __init__ with class &lt;class 'C'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># View casting</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cast_a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="go">In array_finalize:</span>
+<span class="go">   self type is &lt;class 'C'&gt;</span>
+<span class="go">   obj type is &lt;type 'numpy.ndarray'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Slicing (example of new-from-template)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cv</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">In array_finalize:</span>
+<span class="go">   self type is &lt;class 'C'&gt;</span>
+<span class="go">   obj type is &lt;class 'C'&gt;</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Явный конструктор</li><li>Приведение к представлению</li><li>Срез: пример создания по шаблону</li></ul></details></div>
+</div>
+<p>Сигнатура <code class="docutils literal notranslate"><span class="pre">__array_finalize__</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Видно, что вызов <code class="docutils literal notranslate"><span class="pre">super</span></code>, направленный в <code class="docutils literal notranslate"><span class="pre">ndarray.__new__</span></code>, передаёт методу <code class="docutils literal notranslate"><span class="pre">__array_finalize__</span></code> новый объект нашего класса (<code class="docutils literal notranslate"><span class="pre">self</span></code>) и объект, из которого получено представление (<code class="docutils literal notranslate"><span class="pre">obj</span></code>). Как показывает приведённый выше вывод, <code class="docutils literal notranslate"><span class="pre">self</span></code> всегда является новым экземпляром нашего подкласса, а тип <code class="docutils literal notranslate"><span class="pre">obj</span></code> зависит от способа создания экземпляра:</p>
+<ul class="simple">
+<li><p>При явном вызове конструктора <code class="docutils literal notranslate"><span class="pre">obj</span></code> равен <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p>При преобразовании через представление <code class="docutils literal notranslate"><span class="pre">obj</span></code> может быть экземпляром любого подкласса ndarray, включая наш собственный.</p></li>
+<li><p>При создании по шаблону <code class="docutils literal notranslate"><span class="pre">obj</span></code> — другой экземпляр нашего подкласса, который можно использовать для настройки нового экземпляра <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p></li>
+</ul>
+<p>Поскольку <code class="docutils literal notranslate"><span class="pre">__array_finalize__</span></code> — единственный метод, вызываемый при любом способе создания нового экземпляра, в нём удобно, в частности, задавать значения по умолчанию для новых атрибутов объекта.</p>
+<p>Пример поможет прояснить это.</p>
+</section>
+</section>
+<section id="simple-example-adding-an-extra-attribute-to-ndarray">
+<h2>Простой пример - добавление дополнительного атрибута к ndarray <a class="headerlink" href="#simple-example-adding-an-extra-attribute-to-ndarray" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">InfoArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="n">subtype</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">strides</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Create the ndarray instance of our type, given the usual</span>
+        <span class="c1"># ndarray input arguments.  This will call the standard</span>
+        <span class="c1"># ndarray constructor, but return an object of our type.</span>
+        <span class="c1"># It also triggers a call to InfoArray.__array_finalize__</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">subtype</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span>
+                              <span class="n">buffer</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">strides</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="c1"># set the new 'info' attribute to the value passed</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">info</span>
+        <span class="c1"># Finally, we must return the newly created object:</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># ``self`` is a new object resulting from</span>
+        <span class="c1"># ndarray.__new__(InfoArray, ...), therefore it only has</span>
+        <span class="c1"># attributes that the ndarray.__new__ constructor gave it -</span>
+        <span class="c1"># i.e. those of a standard ndarray.</span>
+        <span class="c1">#</span>
+        <span class="c1"># We could have got to the ndarray.__new__ call in 3 ways:</span>
+        <span class="c1"># From an explicit constructor - e.g. InfoArray():</span>
+        <span class="c1">#    obj is None</span>
+        <span class="c1">#    (we're in the middle of the InfoArray.__new__</span>
+        <span class="c1">#    constructor, and self.info will be set when we return to</span>
+        <span class="c1">#    InfoArray.__new__)</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span>
+        <span class="c1"># From view casting - e.g arr.view(InfoArray):</span>
+        <span class="c1">#    obj is arr</span>
+        <span class="c1">#    (type(obj) can be InfoArray)</span>
+        <span class="c1"># From new-from-template - e.g infoarr[:3]</span>
+        <span class="c1">#    type(obj) is InfoArray</span>
+        <span class="c1">#</span>
+        <span class="c1"># Note that it is here, rather than in the __new__ method,</span>
+        <span class="c1"># that we set the default value for 'info', because this</span>
+        <span class="c1"># method sees all creation of default objects - with the</span>
+        <span class="c1"># InfoArray.__new__ constructor, but also with</span>
+        <span class="c1"># arr.view(InfoArray).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">'info'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># We do not need to return anything</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Создаём экземпляр ndarray нашего типа с обычными</li><li>входными аргументами ndarray. Будет вызван стандартный</li><li>конструктор ndarray, но возвращён объект нашего типа.</li><li>При этом также вызывается InfoArray.__array_finalize__</li><li>Присваиваем новому атрибуту info переданное значение</li><li>Наконец, нужно вернуть созданный объект:</li><li>``self`` — новый объект, полученный вызовом</li><li>ndarray.__new__(InfoArray, ...), поэтому у него есть только</li><li>атрибуты, заданные конструктором ndarray.__new__,</li><li>то есть атрибуты обычного ndarray.</li><li>К вызову ndarray.__new__ можно прийти тремя путями:</li><li>Из явного конструктора, например InfoArray():</li><li>obj равен None</li><li>Сейчас выполняется конструктор InfoArray.__new__;</li><li>self.info будет задан после возврата в</li><li>InfoArray.__new__.</li><li>При приведении к представлению, например arr.view(InfoArray):</li><li>obj равен arr</li><li>type(obj) может быть InfoArray</li><li>При создании по шаблону, например infoarr[:3]</li><li>type(obj) равен InfoArray</li><li>Значение info по умолчанию задаётся здесь, а не</li><li>в методе __new__, потому что этот метод вызывается</li><li>во всех случаях создания объектов: через</li><li>конструктор InfoArray.__new__, а также через</li><li>arr.view(InfoArray).</li><li>Возвращать ничего не нужно</li></ul></details></div>
+</div>
+<p>Использование объекта выглядит так:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">InfoArray</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))</span> <span class="c1"># explicit constructor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="go">&lt;class 'InfoArray'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">.</span><span class="n">info</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">InfoArray</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">info</span><span class="o">=</span><span class="s1">'information'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">.</span><span class="n">info</span>
+<span class="go">'information'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">obj</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># new-from-template - here - slicing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="go">&lt;class 'InfoArray'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">info</span>
+<span class="go">'information'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cast_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">InfoArray</span><span class="p">)</span> <span class="c1"># view casting</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">cast_arr</span><span class="p">)</span>
+<span class="go">&lt;class 'InfoArray'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cast_arr</span><span class="o">.</span><span class="n">info</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">True</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Явный конструктор</li><li>Создание по шаблону; здесь — срез</li><li>Приведение к представлению</li></ul></details></div>
+</div>
+<p>Этот класс не очень удобен: у него тот же конструктор, что у базового ndarray, которому нужно передавать буферы, форму и другие параметры. Вероятно, удобнее иметь конструктор, принимающий готовый ndarray, полученный обычным вызовом NumPy <code class="docutils literal notranslate"><span class="pre">np.array</span></code>, и возвращающий объект нашего класса.</p>
+</section>
+<section id="slightly-more-realistic-example-attribute-added-to-existing-array">
+<h2>Чуть более реалистичный пример - атрибут добавлен к существующему массиву <a class="headerlink" href="#slightly-more-realistic-example-attribute-added-to-existing-array" title="Link to this heading">#</a></h2>
+<p>Следующий класс принимает уже существующий обычный ndarray, создаёт его представление нашего типа и добавляет атрибут.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RealisticInfoArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">input_array</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># Input array is an already formed ndarray instance</span>
+        <span class="c1"># We first cast to be our class type</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">input_array</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="c1"># add the new attribute to the created instance</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">info</span>
+        <span class="c1"># Finally, we must return the newly created object:</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># see InfoArray.__array_finalize__ for comments</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">'info'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Входной массив — уже созданный экземпляр ndarray</li><li>Сначала приводим его к типу нашего класса</li><li>Добавляем новому экземпляру атрибут</li><li>Наконец, нужно вернуть созданный объект:</li><li>Пояснения см. в InfoArray.__array_finalize__</li></ul></details></div>
+</div>
+<p>Итак:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">RealisticInfoArray</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="s1">'information'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="go">&lt;class 'RealisticInfoArray'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">.</span><span class="n">info</span>
+<span class="go">'information'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">obj</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="go">&lt;class 'RealisticInfoArray'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">info</span>
+<span class="go">'information'</span>
+</pre></div>
+</div>
+</section>
+<section id="array-ufunc-for-ufuncs">
+<span id="array-ufunc"></span><h2><code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code> для универсальных функций<a class="headerlink" href="#array-ufunc-for-ufuncs" title="Link to this heading">#</a></h2>
+<p>Подкласс может изменить обработку универсальных функций NumPy, переопределив стандартный метод <code class="docutils literal notranslate"><span class="pre">ndarray.__array_ufunc__</span></code>. Он вызывается <em>вместо</em> обычной обработки ufunc и должен вернуть результат операции либо <a class="reference external" href="https://docs.python.org/3/library/constants.html#NotImplemented" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NotImplemented</span></code></a>, если запрошенная операция не реализована.</p>
+<p>Сигнатура <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">__array_ufunc__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ufunc</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>ufunc</em> — объект вызванной универсальной функции.</p></li>
+<li><p><em>method</em> — строка, указывающая способ вызова универсальной функции: <code class="docutils literal notranslate"><span class="pre">"__call__"</span></code> означает прямой вызов; иначе указывается один из её <a class="reference internal" href="../reference/ufuncs.html#ufuncs-methods"><span class="std std-ref">методов</span></a>: <code class="docutils literal notranslate"><span class="pre">"reduce"</span></code>, <code class="docutils literal notranslate"><span class="pre">"accumulate"</span></code>, <code class="docutils literal notranslate"><span class="pre">"reduceat"</span></code>, <code class="docutils literal notranslate"><span class="pre">"outer"</span></code> или <code class="docutils literal notranslate"><span class="pre">"at"</span></code>.</p></li>
+<li><p><em>inputs</em> — кортеж входных аргументов <code class="docutils literal notranslate"><span class="pre">ufunc</span></code></p></li>
+<li><p><em>kwargs</em> содержит необязательные и именованные аргументы, переданные функции, в том числе аргументы <code class="docutils literal notranslate"><span class="pre">out</span></code>, которые всегда находятся в кортеже.</p></li>
+</ul>
+<p>Типичная реализация преобразует все входные и выходные объекты собственного класса, передаёт аргументы суперклассу через <code class="docutils literal notranslate"><span class="pre">super()</span></code>, а затем при необходимости преобразует результаты обратно и возвращает их. Ниже приведён пример из теста <code class="docutils literal notranslate"><span class="pre">test_ufunc_override_with_super</span></code> в файле <code class="docutils literal notranslate"><span class="pre">_core/tests/test_umath.py</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array_ufunc__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ufunc</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">in_no</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">input_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+                <span class="n">in_no</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">out</span>
+        <span class="n">out_no</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">outputs</span><span class="p">:</span>
+            <span class="n">out_args</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">output</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outputs</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+                    <span class="n">out_no</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                    <span class="n">out_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">out_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">'out'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">out_args</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,)</span> <span class="o">*</span> <span class="n">ufunc</span><span class="o">.</span><span class="n">nout</span>
+
+        <span class="n">info</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">in_no</span><span class="p">:</span>
+            <span class="n">info</span><span class="p">[</span><span class="s1">'inputs'</span><span class="p">]</span> <span class="o">=</span> <span class="n">in_no</span>
+        <span class="k">if</span> <span class="n">out_no</span><span class="p">:</span>
+            <span class="n">info</span><span class="p">[</span><span class="s1">'outputs'</span><span class="p">]</span> <span class="o">=</span> <span class="n">out_no</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__array_ufunc__</span><span class="p">(</span><span class="n">ufunc</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span> <span class="ow">is</span> <span class="bp">NotImplemented</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">'at'</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">):</span>
+                <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">info</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">ufunc</span><span class="o">.</span><span class="n">nout</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">,)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+                         <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">output</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">result</span><span class="p">,</span> <span class="n">output</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">outputs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">results</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">):</span>
+            <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">info</span>
+
+        <span class="k">return</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">results</span>
+</pre></div>
+</div>
+<p>Итак, этот класс не делает ничего особенного: он преобразует свои экземпляры в обычный ndarray (иначе возникла бы бесконечная рекурсия!) и добавляет словарь <code class="docutils literal notranslate"><span class="pre">info</span></code> со сведениями о том, какие входные и выходные значения были преобразованы. Поэтому, например:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">info</span>
+<span class="go">{'inputs': [0]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.</span><span class="p">),</span> <span class="n">out</span><span class="o">=</span><span class="p">(</span><span class="n">a</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">info</span>
+<span class="go">{'outputs': [0]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">info</span>
+<span class="go">{'inputs': [0, 1]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+=</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">info</span>
+<span class="go">{'inputs': [0, 1], 'outputs': [0]}</span>
+</pre></div>
+</div>
+<p>Другой подход — использовать <code class="docutils literal notranslate"><span class="pre">getattr(ufunc,</span>
+<span class="pre">methods)(*inputs,</span> <span class="pre">**kwargs)</span></code> вместо вызова <code class="docutils literal notranslate"><span class="pre">super</span></code>. В этом примере результат будет тем же, но при наличии у другого операнда метода <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code> поведение различается. Пусть вычисляется <code class="docutils literal notranslate"><span class="pre">np.add(a,</span> <span class="pre">b)</span></code>, где <code class="docutils literal notranslate"><span class="pre">b</span></code> — экземпляр другого класса <code class="docutils literal notranslate"><span class="pre">B</span></code> с переопределением. Если, как в примере, использовать <code class="docutils literal notranslate"><span class="pre">super</span></code>, метод <code class="docutils literal notranslate"><span class="pre">ndarray.__array_ufunc__</span></code> обнаружит переопределение у <code class="docutils literal notranslate"><span class="pre">b</span></code> и не сможет самостоятельно вычислить результат. Он вернёт <em class="xref py py-obj">NotImplemented</em>, как и наш класс <code class="docutils literal notranslate"><span class="pre">A</span></code>. Затем управление перейдёт к <code class="docutils literal notranslate"><span class="pre">b</span></code>, который либо умеет работать с нашим классом и вернёт результат, либо вернёт <em class="xref py py-obj">NotImplemented</em>, что приведёт к <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
+<p>Если заменить вызов <code class="docutils literal notranslate"><span class="pre">super</span></code> на <code class="docutils literal notranslate"><span class="pre">getattr(ufunc,</span> <span class="pre">method)</span></code>, фактически получится <code class="docutils literal notranslate"><span class="pre">np.add(a.view(np.ndarray),</span> <span class="pre">b)</span></code>. Снова вызывается <code class="docutils literal notranslate"><span class="pre">B.__array_ufunc__</span></code>, но теперь другой аргумент — <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>. Вероятно, метод умеет его обрабатывать и вернёт новый экземпляр <code class="docutils literal notranslate"><span class="pre">B</span></code>. Наш демонстрационный класс это не поддерживает, однако такой подход может быть лучшим вариантом, например для повторной реализации <code class="docutils literal notranslate"><span class="pre">MaskedArray</span></code> через <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>.</p>
+<p>В заключение: если классу подходит использование <code class="docutils literal notranslate"><span class="pre">super</span></code>, этот подход упрощает построение иерархий классов. Предположим, другой наш класс <code class="docutils literal notranslate"><span class="pre">B</span></code> тоже использует <code class="docutils literal notranslate"><span class="pre">super</span></code> в реализации <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>, а мы создали класс <code class="docutils literal notranslate"><span class="pre">C</span></code>, наследующий от обоих, то есть <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">C(A,</span> <span class="pre">B)</span></code> (для простоты без собственного переопределения <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>). Тогда вызов любой универсальной функции для экземпляра <code class="docutils literal notranslate"><span class="pre">C</span></code> передаётся <code class="docutils literal notranslate"><span class="pre">A.__array_ufunc__</span></code>; вызов <code class="docutils literal notranslate"><span class="pre">super</span></code> в <code class="docutils literal notranslate"><span class="pre">A</span></code> переходит в <code class="docutils literal notranslate"><span class="pre">B.__array_ufunc__</span></code>, а вызов <code class="docutils literal notranslate"><span class="pre">super</span></code> в <code class="docutils literal notranslate"><span class="pre">B</span></code> — в <code class="docutils literal notranslate"><span class="pre">ndarray.__array_ufunc__</span></code>. Это позволяет <code class="docutils literal notranslate"><span class="pre">A</span></code> и <code class="docutils literal notranslate"><span class="pre">B</span></code> работать совместно.</p>
+</section>
+<section id="array-wrap-for-ufuncs-and-other-functions">
+<span id="array-wrap"></span><h2><code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code> для ufunc и других функций<a class="headerlink" href="#array-wrap-for-ufuncs-and-other-functions" title="Link to this heading">#</a></h2>
+<p>До NumPy 1.13 поведение универсальных функций настраивалось только через <code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code> и <code class="docutils literal notranslate"><span class="pre">__array_prepare__</span></code> (последний теперь удалён). Они позволяли изменить тип результата, но, в отличие от <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code>, не позволяли менять входные данные. В перспективе планируется объявить их устаревшими, однако <code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code> используется и другими функциями и методами NumPy, например <code class="docutils literal notranslate"><span class="pre">squeeze</span></code>, поэтому пока необходим для сохранения всей функциональности.</p>
+<p>По смыслу <code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code> завершает обработку результата: позволяет подклассу задать тип возвращаемого значения и обновить атрибуты и метаданные. Рассмотрим пример. Вернёмся к простому подклассу, изменив его имя и добавив вывод диагностических сообщений:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MySubClass</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">input_array</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">input_array</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">info</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'In __array_finalize__:'</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'   self is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'   obj is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="nb">repr</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">'info'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array_wrap__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_arr</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_scalar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'In __array_wrap__:'</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'   self is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'   arr is </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="nb">repr</span><span class="p">(</span><span class="n">out_arr</span><span class="p">))</span>
+        <span class="c1"># then just call the parent</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__array_wrap__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_arr</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">return_scalar</span><span class="p">)</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Затем просто вызываем родительский метод</li></ul></details></div>
+</div>
+<p>Вызовем ufunc для экземпляра нового класса массива:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">MySubClass</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">info</span><span class="o">=</span><span class="s1">'spam'</span><span class="p">)</span>
+<span class="go">In __array_finalize__:</span>
+<span class="go">   self is MySubClass([0, 1, 2, 3, 4])</span>
+<span class="go">   obj is array([0, 1, 2, 3, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">arr2</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+<span class="go">In __array_wrap__:</span>
+<span class="go">   self is MySubClass([0, 1, 2, 3, 4])</span>
+<span class="go">   arr is array([1, 3, 5, 7, 9])</span>
+<span class="go">In __array_finalize__:</span>
+<span class="go">   self is MySubClass([1, 3, 5, 7, 9])</span>
+<span class="go">   obj is MySubClass([0, 1, 2, 3, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span>
+<span class="go">MySubClass([1, 3, 5, 7, 9])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span><span class="o">.</span><span class="n">info</span>
+<span class="go">'spam'</span>
+</pre></div>
+</div>
+<p>Универсальная функция (<code class="docutils literal notranslate"><span class="pre">np.add</span></code>) вызвала метод <code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code>, передав аргументами <code class="docutils literal notranslate"><span class="pre">self</span></code> в качестве <code class="docutils literal notranslate"><span class="pre">obj</span></code> и <code class="docutils literal notranslate"><span class="pre">out_arr</span></code> — результат сложения типа ndarray. Затем стандартная реализация <code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code> (<code class="docutils literal notranslate"><span class="pre">ndarray.__array_wrap__</span></code>) привела результат к классу <code class="docutils literal notranslate"><span class="pre">MySubClass</span></code> и вызвала <code class="docutils literal notranslate"><span class="pre">__array_finalize__</span></code> — отсюда копирование атрибута <code class="docutils literal notranslate"><span class="pre">info</span></code>. Всё это произошло на уровне C.</p>
+<p>Но здесь можно выполнить любые нужные действия:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SillySubClass</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array_wrap__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_scalar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">'I lost your data'</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">arr1</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">SillySubClass</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">arr2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ret</span>
+<span class="go">'I lost your data'</span>
+</pre></div>
+</div>
+<p>Определив для подкласса собственный метод <code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code>, можно изменить результат ufunc. Метод <code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code> принимает <code class="docutils literal notranslate"><span class="pre">self</span></code>, затем результат ufunc или другой функции NumPy и необязательный параметр <em>context</em>. Универсальные функции передают в нём кортеж из трёх элементов, а другие функции NumPy обычно его не передают. Примечание переводчика: описание состава кортежа в оригинале неточно. В NumPy 2.5 это объект ufunc, кортеж её аргументов и индекс выходного результата (0, 1 и т. д.), а не имя функции и её «область определения». Также современная сигнатура включает необязательный аргумент return_scalar. Хотя, как показано выше, возможны и другие варианты, <code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code> должен возвращать экземпляр своего класса; пример реализации есть у маскированных массивов. В <code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code> всегда передаётся массив NumPy: он может быть экземпляром подкласса, обычно класса вызывающего объекта, но это необязательно.</p>
+</section>
+<section id="extra-gotchas-custom-del-methods-and-ndarray-base">
+<h2>Дополнительные тонкости: собственные методы <code class="docutils literal notranslate"><span class="pre">__del__</span></code> и ndarray.base<a class="headerlink" href="#extra-gotchas-custom-del-methods-and-ndarray-base" title="Link to this heading">#</a></h2>
+<p>Одна из задач ndarray — отслеживать владение памятью массивов и их представлений. Предположим, мы создали ndarray <code class="docutils literal notranslate"><span class="pre">arr</span></code> и срез <code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">arr[1:]</span></code>. Оба объекта обращаются к одной памяти. NumPy отслеживает происхождение данных массива или представления через атрибут <code class="docutils literal notranslate"><span class="pre">base</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># A normal ndarray, that owns its own data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># In this case, base is None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We take a view</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v1</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># base now points to the array that it derived from</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v1</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">arr</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Take a view of a view</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v2</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># base points to the original array that it was derived from</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v2</span><span class="o">.</span><span class="n">base</span> <span class="ow">is</span> <span class="n">arr</span>
+<span class="go">True</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Обычный ndarray, владеющий своими данными</li><li>В этом случае base равен None</li><li>Получаем представление</li><li>Теперь base указывает на исходный массив</li><li>Получаем представление представления</li><li>base указывает на первоначальный исходный массив</li></ul></details></div>
+</div>
+<p>Обычно, если массив владеет своей памятью, как <code class="docutils literal notranslate"><span class="pre">arr</span></code> в этом примере, <code class="docutils literal notranslate"><span class="pre">arr.base</span></code> равен None. У этого правила есть исключения; подробнее см. в книге о NumPy.</p>
+<p>Атрибут <code class="docutils literal notranslate"><span class="pre">base</span></code> полезен для определения того, есть ли у нас представление или исходный массив. Это, в свою очередь, может быть полезно, если нам нужно знать, следует ли выполнять какую-либо конкретную очистку при удалении массива подкласса. Например, мы можем захотеть выполнить очистку только в том случае, если удален исходный массив, но не представления. Для примера того, как это может работать, взгляните на класс <code class="docutils literal notranslate"><span class="pre">memmap</span></code> в <code class="docutils literal notranslate"><span class="pre">numpy._core</span></code>.</p>
+</section>
+<section id="subclassing-and-downstream-compatibility">
+<h2>Подклассы и совместимость с зависимыми проектами<a class="headerlink" href="#subclassing-and-downstream-compatibility" title="Link to this heading">#</a></h2>
+<p>При создании подкласса <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> или объекта, имитирующего интерфейс <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, вы сами определяете степень совместимости своего API с NumPy. Для удобства многие функции NumPy, имеющие одноимённый метод <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, например <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">take</span></code> и <code class="docutils literal notranslate"><span class="pre">reshape</span></code>, сначала проверяют наличие такого метода у первого аргумента. Если метод есть, вызывается он, а не преобразование аргументов в массив NumPy.</p>
+<p>Например, чтобы ваш подкласс или объект, поддерживающий нужный интерфейс (duck type), был совместим с функцией NumPy <code class="docutils literal notranslate"><span class="pre">sum</span></code>, сигнатура его метода <code class="docutils literal notranslate"><span class="pre">sum</span></code> должна быть следующей:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Это та же сигнатура, что у <code class="docutils literal notranslate"><span class="pre">np.sum</span></code>. Поэтому при вызове <code class="docutils literal notranslate"><span class="pre">np.sum</span></code> для объекта NumPy вызовет его собственный метод <code class="docutils literal notranslate"><span class="pre">sum</span></code> и передаст перечисленные в сигнатуре аргументы. Ошибок не возникнет, поскольку сигнатуры полностью совместимы.</p>
+<p>Однако если изменить эту сигнатуру, например так:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Этот объект больше не совместим с <code class="docutils literal notranslate"><span class="pre">np.sum</span></code>, поскольку если вы вызовете <code class="docutils literal notranslate"><span class="pre">np.sum</span></code>, он передаст неожиданные аргументы <code class="docutils literal notranslate"><span class="pre">out</span></code> и <code class="docutils literal notranslate"><span class="pre">keepdims</span></code>, что приведет к возникновению ошибки TypeError.</p>
+<p>Чтобы сохранить совместимость с NumPy и будущими версиями, в которых могут появиться новые именованные аргументы, не перечисляя все аргументы NumPy явно, включите <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> в сигнатуру своей функции. Например:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">unused_kwargs</span><span class="p">):</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Этот объект снова совместим с <code class="docutils literal notranslate"><span class="pre">np.sum</span></code>, поскольку все лишние аргументы (то есть именованные аргументы, отличные от <code class="docutils literal notranslate"><span class="pre">axis</span></code> и <code class="docutils literal notranslate"><span class="pre">dtype</span></code>) помещаются в параметр <code class="docutils literal notranslate"><span class="pre">**unused_kwargs</span></code>.</p>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="basics.dispatch.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Создание собственных контейнеров массивов</p>
+</div>
+</a>
+<a class="right-next" href="basics.interoperability.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Совместимость с NumPy</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Введение</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ndarrays-and-object-creation">Массивы ndarray и создание объектов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-subclassing">Когда использовать наследование</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-casting">Преобразование через представление</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-from-template">Создание нового объекта по шаблону</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-of-view-casting-and-new-from-template">Связь создания представления с приведением типа и создания объекта по шаблону</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-for-subclassing">Последствия для реализации подклассов</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-brief-python-primer-on-new-and-init">Краткое введение в <code class="docutils literal notranslate"><span class="pre">__new__</span></code> и <code class="docutils literal notranslate"><span class="pre">__init__</span></code> в Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-role-of-array-finalize">Роль <code class="docutils literal notranslate"><span class="pre">__array_finalize__</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-example-adding-an-extra-attribute-to-ndarray">Простой пример - добавление дополнительного атрибута к ndarray </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slightly-more-realistic-example-attribute-added-to-existing-array">Чуть более реалистичный пример - атрибут добавлен к существующему массиву </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-ufunc-for-ufuncs"><code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code> для универсальных функций</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-wrap-for-ufuncs-and-other-functions"><code class="docutils literal notranslate"><span class="pre">__array_wrap__</span></code> для ufunc и других функций</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-gotchas-custom-del-methods-and-ndarray-base">Дополнительные тонкости: собственные методы <code class="docutils literal notranslate"><span class="pre">__del__</span></code> и ndarray.base</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subclassing-and-downstream-compatibility">Подклассы и совместимость с зависимыми проектами</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

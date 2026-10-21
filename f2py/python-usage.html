@@ -1,0 +1,990 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'f2py/python-usage';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="buildtools/index.html" rel="next" title="F2PY и системы сборки"/>
+<link href="signature-file.html" rel="prev" title="Файл сигнатур"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.html">Основы NumPy</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/c-info.html">Использование C API NumPy</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Руководство пользователя и справочник F2PY</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="f2py-user.html">Руководство пользователя F2PY</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="f2py-reference.html">Справочное руководство F2PY</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="signature-file.html">Файл сигнатур</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Использование привязок F2PY в Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buildtools/index.html">F2PY и системы сборки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/use_cases.html">Расширенные сценарии использования F2PY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/boilerplating.html">Сокращение шаблонного кода и использование шаблонов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="f2py-testing.html">Набор тестов F2PY</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="windows/index.html"> F2PY и Windows </a></li>
+<li class="toctree-l2"><a class="reference internal" href="buildtools/distutils-to-meson.html">1 Переход на <code class="docutils literal notranslate"><span class="pre">meson</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../user/index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="f2py-reference.html">Справочное руководство F2PY</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Использование привязок F2PY в Python</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="using-f2py-bindings-in-python">
+<h1>Использование привязок F2PY в Python<a class="headerlink" href="#using-f2py-bindings-in-python" title="Link to this heading">#</a></h1>
+<p>На этой странице приведены полное описание и несколько типичных примеров использования F2PY с Python и различными типами аргументов. Дополнительные примеры и варианты применения см. в разделе <a class="reference internal" href="f2py-examples.html#f2py-examples"><span class="std std-ref">Примеры F2PY</span></a>.</p>
+<section id="fortran-type-objects">
+<h2>Объекты типа Fortran <a class="headerlink" href="#fortran-type-objects" title="Link to this heading">#</a></h2>
+<p>Все обёртки процедур Fortran/C, общих блоков и данных модулей Fortran 90, созданные F2PY, доступны в Python как объекты типа <code class="docutils literal notranslate"><span class="pre">fortran</span></code>. Обёртки процедур — вызываемые объекты типа <code class="docutils literal notranslate"><span class="pre">fortran</span></code>, а обёртки данных Fortran имеют атрибуты, ссылающиеся на объекты данных.</p>
+<p>Все объекты типа <code class="docutils literal notranslate"><span class="pre">fortran</span></code> имеют атрибут <code class="docutils literal notranslate"><span class="pre">_cpointer</span></code>, который содержит <a class="reference external" href="https://docs.python.org/3/c-api/capsule.html#c.PyCapsule" title="(in Python v3.14)"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyCapsule</span></code></a>, относящийся к указателю C соответствующей функции Fortran/C или переменной на уровне C. Такие объекты <code class="docutils literal notranslate"><span class="pre">PyCapsule</span></code> могут использоваться в качестве аргументов обратного вызова для функций, генерируемых F2PY, чтобы обойти уровень Python C/API для вызова функций Python из Fortran или C. Это может быть полезно, когда вычислительные аспекты таких функций реализованы в C или Fortran и обернуты F2PY (или любым другим инструментом, способным обеспечить <code class="docutils literal notranslate"><span class="pre">PyCapsule</span></code>, содержащий функцию).</p>
+<p>Рассмотрим файл Fortran 77 <code class="docutils literal notranslate"><span class="pre">`ftype.f</span></code>:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="k">FILE</span><span class="p">:</span><span class="w"> </span><span class="n">FTYPE</span><span class="p">.</span><span class="n">F</span>
+<span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">FOO</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="w">      </span><span class="kt">INTEGER </span><span class="n">N</span>
+<span class="n">Cf2py</span><span class="w"> </span><span class="kt">integer </span><span class="k">optional</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span>
+<span class="w">      </span><span class="kt">REAL </span><span class="n">A</span><span class="p">,</span><span class="n">X</span>
+<span class="w">      </span><span class="k">COMMON</span><span class="w"> </span><span class="o">/</span><span class="k">DATA</span><span class="o">/</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="n">X</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">C</span><span class="w">     </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"IN FOO: N="</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="s2">" A="</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="s2">" X=["</span><span class="p">,</span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">X</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">X</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="s2">"]"</span>
+<span class="w">      </span><span class="k">END</span>
+<span class="n">C</span><span class="w"> </span><span class="k">END </span><span class="n">OF</span><span class="w"> </span><span class="n">FTYPE</span><span class="p">.</span><span class="n">F</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>ФАЙЛ: FTYPE.F</li><li>Оператор PRINT выводит значения N, A и первых трёх элементов X внутри FOO.</li><li>КОНЕЦ ФАЙЛА FTYPE.F</li></ul></details></div>
+</div>
+<p>и обёртка, собранная командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">ftype.f</span> <span class="pre">-m</span> <span class="pre">ftype</span></code>.</p>
+<p>В Python можно посмотреть типы <code class="docutils literal notranslate"><span class="pre">foo</span></code> и <code class="docutils literal notranslate"><span class="pre">data</span></code> и способы доступа к отдельным объектам кода Fortran, для которого создана обёртка.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">ftype</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ftype</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="go">This module 'ftype' is auto-generated with f2py (version:2).</span>
+<span class="go">Functions:</span>
+<span class="go">  foo(n=13)</span>
+<span class="go">COMMON blocks:</span>
+<span class="go">  /data/ a,x(3)</span>
+<span class="go">.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ftype</span><span class="o">.</span><span class="n">foo</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">ftype</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="go">(&lt;class 'fortran'&gt;, &lt;class 'fortran'&gt;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftype</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+<span class="go"> IN FOO: N= 13 A=  0. X=[  0.  0.  0.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftype</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftype</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftype</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+<span class="go"> IN FOO: N= 13 A=  3. X=[  1.  2.  3.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftype</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">45</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftype</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<span class="go"> IN FOO: N= 24 A=  3. X=[  1.  45.  3.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftype</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">x</span>
+<span class="go">array([  1.,  45.,   3.], dtype=float32)</span>
+</pre></div>
+</div>
+</section>
+<section id="scalar-arguments">
+<h2>Скалярные аргументы<a class="headerlink" href="#scalar-arguments" title="Link to this heading">#</a></h2>
+<p>Скалярным аргументом функции-обёртки F2PY может быть обычный скаляр Python — целое, вещественное или комплексное число — либо произвольная последовательность скаляров: список, кортеж, массив или строка. Во втором случае процедуре Fortran передаётся первый элемент последовательности как скалярный аргумент.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<ul class="simple">
+<li><p>Если при необходимом приведении типа возможна потеря информации из-за сужения, например при преобразовании float в целый тип или комплексного типа во float, F2PY <em>не</em> возбуждает исключение.</p>
+<ul>
+<li><p>При приведении комплексного типа к вещественному используется только действительная часть комплексного числа.</p></li>
+</ul>
+</li>
+<li><p>Скалярные аргументы <code class="docutils literal notranslate"><span class="pre">intent(inout)</span></code> считаются объектами массивов, чтобы изменения <em>на месте</em> вступали в силу. Рекомендуется использовать массивы подходящего типа, хотя другие типы тоже работают. <a class="reference internal" href="signature-file.html#f2py-attributes"><span class="std std-ref">Подробнее об атрибуте intent</span></a>.</p></li>
+</ul>
+</div>
+<p>Рассмотрим следующий код Fortran 77:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="k">FILE</span><span class="p">:</span><span class="w"> </span><span class="n">SCALAR</span><span class="p">.</span><span class="n">F</span>
+<span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">FOO</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+<span class="w">      </span><span class="kt">REAL</span><span class="o">*</span><span class="mi">8</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span>
+<span class="n">Cf2py</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="n">a</span>
+<span class="n">Cf2py</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="n">b</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"    A="</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="s2">" B="</span><span class="p">,</span><span class="n">B</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"INCREMENT A AND B"</span>
+<span class="w">      </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="n">D0</span>
+<span class="w">      </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="n">D0</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"NEW A="</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="s2">" B="</span><span class="p">,</span><span class="n">B</span>
+<span class="w">      </span><span class="k">END</span>
+<span class="n">C</span><span class="w"> </span><span class="k">END </span><span class="n">OF</span><span class="w"> </span><span class="k">FILE </span><span class="n">SCALAR</span><span class="p">.</span><span class="n">F</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>ФАЙЛ: SCALAR.F</li><li>КОНЕЦ ФАЙЛА SCALAR.F</li></ul></details></div>
+</div>
+<p>и создайте обёртку командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">scalar</span> <span class="pre">scalar.f</span></code>.</p>
+<p>В Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scalar</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">scalar</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="go">foo(a,b)</span>
+
+<span class="go">Wrapper for ``foo``.</span>
+
+<span class="go">Parameters</span>
+<span class="go">----------</span>
+<span class="go">a : input float</span>
+<span class="go">b : in/output rank-0 array(float,'d')</span>
+<span class="go"> </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scalar</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>   
+<span class="go">     A=  2. B=  3.</span>
+<span class="go"> INCREMENT A AND B</span>
+<span class="go"> NEW A=  3. B=  4.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># these are integer rank-0 arrays</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scalar</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">     A=  2. B=  3.</span>
+<span class="go"> INCREMENT A AND B</span>
+<span class="go"> NEW A=  3. B=  4.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>          <span class="c1"># note that only b is changed in situ</span>
+<span class="go">2 4</span>
+</pre></div>
+</div>
+</section>
+<section id="string-arguments">
+<h2>Строковые аргументы<a class="headerlink" href="#string-arguments" title="Link to this heading">#</a></h2>
+<p>Созданные F2PY функции-обёртки принимают почти любой объект Python как строковый аргумент: к нестроковым объектам применяется <code class="docutils literal notranslate"><span class="pre">str</span></code>. Исключение — массивы NumPy: при передаче как строкового аргумента их код типа должен быть <code class="docutils literal notranslate"><span class="pre">'S1'</span></code> или <code class="docutils literal notranslate"><span class="pre">'b'</span></code> (соответственно устаревшие коды <code class="docutils literal notranslate"><span class="pre">'c'</span></code> или <code class="docutils literal notranslate"><span class="pre">'1'</span></code>). Подробнее об этих кодах см. в разделе <a class="reference internal" href="../reference/arrays.scalars.html#arrays-scalars"><span class="std std-ref">Скаляры</span></a>.</p>
+<p>Строка, передаваемая строковым аргументом функции-обёртке F2PY, может иметь произвольную длину. Если она длиннее ожидаемого, она обрезается без предупреждения. Если короче, выделяется дополнительная память и заполняется <code class="docutils literal notranslate"><span class="pre">\0</span></code>.</p>
+<p>Поскольку строки Python неизменяемы, аргумент <code class="docutils literal notranslate"><span class="pre">intent(inout)</span></code> ожидает строку в виде массива, чтобы изменения <em>на месте</em> сохранялись.</p>
+<p>Рассмотрим следующий код Fortran 77:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="k">FILE</span><span class="p">:</span><span class="w"> </span><span class="n">STRING</span><span class="p">.</span><span class="n">F</span>
+<span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">FOO</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+<span class="w">      </span><span class="kt">CHARACTER</span><span class="o">*</span><span class="mi">5</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span>
+<span class="w">      </span><span class="kt">CHARACTER</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="n">D</span>
+<span class="n">Cf2py</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">c</span>
+<span class="n">Cf2py</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="n">d</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"A="</span><span class="p">,</span><span class="n">A</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"B="</span><span class="p">,</span><span class="n">B</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"C="</span><span class="p">,</span><span class="n">C</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"D="</span><span class="p">,</span><span class="n">D</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"CHANGE A,B,C,D"</span>
+<span class="w">      </span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'A'</span>
+<span class="w">      </span><span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'B'</span>
+<span class="w">      </span><span class="n">C</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'C'</span>
+<span class="w">      </span><span class="n">D</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'D'</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"A="</span><span class="p">,</span><span class="n">A</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"B="</span><span class="p">,</span><span class="n">B</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"C="</span><span class="p">,</span><span class="n">C</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"D="</span><span class="p">,</span><span class="n">D</span>
+<span class="w">      </span><span class="k">END</span>
+<span class="n">C</span><span class="w"> </span><span class="k">END </span><span class="n">OF</span><span class="w"> </span><span class="k">FILE </span><span class="n">STRING</span><span class="p">.</span><span class="n">F</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>ФАЙЛ: STRING.F</li><li>КОНЕЦ ФАЙЛА STRING.F</li></ul></details></div>
+</div>
+<p>и создайте обёртку командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">mystring</span> <span class="pre">string.f</span></code>.</p>
+<p>Сессия Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">mystring</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="go">foo(a,b,c,d)</span>
+
+<span class="go">Wrapper for ``foo``.</span>
+
+<span class="go">Parameters</span>
+<span class="go">----------</span>
+<span class="go">a : input string(len=5)</span>
+<span class="go">b : in/output rank-0 array(string(len=5),'c')</span>
+<span class="go">c : input string(len=-1)</span>
+<span class="go">d : in/output rank-0 array(string(len=-1),'c')</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="sa">b</span><span class="s1">'123</span><span class="se">\0\0</span><span class="s1">'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="sa">b</span><span class="s1">'123</span><span class="se">\0\0</span><span class="s1">'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="sa">b</span><span class="s1">'123'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="sa">b</span><span class="s1">'123'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mystring</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="go"> A=123</span>
+<span class="go"> B=123</span>
+<span class="go"> C=123</span>
+<span class="go"> D=123</span>
+<span class="go"> CHANGE A,B,C,D</span>
+<span class="go"> A=A23</span>
+<span class="go"> B=B23</span>
+<span class="go"> C=C23</span>
+<span class="go"> D=D23</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[()],</span> <span class="n">b</span><span class="p">[()],</span> <span class="n">c</span><span class="p">[()],</span> <span class="n">d</span><span class="p">[()]</span>
+<span class="go">(b'123', b'B23', b'123', b'D2')</span>
+</pre></div>
+</div>
+</section>
+<section id="array-arguments">
+<h2>Аргументы-массивы<a class="headerlink" href="#array-arguments" title="Link to this heading">#</a></h2>
+<p>Как правило, функции-обёртки, сгенерированные F2PY, принимают в качестве аргументов-массивов произвольные последовательности, преобразуемые в массивы NumPy. Есть два важных исключения:</p>
+<ul class="simple">
+<li><p>Массивы-аргументы с <code class="docutils literal notranslate"><span class="pre">intent(inout)</span></code> должны быть <a class="reference internal" href="../glossary.html#term-contiguous"><span class="xref std std-term">непрерывно расположены в памяти</span></a> и иметь совместимый <code class="docutils literal notranslate"><span class="pre">dtype</span></code>, иначе возникает исключение.</p></li>
+<li><p>Аргументы-массивы с <code class="docutils literal notranslate"><span class="pre">intent(inplace)</span></code> должны быть массивами. Если их порядок или размер несовместимы с требуемыми, передаётся преобразованная копия, которая при выходе копируется обратно в исходный массив. Подробнее см. описание <code class="docutils literal notranslate"><span class="pre">intent(inplace)</span></code> в разделе <a class="reference internal" href="signature-file.html#f2py-attributes"><span class="std std-ref">атрибутов</span></a>.</p></li>
+</ul>
+<p>Обычно массив NumPy передаётся непосредственно оборачиваемой функции Fortran/C, если он <a class="reference internal" href="../glossary.html#term-contiguous"><span class="xref std std-term">непрерывно расположен в памяти в нужном порядке</span></a> и имеет подходящий тип. Иначе создаётся поэлементная копия с нужными расположением и типом, которая передаётся как аргумент-массив.</p>
+<p>Обычно не нужно беспокоиться о расположении массивов в памяти и о том, какой порядок ожидают функции C или Fortran, для которых созданы обёртки. F2PY автоматически передаёт аргументы в нужном порядке хранения и создаёт копии только при крайней необходимости. Однако при очень больших многомерных входных массивах, по размеру близких к объёму физической памяти компьютера, важно заранее обеспечить подходящее непрерывное расположение и нужный тип аргументов.</p>
+<p>Чтобы перед передачей в процедуры Fortran преобразовать входные массивы к порядку хранения по столбцам, используйте функцию <a class="reference internal" href="../reference/generated/numpy.asfortranarray.html#numpy.asfortranarray" title="numpy.asfortranarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.asfortranarray</span></code></a>.</p>
+<p>Рассмотрим следующий код Fortran 77:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="k">FILE</span><span class="p">:</span><span class="w"> </span><span class="k">ARRAY</span><span class="p">.</span><span class="n">F</span>
+<span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">FOO</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+<span class="n">C</span>
+<span class="n">C</span><span class="w">     </span><span class="n">INCREMENT</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">FIRST</span><span class="w"> </span><span class="n">ROW</span><span class="w"> </span><span class="nb">AND </span><span class="n">DECREMENT</span><span class="w"> </span><span class="n">THE</span><span class="w"> </span><span class="n">FIRST</span><span class="w"> </span><span class="n">COLUMN</span><span class="w"> </span><span class="n">OF</span><span class="w"> </span><span class="n">A</span>
+<span class="n">C</span>
+<span class="w">      </span><span class="kt">INTEGER </span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">J</span>
+<span class="w">      </span><span class="kt">REAL</span><span class="o">*</span><span class="mi">8</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+<span class="n">Cf2py</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">,</span><span class="n">out</span><span class="p">,</span><span class="n">copy</span><span class="p">)</span><span class="w"> </span><span class="n">a</span>
+<span class="n">Cf2py</span><span class="w"> </span><span class="kt">integer </span><span class="k">intent</span><span class="p">(</span><span class="n">hide</span><span class="p">),</span><span class="n">depend</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="nb">shape</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">m</span><span class="o">=</span><span class="nb">shape</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="k">DO </span><span class="n">J</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span>
+<span class="w">         </span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">J</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">J</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="n">D0</span>
+<span class="w">      </span><span class="k">ENDDO</span>
+<span class="k">      DO </span><span class="n">I</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span>
+<span class="w">         </span><span class="n">A</span><span class="p">(</span><span class="n">I</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">I</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="n">D0</span>
+<span class="w">      </span><span class="k">ENDDO</span>
+<span class="k">      END</span>
+<span class="n">C</span><span class="w"> </span><span class="k">END </span><span class="n">OF</span><span class="w"> </span><span class="k">FILE ARRAY</span><span class="p">.</span><span class="n">F</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>ФАЙЛ: ARRAY.F</li><li>УВЕЛИЧИТЬ НА ЕДИНИЦУ ЭЛЕМЕНТЫ ПЕРВОЙ СТРОКИ A И УМЕНЬШИТЬ НА ЕДИНИЦУ ЭЛЕМЕНТЫ ПЕРВОГО СТОЛБЦА</li><li>КОНЕЦ ФАЙЛА ARRAY.F</li></ul></details></div>
+</div>
+<p>и создайте обёртку командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">arr</span> <span class="pre">array.f</span> <span class="pre">-DF2PY_REPORT_ON_ARRAY_COPY=1</span></code>.</p>
+<p>В Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">arr</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">asfortranarray</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="go">a = foo(a,[overwrite_a])</span>
+
+<span class="go">Wrapper for ``foo``.</span>
+
+<span class="go">Parameters</span>
+<span class="go">----------</span>
+<span class="go">a : input rank-2 array('d') with bounds (n,m)</span>
+
+<span class="go">Other Parameters</span>
+<span class="go">----------------</span>
+<span class="go">overwrite_a : input int, optional</span>
+<span class="go">    Default: 0</span>
+
+<span class="go">Returns</span>
+<span class="go">-------</span>
+<span class="go">a : rank-2 array('d') with bounds (n,m)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">foo</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>             <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="go">created an array from object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[[ 1.  3.  4.]</span>
+<span class="go"> [ 3.  5.  6.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">c_contiguous</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span>
+<span class="go">True</span>
+<span class="go"># even if a is proper-contiguous and has proper type,</span>
+<span class="go"># a copy is made forced by intent(copy) attribute</span>
+<span class="go"># to preserve its original contents</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">copied an array: size=6, elsize=8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[[ 1.  3.  4.]</span>
+<span class="go"> [ 3.  5.  6.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">[[ 1.  4.  5.]</span>
+<span class="go"> [ 2.  5.  6.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">overwrite_a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># a is passed directly to Fortran</span>
+<span class="gp">... </span>                                <span class="c1"># routine and its contents is discarded</span>
+<span class="gp">... </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[[ 1.  4.  5.]</span>
+<span class="go"> [ 2.  5.  6.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">[[ 1.  4.  5.]</span>
+<span class="go"> [ 2.  5.  6.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>                          <span class="c1"># a and b are actually the same objects</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">foo</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>       <span class="c1"># different rank arrays are allowed</span>
+<span class="go">created an array from object</span>
+<span class="go">[ 1.  1.  2.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">foo</span><span class="p">([[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]]))</span>
+<span class="go">created an array from object</span>
+<span class="go">[[[ 1.]</span>
+<span class="go">  [ 1.]</span>
+<span class="go">  [ 2.]]]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creating arrays with column major data storage order:</span>
+<span class="go"> ...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">asfortranarray</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">[[1 2 3]</span>
+<span class="go"> [4 5 6]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="o">=</span> <span class="n">asfortranarray</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s2</span> <span class="ow">is</span> <span class="n">s</span>    <span class="c1"># an array with column major storage order </span>
+<span class="go">               # is returned immediately</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Note that arr.foo returns a column major data storage order array:</span>
+<span class="go"> ...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span> <span class="o">=</span> <span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">c_contiguous</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span>
+<span class="go">copied an array: size=6, elsize=8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s3</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">c_contiguous</span>
+<span class="go">False</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Даже если a правильно непрерывно расположен в памяти и имеет нужный тип,</li><li>атрибут intent(copy) принудительно создаёт копию,</li><li>чтобы сохранить исходное содержимое.</li><li>a передаётся непосредственно в подпрограмму Fortran,</li><li>а его содержимое не сохраняется</li><li>a и b в действительности — один и тот же объект</li><li>Допускаются массивы с разным числом измерений</li><li>Создание массивов с хранением данных по столбцам:</li><li>Массив с порядком хранения по столбцам</li><li>возвращается сразу</li><li>Обратите внимание: arr.foo возвращает массив с хранением по столбцам:</li></ul></details></div>
+</div>
+</section>
+<section id="call-back-arguments">
+<span id="id1"></span><h2>Аргументы обратного вызова <a class="headerlink" href="#call-back-arguments" title="Link to this heading">#</a></h2>
+<p>F2PY поддерживает вызов функций Python из кодов Fortran или C.</p>
+<p>Рассмотрим следующий код Fortran 77:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="k">FILE</span><span class="p">:</span><span class="w"> </span><span class="n">CALLBACK</span><span class="p">.</span><span class="n">F</span>
+<span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">FOO</span><span class="p">(</span><span class="n">FUN</span><span class="p">,</span><span class="n">R</span><span class="p">)</span>
+<span class="w">      </span><span class="k">EXTERNAL </span><span class="n">FUN</span>
+<span class="w">      </span><span class="kt">INTEGER </span><span class="n">I</span>
+<span class="w">      </span><span class="kt">REAL</span><span class="o">*</span><span class="mi">8</span><span class="w"> </span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span>
+<span class="n">Cf2py</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="n">r</span>
+<span class="w">      </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">D0</span>
+<span class="w">      </span><span class="k">DO </span><span class="n">I</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span>
+<span class="w">         </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">FUN</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="w">      </span><span class="k">ENDDO</span>
+<span class="k">      END</span>
+<span class="n">C</span><span class="w"> </span><span class="k">END </span><span class="n">OF</span><span class="w"> </span><span class="k">FILE </span><span class="n">CALLBACK</span><span class="p">.</span><span class="n">F</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>ФАЙЛ: CALLBACK.F</li><li>КОНЕЦ ФАЙЛА CALLBACK.F</li></ul></details></div>
+</div>
+<p>и создайте обёртку командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">callback</span> <span class="pre">callback.f</span></code>.</p>
+<p>В Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">callback</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">callback</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="go">r = foo(fun,[fun_extra_args])</span>
+
+<span class="go">Wrapper for ``foo``.</span>
+
+<span class="go">Parameters</span>
+<span class="go">----------</span>
+<span class="go">fun : call-back function</span>
+
+<span class="go">Other Parameters</span>
+<span class="go">----------------</span>
+<span class="go">fun_extra_args : input tuple, optional</span>
+<span class="go">    Default: ()</span>
+
+<span class="go">Returns</span>
+<span class="go">-------</span>
+<span class="go">r : float</span>
+
+<span class="go">Notes</span>
+<span class="go">-----</span>
+<span class="go">Call-back functions::</span>
+
+<span class="go">  def fun(i): return r</span>
+<span class="go">  Required arguments:</span>
+<span class="go">    i : input int</span>
+<span class="go">  Return objects:</span>
+<span class="go">    r : float</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="k">return</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span>
+<span class="gp">... </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">callback</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="go">110.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">callback</span><span class="o">.</span><span class="n">foo</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">11.0</span>
+</pre></div>
+</div>
+<p>В приведённом выше примере F2PY удалось правильно определить сигнатуру функции обратного вызова. Однако иногда F2PY не может установить нужную сигнатуру; в таких случаях её необходимо явно задать в файле сигнатур.</p>
+<p>Для этого файлы сигнатур могут содержать специальные модули (с подстрокой <code class="docutils literal notranslate"><span class="pre">__user__</span></code> в имени), определяющие сигнатуры функций обратного вызова. Аргументы обратного вызова в сигнатурах подпрограмм имеют атрибут <code class="docutils literal notranslate"><span class="pre">external</span></code> (см. также <code class="docutils literal notranslate"><span class="pre">intent(callback)</span></code> в разделе <a class="reference internal" href="signature-file.html#f2py-attributes"><span class="std std-ref">атрибуты</span></a>). Для связи аргумента обратного вызова с его сигнатурой в блоке модуля <code class="docutils literal notranslate"><span class="pre">__user__</span></code> можно использовать оператор <code class="docutils literal notranslate"><span class="pre">use</span></code>, как показано ниже. На одну сигнатуру аргумента обратного вызова можно ссылаться из разных сигнатур подпрограмм.</p>
+<p>Используем тот же код Fortran 77, что и в предыдущем примере, но предположим, что F2PY неверно определил сигнатуры аргументов функций обратного вызова. Сначала создадим исходный файл сигнатур <code class="docutils literal notranslate"><span class="pre">callback2.pyf</span></code> с помощью F2PY:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f2py</span> <span class="o">-</span><span class="n">m</span> <span class="n">callback2</span> <span class="o">-</span><span class="n">h</span> <span class="n">callback2</span><span class="o">.</span><span class="n">pyf</span> <span class="n">callback</span><span class="o">.</span><span class="n">f</span>
+</pre></div>
+</div>
+<p>Затем измените его следующим образом</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!    -*- f90 -*-
+python module __user__routines 
+    interface
+        function fun(i) result (r)
+            integer :: i
+            real*8 :: r
+        end function fun
+    end interface
+end python module __user__routines
+
+python module callback2
+    interface
+        subroutine foo(f,r)
+            use __user__routines, f=&gt;fun
+            external f
+            real*8 intent(out) :: r
+        end subroutine foo
+    end interface 
+end python module callback2
+</pre></div>
+</div>
+<p>Наконец, мы создаем модуль расширения с использованием <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">callback2.pyf</span> <span class="pre">callback.f</span></code>.</p>
+<p>Пример сеанса Python для этого фрагмента совпадёт с предыдущим примером, отличаться будут лишь имена аргументов.</p>
+<p>Иногда пакет Fortran может потребовать, чтобы пользователи предоставили процедуры, которые будет использовать пакет. F2PY может создать интерфейс для таких процедур, чтобы функции Python могли быть вызваны из Fortran.</p>
+<p>Рассмотрим следующую подпрограмму Fortran 77, принимающую массив и применяющую функцию <code class="docutils literal notranslate"><span class="pre">func</span></code> к его элементам.</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="k">subroutine </span><span class="n">calculate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">cf2py</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span><span class="w"> </span><span class="n">func</span>
+<span class="w">      </span><span class="k">external </span><span class="n">func</span>
+<span class="n">c</span><span class="w">     </span><span class="n">The</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="n">define</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">signature</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">func</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">F2PY</span><span class="p">:</span>
+<span class="n">cf2py</span><span class="w"> </span><span class="kt">real</span><span class="o">*</span><span class="mi">8</span><span class="w"> </span><span class="n">y</span>
+<span class="n">cf2py</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">c</span>
+<span class="n">cf2py</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">,</span><span class="n">out</span><span class="p">,</span><span class="n">copy</span><span class="p">)</span><span class="w"> </span><span class="n">x</span>
+<span class="w">      </span><span class="kt">integer </span><span class="n">n</span><span class="p">,</span><span class="n">i</span>
+<span class="w">      </span><span class="kt">real</span><span class="o">*</span><span class="mi">8</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">func</span>
+<span class="w">      </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span>
+<span class="w">         </span><span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="w">      </span><span class="k">end do</span>
+<span class="k">      end</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Следующие строки задают сигнатуру func для F2PY:</li></ul></details></div>
+</div>
+<p>Код Fortran предполагает, что функция <code class="docutils literal notranslate"><span class="pre">func</span></code> определена извне. Чтобы использовать функцию Python в качестве <code class="docutils literal notranslate"><span class="pre">func</span></code>, нужно задать атрибут <code class="docutils literal notranslate"><span class="pre">intent(callback)</span></code> перед оператором <code class="docutils literal notranslate"><span class="pre">external</span></code>.</p>
+<p>Наконец, соберите модуль расширения командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">foo</span> <span class="pre">calculate.f</span></code></p>
+<p>В Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">foo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="go">array([  0.,   1.,   4.,   9.,  16.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>
+<span class="go">array([  1.        ,   2.71828183,   7.3890561,  20.08553692,  54.59815003])</span>
+</pre></div>
+</div>
+<p>Функция передаётся как аргумент при вызове подпрограммы Fortran из Python, хотя её <em>нет</em> в списке аргументов подпрограммы Fortran. Ключевое слово external относится к функции C, созданной f2py, а не к самой функции Python. По сути, функция Python передаётся функции C.</p>
+<p>Функцию обратного вызова также можно явно задать в модуле. Тогда передавать её аргументом функции Fortran не требуется. Это может быть удобно, если функция Fortran, вызывающая функцию обратного вызова Python, сама вызывается другой функцией Fortran.</p>
+<p>Рассмотрим следующую подпрограмму Fortran 77:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="k">subroutine </span><span class="n">f1</span><span class="p">()</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"in f1, calling f2 twice.."</span>
+<span class="w">         </span><span class="k">call </span><span class="n">f2</span><span class="p">()</span>
+<span class="w">         </span><span class="k">call </span><span class="n">f2</span><span class="p">()</span>
+<span class="w">         </span><span class="k">return</span>
+<span class="k">      end</span>
+<span class="k">      </span>
+<span class="k">      subroutine </span><span class="n">f2</span><span class="p">()</span>
+<span class="n">cf2py</span><span class="w">    </span><span class="k">intent</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="n">hide</span><span class="p">)</span><span class="w"> </span><span class="n">fpy</span>
+<span class="w">         </span><span class="k">external </span><span class="n">fpy</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"in f2, calling f2py.."</span>
+<span class="w">         </span><span class="k">call </span><span class="n">fpy</span><span class="p">()</span>
+<span class="w">         </span><span class="k">return</span>
+<span class="k">      end</span>
+</pre></div>
+</div>
+<p>и создайте обёртку командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">pfromf</span> <span class="pre">extcallback.f</span></code>.</p>
+<p>В Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pfromf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pfromf</span><span class="o">.</span><span class="n">f2</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">pfromf.error</span>: <span class="n">Callback fpy not defined (as an argument or module pfromf attribute).</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"python f"</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pfromf</span><span class="o">.</span><span class="n">fpy</span> <span class="o">=</span> <span class="n">f</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pfromf</span><span class="o">.</span><span class="n">f2</span><span class="p">()</span>
+<span class="go"> in f2, calling f2py..</span>
+<span class="go">python f</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pfromf</span><span class="o">.</span><span class="n">f1</span><span class="p">()</span>
+<span class="go"> in f1, calling f2 twice..</span>
+<span class="go"> in f2, calling f2py..</span>
+<span class="go">python f</span>
+<span class="go"> in f2, calling f2py..</span>
+<span class="go">python f</span>
+<span class="gp">&gt;&gt;&gt; </span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Если поведение кода Fortran изменено через <code class="docutils literal notranslate"><span class="pre">callstatement</span></code> или другие директивы, функцию Python с обёрткой нужно вызывать как функцию обратного вызова; иначе будет использована только исходная подпрограмма Fortran. Подробнее см. <a class="github reference external" href="https://github.com/numpy/numpy/issues/26681#issuecomment-2466460943">numpy/numpy#26681</a>.</p>
+</div>
+<section id="resolving-arguments-to-call-back-functions">
+<h3>Разрешение аргументов для функций обратного вызова <a class="headerlink" href="#resolving-arguments-to-call-back-functions" title="Link to this heading">#</a></h3>
+<p>Интерфейсы, сгенерированные F2PY, очень гибки в отношении аргументов обратного вызова. Для каждого аргумента обратного вызова F2PY вводит дополнительный необязательный аргумент <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;_extra_args</span></code>. Этот аргумент можно использовать для передачи дополнительных аргументов пользовательским функциям обратного вызова.</p>
+<p>Если функция обертки, генерируемая F2PY, ожидает следующего аргумента обратного вызова:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">a_1</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="n">a_n</span><span class="p">):</span>
+   <span class="o">...</span>
+   <span class="k">return</span> <span class="n">x_1</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="n">x_k</span>
+</pre></div>
+</div>
+<p>но следующая функция Python</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gun</span><span class="p">(</span><span class="n">b_1</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="n">b_m</span><span class="p">):</span>
+   <span class="o">...</span>
+   <span class="k">return</span> <span class="n">y_1</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="n">y_l</span>
+</pre></div>
+</div>
+<p>предоставляется пользователем, а также</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fun_extra_args</span> <span class="o">=</span> <span class="p">(</span><span class="n">e_1</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="n">e_p</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>используется, то применяются следующие правила, когда функция Fortran или C оценивает аргумент обратного вызова <code class="docutils literal notranslate"><span class="pre">gun</span></code>:</p>
+<ul class="simple">
+<li><p>Если <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">==</span> <span class="pre">0</span></code>, вызывается <code class="docutils literal notranslate"><span class="pre">gun(a_1,</span> <span class="pre">...,</span> <span class="pre">a_q)</span></code>, где <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">=</span> <span class="pre">min(m,</span> <span class="pre">n)</span></code>.</p></li>
+<li><p>Если <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">+</span> <span class="pre">p</span> <span class="pre">&lt;=</span> <span class="pre">m</span></code>, вызывается <code class="docutils literal notranslate"><span class="pre">gun(a_1,</span> <span class="pre">...,</span> <span class="pre">a_n,</span> <span class="pre">e_1,</span> <span class="pre">...,</span> <span class="pre">e_p)</span></code>.</p></li>
+<li><p>Если <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&lt;=</span> <span class="pre">m</span> <span class="pre">&lt;</span> <span class="pre">n</span> <span class="pre">+</span> <span class="pre">p</span></code>, вызывается <code class="docutils literal notranslate"><span class="pre">gun(a_1,</span> <span class="pre">...,</span> <span class="pre">a_q,</span> <span class="pre">e_1,</span> <span class="pre">...,</span> <span class="pre">e_p)</span></code>, где <code class="docutils literal notranslate"><span class="pre">q=m-p</span></code>.</p></li>
+<li><p>Если <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&gt;</span> <span class="pre">m</span></code>, вызывается <code class="docutils literal notranslate"><span class="pre">gun(e_1,</span> <span class="pre">...,</span> <span class="pre">e_m)</span></code>.</p></li>
+<li><p>Если <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">+</span> <span class="pre">p</span></code> меньше, чем количество требуемых аргументов для <code class="docutils literal notranslate"><span class="pre">gun</span></code>, то возникает исключение.</p></li>
+</ul>
+<p>Если функция <code class="docutils literal notranslate"><span class="pre">gun</span></code> может возвращать любое количество объектов в виде кортежа; то применяются следующие правила:</p>
+<ul class="simple">
+<li><p>Если <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">&lt;</span> <span class="pre">l</span></code>, значения <code class="docutils literal notranslate"><span class="pre">y_{k</span> <span class="pre">+</span> <span class="pre">1},</span> <span class="pre">...,</span> <span class="pre">y_l</span></code> игнорируются.</p></li>
+<li><p>Если <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">&gt;</span> <span class="pre">l</span></code> , то устанавливаются только <code class="docutils literal notranslate"><span class="pre">x_1,</span> <span class="pre">...,</span> <span class="pre">x_l</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="common-blocks">
+<h2>Общие блоки (COMMON)<a class="headerlink" href="#common-blocks" title="Link to this heading">#</a></h2>
+<p>F2PY создаёт обёртки для блоков <code class="docutils literal notranslate"><span class="pre">common</span></code>, определённых в блоке сигнатуры подпрограммы. Общие блоки видны всему коду Fortran, скомпонованному с текущим модулем расширения, но не другим модулям расширения: это ограничение связано со способом импорта разделяемых библиотек в Python. В Python обёртки F2PY для блоков <code class="docutils literal notranslate"><span class="pre">common</span></code> представляют собой объекты типа <code class="docutils literal notranslate"><span class="pre">fortran</span></code> с динамическими атрибутами, соответствующими элементам данных общих блоков. Обращение к атрибутам возвращает массивы NumPy, напрямую связанные с этими элементами данных; многомерные массивы непрерывно расположены в памяти в порядке Fortran. Данные можно изменять прямым присваиванием или изменением соответствующих массивов на месте.</p>
+<p>Рассмотрим следующий код Fortran 77:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="w"> </span><span class="k">FILE</span><span class="p">:</span><span class="w"> </span><span class="k">COMMON</span><span class="p">.</span><span class="n">F</span>
+<span class="w">      </span><span class="k">SUBROUTINE </span><span class="n">FOO</span>
+<span class="w">      </span><span class="kt">INTEGER </span><span class="n">I</span><span class="p">,</span><span class="n">X</span>
+<span class="w">      </span><span class="kt">REAL </span><span class="n">A</span>
+<span class="w">      </span><span class="k">COMMON</span><span class="w"> </span><span class="o">/</span><span class="k">DATA</span><span class="o">/</span><span class="w"> </span><span class="n">I</span><span class="p">,</span><span class="n">X</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"I="</span><span class="p">,</span><span class="n">I</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"X=["</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="s2">"]"</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"A=["</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"["</span><span class="p">,</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s2">","</span><span class="p">,</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">","</span><span class="p">,</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">"]"</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"["</span><span class="p">,</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s2">","</span><span class="p">,</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">","</span><span class="p">,</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">"]"</span>
+<span class="w">      </span><span class="k">PRINT</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"]"</span>
+<span class="w">      </span><span class="k">END</span>
+<span class="n">C</span><span class="w"> </span><span class="k">END </span><span class="n">OF</span><span class="w"> </span><span class="k">COMMON</span><span class="p">.</span><span class="n">F</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>ФАЙЛ: COMMON.F</li><li>КОНЕЦ ФАЙЛА COMMON.F</li></ul></details></div>
+</div>
+<p>и создайте обёртку командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">common</span> <span class="pre">common.f</span></code>.</p>
+<p>В Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">common</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">common</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="go">i : 'i'-scalar</span>
+<span class="go">x : 'i'-array(4)</span>
+<span class="go">a : 'f'-array(2,3)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">common</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">common</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">common</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">common</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">common</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+<span class="go"> I=           5</span>
+<span class="go"> X=[           0           2           0           0 ]</span>
+<span class="go"> A=[</span>
+<span class="go"> [   1.00000000     ,   2.00000000     ,   3.00000000     ]</span>
+<span class="go"> [   4.00000000     ,   5.00000000     ,   6.00000000     ]</span>
+<span class="go"> ]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">common</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">common</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+<span class="go"> I=           5</span>
+<span class="go"> X=[           0           2           0           0 ]</span>
+<span class="go"> A=[</span>
+<span class="go"> [   1.00000000     ,   2.00000000     ,   3.00000000     ]</span>
+<span class="go"> [   45.0000000     ,   45.0000000     ,   45.0000000     ]</span>
+<span class="go"> ]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">common</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">a</span>                 <span class="c1"># a is Fortran-contiguous</span>
+<span class="go">array([[  1.,   2.,   3.],</span>
+<span class="go">       [ 45.,  45.,  45.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">common</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span>
+<span class="go">True</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>a непрерывно расположен в памяти в порядке Fortran</li></ul></details></div>
+</div>
+</section>
+<section id="fortran-90-module-data">
+<h2>Данные модулей Fortran 90<a class="headerlink" href="#fortran-90-module-data" title="Link to this heading">#</a></h2>
+<p>Интерфейс F2PY к данным модулей Fortran 90 похож на интерфейс к блокам COMMON Fortran 77.</p>
+<p>Рассмотрим следующий код Fortran 90:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="nb">mod</span>
+<span class="nb">  </span><span class="kt">integer </span><span class="n">i</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">b</span><span class="w"> </span>
+<span class="k">contains</span>
+<span class="k">  subroutine </span><span class="n">foo</span>
+<span class="w">    </span><span class="kt">integer </span><span class="n">k</span>
+<span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"i="</span><span class="p">,</span><span class="n">i</span>
+<span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"x=["</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s2">"]"</span>
+<span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"a=["</span>
+<span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"["</span><span class="p">,</span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s2">","</span><span class="p">,</span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">","</span><span class="p">,</span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">"]"</span>
+<span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"["</span><span class="p">,</span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s2">","</span><span class="p">,</span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="s2">","</span><span class="p">,</span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">"]"</span>
+<span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"]"</span>
+<span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"Setting a(1,2)=a(1,2)+3"</span>
+<span class="w">    </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span>
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">foo</span>
+<span class="k">end module </span><span class="nb">mod</span>
+</pre></div>
+</div>
+<p>и создайте обёртку командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">moddata</span> <span class="pre">moddata.f90</span></code>.</p>
+<p>В Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">moddata</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">moddata</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="go">i : 'i'-scalar</span>
+<span class="go">x : 'i'-array(4)</span>
+<span class="go">a : 'f'-array(2,3)</span>
+<span class="go">b : 'f'-array(-1,-1), not allocated</span>
+<span class="go">foo()</span>
+
+<span class="go">Wrapper for ``foo``.</span>
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moddata</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">5</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moddata</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moddata</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moddata</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>                
+<span class="go"> i=           5</span>
+<span class="go"> x=[           1           2           0           0 ]</span>
+<span class="go"> a=[</span>
+<span class="go"> [   1.000000     ,   2.000000     ,   3.000000     ]</span>
+<span class="go"> [   4.000000     ,   5.000000     ,   6.000000     ]</span>
+<span class="go"> ]</span>
+<span class="go"> Setting a(1,2)=a(1,2)+3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moddata</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">a</span>               <span class="c1"># a is Fortran-contiguous</span>
+<span class="go">array([[ 1.,  5.,  3.],</span>
+<span class="go">       [ 4.,  5.,  6.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moddata</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span>
+<span class="go">True</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>a непрерывно расположен в памяти в порядке Fortran</li></ul></details></div>
+</div>
+</section>
+<section id="allocatable-arrays">
+<h2>Массивы с динамически выделяемой памятью (allocatable)<a class="headerlink" href="#allocatable-arrays" title="Link to this heading">#</a></h2>
+<p>F2PY предоставляет базовую поддержку массивов с динамически выделяемой памятью (allocatable) в модулях Fortran 90.</p>
+<p>Рассмотрим следующий код Fortran 90:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="nb">mod</span>
+<span class="nb">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,:)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">b</span><span class="w"> </span>
+<span class="k">contains</span>
+<span class="k">  subroutine </span><span class="n">foo</span>
+<span class="w">    </span><span class="kt">integer </span><span class="n">k</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">b</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">       print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"b=["</span>
+<span class="w">       </span><span class="k">do </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">          </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">size</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="w">       </span><span class="k">enddo</span>
+<span class="k">       print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"]"</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">       print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">"b is not allocated"</span>
+<span class="w">    </span><span class="k">endif</span>
+<span class="k">  end subroutine </span><span class="n">foo</span>
+<span class="k">end module </span><span class="nb">mod</span>
+</pre></div>
+</div>
+<p>и создайте обёртку командой <code class="docutils literal notranslate"><span class="pre">f2py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">allocarr</span> <span class="pre">allocarr.f90</span></code>.</p>
+<p>В Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">allocarr</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="go">b : 'f'-array(-1,-1), not allocated</span>
+<span class="go">foo()</span>
+
+<span class="go">Wrapper for ``foo``.</span>
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>  
+<span class="go"> b is not allocated</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>             <span class="c1"># allocate/initialize b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+<span class="go"> b=[</span>
+<span class="go">   1.000000       2.000000       3.000000    </span>
+<span class="go">   4.000000       5.000000       6.000000    </span>
+<span class="go"> ]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">b</span>                                      <span class="c1"># b is Fortran-contiguous</span>
+<span class="go">array([[ 1.,  2.,  3.],</span>
+<span class="go">       [ 4.,  5.,  6.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>  <span class="c1"># reallocate/initialize b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+<span class="go"> b=[</span>
+<span class="go">   1.000000       2.000000       3.000000    </span>
+<span class="go">   4.000000       5.000000       6.000000    </span>
+<span class="go">   7.000000       8.000000       9.000000    </span>
+<span class="go"> ]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="kc">None</span>                               <span class="c1"># deallocate array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allocarr</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
+<span class="go"> b is not allocated</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>Выделяем память для b и инициализируем его</li><li>b непрерывно расположен в памяти в порядке Fortran</li><li>Повторно выделяем память для b и инициализируем его</li><li>Освобождаем память массива</li></ul></details></div>
+</div>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="signature-file.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Файл сигнатур</p>
+</div>
+</a>
+<a class="right-next" href="buildtools/index.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">F2PY и системы сборки</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortran-type-objects">Объекты типа Fortran </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-arguments">Скалярные аргументы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-arguments">Строковые аргументы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-arguments">Аргументы-массивы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#call-back-arguments">Аргументы обратного вызова </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolving-arguments-to-call-back-functions">Разрешение аргументов для функций обратного вызова </a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-blocks">Общие блоки (COMMON)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortran-90-module-data">Данные модулей Fortran 90</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allocatable-arrays">Массивы с динамически выделяемой памятью (allocatable)</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

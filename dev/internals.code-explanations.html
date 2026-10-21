@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script async="async" src="../_static/scipy-mathjax/MathJax.js?config=scipy-mathjax"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'dev/internals.code-explanations';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="alignment.html" rel="next" title="Выравнивание памяти"/>
+<link href="internals.html" rel="prev" title="Внутренняя организация массивов NumPy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item current active"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../reference/index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Начало работы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/whatisnumpy.html">Что такое NumPy?</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/install/">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">Быстрый старт с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/absolute_beginners.html">NumPy: основы для начинающих</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Основы и применение</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.html">Основы NumPy</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/numpy-for-matlab-users.html">NumPy для пользователей MATLAB</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://numpy.org/numpy-tutorials/">Учебные материалы по NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/howtos_index.html">Практические инструкции по NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Расширенные возможности и взаимодействие с другими средствами</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../user/c-info.html">Использование C API NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../f2py/index.html">Руководство пользователя и справочник F2PY</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="underthehood.html">Внутреннее устройство: документация для разработчиков</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="internals.html">Внутренняя организация массивов NumPy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Пояснения к коду NumPy на C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignment.html">Выравнивание памяти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/byteswapping.html">Изменение порядка байтов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/basics.dispatch.html">Создание собственных контейнеров массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/basics.subclassing.html"> Создание подкласса ndarray </a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.interoperability.html">Взаимодействие с NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/basics.performant_code.html">Эффективный код NumPy на многоядерных процессорах</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Дополнительные материалы</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Глоссарий</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy_2_0_migration_guide.html">Руководство по переходу на NumPy 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">Лицензия NumPy</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../user/index.html">Руководство пользователя NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="underthehood.html">Внутреннее устройство: документация для разработчиков</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Пояснения к коду NumPy на C</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="numpy-c-code-explanations">
+<span id="c-code-explanations"></span><h1>Пояснения к коду NumPy на C<a class="headerlink" href="#numpy-c-code-explanations" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>Фанатизм — это удвоение усилий, когда цель уже забыта. — <em>George Santayana</em></p>
+<p>Авторитет — человек, способный рассказать о чём-либо больше, чем вам хочется знать. — <em>Автор неизвестен</em></p>
+</div></blockquote>
+<p>Эта страница пытается объяснить логику некоторых новых фрагментов кода. Цель этих объяснений состоит в том, чтобы дать возможность кому-то понять идеи, стоящие за реализацией, несколько легче, чем просто смотреть на код. Возможно, таким образом алгоритмы могут быть улучшены, заимствованы и/или оптимизированы большим количеством людей.</p>
+<section id="memory-model">
+<h2>Модель памяти<a class="headerlink" href="#memory-model" title="Link to this heading">#</a></h2>
+<p id="index-0">Один из основных принципов <a class="reference internal" href="../reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>: массив рассматривается как участок памяти, начинающийся по определённому адресу. Интерпретация этой памяти зависит от сведений о <a class="reference internal" href="../glossary.html#term-stride"><span class="xref std std-term">шагах</span></a>. Для каждого измерения <span class="math notranslate nohighlight">\(N\)</span>-мерного массива целое число — <a class="reference internal" href="../glossary.html#term-stride"><span class="xref std std-term">шаг</span></a> — задаёт, сколько байтов нужно пропустить для перехода к следующему элементу вдоль этого измерения. При обходе массива нужно учитывать <a class="reference internal" href="../glossary.html#term-stride"><span class="xref std std-term">шаги</span></a>, кроме случая, когда массив занимает один сегмент памяти. Написать код с поддержкой шагов несложно: нужно использовать указатели <code class="docutils literal notranslate"><span class="pre">char*</span></code>, поскольку шаги выражаются в байтах. Шаги не обязательно кратны размеру элемента. Также помните: если число измерений равно 0, то есть массив нульмерный (иногда называемый <code class="docutils literal notranslate"><span class="pre">rank-0</span></code>), переменные <a class="reference internal" href="../glossary.html#term-stride"><span class="xref std std-term">strides</span></a> и <a class="reference internal" href="../glossary.html#term-dimension"><span class="xref std std-term">dimensions</span></a> равны <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>Помимо структурных сведений в полях strides и dimensions объекта <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayObject" title="PyArrayObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArrayObject</span></code></a>, флаги содержат важную информацию о доступе к данным. <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_ALIGNED" title="NPY_ARRAY_ALIGNED"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_ALIGNED</span></code></a> установлен, если память выровнена по границе, подходящей типу данных. Даже <a class="reference internal" href="../glossary.html#term-contiguous"><span class="xref std std-term">непрерывный</span></a> участок памяти не гарантирует безопасного разыменования указателя на элемент конкретного типа: для этого нужен <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_ALIGNED" title="NPY_ARRAY_ALIGNED"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_ALIGNED</span></code></a>. На одних платформах невыровненный доступ работает, на других, например Solaris, вызывает bus error. Перед записью также нужно проверить <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_WRITEABLE" title="NPY_ARRAY_WRITEABLE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_WRITEABLE</span></code></a>. Указатель может вести в область только для чтения. Запись без флага <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_WRITEABLE" title="NPY_ARRAY_WRITEABLE"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_WRITEABLE</span></code></a> иногда лишь нарушает правила использования, а иногда приводит к аварийному завершению программы, <em>например</em> если данные отображены из файла только для чтения.</p>
+</section>
+<section id="data-type-encapsulation">
+<h2>Инкапсуляция типов данных<a class="headerlink" href="#data-type-encapsulation" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="../reference/arrays.dtypes.html#arrays-dtypes"> <span class="std std-ref"> Объекты типа данных (dtype) </span> </a></p>
+</div>
+<p id="index-1"><a class="reference internal" href="../reference/arrays.dtypes.html#arrays-dtypes"><span class="std std-ref">Тип данных</span></a> — важная абстракция <a class="reference internal" href="../reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>. Операции обращаются к нему за основными средствами работы с массивом. Они представлены списком указателей на функции, на который ссылается поле <code class="docutils literal notranslate"><span class="pre">f</span></code> структуры <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArray_Descr" title="PyArray_Descr"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArray_Descr</span></code></a>. Поэтому новый тип данных можно добавить, предоставив структуру <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArray_Descr" title="PyArray_Descr"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArray_Descr</span></code></a> с подходящими указателями на функции в поле <code class="docutils literal notranslate"><span class="pre">f</span></code>. Для встроенных типов есть оптимизации в обход этого механизма, но смысл абстракции — возможность добавлять новые типы.</p>
+<p>Встроенный тип данных <a class="reference internal" href="../reference/arrays.scalars.html#numpy.void" title="numpy.void"><code class="xref py py-class docutils literal notranslate"><span class="pre">void</span></code></a> позволяет использовать в качестве элементов массива произвольные <a class="reference internal" href="../glossary.html#term-structured-data-type"><span class="xref std std-term">структурированные типы</span></a> с одним или несколькими полями. <a class="reference internal" href="../glossary.html#term-field"><span class="xref std std-term">Поле</span></a> — это другой объект типа данных вместе со смещением внутри текущего структурированного типа. Для поддержки произвольно вложенных полей у типа void есть несколько рекурсивных реализаций доступа к данным. Часто используется обход элементов словаря с выполнением операции согласно объекту типа данных, находящемуся по заданному смещению. Смещения могут быть произвольными числами, поэтому необходимо учитывать возможность невыровненного расположения данных и при необходимости обрабатывать её.</p>
+</section>
+<section id="n-d-iterators">
+<h2>N-мерные итераторы<a class="headerlink" href="#n-d-iterators" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="../reference/arrays.nditer.html#arrays-nditer"><span class="std std-ref">Обход массивов</span></a></p>
+</div>
+<p id="index-2">В коде NumPy часто требуется обойти все элементы произвольного N-мерного массива с заданными шагами по памяти. Универсальный N-мерный цикл представлен абстракцией объекта итератора. Чтобы написать такой цикл, достаточно создать итератор для ndarray, работать с полем <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject.dataptr" title="PyArrayIterObject.dataptr"><code class="xref c c-member docutils literal notranslate"><span class="pre">dataptr</span></code></a> его структуры и вызывать макрос <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_ITER_NEXT" title="PyArray_ITER_NEXT"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_ITER_NEXT</span></code></a> для перехода к следующему элементу. Элемент <code class="docutils literal notranslate"><span class="pre">next</span></code> всегда выбирается в порядке обхода C. Макрос отдельно обрабатывает простые частные случаи: массивы, непрерывно расположенные в порядке C, а также одномерные и двумерные массивы.</p>
+<p>В общем случае объект итератора хранит счётчики координат по всем осям. При переходе к следующему элементу проверка начинается с последней оси. Если её счётчик ещё меньше размера этой оси минус один — эта граница вычислена и сохранена заранее, — счётчик увеличивается на один, к полю <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject.dataptr" title="PyArrayIterObject.dataptr"><code class="xref c c-member docutils literal notranslate"><span class="pre">dataptr</span></code></a> прибавляется шаг по этой оси, и макрос завершает работу. Если достигнут конец оси, её счётчик сбрасывается в ноль, а <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject.dataptr" title="PyArrayIterObject.dataptr"><code class="xref c c-member docutils literal notranslate"><span class="pre">dataptr</span></code></a> возвращается к началу этой оси: из указателя вычитается шаг, умноженный на размер оси минус один. Это смещение также вычислено заранее и хранится в поле <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject.backstrides" title="PyArrayIterObject.backstrides"><code class="xref c c-member docutils literal notranslate"><span class="pre">backstrides</span></code></a> итератора. После переноса макрос продолжает работу: локальный индекс оси уменьшается, и та же проверка выполняется для предпоследней оси, затем при необходимости для предыдущих. Так поле <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject.dataptr" title="PyArrayIterObject.dataptr"><code class="xref c c-member docutils literal notranslate"><span class="pre">dataptr</span></code></a> корректно изменяется и для массивов с произвольными шагами. Примечание переводчика: в исходном описании увеличение счётчика упоминается дважды. В реализации PyArray_ITER_NEXT для NumPy 2.5 сначала проверяется текущее значение, а увеличивается оно только внутри соответствующей ветви условия.</p>
+<p>Поле <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject.coordinates" title="PyArrayIterObject.coordinates"><code class="xref c c-member docutils literal notranslate"><span class="pre">coordinates</span></code></a> структуры <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject" title="PyArrayIterObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArrayIterObject</span></code></a> хранит текущие N-мерные координаты. Если исходный массив непрерывно расположен в памяти в порядке C, подсчёт координат пропускается. Поле <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject.index" title="PyArrayIterObject.index"><code class="xref c c-member docutils literal notranslate"><span class="pre">index</span></code></a> структуры <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject" title="PyArrayIterObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArrayIterObject</span></code></a> отслеживает текущий плоский индекс итератора; его обновляет макрос <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_ITER_NEXT" title="PyArray_ITER_NEXT"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_ITER_NEXT</span></code></a>.</p>
+</section>
+<section id="broadcasting">
+<h2>Трансляция массивов (broadcasting)<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="../user/basics.broadcasting.html#basics-broadcasting"><span class="std std-ref">Трансляция массивов (согласование форм)</span></a></p>
+</div>
+<p id="index-3">В Numeric, предшественнике NumPy, трансляция массивов была реализована несколькими строками кода глубоко внутри <code class="docutils literal notranslate"><span class="pre">ufuncobject.c</span></code>. В NumPy она выделена в отдельную абстракцию, применимую в разных местах. Трансляцию выполняет функция <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_Broadcast" title="PyArray_Broadcast"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_Broadcast</span></code></a>. Ей нужно передать <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayMultiIterObject" title="PyArrayMultiIterObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArrayMultiIterObject</span></code></a> или двоично эквивалентный объект. <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayMultiIterObject" title="PyArrayMultiIterObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArrayMultiIterObject</span></code></a> хранит число измерений после трансляции, размер каждого измерения и общее число элементов результата. Он также хранит число участвующих массивов и указатель на итератор для каждого из них.</p>
+<p>Функция <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_Broadcast" title="PyArray_Broadcast"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_Broadcast</span></code></a> принимает уже созданные итераторы и определяет общую форму после трансляции в каждом измерении. Чтобы одновременно создать итераторы и выполнить согласование форм, используйте <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_MultiIterNew" title="PyArray_MultiIterNew"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_MultiIterNew</span></code></a>. Затем итераторы настраиваются так, словно каждый обходит массив общей формы. Для этого изменяются число измерений итератора и его <a class="reference internal" href="../glossary.html#term-shape"><span class="xref std std-term">форма</span></a> по осям. Одновременно корректируются шаги итератора. Трансляция изменяет только исходные оси длины 1 или добавляет такие оси. Для них шаг устанавливается в 0, поэтому указатель на данные не перемещается, когда итератор проходит расширенную ось.</p>
+<p>В Numeric трансляция массивов всегда реализовывалась с помощью нулевых шагов для расширяемых измерений. NumPy делает это точно так же. Существенное отличие в том, что массив шагов теперь хранится в <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayIterObject" title="PyArrayIterObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArrayIterObject</span></code></a>, итераторы, участвующие в трансляции, — в <a class="reference internal" href="../reference/c-api/types-and-structures.html#c.PyArrayMultiIterObject" title="PyArrayMultiIterObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyArrayMultiIterObject</span></code></a>, а вызов <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_Broadcast" title="PyArray_Broadcast"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_Broadcast</span></code></a> реализует <a class="reference internal" href="../user/basics.broadcasting.html#general-broadcasting-rules"><span class="std std-ref">общие правила трансляции массивов</span></a>.</p>
+</section>
+<section id="array-scalars">
+<h2>Скаляры массивов<a class="headerlink" href="#array-scalars" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="../reference/arrays.scalars.html#arrays-scalars"><span class="std std-ref">Скаляры</span></a></p>
+</div>
+<p id="index-4">Скаляры массива предлагают иерархию типов Python, которая обеспечивает взаимно однозначное соответствие между типом данных, хранящимся в массиве, и типом Python, который возвращается при извлечении элемента из массива. Исключение из этого правила сделано для массивов объектов. Массивы объектов представляют собой разнородные коллекции произвольных объектов Python. Когда вы выбираете элемент из массива объектов, вы получаете исходный объект Python (а не скаляр массива объектов, который существует, но редко используется для практических целей).</p>
+<p>Скаляры NumPy предоставляют те же методы и атрибуты, что и массивы, чтобы один и тот же код мог работать с любым числом измерений, включая ноль. Скаляры NumPy доступны только для чтения (неизменяемы), за исключением скаляра void: в него можно записывать, чтобы присваивание значений полям структурированного массива работало естественным образом (<code class="docutils literal notranslate"><span class="pre">a[0]['f1']</span> <span class="pre">=</span> <span class="pre">value</span></code>).</p>
+</section>
+<section id="indexing">
+<h2>Индексация <a class="headerlink" href="#indexing" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="../user/basics.indexing.html#basics-indexing"><span class="std std-ref">Индексация ndarray</span></a>, <a class="reference internal" href="../reference/routines.indexing.html#arrays-indexing"><span class="std std-ref">Функции индексации</span></a></p>
+</div>
+<p id="index-5">При любой индексации Python <code class="docutils literal notranslate"><span class="pre">arr[index]</span></code> сначала подготавливается индекс и определяется его тип. Поддерживаются следующие типы индексов:</p>
+<ul class="simple">
+<li><p>целое число</p></li>
+<li><p><a class="reference internal" href="../reference/constants.html#numpy.newaxis" title="numpy.newaxis"><code class="xref py py-const docutils literal notranslate"><span class="pre">newaxis</span></code></a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/glossary.html#term-slice" title="(in Python v3.14)"><span>срез</span></a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(в Python v3.14)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Ellipsis</span></code></a></p></li>
+<li><p>целочисленные массивы или объекты, подобные массивам (расширенная индексация)</p></li>
+<li><p>логический индекс (один логический массив); если в индексе несколько логических массивов или форма не совпадает в точности, логический массив вместо этого преобразуется в целочисленный.</p></li>
+<li><p>0-d булевые (и также целые); 0-d булевые массивы являются особым случаем, который должен обрабатываться в расширенном индексационном коде. Они сигнализируют о том, что булевой массив 0-d должен интерпретироваться как целочисленный массив.</p></li>
+</ul>
+<p>Также учитывается особый случай скалярного массива, означающий, что целочисленный массив был интерпретирован как целочисленный индекс. Это важно, поскольку индексирование целочисленным массивом требует создания копии, но это требование не учитывается при возврате скаляра (когда целочисленные индексы заданы для всех осей). Подготовленный индекс гарантированно корректен, за исключением значений за пределами допустимых границ и ошибок трансляции массивов при расширенной индексации. В частности, к неполным индексам добавляется <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.14)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Ellipsis</span></code></a>, например при индексировании двумерного массива одним целым числом.</p>
+<p>Следующий шаг зависит от найденного типа индекса. Если все измерения индексируются целыми числами, возвращается или задаётся скаляр. Единственный логический индексирующий массив обрабатывается специализированными функциями. Если индексы содержат <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.14)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Ellipsis</span></code></a> или <a class="reference external" href="https://docs.python.org/3/glossary.html#term-slice" title="(in Python v3.14)"><span>срез</span></a>, но не расширенную индексацию, всегда создаётся представление исходного массива с заново вычисленными шагами и смещением в памяти. Его можно вернуть либо при присваивании заполнить с помощью <code class="docutils literal notranslate"><span class="pre">PyArray_CopyObject</span></code>. Функция <code class="docutils literal notranslate"><span class="pre">PyArray_CopyObject</span></code> может также вызываться для временных массивов в других ветвях, чтобы поддерживать сложные присваивания для массивов с объектным <a class="reference internal" href="../reference/generated/numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code></a>.</p>
+<section id="advanced-indexing">
+<h3>Расширенное индексирование<a class="headerlink" href="#advanced-indexing" title="Link to this heading">#</a></h3>
+<p>Самый сложный случай — расширенная индексация, которая может сочетаться с обычной индексацией, создающей представления. Здесь целочисленные индексы относятся к индексации через представления. Прежде чем разбираться в реализации, стоит ознакомиться с тонкостями такого индексирования. В коде расширенной индексации есть три ветви и один особый случай:</p>
+<ul class="simple">
+<li><p>Имеется один массив индексов, который, как и массив присваиваемых значений, допускает простой обход. Например, оба массива могут быть непрерывно расположены в памяти. Кроме того, массив индексов должен иметь тип <a class="reference internal" href="../reference/arrays.scalars.html#numpy.intp" title="numpy.intp"><code class="xref py py-class docutils literal notranslate"><span class="pre">intp</span></code></a>, а массив значений при присваивании — нужный тип. Это исключительно оптимизированный путь выполнения.</p></li>
+<li><p>Имеются только целочисленные индексы-массивы, поэтому подмассива нет.</p></li>
+<li><p>Здесь смешаны индексация с созданием представлений и расширенная индексация. Первая задаёт набор подмассивов, которые объединяются посредством второй. Например, <code class="docutils literal notranslate"><span class="pre">arr[[1,</span> <span class="pre">2,</span> <span class="pre">3],</span> <span class="pre">:]</span></code> создаётся вертикальным объединением подмассивов <code class="docutils literal notranslate"><span class="pre">arr[1,</span> <span class="pre">:]</span></code>, <code class="docutils literal notranslate"><span class="pre">arr[2,</span> <span class="pre">:]</span></code> и <code class="docutils literal notranslate"><span class="pre">arr[3,</span> <span class="pre">:]</span></code>.</p></li>
+<li><p>Подмассив есть, но содержит ровно один элемент. Этот случай можно обработать как отсутствие подмассива, но при подготовке нужна осторожность.</p></li>
+</ul>
+<p>Выбор случая, проверка трансляции массивов и определение необходимой перестановки осей выполняются в <code class="docutils literal notranslate"><span class="pre">PyArray_MapIterNew</span></code>. После настройки возможны два случая. Если подмассива нет или в нём один элемент, отдельный обход подмассива не нужен: готовится итератор для всех массивов индексов, <em>а также</em> массива результата или присваиваемых значений. Если подмассив есть, готовятся три итератора: для массивов индексов; для массива результата или значений без его подмассива; и для подмассивов исходного массива и массива результата/присваивания. Первые два итератора дают указатели на начала подмассивов или позволяют вычислить их, после чего обход подмассива можно запустить заново.</p>
+<p>Если расширенные индексы расположены рядом, может понадобиться перестановка осей. Её выполняет <code class="docutils literal notranslate"><span class="pre">PyArray_MapIterSwapAxes</span></code>, которую должен вызвать вызывающий код, если только <code class="docutils literal notranslate"><span class="pre">PyArray_MapIterNew</span></code> не поручено выделить результирующий массив.</p>
+<p>После подготовки получение и присваивание элементов относительно просты, хотя нужно учитывать разные режимы обхода. При получении элементов допустимость индексов проверяется заранее, кроме случая с единственным индексным массивом. В этом случае ради оптимизации проверка выполняется непосредственно во внутреннем цикле.</p>
+</section>
+</section>
+<section id="universal-functions">
+<span id="ufuncs-internals"></span><h2>Универсальные функции <a class="headerlink" href="#universal-functions" title="Link to this heading">#</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">См. также</p>
+<p><a class="reference internal" href="../reference/ufuncs.html#ufuncs"><span class="std std-ref">Универсальные функции (ufunc)</span></a>, <a class="reference internal" href="../user/basics.ufuncs.html#ufuncs-basics"><span class="std std-ref">Основы универсальных функций (ufunc)</span></a></p>
+</div>
+<p id="index-6">Универсальные функции — вызываемые объекты, принимающие <span class="math notranslate nohighlight">\(N\)</span> входов и формирующие <span class="math notranslate nohighlight">\(M\)</span> выходов. Они оборачивают базовые одномерные циклы поэлементной обработки в удобные функции, автоматически выполняющие <a class="reference internal" href="../user/basics.broadcasting.html#basics-broadcasting"><span class="std std-ref">трансляцию массивов</span></a>, <a class="reference internal" href="../user/basics.ufuncs.html#ufuncs-casting"><span class="std std-ref">проверку типов</span></a>, <a class="reference internal" href="../user/basics.ufuncs.html#use-of-internal-buffers"><span class="std std-ref">приведение типов через буфер</span></a> и <a class="reference internal" href="../user/basics.ufuncs.html#ufuncs-output-type"><span class="std std-ref">обработку выходных аргументов</span></a>. Новые универсальные функции обычно создают на C, хотя их можно создавать и из функций Python (<a class="reference internal" href="../reference/generated/numpy.frompyfunc.html#numpy.frompyfunc" title="numpy.frompyfunc"><code class="xref py py-func docutils literal notranslate"><span class="pre">frompyfunc</span></code></a>). Пользователь должен предоставить одномерный цикл, который получает входные скалярные значения и помещает скалярные результаты в соответствующие выходные позиции, как описано в разделе о реализации.</p>
+<section id="setup">
+<h3>Настройка<a class="headerlink" href="#setup" title="Link to this heading">#</a></h3>
+<p>Каждое вычисление <a class="reference internal" href="../reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code></a> связано с накладными расходами на его подготовку. Поэтому, хотя сами вычисления универсальной функции очень быстры, для небольших массивов можно написать код под конкретный массив и тип, который окажется быстрее. В частности, многократные вычисления универсальными функциями над нульмерными массивами медленнее других решений на Python. Неявно импортируемый модуль <code class="docutils literal notranslate"><span class="pre">scalarmath</span></code> как раз обеспечивает для скаляров NumPy поведение, похожее на вычисления универсальными функциями, со значительно меньшими накладными расходами.</p>
+<p>Вызов <a class="reference internal" href="../reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code></a> требует ряда подготовительных действий. Полученная при подготовке информация хранится в объекте цикла — структуре C, которая могла бы стать объектом Python, но не инициализируется как таковой, поскольку используется только внутри реализации. Структура объекта цикла позволяет использовать его с <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_Broadcast" title="PyArray_Broadcast"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_Broadcast</span></code></a>, чтобы выполнять трансляцию массивов (согласование форм) так же, как в других частях кода.</p>
+<p>Сначала из глобального словаря, отдельного для каждого потока, извлекаются текущий размер буфера, маска ошибок и связанный с ней объект ошибки. Маска ошибок определяет действия при обнаружении ошибки. Аппаратные флаги ошибок проверяются лишь после выполнения каждого одномерного цикла. Поэтому, если входные и выходные массивы непрерывно расположены в памяти и имеют нужный тип, так что достаточно одного одномерного цикла, флаги могут проверяться лишь после обработки всех элементов массива. Поиск значений в отдельном для потока словаре требует времени, но этими затратами можно пренебречь для всех массивов, кроме очень маленьких.</p>
+<p>После проверки глобальных переменных текущего потока анализируются входные данные, чтобы определить порядок выполнения универсальной функции; при необходимости создаются входные и выходные массивы. Входные данные, не являющиеся массивами, преобразуются в массивы (при необходимости с использованием контекста). При этом отмечается, какие входные данные являются скалярами и потому преобразуются в нульмерные массивы.</p>
+<p>Затем по типам входных массивов выбирается подходящий одномерный цикл из доступных для <a class="reference internal" href="../reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code></a>. Сигнатура типов входных данных сопоставляется с имеющимися сигнатурами. Сигнатуры встроенных типов хранятся в поле <a class="reference internal" href="../reference/generated/numpy.ufunc.types.html#numpy.ufunc.types" title="numpy.ufunc.types"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ufunc.types</span></code></a> структуры ufunc. Сигнатуры пользовательских типов хранятся в связном списке сведений о функциях; его головной элемент хранится как <code class="docutils literal notranslate"><span class="pre">CObject</span></code> в словаре <code class="docutils literal notranslate"><span class="pre">userloops</span></code> с ключом, равным номеру типа данных. В качестве ключа берётся первый пользовательский тип в списке аргументов. Поиск продолжается до сигнатуры, к которой можно безопасно привести все входные массивы; скалярные аргументы, не участвующие в определении типа результата, игнорируются. Поэтому «меньшие» типы должны предшествовать «большим» при хранении сигнатур. Если одномерный цикл не найден, сообщается об ошибке. Иначе <code class="docutils literal notranslate"><span class="pre">argument_list</span></code> обновляется найденной сигнатурой на случай необходимости приведения типов, а также для задания выходных типов, ожидаемых одномерным циклом.</p>
+<p>Если у универсальной функции два входа и один выход, а второй вход — массив <code class="docutils literal notranslate"><span class="pre">Object</span></code>, выполняется особая проверка. Возвращается <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code>, если второй вход не является ndarray, имеет атрибут <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_priority__" title="numpy.class.__array_priority__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_priority__</span></code></a> и специальный метод <code class="docutils literal notranslate"><span class="pre">__r{op}__</span></code>. Тем самым Python получает указание дать другому объекту возможность выполнить операцию вместо общих вычислений над массивом объектов. Это позволяет, например, разреженным матрицам переопределять одномерный цикл оператора умножения.</p>
+<p>Для входных массивов меньше заданного размера буфера копируются все массивы, не расположенные непрерывно, неправильно выровненные или имеющие несистемный порядок байтов. Это обеспечивает обработку малых массивов одним циклом. Затем создаются итераторы всех входных массивов, а их формы согласуются по правилам трансляции.</p>
+<p>Затем выходные аргументы (если они есть) обрабатываются и строятся недостающие возвращаемые массивы. Если какой-либо предоставленный выходной массив не имеет правильного типа (или неправильно выровнен) и меньше размера буфера, то создается новый выходной массив со специальным установленным флагом <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_WRITEBACKIFCOPY" title="NPY_ARRAY_WRITEBACKIFCOPY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_WRITEBACKIFCOPY</span></code></a>. В конце функции вызывается <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_ResolveWritebackIfCopy" title="PyArray_ResolveWritebackIfCopy"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_ResolveWritebackIfCopy</span></code></a>, чтобы ее содержимое было скопировано обратно в выходной массив. Затем обрабатываются итераторы для выходных аргументов.</p>
+<p>Наконец, выбирается способ выполнения циклов, чтобы объединить все элементы входных массивов в выходные массивы нужного типа. Возможны один цикл (для <a class="reference internal" href="../glossary.html#term-contiguous"><span class="xref std std-term">непрерывно расположенных в памяти</span></a> и выровненных данных нужного типа), обход с шагами (для данных, расположенных не непрерывно, но выровненных и нужного типа) и цикл с буферизацией (при невыровненных данных или неподходящем типе). В соответствии с выбранным способом цикл настраивается и выполняется.</p>
+</section>
+<section id="function-call">
+<h3>Вызов функции<a class="headerlink" href="#function-call" title="Link to this heading">#</a></h3>
+<p>В этом разделе описываются подготовка и выполнение основного вычислительного цикла универсальной функции для каждого из трёх режимов. Если при компиляции определён <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ALLOW_THREADS" title="NPY_ALLOW_THREADS"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ALLOW_THREADS</span></code></a>, перед вызовом циклов глобальная блокировка интерпретатора Python (GIL) освобождается, если не используются объектные массивы. При необходимости обработки ошибок GIL захватывается снова. Аппаратные флаги ошибок проверяются только после завершения одномерного цикла.</p>
+<section id="one-loop">
+<h4>Один цикл <a class="headerlink" href="#one-loop" title="Link to this heading">#</a></h4>
+<p>Это самый простой случай. Универсальная функция выполняется единственным вызовом базового одномерного цикла. Это возможно, только если входные и выходные данные выровнены и имеют нужный тип (включая порядок байтов), а шаги всех массивов постоянны: массивы либо <a class="reference internal" href="../glossary.html#term-contiguous"><span class="xref std std-term">непрерывно расположены в памяти</span></a>, либо нульмерные, либо одномерные. Тогда одномерный вычислительный цикл вызывается один раз для обработки всего массива. Аппаратные флаги ошибок проверяются лишь после завершения всего вычисления.</p>
+</section>
+<section id="strided-loop">
+<h4>Цикл обхода с шагом<a class="headerlink" href="#strided-loop" title="Link to this heading">#</a></h4>
+<p>Если входные и выходные массивы выровнены и имеют правильный тип, но шаги неоднородны (данные расположены в памяти не непрерывно, а массив имеет не менее двух измерений), для вычисления применяется вторая структура циклов. Все итераторы входных и выходных аргументов преобразуются так, чтобы обходить все измерения, кроме самого большого. Внутренний цикл выполняет базовый одномерный вычислительный цикл, а внешний — обычный цикл по преобразованным итераторам. После завершения каждого одномерного цикла проверяются аппаратные флаги ошибок.</p>
+</section>
+<section id="buffered-loop">
+<h4>Цикл с буферизацией<a class="headerlink" href="#buffered-loop" title="Link to this heading">#</a></h4>
+<p>Этот код обрабатывает случаи, когда входные и/или выходные массивы не выровнены либо их тип данных, включая порядок байтов, отличается от ожидаемого базовым одномерным циклом. Также предполагается, что массивы не расположены в памяти непрерывно. Работа похожа на обход с шагом, но внутренний одномерный цикл изменён: входные данные предварительно обрабатываются, а выходные — обрабатываются после вычисления блоками размера <code class="docutils literal notranslate"><span class="pre">bufsize</span></code>, где <code class="docutils literal notranslate"><span class="pre">bufsize</span></code> задаётся пользователем. Базовый вычислительный цикл вызывается для данных, скопированных при необходимости. Подготовка и сам цикл в этом случае значительно сложнее, поскольку нужно учитывать:</p>
+<ul class="simple">
+<li><p>выделение памяти временных буферов</p></li>
+<li><p>определение необходимости буферизации входных и выходных данных при невыровненном размещении и/или неподходящем типе данных</p></li>
+<li><p>копирование и, возможно, преобразование данных для любых входов или выходов, для которых необходимы буферы.</p></li>
+<li><p>особая обработка массивов <code class="docutils literal notranslate"><span class="pre">Object</span></code> для правильного управления счётчиками ссылок при копировании и/или приведении типов.</p></li>
+<li><p>разбиение внутреннего одномерного цикла на блоки размером <code class="docutils literal notranslate"><span class="pre">bufsize</span></code> (с возможным остатком).</p></li>
+</ul>
+<p>Флаги аппаратных ошибок проверяются в конце каждого 1-D цикла.</p>
+</section>
+</section>
+<section id="final-output-manipulation">
+<h3>Заключительная обработка результата<a class="headerlink" href="#final-output-manipulation" title="Link to this heading">#</a></h3>
+<p>Универсальные функции позволяют работать с другими классами, подобными массивам, так, чтобы результат сохранял класс входов. Механизм следующий: если среди входов есть объекты, отличные от ndarray и определяющие метод <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_wrap__" title="numpy.class.__array_wrap__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_wrap__</span></code></a>, класс с наибольшим значением <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_priority__" title="numpy.class.__array_priority__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_priority__</span></code></a> задаёт тип всех выходов, кроме явно переданных выходных массивов. Метод <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_wrap__" title="numpy.class.__array_wrap__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_wrap__</span></code></a> входного массива вызывается с ndarray, полученным из универсальной функции. Поддерживаются два варианта вызова <a class="reference internal" href="../reference/arrays.classes.html#numpy.class.__array_wrap__" title="numpy.class.__array_wrap__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__array_wrap__</span></code></a>. Сначала передаются ndarray и кортеж контекста (ufunc, arguments, output argument number). Если возникает <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>, метод вызывается повторно только с ndarray в качестве единственного аргумента.</p>
+</section>
+<section id="methods">
+<h3>Методы <a class="headerlink" href="#methods" title="Link to this heading">#</a></h3>
+<p>Три метода универсальных функций требуют вычислений, подобных обычному вызову ufunc: <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ufunc.reduce</span></code></a>, <a class="reference internal" href="../reference/generated/numpy.ufunc.accumulate.html#numpy.ufunc.accumulate" title="numpy.ufunc.accumulate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ufunc.accumulate</span></code></a> и <a class="reference internal" href="../reference/generated/numpy.ufunc.reduceat.html#numpy.ufunc.reduceat" title="numpy.ufunc.reduceat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ufunc.reduceat</span></code></a>. У каждого после подготовки выполняется цикл. Возможны четыре варианта: без элементов, с одним элементом, с заданными шагами и с буферизацией. Это те же основные варианты, что и при обычном вызове, кроме особых случаев пустого входного массива и массива из одного элемента.</p>
+<section id="id1">
+<h4>Настройка<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>Функция подготовки всех трёх методов — <code class="docutils literal notranslate"><span class="pre">construct_reduce</span></code>. Она создаёт объект цикла свёртки и заполняет его параметрами для выполнения цикла. Методы работают только с универсальными функциями с двумя входами и одним выходом. Поэтому базовый одномерный цикл выбирается для сигнатуры <code class="docutils literal notranslate"><span class="pre">[otype,</span>
+<span class="pre">otype,</span> <span class="pre">otype]</span></code>, где <code class="docutils literal notranslate"><span class="pre">otype</span></code> — запрошенный тип данных свёртки. Затем из глобального хранилища текущего потока извлекаются размер буфера и настройки обработки ошибок. Для небольших невыровненных массивов или массивов неподходящего типа создаётся копия, позволяющая использовать код без буферизации. Далее выбирается стратегия обхода: для массива из нуля или одного элемента — простой цикл; для выровненного массива нужного типа — цикл с шагами; в остальных случаях — цикл с буферизацией. После этого задаются параметры цикла и создаётся возвращаемый массив. Его <a class="reference internal" href="../glossary.html#term-shape"><span class="xref std std-term">форма</span></a> зависит от метода: <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduce</span></code></a>, <a class="reference internal" href="../reference/generated/numpy.ufunc.accumulate.html#numpy.ufunc.accumulate" title="numpy.ufunc.accumulate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accumulate</span></code></a> или <a class="reference internal" href="../reference/generated/numpy.ufunc.reduceat.html#numpy.ufunc.reduceat" title="numpy.ufunc.reduceat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduceat</span></code></a>. Если выходной массив уже задан, его форма проверяется. Если он не удовлетворяет требованиям к непрерывному расположению в порядке C, выравниванию или типу данных, создаётся временная копия с флагом <a class="reference internal" href="../reference/c-api/array.html#c.NPY_ARRAY_WRITEBACKIFCOPY" title="NPY_ARRAY_WRITEBACKIFCOPY"><code class="xref c c-data docutils literal notranslate"><span class="pre">NPY_ARRAY_WRITEBACKIFCOPY</span></code></a>. Так методы работают с массивом подходящего устройства, а при завершении функции вызов <a class="reference internal" href="../reference/c-api/array.html#c.PyArray_ResolveWritebackIfCopy" title="PyArray_ResolveWritebackIfCopy"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArray_ResolveWritebackIfCopy</span></code></a> копирует результат обратно в настоящий выходной массив. Наконец, настраиваются итераторы для обхода нужной <a class="reference internal" href="../glossary.html#term-axis"><span class="xref std std-term">оси</span></a>, определяемой переданным аргументом axis, и функция подготовки возвращает управление вычисляющей функции.</p>
+</section>
+<section id="reduce">
+<h4><a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Reduce</span></code></a><a class="headerlink" href="#reduce" title="Ссылка на заголовок">#</a></h4>
+<p id="index-7">Все методы универсальных функций используют одни и те же базовые одномерные вычислительные циклы. Их входные и выходные аргументы настраиваются так, чтобы выполнить нужную свёртку. Например, работа <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduce</span></code></a> основана на том, что при вызове одномерного цикла выход и второй вход указывают на одну и ту же позицию памяти и оба имеют нулевой шаг. Первый вход указывает на входной массив, а его шаг равен соответствующему шагу массива вдоль выбранной оси. Таким образом, выполняется операция</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+o &amp; = &amp; i[0] \\
+o &amp; = &amp; i[k]\textrm{&lt;op&gt;}o\quad k=1\ldots N
+\end{align*}</div><p>где <span class="math notranslate nohighlight">\(N+1\)</span> — число элементов входного массива <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(o\)</span> — результат, а <span class="math notranslate nohighlight">\(i[k]\)</span> — элемент с номером <span class="math notranslate nohighlight">\(k^{\textrm{th}}\)</span> массива <span class="math notranslate nohighlight">\(i\)</span> вдоль выбранной оси. Для массивов с более чем одним измерением эта базовая операция повторяется: свёртка выполняется для каждого одномерного подмассива вдоль выбранной оси. Этот обход выполняется итератором, из которого исключено выбранное измерение.</p>
+<p>В циклах с буферизацией данные нужно скопировать и привести к нужному типу до вызова функции цикла: она ожидает выровненные данные правильного типа и порядка байтов. Перед каждым вызовом для блока размером не больше заданного пользователем <code class="docutils literal notranslate"><span class="pre">bufsize</span></code> буферизованный цикл выполняет такое копирование и приведение.</p>
+</section>
+<section id="accumulate">
+<h4><a class="reference internal" href="../reference/generated/numpy.ufunc.accumulate.html#numpy.ufunc.accumulate" title="numpy.ufunc.accumulate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Accumulate</span></code></a><a class="headerlink" href="#accumulate" title="Ссылка на заголовок">#</a></h4>
+<p id="index-8">Метод <a class="reference internal" href="../reference/generated/numpy.ufunc.accumulate.html#numpy.ufunc.accumulate" title="numpy.ufunc.accumulate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accumulate</span></code></a> очень похож на <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduce</span></code></a>: выход и второй вход указывают на выходные данные. Отличие в том, что второй вход указывает на память на один шаг позади текущего выходного указателя. Поэтому выполняется операция</p>
+<div class="math notranslate nohighlight">
+\begin{align*}
+o[0] &amp; = &amp; i[0] \\
+o[k] &amp; = &amp; i[k]\textrm{&lt;op&gt;}o[k-1]\quad k=1\ldots N.
+\end{align*}</div><p>Результат имеет ту же форму, что и входные данные. Каждый одномерный цикл обрабатывает <span class="math notranslate nohighlight">\(N\)</span> элементов, когда длина выбранной оси равна <span class="math notranslate nohighlight">\(N+1\)</span>. Циклы с буферизацией также копируют и приводят данные перед вызовом базового одномерного вычислительного цикла.</p>
+</section>
+<section id="reduceat">
+<h4><a class="reference internal" href="../reference/generated/numpy.ufunc.reduceat.html#numpy.ufunc.reduceat" title="numpy.ufunc.reduceat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Reduceat</span></code></a><a class="headerlink" href="#reduceat" title="Ссылка на заголовок">#</a></h4>
+<p id="index-9">Функция <a class="reference internal" href="../reference/generated/numpy.ufunc.reduceat.html#numpy.ufunc.reduceat" title="numpy.ufunc.reduceat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduceat</span></code></a> обобщает <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduce</span></code></a> и <a class="reference internal" href="../reference/generated/numpy.ufunc.accumulate.html#numpy.ufunc.accumulate" title="numpy.ufunc.accumulate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accumulate</span></code></a>. Она выполняет <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduce</span></code></a> по диапазонам входного массива, заданным индексами. Перед вычислениями проверяется, не превышают ли значения дополнительного аргумента indices границы входного массива по выбранной оси. Реализация похожа на код <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduce</span></code></a>, повторённый для каждого элемента indices. Первый входной указатель, передаваемый базовому одномерному вычислительному циклу, указывает на позицию входного массива, заданную массивом индексов. Выходной и второй входной указатели этого цикла указывают на одну и ту же область памяти. Длина одномерного цикла равна разности следующего и текущего индексов; для последнего индекса следующим считается длина массива по выбранной оси. Таким образом, одномерный цикл выполняет <a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reduce</span></code></a> по заданным диапазонам индексов.</p>
+<p>Невыровненные данные или несовпадение типа внутреннего цикла с типом входных и/или выходных данных обрабатываются через буферизацию. Перед вызовом базовой одномерной функции данные копируются во временный буфер и при необходимости приводятся к нужному типу. Размер временных буферов в элементах не превышает настраиваемого пользователем предела. Поэтому внешний цикл должен вызывать базовый одномерный вычислительный цикл столько раз, сколько нужно для обработки всех данных порциями не больше буфера.</p>
+</section>
+</section>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="internals.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Внутренняя организация массивов NumPy</p>
+</div>
+</a>
+<a class="right-next" href="alignment.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Выравнивание памяти</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-model">Модель памяти</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-type-encapsulation">Инкапсуляция типов данных</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-d-iterators">N-мерные итераторы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Трансляция массивов (broadcasting)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-scalars">Скаляры массивов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Индексация </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-indexing">Расширенное индексирование</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-functions">Универсальные функции </a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Настройка</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-call">Вызов функции</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"> <a class="reference internal nav-link" href="#one-loop">Один цикл </a> </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#strided-loop">Цикл обхода с шагом</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#buffered-loop">Цикл с буферизацией</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-output-manipulation">Заключительная обработка результата</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Методы </a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Настройка</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce"><a class="reference internal" href="../reference/generated/numpy.ufunc.reduce.html#numpy.ufunc.reduce" title="numpy.ufunc.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Reduce</span></code></a></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accumulate"><a class="reference internal" href="../reference/generated/numpy.ufunc.accumulate.html#numpy.ufunc.accumulate" title="numpy.ufunc.accumulate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Accumulate</span></code></a></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reduceat"><a class="reference internal" href="../reference/generated/numpy.ufunc.reduceat.html#numpy.ufunc.reduceat" title="numpy.ufunc.reduceat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Reduceat</span></code></a></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>

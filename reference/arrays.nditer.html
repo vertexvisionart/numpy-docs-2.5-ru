@@ -1,0 +1,1072 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../" data-theme="light" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>&lt;numpy-ru data-unit="0"&gt;&lt;/numpy-ru&gt;</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet"/>
+<link href="../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../_static/graphviz.css?v=eafc0fe6" rel="stylesheet" type="text/css"/>
+<link href="../_static/plot_directive.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet" type="text/css"/>
+<link href="../_static/jupyterlite_sphinx.css?v=8ee2c72c" rel="stylesheet" type="text/css"/>
+<link href="../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../_static/numpy.css?v=7e165a8b" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script defer="" src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<link as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" rel="preload"/>
+<script src="../_static/documentation_options.js?v=824642aa"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=30646c52"></script>
+<script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+<script src="../_static/design-tabs.js?v=f930bc37"></script>
+<script data-domain="numpy.org/doc/stable/" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'reference/arrays.nditer';</script>
+<script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://numpy.org/doc/_static/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '2.5';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+<script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+<link href="../_static/favicon.ico" rel="icon"/>
+<link href="../genindex.html" rel="index" title="Предметный указатель"/>
+<link href="../search.html" rel="search" title="Поиск"/>
+<link href="arrays.classes.html" rel="next" title="Стандартные подклассы массивов"/>
+<link href="arrays.promotion.html" rel="prev" title="Повышение типов данных в NumPy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="2.5" name="docsearch:version"/>
+<meta content="Jun 28, 2026" name="docbuild:last-update"/>
+<script src="../_static/searchtools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script src="../searchindex.js"></script>
+<meta content="ru; NumPy 2.5; Google Translate and Argos EN-RU 1.9 draft; individually reviewed translation and exact API metadata" name="translation"/></head>
+<body data-default-mode="light">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Перейти к основному содержимому</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i>К началу страницы</button>
+<dialog id="pst-search-dialog">
+<form action="../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Поиск по документации…" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Поиск по документации…" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Предупреждение о версии" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none" id="pst-header">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Навигация по сайту" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="col-lg-3 navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../index.html">
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-light" src="../_static/numpylogo.svg"/>
+<img alt="Руководство NumPy 2.5 — главная страница" class="logo__image only-dark pst-js-only" src="../_static/numpylogo_dark.svg"/>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-2" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-2" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-2" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-2" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<button aria-label="На этой странице" class="pst-navbar-icon sidebar-toggle secondary-toggle">
+<span class="fa-solid fa-outdent"></span>
+</button>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item"><a class="nav-link nav-internal" href="../user/index.html">Руководство пользователя</a></li>
+<li class="nav-item current active"><a class="nav-link nav-internal" href="index.html">Справочник API</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../building/index.html">Сборка из исходного кода</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../dev/index.html">Разработка</a></li>
+<li class="nav-item"><a class="nav-link nav-internal" href="../release.html">Примечания к выпускам</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/numpy-tutorials/">Учебные материалы</a></li>
+<li class="nav-item"><a class="nav-link nav-external" href="https://numpy.org/neps"> NEP </a></li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<button aria-label="Поиск" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Поиск">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+<div class="navbar-item">
+<button aria-label="Цветовая тема" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Светлая"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Тёмная"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="Системные настройки"></i>
+</button></div>
+<div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+<button aria-controls="pst-version-switcher-list-3" aria-haspopup="listbox" aria-label="Список версий" class="version-switcher__button btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" id="pst-version-switcher-button-3" type="button">Выбрать версию <!-- this text may get changed later by javascript --> <span class="caret"></span></button>
+<div aria-labelledby="pst-version-switcher-button-3" class="version-switcher__menu dropdown-menu list-group-flush py-0" id="pst-version-switcher-list-3" role="listbox">
+<!-- dropdown will be populated by javascript on page load -->
+</div>
+</div></div>
+<div class="navbar-item"><ul aria-label="Ссылки-значки" class="navbar-icon-links">
+<li class="nav-item"><a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/numpy/numpy" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i><span class="sr-only">GitHub</span></a></li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item pst-sidebar-collapse"><button aria-controls="pst-primary-sidebar" aria-expanded="true" id="pst-collapse-sidebar-button"><svg aria-hidden="true" class="pst-icon svg-inline--fa" focusable="false" role="img" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z" fill="currentColor"></path>
+</svg> <span class="pst-collapse-sidebar-label">Свернуть боковую панель</span> <span class="pst-expand-sidebar-label">Развернуть боковую панель</span></button></div>
+<div class="sidebar-primary-item">
+<nav aria-label="Навигация по разделам" class="bd-docs-nav bd-links">
+<p aria-level="1" class="bd-links__title" role="heading">Навигация по разделам</p>
+<div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="module_structure.html">Структура модулей NumPy</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="arrays.html">Объекты массивов</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="arrays.ndarray.html">N-мерный массив (<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.scalars.html">Скаляры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.dtypes.html">Объекты типов данных (<code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.promotion.html">Повышение типов данных в NumPy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Итерация по массивам</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.classes.html">Стандартные подклассы массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maskedarray.html"> Маскированные массивы </a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.interface.html">Протокол интерфейса массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.datetime.html">Даты, время и временные интервалы</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ufuncs.html">Универсальные функции (<code class="xref py py-class docutils literal notranslate"><span class="pre">ufunc</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="routines.html">Функции и объекты по темам</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="typing.html">Аннотации типов (<code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.typing</span></code>)</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c-api/index.html"> NumPy C-API </a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="array_api.html">Совместимость со стандартом Array API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simd/index.html">Оптимизации CPU/SIMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_safety.html">Потокобезопасность</a></li>
+<li class="toctree-l1"><a class="reference internal" href="global_state.html">Глобальные параметры конфигурации</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Безопасность NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Рекомендации по тестированию</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distutils_status_migration.html">Состояние <code class="docutils literal notranslate"><span class="pre">numpy.distutils</span></code> и рекомендации по переходу</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swig.html"> NumPy и SWIG </a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Навигационная цепочка" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Главная" class="nav-link" href="../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Справочник NumPy</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="arrays.html">Объекты массивов</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">Итерация по массивам</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="iterating-over-arrays">
+<span id="arrays-nditer"></span><h1>Перебор элементов массивов<a class="headerlink" href="#iterating-over-arrays" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Массивы поддерживают протокол итератора, и их можно перебирать как списки Python. Основы и примеры см. в разделе <a class="reference internal" href="../user/quickstart.html#quickstart-indexing-slicing-and-iterating"><span class="std std-ref">Индексация, срезы и обход</span></a> краткого руководства. Далее этот документ описывает объект <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> и более сложные сценарии.</p>
+</div>
+<p>Объект-итератор <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a>, появившийся в NumPy 1.6, предоставляет множество гибких способов систематического обхода всех элементов одного или нескольких массивов. На этой странице сначала описаны основные способы его применения для вычислений над массивами в Python, а затем — ускорение внутреннего цикла с помощью Cython. Поскольку интерфейс <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> в Python довольно прямо отражает C API итератора массивов, эти идеи полезны и при обходе массивов в C или C++.</p>
+<section id="single-array-iteration">
+<h2>Обход одного массива<a class="headerlink" href="#single-array-iteration" title="Link to this heading">#</a></h2>
+<p>Самая основная задача, которую можно выполнить с помощью <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a>, — это просмотреть каждый элемент массива. Каждый элемент предоставляется один за другим с использованием стандартного интерфейса итератора Python.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="35174e27-3ccf-4ada-a8b9-bcd7c8fdd6a2">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('35174e27-3ccf-4ada-a8b9-bcd7c8fdd6a2','cefac22b-7754-4c2c-9340-8567d038dea9','a4023e61-f00f-4d98-bcaa-fbf85a5720b0','../lite/tree/../notebooks/index.html?path=65f3712a_8a4b_4bea_8e41_6990a1245312.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0 1 2 3 4 5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="a4023e61-f00f-4d98-bcaa-fbf85a5720b0"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('35174e27-3ccf-4ada-a8b9-bcd7c8fdd6a2','a4023e61-f00f-4d98-bcaa-fbf85a5720b0')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('35174e27-3ccf-4ada-a8b9-bcd7c8fdd6a2','a4023e61-f00f-4d98-bcaa-fbf85a5720b0')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="cefac22b-7754-4c2c-9340-8567d038dea9"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>При таком обходе порядок выбирается в соответствии с расположением массива в памяти, а не по стандартному порядку C или Fortran. Это повышает эффективность доступа: предполагается, что по умолчанию требуется лишь посетить каждый элемент, независимо от конкретного порядка. Чтобы увидеть разницу, сравним обход транспонированного предыдущего массива с обходом копии этого транспонированного массива, созданной в порядке C.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="12559236-778b-4ecc-8ac3-de34edf85da1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('12559236-778b-4ecc-8ac3-de34edf85da1','f45a3ccb-3e69-43dd-9fcb-46b2ba94ba0b','56e1f9aa-a7e5-499b-9e49-98cf823c4490','../lite/tree/../notebooks/index.html?path=8c17507b_333a_46b1_836d_b7609f6929d9.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0 1 2 3 4 5</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">'C'</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0 3 1 4 2 5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="56e1f9aa-a7e5-499b-9e49-98cf823c4490"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('12559236-778b-4ecc-8ac3-de34edf85da1','56e1f9aa-a7e5-499b-9e49-98cf823c4490')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('12559236-778b-4ecc-8ac3-de34edf85da1','56e1f9aa-a7e5-499b-9e49-98cf823c4490')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="f45a3ccb-3e69-43dd-9fcb-46b2ba94ba0b"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>Элементы <em class="xref py py-obj">a</em> и <em class="xref py py-obj">a.T</em> просматриваются в одном и том же порядке, а именно в том порядке, в котором они хранятся в памяти, тогда как элементы <em class="xref py py-obj">a.T.copy(order=’C’)</em> посещаются в другом порядке, поскольку они помещены в другую структуру памяти.</p>
+<section id="controlling-iteration-order">
+<h3>Управление порядком обхода<a class="headerlink" href="#controlling-iteration-order" title="Link to this heading">#</a></h3>
+<p>Иногда важно обходить элементы массива в определённом порядке независимо от их расположения в памяти. Объект <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> предоставляет для этого параметр <em class="xref py py-obj">order</em>. Значение по умолчанию order=’K’ сохраняет существующий порядок и даёт описанное выше поведение. Его можно заменить на order=’C’ для порядка C или order=’F’ для порядка Fortran.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="4266f2d9-f9a6-4324-9b7d-fbff80a874b9">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('4266f2d9-f9a6-4324-9b7d-fbff80a874b9','52ab1d9c-bf3e-4166-82c7-4d4996f08157','821917cd-bb57-4620-87c7-7dd523d0062e','../lite/tree/../notebooks/index.html?path=d9c25d88_6363_4501_a1f2_5b7a1d4799f4.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">'F'</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0 3 1 4 2 5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">'C'</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0 3 1 4 2 5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="821917cd-bb57-4620-87c7-7dd523d0062e"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('4266f2d9-f9a6-4324-9b7d-fbff80a874b9','821917cd-bb57-4620-87c7-7dd523d0062e')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('4266f2d9-f9a6-4324-9b7d-fbff80a874b9','821917cd-bb57-4620-87c7-7dd523d0062e')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="52ab1d9c-bf3e-4166-82c7-4d4996f08157"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+</section>
+<section id="modifying-array-values">
+<span id="nditer-context-manager"></span><h3>Изменение значений массива<a class="headerlink" href="#modifying-array-values" title="Link to this heading">#</a></h3>
+<p>По умолчанию <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> считает входной операнд доступным только для чтения. Чтобы изменять элементы массива, задайте режим чтения-записи или только записи с помощью флагов операнда <em class="xref py py-obj">‘readwrite’</em> или <em class="xref py py-obj">‘writeonly’</em>.</p>
+<p>После этого nditer будет выдавать буферные массивы, доступные для записи, которые вы можете изменять. Однако по завершении обхода nditer должен скопировать данные этих буферов обратно в исходный массив, поэтому о завершении обхода необходимо сообщить одним из двух способов. Можно:</p>
+<ul class="simple">
+<li><p>использовали nditer как менеджер контекста через конструкцию <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#with" title="(in Python v3.14)"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code></a>; при выходе из контекста временные данные записываются обратно.</p></li>
+<li><p>по завершении обхода вызовите метод <a class="reference internal" href="generated/numpy.nditer.close.html#numpy.nditer.close" title="numpy.nditer.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a> итератора, чтобы выполнить обратную запись.</p></li>
+</ul>
+<p>После вызова <a class="reference internal" href="generated/numpy.nditer.close.html#numpy.nditer.close" title="numpy.nditer.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a> или выхода из контекста nditer дальнейший обход итератора невозможен.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="0913c044-6e96-4d74-9f4f-afa01aa35c1a">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('0913c044-6e96-4d74-9f4f-afa01aa35c1a','6b5555ef-10f7-4c61-bc5f-5322d0b5e8ec','218beac7-32c0-4a9c-8351-8aca74cef8de','../lite/tree/../notebooks/index.html?path=41a00a98_9d1d_45da_9221_3b753253c4c3.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[0, 1, 2],</span>
+<span class="go">       [3, 4, 5]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">op_flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'readwrite'</span><span class="p">])</span> <span class="k">as</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>       <span class="n">x</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[ 0,  2,  4],</span>
+<span class="go">       [ 6,  8, 10]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="218beac7-32c0-4a9c-8351-8aca74cef8de"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('0913c044-6e96-4d74-9f4f-afa01aa35c1a','218beac7-32c0-4a9c-8351-8aca74cef8de')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('0913c044-6e96-4d74-9f4f-afa01aa35c1a','218beac7-32c0-4a9c-8351-8aca74cef8de')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="6b5555ef-10f7-4c61-bc5f-5322d0b5e8ec"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>Если вы пишете код, который должен поддерживать более старые версии numpy, обратите внимание, что до версии 1.15 <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> не был контекстным менеджером и не имел метода <a class="reference internal" href="generated/numpy.nditer.close.html#numpy.nditer.close" title="numpy.nditer.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>. Вместо этого он полагался на деструктор, чтобы инициировать обратную запись буфера.</p>
+</section>
+<section id="using-an-external-loop">
+<h3>Использование внешнего цикла<a class="headerlink" href="#using-an-external-loop" title="Link to this heading">#</a></h3>
+<p>Во всех предыдущих примерах итератор выдаёт элементы <em class="xref py py-obj">a</em> по одному, поскольку вся логика обхода находится внутри него. Это просто и удобно, но не очень эффективно. Лучше перенести самый внутренний одномерный цикл в свой код, за пределы итератора. Тогда к более крупным блокам обходимых элементов можно применять векторизованные операции NumPy.</p>
+<p><a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> попытается предоставить во внутренний цикл как можно большие фрагменты. Установив порядок «C» и «F», мы получаем разные размеры внешних циклов. Этот режим включается путем указания флага итератора.</p>
+<p>Обратите внимание: при сохранении исходного порядка данных в памяти, используемом по умолчанию, итератор может выдать один одномерный фрагмент. Если принудительно задать порядок Fortran, ему приходится выдавать три фрагмента по два элемента.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="f398813b-61d4-46f1-b0d0-340f915965c9">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f398813b-61d4-46f1-b0d0-340f915965c9','2f3aa48c-e5b4-415b-ba36-23f808487b7a','aaf7b2ae-4fe1-4cf2-a83c-22945354a207','../lite/tree/../notebooks/index.html?path=5b9f64df_3870_426a_bc1a_4288751b64db.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'external_loop'</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">[0 1 2 3 4 5]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'external_loop'</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="s1">'F'</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">[0 3] [1 4] [2 5]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="aaf7b2ae-4fe1-4cf2-a83c-22945354a207"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f398813b-61d4-46f1-b0d0-340f915965c9','aaf7b2ae-4fe1-4cf2-a83c-22945354a207')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('f398813b-61d4-46f1-b0d0-340f915965c9','aaf7b2ae-4fe1-4cf2-a83c-22945354a207')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="2f3aa48c-e5b4-415b-ba36-23f808487b7a"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+</section>
+<section id="tracking-an-index-or-multi-index">
+<h3>Отслеживание индекса или мультииндекса <a class="headerlink" href="#tracking-an-index-or-multi-index" title="Link to this heading">#</a></h3>
+<p>При обходе индекс текущего элемента может понадобиться для вычислений. Например, можно обходить элементы массива в порядке их расположения в памяти, но для обращения к другому массиву использовать линейный индекс в порядке C, Fortran или многомерный индекс.</p>
+<p>Объект-итератор сам отслеживает индекс и предоставляет его через свойство <em class="xref py py-obj">index</em> или <em class="xref py py-obj">multi_index</em> в зависимости от запроса. В примерах ниже вывод показывает изменение индекса:</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="adb76a26-bbaa-40dd-a8e1-5ae668f86753">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('adb76a26-bbaa-40dd-a8e1-5ae668f86753','49789885-9e7a-43aa-9eeb-593a0c703238','41f54c6b-3121-4267-9161-608d2da44d2e','../lite/tree/../notebooks/index.html?path=0a8c51de_badc_4a26_91ad_49a51a3cb4c0.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'f_index'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2"> &lt;</span><span class="si">%d</span><span class="s2">&gt;"</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">it</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0 &lt;0&gt; 1 &lt;2&gt; 2 &lt;4&gt; 3 &lt;1&gt; 4 &lt;3&gt; 5 &lt;5&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'multi_index'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2"> &lt;</span><span class="si">%s</span><span class="s2">&gt;"</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">it</span><span class="o">.</span><span class="n">multi_index</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0 &lt;(0, 0)&gt; 1 &lt;(0, 1)&gt; 2 &lt;(0, 2)&gt; 3 &lt;(1, 0)&gt; 4 &lt;(1, 1)&gt; 5 &lt;(1, 2)&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'multi_index'</span><span class="p">],</span> <span class="n">op_flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'writeonly'</span><span class="p">])</span> <span class="k">as</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">x</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">multi_index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">it</span><span class="o">.</span><span class="n">multi_index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[ 0,  1,  2],</span>
+<span class="go">       [-1,  0,  1]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="41f54c6b-3121-4267-9161-608d2da44d2e"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('adb76a26-bbaa-40dd-a8e1-5ae668f86753','41f54c6b-3121-4267-9161-608d2da44d2e')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('adb76a26-bbaa-40dd-a8e1-5ae668f86753','41f54c6b-3121-4267-9161-608d2da44d2e')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="49789885-9e7a-43aa-9eeb-593a0c703238"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>Отслеживание индекса или мультииндекса несовместимо с внешним циклом: каждому элементу требуется своё значение индекса. При попытке совместить эти флаги объект <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> вызывает исключение.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="b9004b90-973a-4b05-ab66-d88d9d114340">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('b9004b90-973a-4b05-ab66-d88d9d114340','1262cd35-7b21-45c9-91de-14be91b9e8a9','468b4420-84de-468f-bb26-fa55db1c9175','../lite/tree/../notebooks/index.html?path=59bf681b_8f8c_4ebf_b9e4_236b469f70af.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'c_index'</span><span class="p">,</span> <span class="s1">'external_loop'</span><span class="p">])</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">ValueError</span>: <span class="n">Iterator flag EXTERNAL_LOOP cannot be used if an index or multi-index is being tracked</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="468b4420-84de-468f-bb26-fa55db1c9175"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('b9004b90-973a-4b05-ab66-d88d9d114340','468b4420-84de-468f-bb26-fa55db1c9175')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('b9004b90-973a-4b05-ab66-d88d9d114340','468b4420-84de-468f-bb26-fa55db1c9175')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="1262cd35-7b21-45c9-91de-14be91b9e8a9"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+</section>
+<section id="alternative-looping-and-element-access">
+<h3>Альтернативный способ обхода и доступ к элементам<a class="headerlink" href="#alternative-looping-and-element-access" title="Link to this heading">#</a></h3>
+<p>Чтобы упростить доступ к свойствам во время итерации, <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> предоставляет альтернативный синтаксис обхода, явно использующий сам объект итератора. В таком цикле текущее значение доступно через индексирование итератора. Другие свойства, например отслеживаемые индексы, работают как прежде. Примеры ниже дают те же результаты, что и примеры предыдущего раздела.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="94fbb3fd-0ed4-4253-82ad-92497a43a27b">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('94fbb3fd-0ed4-4253-82ad-92497a43a27b','d23b85da-bc5c-4d1a-bb0b-e5184adf52d7','447e9d13-f8b5-47aa-b9af-7a06758e3f35','../lite/tree/../notebooks/index.html?path=8d543adf_86b6_4f50_bbf2_2293d66a3324.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'f_index'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="ow">not</span> <span class="n">it</span><span class="o">.</span><span class="n">finished</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2"> &lt;</span><span class="si">%d</span><span class="s2">&gt;"</span> <span class="o">%</span> <span class="p">(</span><span class="n">it</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">it</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">is_not_finished</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">iternext</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="go">0 &lt;0&gt; 1 &lt;2&gt; 2 &lt;4&gt; 3 &lt;1&gt; 4 &lt;3&gt; 5 &lt;5&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'multi_index'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="ow">not</span> <span class="n">it</span><span class="o">.</span><span class="n">finished</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2"> &lt;</span><span class="si">%s</span><span class="s2">&gt;"</span> <span class="o">%</span> <span class="p">(</span><span class="n">it</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">it</span><span class="o">.</span><span class="n">multi_index</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">is_not_finished</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">iternext</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="go">0 &lt;(0, 0)&gt; 1 &lt;(0, 1)&gt; 2 &lt;(0, 2)&gt; 3 &lt;(1, 0)&gt; 4 &lt;(1, 1)&gt; 5 &lt;(1, 2)&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'multi_index'</span><span class="p">],</span> <span class="n">op_flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'writeonly'</span><span class="p">])</span> <span class="k">as</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">while</span> <span class="ow">not</span> <span class="n">it</span><span class="o">.</span><span class="n">finished</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">it</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">multi_index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">it</span><span class="o">.</span><span class="n">multi_index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">... </span>        <span class="n">is_not_finished</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">iternext</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[ 0,  1,  2],</span>
+<span class="go">       [-1,  0,  1]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="447e9d13-f8b5-47aa-b9af-7a06758e3f35"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('94fbb3fd-0ed4-4253-82ad-92497a43a27b','447e9d13-f8b5-47aa-b9af-7a06758e3f35')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('94fbb3fd-0ed4-4253-82ad-92497a43a27b','447e9d13-f8b5-47aa-b9af-7a06758e3f35')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="d23b85da-bc5c-4d1a-bb0b-e5184adf52d7"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+</section>
+<section id="buffering-the-array-elements">
+<h3>Буферизация элементов массива<a class="headerlink" href="#buffering-the-array-elements" title="Link to this heading">#</a></h3>
+<p>При принудительном задании порядка обхода мы заметили, что режим внешнего цикла может выдавать элементы меньшими блоками: обойти их в нужном порядке с постоянным шагом невозможно. Для кода C это обычно допустимо, но в чистом Python может значительно снизить производительность.</p>
+<p>Буферизация позволяет увеличить блоки, которые итератор передаёт внутреннему циклу, существенно сократив накладные расходы интерпретатора Python. В примере с принудительным порядком обхода Fortran при включённой буферизации внутренний цикл получает все элементы сразу.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="d20281e2-ebee-427e-a6cb-e0a1b9201938">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('d20281e2-ebee-427e-a6cb-e0a1b9201938','8f6060f4-a473-4173-8ccf-7bf313d4ccf5','de50a979-1e3b-47df-a179-ac8dfe323f80','../lite/tree/../notebooks/index.html?path=e9002820_a9b2_4325_a5e5_28f79b128e02.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'external_loop'</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="s1">'F'</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">[0 3] [1 4] [2 5]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'external_loop'</span><span class="p">,</span><span class="s1">'buffered'</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="s1">'F'</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">[0 3 1 4 2 5]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="de50a979-1e3b-47df-a179-ac8dfe323f80"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('d20281e2-ebee-427e-a6cb-e0a1b9201938','de50a979-1e3b-47df-a179-ac8dfe323f80')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('d20281e2-ebee-427e-a6cb-e0a1b9201938','de50a979-1e3b-47df-a179-ac8dfe323f80')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="8f6060f4-a473-4173-8ccf-7bf313d4ccf5"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+</section>
+<section id="iterating-as-a-specific-data-type">
+<h3>Обход с заданным типом данных<a class="headerlink" href="#iterating-as-a-specific-data-type" title="Link to this heading">#</a></h3>
+<p>Иногда массив нужно обрабатывать с типом данных, отличным от типа хранения. Например, все вычисления могут требовать 64-разрядных чисел с плавающей запятой, хотя исходные массивы 32-разрядные. Если вы не пишете низкоуровневый код C, обычно лучше поручить копирование или буферизацию итератору, чем самостоятельно приводить типы во внутреннем цикле.</p>
+<p>Есть два механизма, которые позволяют это сделать: временные копии и режим буферизации. При использовании временных копий создается копия всего массива с новым типом данных, затем в копии выполняется итерация. Доступ на запись разрешен в режиме, который обновляет исходный массив после завершения всей итерации. Основным недостатком временных копий является то, что временная копия может занимать большой объем памяти, особенно если тип данных итерации имеет больший размер элемента, чем исходный.</p>
+<p>Буферизация уменьшает расход памяти и эффективнее использует кеш, чем создание временных копий. Она рекомендуется вместо временного копирования, кроме особых случаев, когда весь массив нужен одновременно вне итератора. В NumPy универсальные и другие функции используют буферизацию для поддержки разнообразных входных данных с минимальным дополнительным расходом памяти.</p>
+<p>В примерах входной массив обрабатывается как комплексный, чтобы можно было извлекать квадратные корни отрицательных чисел. Если не разрешить копирование или буферизацию, при неточном совпадении типов данных итератор вызовет исключение.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="e0680693-f2e5-4a79-9496-9286cc614331">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('e0680693-f2e5-4a79-9496-9286cc614331','8b84af7e-20c2-4607-867d-6b4e5ab4eee2','30b0f7d8-ac64-44e8-9a46-a78fbcc451be','../lite/tree/../notebooks/index.html?path=320655ca_25e4_43fb_96d4_24fd6091b34f.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">op_dtypes</span><span class="o">=</span><span class="p">[</span><span class="s1">'complex128'</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">Iterator operand required copying or buffering, but neither copying nor buffering was enabled</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="30b0f7d8-ac64-44e8-9a46-a78fbcc451be"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('e0680693-f2e5-4a79-9496-9286cc614331','30b0f7d8-ac64-44e8-9a46-a78fbcc451be')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('e0680693-f2e5-4a79-9496-9286cc614331','30b0f7d8-ac64-44e8-9a46-a78fbcc451be')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="8b84af7e-20c2-4607-867d-6b4e5ab4eee2"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>В режиме копирования «copy» задаётся как флаг отдельного операнда, что позволяет управлять копированием для каждого операнда независимо. Режим буферизации задаётся флагом итератора.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="f39c5055-2ee9-4d2f-b6d0-93520cf1be36">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f39c5055-2ee9-4d2f-b6d0-93520cf1be36','bc9a290b-c00c-4304-a709-04970537c9ef','f6aa8f14-d79a-4e20-92c8-712208e0fe0b','../lite/tree/../notebooks/index.html?path=35ad82c7_99d7_46a4_a2ef_ab308582843a.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">op_flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'readonly'</span><span class="p">,</span><span class="s1">'copy'</span><span class="p">],</span>
+<span class="gp">... </span>                <span class="n">op_dtypes</span><span class="o">=</span><span class="p">[</span><span class="s1">'complex128'</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">1.7320508075688772j 1.4142135623730951j 1j 0j (1+0j) (1.4142135623730951+0j)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'buffered'</span><span class="p">],</span> <span class="n">op_dtypes</span><span class="o">=</span><span class="p">[</span><span class="s1">'complex128'</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">1.7320508075688772j 1.4142135623730951j 1j 0j (1+0j) (1.4142135623730951+0j)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="f6aa8f14-d79a-4e20-92c8-712208e0fe0b"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f39c5055-2ee9-4d2f-b6d0-93520cf1be36','f6aa8f14-d79a-4e20-92c8-712208e0fe0b')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('f39c5055-2ee9-4d2f-b6d0-93520cf1be36','f6aa8f14-d79a-4e20-92c8-712208e0fe0b')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="bc9a290b-c00c-4304-a709-04970537c9ef"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>Итератор использует правила приведения типов NumPy, чтобы определить, допустимо ли преобразование. По умолчанию применяется правило ‘safe’. Поэтому, например, попытка обрабатывать массив 64-битных чисел с плавающей точкой как массив 32-битных чисел с плавающей точкой вызовет исключение. Во многих случаях разумнее выбрать правило ‘same_kind’: оно допускает преобразование 64-битных чисел с плавающей точкой в 32-битные, но не чисел с плавающей точкой в целые или комплексных чисел в вещественные.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="f877b6e9-9b0a-4ed6-9911-3108c9e41cc9">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('f877b6e9-9b0a-4ed6-9911-3108c9e41cc9','7acf54d2-04b9-4ffc-be2f-34f57d9b70d6','35114355-72e7-4080-8ea0-ad54aa479859','../lite/tree/../notebooks/index.html?path=86e10c03_b44f_4780_9613_3f30ecff5564.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">6.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'buffered'</span><span class="p">],</span> <span class="n">op_dtypes</span><span class="o">=</span><span class="p">[</span><span class="s1">'float32'</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">Iterator operand 0 dtype could not be cast from dtype('float64') to dtype('float32') according to the rule 'safe'</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'buffered'</span><span class="p">],</span> <span class="n">op_dtypes</span><span class="o">=</span><span class="p">[</span><span class="s1">'float32'</span><span class="p">],</span>
+<span class="gp">... </span>                <span class="n">casting</span><span class="o">=</span><span class="s1">'same_kind'</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0.0 1.0 2.0 3.0 4.0 5.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'buffered'</span><span class="p">],</span> <span class="n">op_dtypes</span><span class="o">=</span><span class="p">[</span><span class="s1">'int32'</span><span class="p">],</span> <span class="n">casting</span><span class="o">=</span><span class="s1">'same_kind'</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">Iterator operand 0 dtype could not be cast from dtype('float64') to dtype('int32') according to the rule 'same_kind'</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="35114355-72e7-4080-8ea0-ad54aa479859"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('f877b6e9-9b0a-4ed6-9911-3108c9e41cc9','35114355-72e7-4080-8ea0-ad54aa479859')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('f877b6e9-9b0a-4ed6-9911-3108c9e41cc9','35114355-72e7-4080-8ea0-ad54aa479859')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="7acf54d2-04b9-4ffc-be2f-34f57d9b70d6"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>При использовании операнда для чтения и записи или только для записи следует учитывать преобразование обратно в исходный тип данных. Часто внутренний цикл реализуют для 64-битных чисел с плавающей точкой и используют правило приведения типов ‘same_kind’, чтобы обрабатывать и другие типы с плавающей точкой. В режиме только для чтения можно передать целочисленный массив, но в режиме чтения и записи возникнет исключение: преобразование результата обратно в такой массив нарушило бы правило приведения типов.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="98eb2f9e-e58a-491b-98c4-c39efb64fb82">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('98eb2f9e-e58a-491b-98c4-c39efb64fb82','5af9631c-077b-4e83-8dc3-92b4668a391b','8877ab77-c410-4725-aa6c-b60538dfe38e','../lite/tree/../notebooks/index.html?path=d18bcc5f_c6c3_4443_8eaa_2c03268e3a88.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'buffered'</span><span class="p">],</span> <span class="n">op_flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'readwrite'</span><span class="p">],</span>
+<span class="gp">... </span>                <span class="n">op_dtypes</span><span class="o">=</span><span class="p">[</span><span class="s1">'float64'</span><span class="p">],</span> <span class="n">casting</span><span class="o">=</span><span class="s1">'same_kind'</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">x</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="mf">2.0</span>
+<span class="gp">...</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">"&lt;stdin&gt;"</span>, line <span class="m">2</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">Iterator requested dtype could not be cast from dtype('float64') to dtype('int64'), the operand 0 dtype, according to the rule 'same_kind'</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="8877ab77-c410-4725-aa6c-b60538dfe38e"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('98eb2f9e-e58a-491b-98c4-c39efb64fb82','8877ab77-c410-4725-aa6c-b60538dfe38e')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('98eb2f9e-e58a-491b-98c4-c39efb64fb82','8877ab77-c410-4725-aa6c-b60538dfe38e')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="5af9631c-077b-4e83-8dc3-92b4668a391b"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+</section>
+</section>
+<section id="broadcasting-array-iteration">
+<h2>Итерация с трансляцией массивов<a class="headerlink" href="#broadcasting-array-iteration" title="Link to this heading">#</a></h2>
+<p>NumPy использует правила согласования массивов разной формы всякий раз, когда функция поэлементно объединяет несколько операндов. Это называется <a class="reference internal" href="../user/basics.ufuncs.html#ufuncs-broadcasting"><span class="std std-ref">трансляцией массивов</span></a>. При написании такой функции объект <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> может применить эти правила за вас.</p>
+<p>В качестве примера выведем результат совместной трансляции одномерного и двумерного массивов.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="44c798c4-77b3-4ed6-8362-0dce290b7439">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('44c798c4-77b3-4ed6-8362-0dce290b7439','08ced7e9-ba2d-486d-a19c-88a2de9b0bc3','68d2c0da-bcc5-4f13-8c76-bc70090ec82f','../lite/tree/../notebooks/index.html?path=7bf750bf_bac7_4389_935b_205bd78aa322.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2">:</span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">0:0 1:1 2:2 0:3 1:4 2:5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="68d2c0da-bcc5-4f13-8c76-bc70090ec82f"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('44c798c4-77b3-4ed6-8362-0dce290b7439','68d2c0da-bcc5-4f13-8c76-bc70090ec82f')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('44c798c4-77b3-4ed6-8362-0dce290b7439','68d2c0da-bcc5-4f13-8c76-bc70090ec82f')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="08ced7e9-ba2d-486d-a19c-88a2de9b0bc3"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>При ошибке трансляции массивов итератор вызывает исключение, содержащее формы входных массивов для упрощения диагностики.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="7b66e984-ca55-4981-957d-15e4e17420a9">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('7b66e984-ca55-4981-957d-15e4e17420a9','15a6fc21-cfb9-47b3-9ad4-23063b473495','15b3da0c-667c-42f5-b617-4914f1771cda','../lite/tree/../notebooks/index.html?path=dff16ce3_8d38_45a1_a4c5_5a2c5f513887.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">]):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%d</span><span class="s2">:</span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">' '</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">operands could not be broadcast together with shapes (2,) (2,3)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="15b3da0c-667c-42f5-b617-4914f1771cda"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('7b66e984-ca55-4981-957d-15e4e17420a9','15b3da0c-667c-42f5-b617-4914f1771cda')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('7b66e984-ca55-4981-957d-15e4e17420a9','15b3da0c-667c-42f5-b617-4914f1771cda')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="15a6fc21-cfb9-47b3-9ad4-23063b473495"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<section id="iterator-allocated-output-arrays">
+<h3>Выделенные итератором выходные массивы <a class="headerlink" href="#iterator-allocated-output-arrays" title="Link to this heading">#</a></h3>
+<p>Функции NumPy часто выделяют память для выходных массивов с учётом трансляции входных массивов и дополнительно принимают необязательный параметр out: если он задан, результат помещается в него. Объект <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> предоставляет удобный способ легко реализовать этот механизм.</p>
+<p>Покажем это на функции <a class="reference internal" href="generated/numpy.square.html#numpy.square" title="numpy.square"><code class="xref py py-obj docutils literal notranslate"><span class="pre">square</span></code></a>, возводящей входные значения в квадрат. Начнём с минимального определения без поддержки параметра out.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="05fdb1af-91fc-4a90-999a-53a5c1ebf99d">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('05fdb1af-91fc-4a90-999a-53a5c1ebf99d','8a279581-746a-4ecf-90b8-a63314786dfc','723e177f-72b5-4d69-8c3a-1595b8f0f480','../lite/tree/../notebooks/index.html?path=5707736b_346c_4ca9_9a07_e2cd0267e8dc.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span> <span class="k">as</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="n">y</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">square</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">array([1, 4, 9])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="723e177f-72b5-4d69-8c3a-1595b8f0f480"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('05fdb1af-91fc-4a90-999a-53a5c1ebf99d','723e177f-72b5-4d69-8c3a-1595b8f0f480')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('05fdb1af-91fc-4a90-999a-53a5c1ebf99d','723e177f-72b5-4d69-8c3a-1595b8f0f480')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="8a279581-746a-4ecf-90b8-a63314786dfc"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>По умолчанию <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> использует флаги ‘allocate’ и ‘writeonly’ для операндов, переданных как None. Поэтому достаточно было передать итератору два операнда, а остальное он сделал сам.</p>
+<p>При добавлении параметра «out» эти флаги нужно задать явно: если пользователь передаст массив в «out», итератор по умолчанию выберет «readonly», и внутренний цикл не сможет работать. Для входных массивов «readonly» используется по умолчанию, чтобы избежать непреднамеренного запуска свёртки. Если бы стандартным режимом был «readwrite», любая трансляция массивов также запускала бы свёртку; это рассматривается далее.</p>
+<p>Также добавим флаг no_broadcast, запрещающий трансляцию выходного массива. Это важно: каждому выходному значению должен соответствовать только один вход. Объединение нескольких входных значений — свёртка, требующая особой обработки. Она и так вызвала бы ошибку, поскольку свёртки нужно явно разрешать флагом итератора, но сообщение при запрете трансляции понятнее пользователю. Обобщение функции возведения в квадрат до свёртки показано на примере суммы квадратов в разделе о Cython.</p>
+<p>Для полноты также добавим флаги external_loop и buffered: обычно они нужны для повышения производительности.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="63625cdc-9824-4269-b3e2-7e8cba527dd1">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('63625cdc-9824-4269-b3e2-7e8cba527dd1','cf5e6eb5-e9cd-476c-80d8-36f5422237ea','efad8619-565c-44fd-93a6-671e3501c9c6','../lite/tree/../notebooks/index.html?path=4a0a2d7f_11f4_4420_9b22_af97de0f2c55.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">out</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="n">flags</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'external_loop'</span><span class="p">,</span> <span class="s1">'buffered'</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="n">op_flags</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">'readonly'</span><span class="p">],</span>
+<span class="gp">... </span>                        <span class="p">[</span><span class="s1">'writeonly'</span><span class="p">,</span> <span class="s1">'allocate'</span><span class="p">,</span> <span class="s1">'no_broadcast'</span><span class="p">]])</span>
+<span class="gp">... </span>    <span class="k">with</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="n">y</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">square</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">array([1, 4, 9])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">square</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">out</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+<span class="go">array([1.,  4.,  9.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">array([1.,  4.,  9.])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">square</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">out</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">non-broadcastable output operand with shape (3,) doesn't</span>
+<span class="x">match the broadcast shape (2,3)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="efad8619-565c-44fd-93a6-671e3501c9c6"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('63625cdc-9824-4269-b3e2-7e8cba527dd1','efad8619-565c-44fd-93a6-671e3501c9c6')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('63625cdc-9824-4269-b3e2-7e8cba527dd1','efad8619-565c-44fd-93a6-671e3501c9c6')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="cf5e6eb5-e9cd-476c-80d8-36f5422237ea"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+</section>
+<section id="outer-product-iteration">
+<h3>Итерация для внешнего произведения<a class="headerlink" href="#outer-product-iteration" title="Link to this heading">#</a></h3>
+<p>Любая двоичная операция может быть расширена до операции с массивом в виде внешнего произведения, как в <a class="reference internal" href="generated/numpy.outer.html#numpy.outer" title="numpy.outer"><code class="xref py py-func docutils literal notranslate"><span class="pre">outer</span></code></a>, и объект <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> предоставляет способ сделать это путем явного сопоставления осей операндов. Это также возможно сделать с помощью индексации <a class="reference internal" href="constants.html#numpy.newaxis" title="numpy.newaxis"><code class="xref py py-const docutils literal notranslate"><span class="pre">newaxis</span></code></a>, но мы покажем вам, как напрямую использовать параметр nditer <em class="xref py py-obj">op_axes</em>, чтобы добиться этого без промежуточных представлений.</p>
+<p>Вычислим простое внешнее произведение, расположив измерения первого операнда перед измерениями второго. Параметр <em class="xref py py-obj">op_axes</em> принимает по одному списку осей для каждого операнда и задаёт соответствие осей итератора осям операнда.</p>
+<p>Пусть первый операнд одномерный, а второй — двумерный. Итератор будет трёхмерным, поэтому <em class="xref py py-obj">op_axes</em> содержит два списка по три элемента. Первый список выбирает единственную ось первого операнда, а остальным осям итератора сопоставляет -1; получается [0, -1, -1]. Второй список выбирает две оси второго операнда так, чтобы они не пересекались с осями первого: [-1, 0, 1]. Выходной операнд сопоставляется осям итератора обычным образом, поэтому вместо ещё одного списка можно передать None.</p>
+<p>Во внутреннем цикле выполняется обычное умножение. Всё, что связано с внешним произведением, обеспечивается настройкой итератора.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="93686b14-dc48-464b-a7e8-1fb1032b20e4">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('93686b14-dc48-464b-a7e8-1fb1032b20e4','efef87c9-e398-414e-b715-4ee122992a40','909f40be-8d6e-4586-830e-cf1ac850a3e8','../lite/tree/../notebooks/index.html?path=6f6e14d0_eb30_4340_aadd_e99e8a63789e.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'external_loop'</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="n">op_axes</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="kc">None</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">z</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># same as z</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
+<span class="go">array([[[ 0,  0,  0,  0],</span>
+<span class="go">        [ 0,  0,  0,  0]],</span>
+<span class="go">        [[ 0,  1,  2,  3],</span>
+<span class="go">        [ 4,  5,  6,  7]],</span>
+<span class="go">        [[ 0,  2,  4,  6],</span>
+<span class="go">        [ 8, 10, 12, 14]]])</span>
+</pre><details class="ru-code-notes"><summary>Комментарии к примеру на русском</summary><ul><li>То же, что z</li></ul></details></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="909f40be-8d6e-4586-830e-cf1ac850a3e8"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('93686b14-dc48-464b-a7e8-1fb1032b20e4','909f40be-8d6e-4586-830e-cf1ac850a3e8')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('93686b14-dc48-464b-a7e8-1fb1032b20e4','909f40be-8d6e-4586-830e-cf1ac850a3e8')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="efef87c9-e398-414e-b715-4ee122992a40"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>Обратите внимание: как только итератор закрыт, мы не можем получить доступ к <a class="reference internal" href="generated/numpy.nditer.operands.html#numpy.nditer.operands" title="numpy.nditer.operands"><code class="xref py py-func docutils literal notranslate"><span class="pre">operands</span></code></a> и должны использовать ссылку, созданную внутри контекстного менеджера.</p>
+</section>
+<section id="reduction-iteration">
+<h3>Итерация со свёрткой<a class="headerlink" href="#reduction-iteration" title="Link to this heading">#</a></h3>
+<p>Если доступный для записи операнд содержит меньше элементов, чем полное пространство обхода, по нему выполняется свёртка. Объект <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> требует помечать каждый такой операнд как доступный для чтения и записи и разрешает свёртки, только если задан флаг итератора reduce_ok.</p>
+<p>В качестве простого примера рассмотрим сумму всех элементов массива.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="66238b9b-61f1-4afd-b434-0c0dcdb2cd21">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('66238b9b-61f1-4afd-b434-0c0dcdb2cd21','fc04bb71-0331-4a51-9eba-d181077ea59a','e9a4e239-2e18-4a00-9e60-a799a71d19ea','../lite/tree/../notebooks/index.html?path=7233b364_7d38_4bf3_a688_553009f12bd3.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'reduce_ok'</span><span class="p">],</span>
+<span class="gp">... </span>                    <span class="n">op_flags</span><span class="o">=</span><span class="p">[[</span><span class="s1">'readonly'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'readwrite'</span><span class="p">]])</span> <span class="k">as</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">y</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">array(276)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">276</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="e9a4e239-2e18-4a00-9e60-a799a71d19ea"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('66238b9b-61f1-4afd-b434-0c0dcdb2cd21','e9a4e239-2e18-4a00-9e60-a799a71d19ea')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('66238b9b-61f1-4afd-b434-0c0dcdb2cd21','e9a4e239-2e18-4a00-9e60-a799a71d19ea')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="fc04bb71-0331-4a51-9eba-d181077ea59a"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>Сочетание свёртки с автоматически выделяемыми операндами немного сложнее. Перед началом обхода каждый операнд свёртки нужно инициализировать начальными значениями. Вот как это сделать при суммировании вдоль последней оси <em class="xref py py-obj">a</em>.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="045b9028-5f83-4be7-8258-15748d1b5fd4">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('045b9028-5f83-4be7-8258-15748d1b5fd4','467e1f96-a660-441d-90d9-226197e0b1cd','f2546b41-a062-42de-a7f9-1cd7ed2b3b76','../lite/tree/../notebooks/index.html?path=b913de37_4fd6_422e_ab4c_a8e7795e7fa1.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'reduce_ok'</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="n">op_flags</span><span class="o">=</span><span class="p">[[</span><span class="s1">'readonly'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'readwrite'</span><span class="p">,</span> <span class="s1">'allocate'</span><span class="p">]],</span>
+<span class="gp">... </span>            <span class="n">op_axes</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">y</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
+<span class="go">array([[ 6, 22, 38],</span>
+<span class="go">       [54, 70, 86]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">array([[ 6, 22, 38],</span>
+<span class="go">       [54, 70, 86]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="f2546b41-a062-42de-a7f9-1cd7ed2b3b76"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('045b9028-5f83-4be7-8258-15748d1b5fd4','f2546b41-a062-42de-a7f9-1cd7ed2b3b76')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('045b9028-5f83-4be7-8258-15748d1b5fd4','f2546b41-a062-42de-a7f9-1cd7ed2b3b76')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="467e1f96-a660-441d-90d9-226197e0b1cd"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+<p>Для буферизованной свёртки требуется ещё одно изменение настройки. Обычно при создании итератора первая порция данных из доступных для чтения массивов копируется в буфер. Операнд свёртки всегда доступен для чтения, поэтому он также может попасть в буфер. Если инициализировать этот операнд после буферизации, изменения не отразятся в буфере, с которого начинается обход, и результат окажется некорректным.</p>
+<p>Флаг итератора “delay_bufalloc” позволяет использовать буферизацию вместе с операндами свёртки, для которых память выделяет сам итератор. При установленном флаге буферы остаются неинициализированными до сброса итератора; после сброса он готов к обычному обходу. Вот как выглядит предыдущий пример с включённой буферизацией.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="try_examples_outer_container docutils container" id="32afb379-2426-4b91-a1f8-80951e5b4842">
+<div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesShowIframe('32afb379-2426-4b91-a1f8-80951e5b4842','262732e3-38ad-4760-811b-9c38e4ad38f9','97de0eaa-31f7-47ee-acea-f84089bb55ed','../lite/tree/../notebooks/index.html?path=5ef74aec_4196_4f6f_a9f0_dea6535741cf.ipynb','None')">Попробуйте в браузере!</button></div><div class="try_examples_content docutils container">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'reduce_ok'</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="s1">'buffered'</span><span class="p">,</span> <span class="s1">'delay_bufalloc'</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="n">op_flags</span><span class="o">=</span><span class="p">[[</span><span class="s1">'readonly'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'readwrite'</span><span class="p">,</span> <span class="s1">'allocate'</span><span class="p">]],</span>
+<span class="gp">... </span>            <span class="n">op_axes</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>    <span class="n">it</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">y</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
+<span class="go">array([[ 6, 22, 38],</span>
+<span class="go">       [54, 70, 86]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="try_examples_outer_iframe hidden" id="97de0eaa-31f7-47ee-acea-f84089bb55ed"><div class="try_examples_button_container"><button class="try_examples_button" onclick="window.tryExamplesHideIframe('32afb379-2426-4b91-a1f8-80951e5b4842','97de0eaa-31f7-47ee-acea-f84089bb55ed')">Назад</button><button class="try_examples_button" onclick="window.openInNewTab('32afb379-2426-4b91-a1f8-80951e5b4842','97de0eaa-31f7-47ee-acea-f84089bb55ed')">Открыть во вкладке</button></div><div class="jupyterlite_sphinx_iframe_container" id="262732e3-38ad-4760-811b-9c38e4ad38f9"></div></div><script>document.addEventListener("DOMContentLoaded", function() {window.loadTryExamplesConfig("../try_examples.json");});</script></div>
+</section>
+</section>
+<section id="putting-the-inner-loop-in-cython">
+<h2>Перенос внутреннего цикла в Cython<a class="headerlink" href="#putting-the-inner-loop-in-cython" title="Link to this heading">#</a></h2>
+<p>Для максимальной производительности низкоуровневых операций стоит рассмотреть прямое использование API итерации на C. Если же вы неуверенно работаете с C или C++, Cython — удачный компромисс с приемлемыми потерями производительности. Для объекта <a class="reference internal" href="generated/numpy.nditer.html#numpy.nditer" title="numpy.nditer"><code class="xref py py-class docutils literal notranslate"><span class="pre">nditer</span></code></a> это означает, что трансляцией массивов, преобразованием dtype и буферизацией занимается итератор, а внутренний цикл передаётся Cython.</p>
+<p>В нашем примере мы создадим функцию суммы квадратов. Для начала реализуем её на обычном Python. Мы хотим поддерживать параметр axis, аналогичный параметру функции NumPy <a class="reference internal" href="generated/numpy.sum.html#numpy.sum" title="numpy.sum"><code class="xref py py-func docutils literal notranslate"><span class="pre">sum</span></code></a>, поэтому потребуется составить список для параметра <em class="xref py py-obj">op_axes</em>. Вот как это выглядит.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">axis_to_axeslist</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">ndim</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="n">axis</span><span class="p">,)</span>
+<span class="gp">... </span>        <span class="n">axeslist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">ndim</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">axis</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="n">axeslist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="gp">... </span>        <span class="n">ax</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">):</span>
+<span class="gp">... </span>            <span class="k">if</span> <span class="n">axeslist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+<span class="gp">... </span>                <span class="n">axeslist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ax</span>
+<span class="gp">... </span>                <span class="n">ax</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">axeslist</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">sum_squares_py</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">axeslist</span> <span class="o">=</span> <span class="n">axis_to_axeslist</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">arr</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">arr</span><span class="p">,</span> <span class="n">out</span><span class="p">],</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'reduce_ok'</span><span class="p">,</span>
+<span class="gp">... </span>                                      <span class="s1">'buffered'</span><span class="p">,</span> <span class="s1">'delay_bufalloc'</span><span class="p">],</span>
+<span class="gp">... </span>                <span class="n">op_flags</span><span class="o">=</span><span class="p">[[</span><span class="s1">'readonly'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'readwrite'</span><span class="p">,</span> <span class="s1">'allocate'</span><span class="p">]],</span>
+<span class="gp">... </span>                <span class="n">op_axes</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">axeslist</span><span class="p">],</span>
+<span class="gp">... </span>                <span class="n">op_dtypes</span><span class="o">=</span><span class="p">[</span><span class="s1">'float64'</span><span class="p">,</span> <span class="s1">'float64'</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="k">with</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>        <span class="n">it</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="n">y</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_squares_py</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">array(55.)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_squares_py</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">array([  5.,  50.])</span>
+</pre></div>
+</div>
+</div>
+<p>Чтобы перенести функцию на Cython, заменим внутренний цикл (y[…] += x*x) кодом Cython, специализированным для dtype float64. При флаге ‘external_loop’ внутренний цикл всегда получает одномерные массивы, поэтому требуется совсем немного проверок.</p>
+<p>Содержимое sum_squares.pyx:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">cimport</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">cimport</span> <span class="n">cython</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">axis_to_axeslist</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">ndim</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">tuple</span><span class="p">:</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="n">axis</span><span class="p">,)</span>
+        <span class="n">axeslist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">ndim</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">axis</span><span class="p">:</span>
+            <span class="n">axeslist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">axeslist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">axeslist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ax</span>
+                <span class="n">ax</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">axeslist</span>
+
+<span class="nd">@cython</span><span class="o">.</span><span class="n">boundscheck</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sum_squares_cy</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">cdef</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">double</span><span class="p">]</span> <span class="n">x</span>
+    <span class="n">cdef</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">[</span><span class="n">double</span><span class="p">]</span> <span class="n">y</span>
+    <span class="n">cdef</span> <span class="nb">int</span> <span class="n">size</span>
+    <span class="n">cdef</span> <span class="n">double</span> <span class="n">value</span>
+
+    <span class="n">axeslist</span> <span class="o">=</span> <span class="n">axis_to_axeslist</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">arr</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">([</span><span class="n">arr</span><span class="p">,</span> <span class="n">out</span><span class="p">],</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'reduce_ok'</span><span class="p">,</span> <span class="s1">'external_loop'</span><span class="p">,</span>
+                                      <span class="s1">'buffered'</span><span class="p">,</span> <span class="s1">'delay_bufalloc'</span><span class="p">],</span>
+                <span class="n">op_flags</span><span class="o">=</span><span class="p">[[</span><span class="s1">'readonly'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'readwrite'</span><span class="p">,</span> <span class="s1">'allocate'</span><span class="p">]],</span>
+                <span class="n">op_axes</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">axeslist</span><span class="p">],</span>
+                <span class="n">op_dtypes</span><span class="o">=</span><span class="p">[</span><span class="s1">'float64'</span><span class="p">,</span> <span class="s1">'float64'</span><span class="p">])</span>
+    <span class="k">with</span> <span class="n">it</span><span class="p">:</span>
+        <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">it</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">xarr</span><span class="p">,</span> <span class="n">yarr</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">xarr</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">yarr</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+               <span class="n">value</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+               <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">value</span> <span class="o">*</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="n">it</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>На использованном компьютере сборка модуля из файла .pyx выполнялась следующим образом; особенности сборки для вашей системы, возможно, придётся уточнить в руководствах по Cython:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cython sum_squares.pyx
+$ gcc -shared -pthread -fPIC -fwrapv -O2 -Wall -I/usr/include/python2.7 -fno-strict-aliasing -o sum_squares.so sum_squares.c
+</pre></div>
+</div>
+<p>Запуск этого кода в интерпретаторе Python даёт те же результаты, что и исходный код на Python/NumPy.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Пример</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sum_squares</span><span class="w"> </span><span class="kn">import</span> <span class="n">sum_squares_cy</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_squares_cy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> 
+<span class="go">array(55.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_squares_cy</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> 
+<span class="go">array([  5.,  50.])</span>
+</pre></div>
+</div>
+</div>
+<p>Замер времени в IPython показывает, что уменьшение накладных расходов и числа выделений памяти во внутреннем цикле Cython заметно ускоряет вычисление по сравнению и с прямолинейным кодом Python, и с выражением на основе встроенной функции суммирования NumPy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span> <span class="n">sum_squares_py</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">10 loops, best of 3: 37.1 ms per loop</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">10 loops, best of 3: 20.9 ms per loop</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeit</span> <span class="n">sum_squares_cy</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">100 loops, best of 3: 11.8 ms per loop</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">sum_squares_cy</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">sum_squares_py</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+</section>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="arrays.promotion.html" title="предыдущая страница">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">назад</p>
+<p class="prev-next-title">Повышение типов данных в NumPy</p>
+</div>
+</a>
+<a class="right-next" href="arrays.classes.html" title="следующая страница">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">далее</p>
+<p class="prev-next-title">Стандартные подклассы массивов</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> На этой странице
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-array-iteration">Обход одного массива</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-iteration-order">Управление порядком обхода</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-array-values">Изменение значений массива</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-an-external-loop">Использование внешнего цикла</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-an-index-or-multi-index">Отслеживание индекса или мультииндекса </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-looping-and-element-access">Альтернативный способ обхода и доступ к элементам</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#buffering-the-array-elements">Буферизация элементов массива</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-as-a-specific-data-type">Обход с заданным типом данных</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-array-iteration">Итерация с трансляцией массивов</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterator-allocated-output-arrays">Выделенные итератором выходные массивы </a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outer-product-iteration">Итерация для внешнего произведения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduction-iteration">Итерация со свёрткой</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-the-inner-loop-in-cython">Перенос внутреннего цикла в Cython</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer="" src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">© 2008–2026, разработчики NumPy. <br/></p>
+</div>
+<div class="footer-item">
+<p class="sphinx-version">Создано с помощью <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6. <br/></p>
+</div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item">
+<p class="theme-version"><!-- # L10n: Setting the PST URL as an argument as this does not need to be localized --> Использована тема <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>
